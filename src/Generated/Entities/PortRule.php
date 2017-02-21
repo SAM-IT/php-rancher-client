@@ -1,6 +1,8 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Enums\ProtocolEnum;
+
 class PortRule extends \SamIT\Rancher\Types\Entity
 {
 	/** @var string */
@@ -15,7 +17,7 @@ class PortRule extends \SamIT\Rancher\Types\Entity
 	/** @var int */
 	public $priority;
 
-	/** @var \SamIT\Rancher\Generated\Enums\ProtocolEnum */
+	/** @var ProtocolEnum */
 	public $protocol;
 
 	/** @var string */

@@ -1,9 +1,12 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Enums\ActionEnum;
+use SamIT\Rancher\Generated\Enums\WithinEnum;
+
 class NetworkPolicyRule extends \SamIT\Rancher\Types\Entity
 {
-	/** @var \SamIT\Rancher\Generated\Enums\ActionEnum */
+	/** @var ActionEnum */
 	public $action;
 
 	/** @var networkPolicyRuleBetween */
@@ -18,7 +21,7 @@ class NetworkPolicyRule extends \SamIT\Rancher\Types\Entity
 	/** @var networkPolicyRuleMember */
 	public $to;
 
-	/** @var \SamIT\Rancher\Generated\Enums\WithinEnum */
+	/** @var WithinEnum */
 	public $within;
 
 	/** @var string[] */

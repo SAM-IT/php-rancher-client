@@ -1,12 +1,14 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Enums\SchemeEnum;
+
 class ContainerProxy extends \SamIT\Rancher\Types\Entity
 {
 	/** @var int */
 	public $port;
 
-	/** @var \SamIT\Rancher\Generated\Enums\SchemeEnum */
+	/** @var SchemeEnum */
 	public $scheme;
 
 	/** @var string[] */

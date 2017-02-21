@@ -1,12 +1,14 @@
 <?php
 namespace SamIT\Rancher\Generated\Collections;
 
+use SamIT\Rancher\Generated\Entities\Subnet;
+
 class SubnetCollection extends \SamIT\Rancher\Types\Collection
 {
 
 	public function __construct()
 	{
-		$this->resourceClass = \SamIT\Rancher\Generated\Entities\Subnet::class;
+		$this->resourceClass = Subnet::class;
 	}
 
 }

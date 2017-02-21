@@ -1,9 +1,11 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Enums\AccessModeEnum;
+
 class Ldapconfig extends \SamIT\Rancher\Types\Entity
 {
-	/** @var \SamIT\Rancher\Generated\Enums\AccessModeEnum */
+	/** @var AccessModeEnum */
 	public $accessMode;
 
 	/** @var identity[] */

@@ -1,6 +1,9 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Enums\StateEnum;
+use SamIT\Rancher\Generated\Enums\TransitioningEnum;
+
 class Backup extends \SamIT\Rancher\Types\Entity
 {
 	/**
@@ -45,7 +48,7 @@ class Backup extends \SamIT\Rancher\Types\Entity
 	 */
 	public $snapshotId;
 
-	/** @var \SamIT\Rancher\Generated\Enums\StateEnum */
+	/** @var StateEnum */
 	public $state;
 
 	/** @var string */
@@ -60,7 +63,7 @@ class Backup extends \SamIT\Rancher\Types\Entity
 	 */
 	public $volumeId;
 
-	/** @var \SamIT\Rancher\Generated\Enums\TransitioningEnum */
+	/** @var TransitioningEnum */
 	public $transitioning;
 
 	/** @var string */

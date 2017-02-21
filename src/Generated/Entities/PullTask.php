@@ -1,6 +1,10 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Enums\ModeEnum;
+use SamIT\Rancher\Generated\Enums\StateEnum;
+use SamIT\Rancher\Generated\Enums\TransitioningEnum;
+
 class PullTask extends \SamIT\Rancher\Types\Entity
 {
 	/**
@@ -33,10 +37,10 @@ class PullTask extends \SamIT\Rancher\Types\Entity
 	/** @var date */
 	public $removed;
 
-	/** @var \SamIT\Rancher\Generated\Enums\StateEnum */
+	/** @var StateEnum */
 	public $state;
 
-	/** @var \SamIT\Rancher\Generated\Enums\TransitioningEnum */
+	/** @var TransitioningEnum */
 	public $transitioning;
 
 	/** @var string */
@@ -54,7 +58,7 @@ class PullTask extends \SamIT\Rancher\Types\Entity
 	/** @var StringMap */
 	public $labels = [];
 
-	/** @var \SamIT\Rancher\Generated\Enums\ModeEnum */
+	/** @var ModeEnum */
 	public $mode;
 
 	/** @var StringMap */

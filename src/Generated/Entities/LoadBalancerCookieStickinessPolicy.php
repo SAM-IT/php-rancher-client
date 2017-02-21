@@ -1,6 +1,8 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Enums\ModeEnum;
+
 class LoadBalancerCookieStickinessPolicy extends \SamIT\Rancher\Types\Entity
 {
 	/** @var string */
@@ -12,7 +14,7 @@ class LoadBalancerCookieStickinessPolicy extends \SamIT\Rancher\Types\Entity
 	/** @var boolean */
 	public $indirect;
 
-	/** @var \SamIT\Rancher\Generated\Enums\ModeEnum */
+	/** @var ModeEnum */
 	public $mode;
 
 	/** @var string */

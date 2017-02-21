@@ -1,6 +1,9 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Enums\StateEnum;
+use SamIT\Rancher\Generated\Enums\TransitioningEnum;
+
 class Secret extends \SamIT\Rancher\Types\Entity
 {
 	/**
@@ -33,7 +36,7 @@ class Secret extends \SamIT\Rancher\Types\Entity
 	/** @var date */
 	public $removed;
 
-	/** @var \SamIT\Rancher\Generated\Enums\StateEnum */
+	/** @var StateEnum */
 	public $state;
 
 	/** @var string */
@@ -42,7 +45,7 @@ class Secret extends \SamIT\Rancher\Types\Entity
 	/** @var string */
 	public $value;
 
-	/** @var \SamIT\Rancher\Generated\Enums\TransitioningEnum */
+	/** @var TransitioningEnum */
 	public $transitioning;
 
 	/** @var string */

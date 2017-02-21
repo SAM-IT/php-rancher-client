@@ -1,6 +1,11 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Enums\ScopeEnum;
+use SamIT\Rancher\Generated\Enums\StateEnum;
+use SamIT\Rancher\Generated\Enums\TransitioningEnum;
+use SamIT\Rancher\Generated\Enums\VolumeAccessModeEnum;
+
 class StorageDriver extends \SamIT\Rancher\Types\Entity
 {
 	/**
@@ -39,13 +44,13 @@ class StorageDriver extends \SamIT\Rancher\Types\Entity
 	 */
 	public $serviceId;
 
-	/** @var \SamIT\Rancher\Generated\Enums\StateEnum */
+	/** @var StateEnum */
 	public $state;
 
 	/** @var string */
 	public $uuid;
 
-	/** @var \SamIT\Rancher\Generated\Enums\TransitioningEnum */
+	/** @var TransitioningEnum */
 	public $transitioning;
 
 	/** @var string */
@@ -54,7 +59,7 @@ class StorageDriver extends \SamIT\Rancher\Types\Entity
 	/** @var int */
 	public $transitioningProgress;
 
-	/** @var \SamIT\Rancher\Generated\Enums\VolumeAccessModeEnum */
+	/** @var VolumeAccessModeEnum */
 	public $volumeAccessMode;
 
 	/** @var string[] */
@@ -63,7 +68,7 @@ class StorageDriver extends \SamIT\Rancher\Types\Entity
 	/** @var string */
 	public $blockDevicePath;
 
-	/** @var \SamIT\Rancher\Generated\Enums\ScopeEnum */
+	/** @var ScopeEnum */
 	public $scope;
 
 	/** @var string[] */

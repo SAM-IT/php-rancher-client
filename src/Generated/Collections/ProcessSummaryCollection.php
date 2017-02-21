@@ -1,12 +1,14 @@
 <?php
 namespace SamIT\Rancher\Generated\Collections;
 
+use SamIT\Rancher\Generated\Entities\ProcessSummary;
+
 class ProcessSummaryCollection extends \SamIT\Rancher\Types\Collection
 {
 
 	public function __construct()
 	{
-		$this->resourceClass = \SamIT\Rancher\Generated\Entities\ProcessSummary::class;
+		$this->resourceClass = ProcessSummary::class;
 	}
 
 }

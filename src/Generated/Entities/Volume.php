@@ -1,6 +1,9 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Enums\StateEnum;
+use SamIT\Rancher\Generated\Enums\TransitioningEnum;
+
 class Volume extends \SamIT\Rancher\Types\Entity
 {
 	/** @var string */
@@ -66,7 +69,7 @@ class Volume extends \SamIT\Rancher\Types\Entity
 	 */
 	public $stackId;
 
-	/** @var \SamIT\Rancher\Generated\Enums\StateEnum */
+	/** @var StateEnum */
 	public $state;
 
 	/**
@@ -87,7 +90,7 @@ class Volume extends \SamIT\Rancher\Types\Entity
 	 */
 	public $volumeTemplateId;
 
-	/** @var \SamIT\Rancher\Generated\Enums\TransitioningEnum */
+	/** @var TransitioningEnum */
 	public $transitioning;
 
 	/** @var string */

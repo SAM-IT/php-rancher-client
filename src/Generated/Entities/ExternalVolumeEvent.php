@@ -1,6 +1,9 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Enums\StateEnum;
+use SamIT\Rancher\Generated\Enums\TransitioningEnum;
+
 class ExternalVolumeEvent extends \SamIT\Rancher\Types\Entity
 {
 	/**
@@ -33,10 +36,10 @@ class ExternalVolumeEvent extends \SamIT\Rancher\Types\Entity
 	 */
 	public $reportedAccountId;
 
-	/** @var \SamIT\Rancher\Generated\Enums\StateEnum */
+	/** @var StateEnum */
 	public $state;
 
-	/** @var \SamIT\Rancher\Generated\Enums\TransitioningEnum */
+	/** @var TransitioningEnum */
 	public $transitioning;
 
 	/** @var string */

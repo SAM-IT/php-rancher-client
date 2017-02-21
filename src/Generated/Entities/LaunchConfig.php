@@ -1,6 +1,13 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Enums\HealthStateEnum;
+use SamIT\Rancher\Generated\Enums\InstanceTriggeredStopEnum;
+use SamIT\Rancher\Generated\Enums\KindEnum;
+use SamIT\Rancher\Generated\Enums\PidModeEnum;
+use SamIT\Rancher\Generated\Enums\StateEnum;
+use SamIT\Rancher\Generated\Enums\TransitioningEnum;
+
 class LaunchConfig extends \SamIT\Rancher\Types\Entity
 {
 	/**
@@ -138,7 +145,7 @@ class LaunchConfig extends \SamIT\Rancher\Types\Entity
 	/** @var int */
 	public $healthRetries;
 
-	/** @var \SamIT\Rancher\Generated\Enums\HealthStateEnum */
+	/** @var HealthStateEnum */
 	public $healthState;
 
 	/** @var int */
@@ -162,7 +169,7 @@ class LaunchConfig extends \SamIT\Rancher\Types\Entity
 	/** @var Reference[instance]Map */
 	public $instanceLinks = [];
 
-	/** @var \SamIT\Rancher\Generated\Enums\InstanceTriggeredStopEnum */
+	/** @var InstanceTriggeredStopEnum */
 	public $instanceTriggeredStop;
 
 	/** @var int */
@@ -186,7 +193,7 @@ class LaunchConfig extends \SamIT\Rancher\Types\Entity
 	/** @var int */
 	public $kernelMemory;
 
-	/** @var \SamIT\Rancher\Generated\Enums\KindEnum */
+	/** @var KindEnum */
 	public $kind;
 
 	/** @var StringMap */
@@ -243,7 +250,7 @@ class LaunchConfig extends \SamIT\Rancher\Types\Entity
 	/** @var int */
 	public $oomScoreAdj;
 
-	/** @var \SamIT\Rancher\Generated\Enums\PidModeEnum */
+	/** @var PidModeEnum */
 	public $pidMode;
 
 	/** @var int */
@@ -309,7 +316,7 @@ class LaunchConfig extends \SamIT\Rancher\Types\Entity
 	/** @var boolean */
 	public $startOnCreate;
 
-	/** @var \SamIT\Rancher\Generated\Enums\StateEnum */
+	/** @var StateEnum */
 	public $state;
 
 	/** @var boolean */
@@ -333,7 +340,7 @@ class LaunchConfig extends \SamIT\Rancher\Types\Entity
 	/** @var string */
 	public $token;
 
-	/** @var \SamIT\Rancher\Generated\Enums\TransitioningEnum */
+	/** @var TransitioningEnum */
 	public $transitioning;
 
 	/** @var string */

@@ -1,14 +1,11 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
-class Project extends \SamIT\Rancher\Types\Entity
+use SamIT\Rancher\Generated\Enums\StateEnum;
+use SamIT\Rancher\Generated\Enums\TransitioningEnum;
+
+class Project extends Account
 {
-	/** @var date */
-	public $created;
-
-	/** @var JsonMap */
-	public $data = [];
-
 	/**
 	 * @var string
 	 * @api-type reference[network]
@@ -16,49 +13,13 @@ class Project extends \SamIT\Rancher\Types\Entity
 	public $defaultNetworkId;
 
 	/** @var string */
-	public $description;
-
-	/** @var string */
 	public $healthState;
-
-	/** @var int */
-	public $id;
-
-	/** @var string */
-	public $kind;
-
-	/** @var string */
-	public $name;
 
 	/**
 	 * @var string
 	 * @api-type reference[projectTemplate]
 	 */
 	public $projectTemplateId;
-
-	/** @var date */
-	public $removeTime;
-
-	/** @var date */
-	public $removed;
-
-	/** @var \SamIT\Rancher\Generated\Enums\StateEnum */
-	public $state;
-
-	/** @var \SamIT\Rancher\Generated\Enums\TransitioningEnum */
-	public $transitioning;
-
-	/** @var string */
-	public $transitioningMessage;
-
-	/** @var int */
-	public $transitioningProgress;
-
-	/** @var string */
-	public $uuid;
-
-	/** @var string */
-	public $version;
 
 	/** @var boolean */
 	public $allowSystemRole;

@@ -1,6 +1,10 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Enums\DefaultPolicyActionEnum;
+use SamIT\Rancher\Generated\Enums\StateEnum;
+use SamIT\Rancher\Generated\Enums\TransitioningEnum;
+
 class DefaultNetwork extends \SamIT\Rancher\Types\Entity
 {
 	/**
@@ -15,7 +19,7 @@ class DefaultNetwork extends \SamIT\Rancher\Types\Entity
 	/** @var JsonMap */
 	public $data = [];
 
-	/** @var \SamIT\Rancher\Generated\Enums\DefaultPolicyActionEnum */
+	/** @var DefaultPolicyActionEnum */
 	public $defaultPolicyAction;
 
 	/** @var string */
@@ -51,13 +55,13 @@ class DefaultNetwork extends \SamIT\Rancher\Types\Entity
 	/** @var date */
 	public $removed;
 
-	/** @var \SamIT\Rancher\Generated\Enums\StateEnum */
+	/** @var StateEnum */
 	public $state;
 
 	/** @var subnet[] */
 	public $subnets = [];
 
-	/** @var \SamIT\Rancher\Generated\Enums\TransitioningEnum */
+	/** @var TransitioningEnum */
 	public $transitioning;
 
 	/** @var string */

@@ -1,12 +1,14 @@
 <?php
 namespace SamIT\Rancher\Generated\Collections;
 
+use SamIT\Rancher\Generated\Entities\ExternalEvent;
+
 class ExternalEventCollection extends \SamIT\Rancher\Types\Collection
 {
 
 	public function __construct()
 	{
-		$this->resourceClass = \SamIT\Rancher\Generated\Entities\ExternalEvent::class;
+		$this->resourceClass = ExternalEvent::class;
 	}
 
 }

@@ -1,6 +1,9 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Enums\StateEnum;
+use SamIT\Rancher\Generated\Enums\TransitioningEnum;
+
 class KubernetesStack extends \SamIT\Rancher\Types\Entity
 {
 	/**
@@ -57,13 +60,13 @@ class KubernetesStack extends \SamIT\Rancher\Types\Entity
 	/** @var reference[service][] */
 	public $serviceIds = [];
 
-	/** @var \SamIT\Rancher\Generated\Enums\StateEnum */
+	/** @var StateEnum */
 	public $state;
 
 	/** @var boolean */
 	public $system;
 
-	/** @var \SamIT\Rancher\Generated\Enums\TransitioningEnum */
+	/** @var TransitioningEnum */
 	public $transitioning;
 
 	/** @var string */

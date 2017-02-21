@@ -1,6 +1,8 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Enums\StrategyEnum;
+
 class InstanceHealthCheck extends \SamIT\Rancher\Types\Entity
 {
 	/** @var int */
@@ -30,7 +32,7 @@ class InstanceHealthCheck extends \SamIT\Rancher\Types\Entity
 	/** @var int */
 	public $responseTimeout;
 
-	/** @var \SamIT\Rancher\Generated\Enums\StrategyEnum */
+	/** @var StrategyEnum */
 	public $strategy;
 
 	/** @var int */

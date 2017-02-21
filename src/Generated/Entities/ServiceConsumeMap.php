@@ -1,6 +1,9 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Enums\StateEnum;
+use SamIT\Rancher\Generated\Enums\TransitioningEnum;
+
 class ServiceConsumeMap extends \SamIT\Rancher\Types\Entity
 {
 	/**
@@ -45,13 +48,13 @@ class ServiceConsumeMap extends \SamIT\Rancher\Types\Entity
 	 */
 	public $serviceId;
 
-	/** @var \SamIT\Rancher\Generated\Enums\StateEnum */
+	/** @var StateEnum */
 	public $state;
 
 	/** @var string */
 	public $uuid;
 
-	/** @var \SamIT\Rancher\Generated\Enums\TransitioningEnum */
+	/** @var TransitioningEnum */
 	public $transitioning;
 
 	/** @var string */

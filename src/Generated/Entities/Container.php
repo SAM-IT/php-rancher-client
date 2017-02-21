@@ -1,14 +1,14 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
-class Container extends \SamIT\Rancher\Types\Entity
-{
-	/**
-	 * @var string
-	 * @api-type reference[account]
-	 */
-	public $accountId;
+use SamIT\Rancher\Generated\Enums\HealthStateEnum;
+use SamIT\Rancher\Generated\Enums\InstanceTriggeredStopEnum;
+use SamIT\Rancher\Generated\Enums\PidModeEnum;
+use SamIT\Rancher\Generated\Enums\StateEnum;
+use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
+class Container extends Instance
+{
 	/**
 	 * @var string
 	 * @api-type reference[agent]
@@ -24,50 +24,26 @@ class Container extends \SamIT\Rancher\Types\Entity
 	/** @var int */
 	public $createIndex;
 
-	/** @var date */
-	public $created;
-
-	/** @var JsonMap */
-	public $data = [];
-
 	/** @var string */
 	public $deploymentUnitUuid;
-
-	/** @var string */
-	public $description;
 
 	/** @var string[] */
 	public $expose = [];
 
-	/** @var string */
-	public $externalId;
-
 	/** @var date */
 	public $firstRunning;
 
-	/** @var \SamIT\Rancher\Generated\Enums\HealthStateEnum */
+	/** @var HealthStateEnum */
 	public $healthState;
-
-	/**
-	 * @var string
-	 * @api-type reference[host]
-	 */
-	public $hostId;
 
 	/** @var string */
 	public $hostname;
 
-	/** @var int */
-	public $id;
-
 	/** @var string */
 	public $imageUuid;
 
-	/** @var \SamIT\Rancher\Generated\Enums\InstanceTriggeredStopEnum */
+	/** @var InstanceTriggeredStopEnum */
 	public $instanceTriggeredStop;
-
-	/** @var string */
-	public $kind;
 
 	/** @var int */
 	public $memoryReservation;
@@ -77,9 +53,6 @@ class Container extends \SamIT\Rancher\Types\Entity
 
 	/** @var mountEntry[] */
 	public $mounts = [];
-
-	/** @var string */
-	public $name;
 
 	/** @var boolean */
 	public $nativeContainer;
@@ -105,12 +78,6 @@ class Container extends \SamIT\Rancher\Types\Entity
 	 */
 	public $registryCredentialId;
 
-	/** @var date */
-	public $removeTime;
-
-	/** @var date */
-	public $removed;
-
 	/**
 	 * @var string
 	 * @api-type reference[host]
@@ -126,26 +93,11 @@ class Container extends \SamIT\Rancher\Types\Entity
 	/** @var boolean */
 	public $startOnCreate;
 
-	/** @var \SamIT\Rancher\Generated\Enums\StateEnum */
-	public $state;
-
 	/** @var boolean */
 	public $system;
 
 	/** @var string */
 	public $token;
-
-	/** @var \SamIT\Rancher\Generated\Enums\TransitioningEnum */
-	public $transitioning;
-
-	/** @var string */
-	public $transitioningMessage;
-
-	/** @var int */
-	public $transitioningProgress;
-
-	/** @var string */
-	public $uuid;
 
 	/** @var string */
 	public $version;
@@ -240,7 +192,7 @@ class Container extends \SamIT\Rancher\Types\Entity
 	/** @var logConfig */
 	public $logConfig;
 
-	/** @var \SamIT\Rancher\Generated\Enums\PidModeEnum */
+	/** @var PidModeEnum */
 	public $pidMode;
 
 	/** @var string[] */

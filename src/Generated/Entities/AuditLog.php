@@ -1,6 +1,8 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Enums\AuthTypeEnum;
+
 class AuditLog extends \SamIT\Rancher\Types\Entity
 {
 	/**
@@ -9,7 +11,7 @@ class AuditLog extends \SamIT\Rancher\Types\Entity
 	 */
 	public $accountId;
 
-	/** @var \SamIT\Rancher\Generated\Enums\AuthTypeEnum */
+	/** @var AuthTypeEnum */
 	public $authType;
 
 	/**
