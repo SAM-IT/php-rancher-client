@@ -51,11 +51,11 @@ class ResourceField
             if (!isset($enumGenerator)) {
                 throw new \Exception("This schema uses enums, pass in an EnumGenerator to generate the class it describes.");
             }
-            $type = $enumGenerator->getClassName($name, $name);
-            $property->addComment("@var $type");
+            $type->getNamespace()->addUse($enumGenerator->getClassName($name, $name), null, $typeHint);
+            $property->addComment("@var $typeHint");
         } else {
-            $type = $this->type;
-            $property->addComment("@var $type");
+            $typeHint = $this->type;
+            $property->addComment("@var $typeHint");
 
         }
     }

@@ -1,854 +1,1043 @@
 <?php
 namespace SamIT\Rancher\Generated;
 
+use SamIT\Rancher\Generated\Collections\AccountCollection;
+use SamIT\Rancher\Generated\Collections\AgentCollection;
+use SamIT\Rancher\Generated\Collections\ApiKeyCollection;
+use SamIT\Rancher\Generated\Collections\AuditLogCollection;
+use SamIT\Rancher\Generated\Collections\AzureadconfigCollection;
+use SamIT\Rancher\Generated\Collections\BackupCollection;
+use SamIT\Rancher\Generated\Collections\BackupTargetCollection;
+use SamIT\Rancher\Generated\Collections\CertificateCollection;
+use SamIT\Rancher\Generated\Collections\ClusterMembershipCollection;
+use SamIT\Rancher\Generated\Collections\ComposeProjectCollection;
+use SamIT\Rancher\Generated\Collections\ComposeServiceCollection;
+use SamIT\Rancher\Generated\Collections\ConfigItemCollection;
+use SamIT\Rancher\Generated\Collections\ConfigItemStatusCollection;
+use SamIT\Rancher\Generated\Collections\ContainerCollection;
+use SamIT\Rancher\Generated\Collections\ContainerEventCollection;
+use SamIT\Rancher\Generated\Collections\CredentialCollection;
+use SamIT\Rancher\Generated\Collections\DatabasechangelogCollection;
+use SamIT\Rancher\Generated\Collections\DatabasechangeloglockCollection;
+use SamIT\Rancher\Generated\Collections\DnsServiceCollection;
+use SamIT\Rancher\Generated\Collections\ExtensionPointCollection;
+use SamIT\Rancher\Generated\Collections\ExternalDnsEventCollection;
+use SamIT\Rancher\Generated\Collections\ExternalEventCollection;
+use SamIT\Rancher\Generated\Collections\ExternalHandlerCollection;
+use SamIT\Rancher\Generated\Collections\ExternalHandlerExternalHandlerProcessMapCollection;
+use SamIT\Rancher\Generated\Collections\ExternalHandlerProcessCollection;
+use SamIT\Rancher\Generated\Collections\ExternalHostEventCollection;
+use SamIT\Rancher\Generated\Collections\ExternalServiceCollection;
+use SamIT\Rancher\Generated\Collections\ExternalServiceEventCollection;
+use SamIT\Rancher\Generated\Collections\ExternalStoragePoolEventCollection;
+use SamIT\Rancher\Generated\Collections\ExternalVolumeEventCollection;
+use SamIT\Rancher\Generated\Collections\GenericObjectCollection;
+use SamIT\Rancher\Generated\Collections\HaConfigCollection;
+use SamIT\Rancher\Generated\Collections\HaConfigInputCollection;
+use SamIT\Rancher\Generated\Collections\HealthcheckInstanceHostMapCollection;
+use SamIT\Rancher\Generated\Collections\HostApiProxyTokenCollection;
+use SamIT\Rancher\Generated\Collections\HostCollection;
+use SamIT\Rancher\Generated\Collections\IdentityCollection;
+use SamIT\Rancher\Generated\Collections\ImageCollection;
+use SamIT\Rancher\Generated\Collections\InstanceCollection;
+use SamIT\Rancher\Generated\Collections\InstanceLinkCollection;
+use SamIT\Rancher\Generated\Collections\IpAddressCollection;
+use SamIT\Rancher\Generated\Collections\KubernetesServiceCollection;
+use SamIT\Rancher\Generated\Collections\KubernetesStackCollection;
+use SamIT\Rancher\Generated\Collections\LabelCollection;
+use SamIT\Rancher\Generated\Collections\LdapconfigCollection;
+use SamIT\Rancher\Generated\Collections\LoadBalancerServiceCollection;
+use SamIT\Rancher\Generated\Collections\LocalAuthConfigCollection;
+use SamIT\Rancher\Generated\Collections\MachineCollection;
+use SamIT\Rancher\Generated\Collections\MachineDriverCollection;
+use SamIT\Rancher\Generated\Collections\MountCollection;
+use SamIT\Rancher\Generated\Collections\NetworkCollection;
+use SamIT\Rancher\Generated\Collections\NetworkDriverCollection;
+use SamIT\Rancher\Generated\Collections\NetworkDriverServiceCollection;
+use SamIT\Rancher\Generated\Collections\NetworkPolicyRuleWithinCollection;
+use SamIT\Rancher\Generated\Collections\OpenldapconfigCollection;
+use SamIT\Rancher\Generated\Collections\PasswordCollection;
+use SamIT\Rancher\Generated\Collections\PhysicalHostCollection;
+use SamIT\Rancher\Generated\Collections\PortCollection;
+use SamIT\Rancher\Generated\Collections\ProcessDefinitionCollection;
+use SamIT\Rancher\Generated\Collections\ProcessExecutionCollection;
+use SamIT\Rancher\Generated\Collections\ProcessInstanceCollection;
+use SamIT\Rancher\Generated\Collections\ProcessPoolCollection;
+use SamIT\Rancher\Generated\Collections\ProcessSummaryCollection;
+use SamIT\Rancher\Generated\Collections\ProjectCollection;
+use SamIT\Rancher\Generated\Collections\ProjectMemberCollection;
+use SamIT\Rancher\Generated\Collections\ProjectTemplateCollection;
+use SamIT\Rancher\Generated\Collections\PullTaskCollection;
+use SamIT\Rancher\Generated\Collections\RegisterCollection;
+use SamIT\Rancher\Generated\Collections\RegistrationTokenCollection;
+use SamIT\Rancher\Generated\Collections\RegistryCollection;
+use SamIT\Rancher\Generated\Collections\RegistryCredentialCollection;
+use SamIT\Rancher\Generated\Collections\ResourceDefinitionCollection;
+use SamIT\Rancher\Generated\Collections\SchemaCollection;
+use SamIT\Rancher\Generated\Collections\SecretCollection;
+use SamIT\Rancher\Generated\Collections\ServiceCollection;
+use SamIT\Rancher\Generated\Collections\ServiceConsumeMapCollection;
+use SamIT\Rancher\Generated\Collections\ServiceEventCollection;
+use SamIT\Rancher\Generated\Collections\ServiceExposeMapCollection;
+use SamIT\Rancher\Generated\Collections\ServiceLogCollection;
+use SamIT\Rancher\Generated\Collections\ServiceProxyCollection;
+use SamIT\Rancher\Generated\Collections\SettingCollection;
+use SamIT\Rancher\Generated\Collections\SnapshotCollection;
+use SamIT\Rancher\Generated\Collections\StackCollection;
+use SamIT\Rancher\Generated\Collections\StorageDriverCollection;
+use SamIT\Rancher\Generated\Collections\StorageDriverServiceCollection;
+use SamIT\Rancher\Generated\Collections\StoragePoolCollection;
+use SamIT\Rancher\Generated\Collections\SubnetCollection;
+use SamIT\Rancher\Generated\Collections\TaskCollection;
+use SamIT\Rancher\Generated\Collections\TaskInstanceCollection;
+use SamIT\Rancher\Generated\Collections\TypeDocumentationCollection;
+use SamIT\Rancher\Generated\Collections\UserPreferenceCollection;
+use SamIT\Rancher\Generated\Collections\VirtualMachineCollection;
+use SamIT\Rancher\Generated\Collections\VolumeCollection;
+use SamIT\Rancher\Generated\Collections\VolumeTemplateCollection;
+use SamIT\Rancher\Generated\Entities\Account;
+use SamIT\Rancher\Generated\Entities\Agent;
+use SamIT\Rancher\Generated\Entities\ApiKey;
+use SamIT\Rancher\Generated\Entities\AuditLog;
+use SamIT\Rancher\Generated\Entities\Azureadconfig;
+use SamIT\Rancher\Generated\Entities\Backup;
+use SamIT\Rancher\Generated\Entities\BackupTarget;
+use SamIT\Rancher\Generated\Entities\Certificate;
+use SamIT\Rancher\Generated\Entities\ClusterMembership;
+use SamIT\Rancher\Generated\Entities\ComposeProject;
+use SamIT\Rancher\Generated\Entities\ComposeService;
+use SamIT\Rancher\Generated\Entities\ConfigItem;
+use SamIT\Rancher\Generated\Entities\ConfigItemStatus;
+use SamIT\Rancher\Generated\Entities\Container;
+use SamIT\Rancher\Generated\Entities\ContainerEvent;
+use SamIT\Rancher\Generated\Entities\Credential;
+use SamIT\Rancher\Generated\Entities\Databasechangelog;
+use SamIT\Rancher\Generated\Entities\Databasechangeloglock;
+use SamIT\Rancher\Generated\Entities\DnsService;
+use SamIT\Rancher\Generated\Entities\ExtensionPoint;
+use SamIT\Rancher\Generated\Entities\ExternalDnsEvent;
+use SamIT\Rancher\Generated\Entities\ExternalEvent;
+use SamIT\Rancher\Generated\Entities\ExternalHandler;
+use SamIT\Rancher\Generated\Entities\ExternalHandlerExternalHandlerProcessMap;
+use SamIT\Rancher\Generated\Entities\ExternalHandlerProcess;
+use SamIT\Rancher\Generated\Entities\ExternalHostEvent;
+use SamIT\Rancher\Generated\Entities\ExternalService;
+use SamIT\Rancher\Generated\Entities\ExternalServiceEvent;
+use SamIT\Rancher\Generated\Entities\ExternalStoragePoolEvent;
+use SamIT\Rancher\Generated\Entities\ExternalVolumeEvent;
+use SamIT\Rancher\Generated\Entities\GenericObject;
+use SamIT\Rancher\Generated\Entities\HaConfig;
+use SamIT\Rancher\Generated\Entities\HaConfigInput;
+use SamIT\Rancher\Generated\Entities\HealthcheckInstanceHostMap;
+use SamIT\Rancher\Generated\Entities\Host;
+use SamIT\Rancher\Generated\Entities\HostApiProxyToken;
+use SamIT\Rancher\Generated\Entities\Identity;
+use SamIT\Rancher\Generated\Entities\Image;
+use SamIT\Rancher\Generated\Entities\Instance;
+use SamIT\Rancher\Generated\Entities\InstanceLink;
+use SamIT\Rancher\Generated\Entities\IpAddress;
+use SamIT\Rancher\Generated\Entities\KubernetesService;
+use SamIT\Rancher\Generated\Entities\KubernetesStack;
+use SamIT\Rancher\Generated\Entities\Label;
+use SamIT\Rancher\Generated\Entities\Ldapconfig;
+use SamIT\Rancher\Generated\Entities\LoadBalancerService;
+use SamIT\Rancher\Generated\Entities\LocalAuthConfig;
+use SamIT\Rancher\Generated\Entities\Machine;
+use SamIT\Rancher\Generated\Entities\MachineDriver;
+use SamIT\Rancher\Generated\Entities\Mount;
+use SamIT\Rancher\Generated\Entities\Network;
+use SamIT\Rancher\Generated\Entities\NetworkDriver;
+use SamIT\Rancher\Generated\Entities\NetworkDriverService;
+use SamIT\Rancher\Generated\Entities\NetworkPolicyRuleWithin;
+use SamIT\Rancher\Generated\Entities\Openldapconfig;
+use SamIT\Rancher\Generated\Entities\Password;
+use SamIT\Rancher\Generated\Entities\PhysicalHost;
+use SamIT\Rancher\Generated\Entities\Port;
+use SamIT\Rancher\Generated\Entities\ProcessDefinition;
+use SamIT\Rancher\Generated\Entities\ProcessExecution;
+use SamIT\Rancher\Generated\Entities\ProcessInstance;
+use SamIT\Rancher\Generated\Entities\ProcessPool;
+use SamIT\Rancher\Generated\Entities\ProcessSummary;
+use SamIT\Rancher\Generated\Entities\Project;
+use SamIT\Rancher\Generated\Entities\ProjectMember;
+use SamIT\Rancher\Generated\Entities\ProjectTemplate;
+use SamIT\Rancher\Generated\Entities\PullTask;
+use SamIT\Rancher\Generated\Entities\Register;
+use SamIT\Rancher\Generated\Entities\RegistrationToken;
+use SamIT\Rancher\Generated\Entities\Registry;
+use SamIT\Rancher\Generated\Entities\RegistryCredential;
+use SamIT\Rancher\Generated\Entities\ResourceDefinition;
+use SamIT\Rancher\Generated\Entities\Schema;
+use SamIT\Rancher\Generated\Entities\Secret;
+use SamIT\Rancher\Generated\Entities\Service;
+use SamIT\Rancher\Generated\Entities\ServiceConsumeMap;
+use SamIT\Rancher\Generated\Entities\ServiceEvent;
+use SamIT\Rancher\Generated\Entities\ServiceExposeMap;
+use SamIT\Rancher\Generated\Entities\ServiceLog;
+use SamIT\Rancher\Generated\Entities\ServiceProxy;
+use SamIT\Rancher\Generated\Entities\Setting;
+use SamIT\Rancher\Generated\Entities\Snapshot;
+use SamIT\Rancher\Generated\Entities\Stack;
+use SamIT\Rancher\Generated\Entities\StorageDriver;
+use SamIT\Rancher\Generated\Entities\StorageDriverService;
+use SamIT\Rancher\Generated\Entities\StoragePool;
+use SamIT\Rancher\Generated\Entities\Subnet;
+use SamIT\Rancher\Generated\Entities\Task;
+use SamIT\Rancher\Generated\Entities\TaskInstance;
+use SamIT\Rancher\Generated\Entities\TypeDocumentation;
+use SamIT\Rancher\Generated\Entities\UserPreference;
+use SamIT\Rancher\Generated\Entities\VirtualMachine;
+use SamIT\Rancher\Generated\Entities\Volume;
+use SamIT\Rancher\Generated\Entities\VolumeTemplate;
+
 class Client extends \SamIT\Rancher\Client
 {
 	public $namespace = '\SamIT\Rancher\Generated';
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\Account[]|\SamIT\Rancher\Generated\Collections\AccountCollection
+	 * @return Account[]|AccountCollection
 	 */
-	public function getAccounts(): Collections\AccountCollection
+	public function getAccounts(?int $limit = NULL): AccountCollection
 	{
-		return $this->retrieveEntities('/accounts');
+		return $this->retrieveEntities('/accounts', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\Agent[]|\SamIT\Rancher\Generated\Collections\AgentCollection
+	 * @return Agent[]|AgentCollection
 	 */
-	public function getAgents(): Collections\AgentCollection
+	public function getAgents(?int $limit = NULL): AgentCollection
 	{
-		return $this->retrieveEntities('/agents');
+		return $this->retrieveEntities('/agents', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\ApiKey[]|\SamIT\Rancher\Generated\Collections\ApiKeyCollection
+	 * @return ApiKey[]|ApiKeyCollection
 	 */
-	public function getApiKeys(): Collections\ApiKeyCollection
+	public function getApiKeys(?int $limit = NULL): ApiKeyCollection
 	{
-		return $this->retrieveEntities('/apikeys');
+		return $this->retrieveEntities('/apikeys', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\AuditLog[]|\SamIT\Rancher\Generated\Collections\AuditLogCollection
+	 * @return AuditLog[]|AuditLogCollection
 	 */
-	public function getAuditLogs(): Collections\AuditLogCollection
+	public function getAuditLogs(?int $limit = NULL): AuditLogCollection
 	{
-		return $this->retrieveEntities('/auditlogs');
+		return $this->retrieveEntities('/auditlogs', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\Azureadconfig[]|\SamIT\Rancher\Generated\Collections\AzureadconfigCollection
+	 * @return Azureadconfig[]|AzureadconfigCollection
 	 */
-	public function getAzureadconfigs(): Collections\AzureadconfigCollection
+	public function getAzureadconfigs(?int $limit = NULL): AzureadconfigCollection
 	{
-		return $this->retrieveEntities('/azureadconfigs');
+		return $this->retrieveEntities('/azureadconfigs', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\Backup[]|\SamIT\Rancher\Generated\Collections\BackupCollection
+	 * @return Backup[]|BackupCollection
 	 */
-	public function getBackups(): Collections\BackupCollection
+	public function getBackups(?int $limit = NULL): BackupCollection
 	{
-		return $this->retrieveEntities('/backups');
+		return $this->retrieveEntities('/backups', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\BackupTarget[]|\SamIT\Rancher\Generated\Collections\BackupTargetCollection
+	 * @return BackupTarget[]|BackupTargetCollection
 	 */
-	public function getBackupTargets(): Collections\BackupTargetCollection
+	public function getBackupTargets(?int $limit = NULL): BackupTargetCollection
 	{
-		return $this->retrieveEntities('/backuptargets');
+		return $this->retrieveEntities('/backuptargets', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\Certificate[]|\SamIT\Rancher\Generated\Collections\CertificateCollection
+	 * @return Certificate[]|CertificateCollection
 	 */
-	public function getCertificates(): Collections\CertificateCollection
+	public function getCertificates(?int $limit = NULL): CertificateCollection
 	{
-		return $this->retrieveEntities('/certificates');
+		return $this->retrieveEntities('/certificates', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\ClusterMembership[]|\SamIT\Rancher\Generated\Collections\ClusterMembershipCollection
+	 * @return ClusterMembership[]|ClusterMembershipCollection
 	 */
-	public function getClusterMemberships(): Collections\ClusterMembershipCollection
+	public function getClusterMemberships(?int $limit = NULL): ClusterMembershipCollection
 	{
-		return $this->retrieveEntities('/clustermemberships');
+		return $this->retrieveEntities('/clustermemberships', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\ComposeProject[]|\SamIT\Rancher\Generated\Collections\ComposeProjectCollection
+	 * @return ComposeProject[]|ComposeProjectCollection
 	 */
-	public function getComposeProjects(): Collections\ComposeProjectCollection
+	public function getComposeProjects(?int $limit = NULL): ComposeProjectCollection
 	{
-		return $this->retrieveEntities('/composeprojects');
+		return $this->retrieveEntities('/composeprojects', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\ComposeService[]|\SamIT\Rancher\Generated\Collections\ComposeServiceCollection
+	 * @return ComposeService[]|ComposeServiceCollection
 	 */
-	public function getComposeServices(): Collections\ComposeServiceCollection
+	public function getComposeServices(?int $limit = NULL): ComposeServiceCollection
 	{
-		return $this->retrieveEntities('/composeservices');
+		return $this->retrieveEntities('/composeservices', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\ConfigItem[]|\SamIT\Rancher\Generated\Collections\ConfigItemCollection
+	 * @return ConfigItem[]|ConfigItemCollection
 	 */
-	public function getConfigItems(): Collections\ConfigItemCollection
+	public function getConfigItems(?int $limit = NULL): ConfigItemCollection
 	{
-		return $this->retrieveEntities('/configitems');
+		return $this->retrieveEntities('/configitems', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\ConfigItemStatus[]|\SamIT\Rancher\Generated\Collections\ConfigItemStatusCollection
+	 * @return ConfigItemStatus[]|ConfigItemStatusCollection
 	 */
-	public function getConfigItemStatuses(): Collections\ConfigItemStatusCollection
+	public function getConfigItemStatuses(?int $limit = NULL): ConfigItemStatusCollection
 	{
-		return $this->retrieveEntities('/configitemstatuses');
+		return $this->retrieveEntities('/configitemstatuses', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\Container[]|\SamIT\Rancher\Generated\Collections\ContainerCollection
+	 * @return Container[]|ContainerCollection
 	 */
-	public function getContainers(): Collections\ContainerCollection
+	public function getContainers(?int $limit = NULL): ContainerCollection
 	{
-		return $this->retrieveEntities('/containers');
+		return $this->retrieveEntities('/containers', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\ContainerEvent[]|\SamIT\Rancher\Generated\Collections\ContainerEventCollection
+	 * @return ContainerEvent[]|ContainerEventCollection
 	 */
-	public function getContainerEvents(): Collections\ContainerEventCollection
+	public function getContainerEvents(?int $limit = NULL): ContainerEventCollection
 	{
-		return $this->retrieveEntities('/containerevents');
+		return $this->retrieveEntities('/containerevents', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\Credential[]|\SamIT\Rancher\Generated\Collections\CredentialCollection
+	 * @return Credential[]|CredentialCollection
 	 */
-	public function getCredentials(): Collections\CredentialCollection
+	public function getCredentials(?int $limit = NULL): CredentialCollection
 	{
-		return $this->retrieveEntities('/credentials');
+		return $this->retrieveEntities('/credentials', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\Databasechangelog[]|\SamIT\Rancher\Generated\Collections\DatabasechangelogCollection
+	 * @return Databasechangelog[]|DatabasechangelogCollection
 	 */
-	public function getDatabasechangelogs(): Collections\DatabasechangelogCollection
+	public function getDatabasechangelogs(?int $limit = NULL): DatabasechangelogCollection
 	{
-		return $this->retrieveEntities('/databasechangelogs');
+		return $this->retrieveEntities('/databasechangelogs', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\Databasechangeloglock[]|\SamIT\Rancher\Generated\Collections\DatabasechangeloglockCollection
+	 * @return Databasechangeloglock[]|DatabasechangeloglockCollection
 	 */
-	public function getDatabasechangeloglocks(): Collections\DatabasechangeloglockCollection
+	public function getDatabasechangeloglocks(?int $limit = NULL): DatabasechangeloglockCollection
 	{
-		return $this->retrieveEntities('/databasechangeloglocks');
+		return $this->retrieveEntities('/databasechangeloglocks', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\DnsService[]|\SamIT\Rancher\Generated\Collections\DnsServiceCollection
+	 * @return DnsService[]|DnsServiceCollection
 	 */
-	public function getDnsServices(): Collections\DnsServiceCollection
+	public function getDnsServices(?int $limit = NULL): DnsServiceCollection
 	{
-		return $this->retrieveEntities('/dnsservices');
+		return $this->retrieveEntities('/dnsservices', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\ExtensionPoint[]|\SamIT\Rancher\Generated\Collections\ExtensionPointCollection
+	 * @return ExtensionPoint[]|ExtensionPointCollection
 	 */
-	public function getExtensionPoints(): Collections\ExtensionPointCollection
+	public function getExtensionPoints(?int $limit = NULL): ExtensionPointCollection
 	{
-		return $this->retrieveEntities('/extensionpoints');
+		return $this->retrieveEntities('/extensionpoints', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\ExternalDnsEvent[]|\SamIT\Rancher\Generated\Collections\ExternalDnsEventCollection
+	 * @return ExternalDnsEvent[]|ExternalDnsEventCollection
 	 */
-	public function getExternalDnsEvents(): Collections\ExternalDnsEventCollection
+	public function getExternalDnsEvents(?int $limit = NULL): ExternalDnsEventCollection
 	{
-		return $this->retrieveEntities('/externaldnsevents');
+		return $this->retrieveEntities('/externaldnsevents', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\ExternalEvent[]|\SamIT\Rancher\Generated\Collections\ExternalEventCollection
+	 * @return ExternalEvent[]|ExternalEventCollection
 	 */
-	public function getExternalEvents(): Collections\ExternalEventCollection
+	public function getExternalEvents(?int $limit = NULL): ExternalEventCollection
 	{
-		return $this->retrieveEntities('/externalevents');
+		return $this->retrieveEntities('/externalevents', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\ExternalHandler[]|\SamIT\Rancher\Generated\Collections\ExternalHandlerCollection
+	 * @return ExternalHandler[]|ExternalHandlerCollection
 	 */
-	public function getExternalHandlers(): Collections\ExternalHandlerCollection
+	public function getExternalHandlers(?int $limit = NULL): ExternalHandlerCollection
 	{
-		return $this->retrieveEntities('/externalhandlers');
+		return $this->retrieveEntities('/externalhandlers', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\ExternalHandlerExternalHandlerProcessMap[]|\SamIT\Rancher\Generated\Collections\ExternalHandlerExternalHandlerProcessMapCollection
+	 * @return ExternalHandlerExternalHandlerProcessMap[]|ExternalHandlerExternalHandlerProcessMapCollection
 	 */
-	public function getExternalHandlerExternalHandlerProcessMaps(): Collections\ExternalHandlerExternalHandlerProcessMapCollection
+	public function getExternalHandlerExternalHandlerProcessMaps(?int $limit = NULL): ExternalHandlerExternalHandlerProcessMapCollection
 	{
-		return $this->retrieveEntities('/externalhandlerexternalhandlerprocessmaps');
+		return $this->retrieveEntities('/externalhandlerexternalhandlerprocessmaps', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\ExternalHandlerProcess[]|\SamIT\Rancher\Generated\Collections\ExternalHandlerProcessCollection
+	 * @return ExternalHandlerProcess[]|ExternalHandlerProcessCollection
 	 */
-	public function getExternalHandlerProcesses(): Collections\ExternalHandlerProcessCollection
+	public function getExternalHandlerProcesses(?int $limit = NULL): ExternalHandlerProcessCollection
 	{
-		return $this->retrieveEntities('/externalhandlerprocesses');
+		return $this->retrieveEntities('/externalhandlerprocesses', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\ExternalHostEvent[]|\SamIT\Rancher\Generated\Collections\ExternalHostEventCollection
+	 * @return ExternalHostEvent[]|ExternalHostEventCollection
 	 */
-	public function getExternalHostEvents(): Collections\ExternalHostEventCollection
+	public function getExternalHostEvents(?int $limit = NULL): ExternalHostEventCollection
 	{
-		return $this->retrieveEntities('/externalhostevents');
+		return $this->retrieveEntities('/externalhostevents', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\ExternalService[]|\SamIT\Rancher\Generated\Collections\ExternalServiceCollection
+	 * @return ExternalService[]|ExternalServiceCollection
 	 */
-	public function getExternalServices(): Collections\ExternalServiceCollection
+	public function getExternalServices(?int $limit = NULL): ExternalServiceCollection
 	{
-		return $this->retrieveEntities('/externalservices');
+		return $this->retrieveEntities('/externalservices', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\ExternalServiceEvent[]|\SamIT\Rancher\Generated\Collections\ExternalServiceEventCollection
+	 * @return ExternalServiceEvent[]|ExternalServiceEventCollection
 	 */
-	public function getExternalServiceEvents(): Collections\ExternalServiceEventCollection
+	public function getExternalServiceEvents(?int $limit = NULL): ExternalServiceEventCollection
 	{
-		return $this->retrieveEntities('/externalserviceevents');
+		return $this->retrieveEntities('/externalserviceevents', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\ExternalStoragePoolEvent[]|\SamIT\Rancher\Generated\Collections\ExternalStoragePoolEventCollection
+	 * @return ExternalStoragePoolEvent[]|ExternalStoragePoolEventCollection
 	 */
-	public function getExternalStoragePoolEvents(): Collections\ExternalStoragePoolEventCollection
+	public function getExternalStoragePoolEvents(?int $limit = NULL): ExternalStoragePoolEventCollection
 	{
-		return $this->retrieveEntities('/externalstoragepoolevents');
+		return $this->retrieveEntities('/externalstoragepoolevents', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\ExternalVolumeEvent[]|\SamIT\Rancher\Generated\Collections\ExternalVolumeEventCollection
+	 * @return ExternalVolumeEvent[]|ExternalVolumeEventCollection
 	 */
-	public function getExternalVolumeEvents(): Collections\ExternalVolumeEventCollection
+	public function getExternalVolumeEvents(?int $limit = NULL): ExternalVolumeEventCollection
 	{
-		return $this->retrieveEntities('/externalvolumeevents');
+		return $this->retrieveEntities('/externalvolumeevents', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\GenericObject[]|\SamIT\Rancher\Generated\Collections\GenericObjectCollection
+	 * @return GenericObject[]|GenericObjectCollection
 	 */
-	public function getGenericObjects(): Collections\GenericObjectCollection
+	public function getGenericObjects(?int $limit = NULL): GenericObjectCollection
 	{
-		return $this->retrieveEntities('/genericobjects');
+		return $this->retrieveEntities('/genericobjects', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\HaConfig[]|\SamIT\Rancher\Generated\Collections\HaConfigCollection
+	 * @return HaConfig[]|HaConfigCollection
 	 */
-	public function getHaConfigs(): Collections\HaConfigCollection
+	public function getHaConfigs(?int $limit = NULL): HaConfigCollection
 	{
-		return $this->retrieveEntities('/haconfigs');
+		return $this->retrieveEntities('/haconfigs', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\HaConfigInput[]|\SamIT\Rancher\Generated\Collections\HaConfigInputCollection
+	 * @return HaConfigInput[]|HaConfigInputCollection
 	 */
-	public function getHaConfigInputs(): Collections\HaConfigInputCollection
+	public function getHaConfigInputs(?int $limit = NULL): HaConfigInputCollection
 	{
-		return $this->retrieveEntities('/haconfiginputs');
+		return $this->retrieveEntities('/haconfiginputs', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\HealthcheckInstanceHostMap[]|\SamIT\Rancher\Generated\Collections\HealthcheckInstanceHostMapCollection
+	 * @return HealthcheckInstanceHostMap[]|HealthcheckInstanceHostMapCollection
 	 */
-	public function getHealthcheckInstanceHostMaps(): Collections\HealthcheckInstanceHostMapCollection
+	public function getHealthcheckInstanceHostMaps(?int $limit = NULL): HealthcheckInstanceHostMapCollection
 	{
-		return $this->retrieveEntities('/healthcheckinstancehostmaps');
+		return $this->retrieveEntities('/healthcheckinstancehostmaps', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\Host[]|\SamIT\Rancher\Generated\Collections\HostCollection
+	 * @return Host[]|HostCollection
 	 */
-	public function getHosts(): Collections\HostCollection
+	public function getHosts(?int $limit = NULL): HostCollection
 	{
-		return $this->retrieveEntities('/hosts');
+		return $this->retrieveEntities('/hosts', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\HostApiProxyToken[]|\SamIT\Rancher\Generated\Collections\HostApiProxyTokenCollection
+	 * @return HostApiProxyToken[]|HostApiProxyTokenCollection
 	 */
-	public function getHostApiProxyTokens(): Collections\HostApiProxyTokenCollection
+	public function getHostApiProxyTokens(?int $limit = NULL): HostApiProxyTokenCollection
 	{
-		return $this->retrieveEntities('/hostapiproxytokens');
+		return $this->retrieveEntities('/hostapiproxytokens', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\Identity[]|\SamIT\Rancher\Generated\Collections\IdentityCollection
+	 * @return Identity[]|IdentityCollection
 	 */
-	public function getIdentities(): Collections\IdentityCollection
+	public function getIdentities(?int $limit = NULL): IdentityCollection
 	{
-		return $this->retrieveEntities('/identities');
+		return $this->retrieveEntities('/identities', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\Image[]|\SamIT\Rancher\Generated\Collections\ImageCollection
+	 * @return Image[]|ImageCollection
 	 */
-	public function getImages(): Collections\ImageCollection
+	public function getImages(?int $limit = NULL): ImageCollection
 	{
-		return $this->retrieveEntities('/images');
+		return $this->retrieveEntities('/images', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\Instance[]|\SamIT\Rancher\Generated\Collections\InstanceCollection
+	 * @return Instance[]|InstanceCollection
 	 */
-	public function getInstances(): Collections\InstanceCollection
+	public function getInstances(?int $limit = NULL): InstanceCollection
 	{
-		return $this->retrieveEntities('/instances');
+		return $this->retrieveEntities('/instances', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\InstanceLink[]|\SamIT\Rancher\Generated\Collections\InstanceLinkCollection
+	 * @return InstanceLink[]|InstanceLinkCollection
 	 */
-	public function getInstanceLinks(): Collections\InstanceLinkCollection
+	public function getInstanceLinks(?int $limit = NULL): InstanceLinkCollection
 	{
-		return $this->retrieveEntities('/instancelinks');
+		return $this->retrieveEntities('/instancelinks', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\IpAddress[]|\SamIT\Rancher\Generated\Collections\IpAddressCollection
+	 * @return IpAddress[]|IpAddressCollection
 	 */
-	public function getIpAddresses(): Collections\IpAddressCollection
+	public function getIpAddresses(?int $limit = NULL): IpAddressCollection
 	{
-		return $this->retrieveEntities('/ipaddresses');
+		return $this->retrieveEntities('/ipaddresses', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\KubernetesService[]|\SamIT\Rancher\Generated\Collections\KubernetesServiceCollection
+	 * @return KubernetesService[]|KubernetesServiceCollection
 	 */
-	public function getKubernetesServices(): Collections\KubernetesServiceCollection
+	public function getKubernetesServices(?int $limit = NULL): KubernetesServiceCollection
 	{
-		return $this->retrieveEntities('/kubernetesservices');
+		return $this->retrieveEntities('/kubernetesservices', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\KubernetesStack[]|\SamIT\Rancher\Generated\Collections\KubernetesStackCollection
+	 * @return KubernetesStack[]|KubernetesStackCollection
 	 */
-	public function getKubernetesStacks(): Collections\KubernetesStackCollection
+	public function getKubernetesStacks(?int $limit = NULL): KubernetesStackCollection
 	{
-		return $this->retrieveEntities('/kubernetesstacks');
+		return $this->retrieveEntities('/kubernetesstacks', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\Label[]|\SamIT\Rancher\Generated\Collections\LabelCollection
+	 * @return Label[]|LabelCollection
 	 */
-	public function getLabels(): Collections\LabelCollection
+	public function getLabels(?int $limit = NULL): LabelCollection
 	{
-		return $this->retrieveEntities('/labels');
+		return $this->retrieveEntities('/labels', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\Ldapconfig[]|\SamIT\Rancher\Generated\Collections\LdapconfigCollection
+	 * @return Ldapconfig[]|LdapconfigCollection
 	 */
-	public function getLdapconfigs(): Collections\LdapconfigCollection
+	public function getLdapconfigs(?int $limit = NULL): LdapconfigCollection
 	{
-		return $this->retrieveEntities('/ldapconfigs');
+		return $this->retrieveEntities('/ldapconfigs', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\LoadBalancerService[]|\SamIT\Rancher\Generated\Collections\LoadBalancerServiceCollection
+	 * @return LoadBalancerService[]|LoadBalancerServiceCollection
 	 */
-	public function getLoadBalancerServices(): Collections\LoadBalancerServiceCollection
+	public function getLoadBalancerServices(?int $limit = NULL): LoadBalancerServiceCollection
 	{
-		return $this->retrieveEntities('/loadbalancerservices');
+		return $this->retrieveEntities('/loadbalancerservices', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\LocalAuthConfig[]|\SamIT\Rancher\Generated\Collections\LocalAuthConfigCollection
+	 * @return LocalAuthConfig[]|LocalAuthConfigCollection
 	 */
-	public function getLocalAuthConfigs(): Collections\LocalAuthConfigCollection
+	public function getLocalAuthConfigs(?int $limit = NULL): LocalAuthConfigCollection
 	{
-		return $this->retrieveEntities('/localauthconfigs');
+		return $this->retrieveEntities('/localauthconfigs', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\Machine[]|\SamIT\Rancher\Generated\Collections\MachineCollection
+	 * @return Machine[]|MachineCollection
 	 */
-	public function getMachines(): Collections\MachineCollection
+	public function getMachines(?int $limit = NULL): MachineCollection
 	{
-		return $this->retrieveEntities('/machines');
+		return $this->retrieveEntities('/machines', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\MachineDriver[]|\SamIT\Rancher\Generated\Collections\MachineDriverCollection
+	 * @return MachineDriver[]|MachineDriverCollection
 	 */
-	public function getMachineDrivers(): Collections\MachineDriverCollection
+	public function getMachineDrivers(?int $limit = NULL): MachineDriverCollection
 	{
-		return $this->retrieveEntities('/machinedrivers');
+		return $this->retrieveEntities('/machinedrivers', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\Mount[]|\SamIT\Rancher\Generated\Collections\MountCollection
+	 * @return Mount[]|MountCollection
 	 */
-	public function getMounts(): Collections\MountCollection
+	public function getMounts(?int $limit = NULL): MountCollection
 	{
-		return $this->retrieveEntities('/mounts');
+		return $this->retrieveEntities('/mounts', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\Network[]|\SamIT\Rancher\Generated\Collections\NetworkCollection
+	 * @return Network[]|NetworkCollection
 	 */
-	public function getNetworks(): Collections\NetworkCollection
+	public function getNetworks(?int $limit = NULL): NetworkCollection
 	{
-		return $this->retrieveEntities('/networks');
+		return $this->retrieveEntities('/networks', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\NetworkDriver[]|\SamIT\Rancher\Generated\Collections\NetworkDriverCollection
+	 * @return NetworkDriver[]|NetworkDriverCollection
 	 */
-	public function getNetworkDrivers(): Collections\NetworkDriverCollection
+	public function getNetworkDrivers(?int $limit = NULL): NetworkDriverCollection
 	{
-		return $this->retrieveEntities('/networkdrivers');
+		return $this->retrieveEntities('/networkdrivers', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\NetworkDriverService[]|\SamIT\Rancher\Generated\Collections\NetworkDriverServiceCollection
+	 * @return NetworkDriverService[]|NetworkDriverServiceCollection
 	 */
-	public function getNetworkDriverServices(): Collections\NetworkDriverServiceCollection
+	public function getNetworkDriverServices(?int $limit = NULL): NetworkDriverServiceCollection
 	{
-		return $this->retrieveEntities('/networkdriverservices');
+		return $this->retrieveEntities('/networkdriverservices', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\NetworkPolicyRuleWithin[]|\SamIT\Rancher\Generated\Collections\NetworkPolicyRuleWithinCollection
+	 * @return NetworkPolicyRuleWithin[]|NetworkPolicyRuleWithinCollection
 	 */
-	public function getNetworkPolicyRuleWithins(): Collections\NetworkPolicyRuleWithinCollection
+	public function getNetworkPolicyRuleWithins(?int $limit = NULL): NetworkPolicyRuleWithinCollection
 	{
-		return $this->retrieveEntities('/networkpolicyrulewithins');
+		return $this->retrieveEntities('/networkpolicyrulewithins', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\Openldapconfig[]|\SamIT\Rancher\Generated\Collections\OpenldapconfigCollection
+	 * @return Openldapconfig[]|OpenldapconfigCollection
 	 */
-	public function getOpenldapconfigs(): Collections\OpenldapconfigCollection
+	public function getOpenldapconfigs(?int $limit = NULL): OpenldapconfigCollection
 	{
-		return $this->retrieveEntities('/openldapconfigs');
+		return $this->retrieveEntities('/openldapconfigs', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\Password[]|\SamIT\Rancher\Generated\Collections\PasswordCollection
+	 * @return Password[]|PasswordCollection
 	 */
-	public function getPasswords(): Collections\PasswordCollection
+	public function getPasswords(?int $limit = NULL): PasswordCollection
 	{
-		return $this->retrieveEntities('/passwords');
+		return $this->retrieveEntities('/passwords', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\PhysicalHost[]|\SamIT\Rancher\Generated\Collections\PhysicalHostCollection
+	 * @return PhysicalHost[]|PhysicalHostCollection
 	 */
-	public function getPhysicalHosts(): Collections\PhysicalHostCollection
+	public function getPhysicalHosts(?int $limit = NULL): PhysicalHostCollection
 	{
-		return $this->retrieveEntities('/physicalhosts');
+		return $this->retrieveEntities('/physicalhosts', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\Port[]|\SamIT\Rancher\Generated\Collections\PortCollection
+	 * @return Port[]|PortCollection
 	 */
-	public function getPorts(): Collections\PortCollection
+	public function getPorts(?int $limit = NULL): PortCollection
 	{
-		return $this->retrieveEntities('/ports');
+		return $this->retrieveEntities('/ports', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\ProcessDefinition[]|\SamIT\Rancher\Generated\Collections\ProcessDefinitionCollection
+	 * @return ProcessDefinition[]|ProcessDefinitionCollection
 	 */
-	public function getProcessDefinitions(): Collections\ProcessDefinitionCollection
+	public function getProcessDefinitions(?int $limit = NULL): ProcessDefinitionCollection
 	{
-		return $this->retrieveEntities('/processdefinitions');
+		return $this->retrieveEntities('/processdefinitions', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\ProcessExecution[]|\SamIT\Rancher\Generated\Collections\ProcessExecutionCollection
+	 * @return ProcessExecution[]|ProcessExecutionCollection
 	 */
-	public function getProcessExecutions(): Collections\ProcessExecutionCollection
+	public function getProcessExecutions(?int $limit = NULL): ProcessExecutionCollection
 	{
-		return $this->retrieveEntities('/processexecutions');
+		return $this->retrieveEntities('/processexecutions', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\ProcessInstance[]|\SamIT\Rancher\Generated\Collections\ProcessInstanceCollection
+	 * @return ProcessInstance[]|ProcessInstanceCollection
 	 */
-	public function getProcessInstances(): Collections\ProcessInstanceCollection
+	public function getProcessInstances(?int $limit = NULL): ProcessInstanceCollection
 	{
-		return $this->retrieveEntities('/processinstances');
+		return $this->retrieveEntities('/processinstances', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\ProcessPool[]|\SamIT\Rancher\Generated\Collections\ProcessPoolCollection
+	 * @return ProcessPool[]|ProcessPoolCollection
 	 */
-	public function getProcessPools(): Collections\ProcessPoolCollection
+	public function getProcessPools(?int $limit = NULL): ProcessPoolCollection
 	{
-		return $this->retrieveEntities('/processpools');
+		return $this->retrieveEntities('/processpools', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\ProcessSummary[]|\SamIT\Rancher\Generated\Collections\ProcessSummaryCollection
+	 * @return ProcessSummary[]|ProcessSummaryCollection
 	 */
-	public function getProcessSummary(): Collections\ProcessSummaryCollection
+	public function getProcessSummary(?int $limit = NULL): ProcessSummaryCollection
 	{
-		return $this->retrieveEntities('/processsummary');
+		return $this->retrieveEntities('/processsummary', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\Project[]|\SamIT\Rancher\Generated\Collections\ProjectCollection
+	 * @return Project[]|ProjectCollection
 	 */
-	public function getProjects(): Collections\ProjectCollection
+	public function getProjects(?int $limit = NULL): ProjectCollection
 	{
-		return $this->retrieveEntities('/projects');
+		return $this->retrieveEntities('/projects', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\ProjectMember[]|\SamIT\Rancher\Generated\Collections\ProjectMemberCollection
+	 * @return ProjectMember[]|ProjectMemberCollection
 	 */
-	public function getProjectMembers(): Collections\ProjectMemberCollection
+	public function getProjectMembers(?int $limit = NULL): ProjectMemberCollection
 	{
-		return $this->retrieveEntities('/projectmembers');
+		return $this->retrieveEntities('/projectmembers', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\ProjectTemplate[]|\SamIT\Rancher\Generated\Collections\ProjectTemplateCollection
+	 * @return ProjectTemplate[]|ProjectTemplateCollection
 	 */
-	public function getProjectTemplates(): Collections\ProjectTemplateCollection
+	public function getProjectTemplates(?int $limit = NULL): ProjectTemplateCollection
 	{
-		return $this->retrieveEntities('/projecttemplates');
+		return $this->retrieveEntities('/projecttemplates', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\PullTask[]|\SamIT\Rancher\Generated\Collections\PullTaskCollection
+	 * @return PullTask[]|PullTaskCollection
 	 */
-	public function getPullTasks(): Collections\PullTaskCollection
+	public function getPullTasks(?int $limit = NULL): PullTaskCollection
 	{
-		return $this->retrieveEntities('/pulltasks');
+		return $this->retrieveEntities('/pulltasks', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\Register[]|\SamIT\Rancher\Generated\Collections\RegisterCollection
+	 * @return Register[]|RegisterCollection
 	 */
-	public function getRegister(): Collections\RegisterCollection
+	public function getRegister(?int $limit = NULL): RegisterCollection
 	{
-		return $this->retrieveEntities('/register');
+		return $this->retrieveEntities('/register', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\RegistrationToken[]|\SamIT\Rancher\Generated\Collections\RegistrationTokenCollection
+	 * @return RegistrationToken[]|RegistrationTokenCollection
 	 */
-	public function getRegistrationTokens(): Collections\RegistrationTokenCollection
+	public function getRegistrationTokens(?int $limit = NULL): RegistrationTokenCollection
 	{
-		return $this->retrieveEntities('/registrationtokens');
+		return $this->retrieveEntities('/registrationtokens', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\Registry[]|\SamIT\Rancher\Generated\Collections\RegistryCollection
+	 * @return Registry[]|RegistryCollection
 	 */
-	public function getRegistries(): Collections\RegistryCollection
+	public function getRegistries(?int $limit = NULL): RegistryCollection
 	{
-		return $this->retrieveEntities('/registries');
+		return $this->retrieveEntities('/registries', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\RegistryCredential[]|\SamIT\Rancher\Generated\Collections\RegistryCredentialCollection
+	 * @return RegistryCredential[]|RegistryCredentialCollection
 	 */
-	public function getRegistryCredentials(): Collections\RegistryCredentialCollection
+	public function getRegistryCredentials(?int $limit = NULL): RegistryCredentialCollection
 	{
-		return $this->retrieveEntities('/registrycredentials');
+		return $this->retrieveEntities('/registrycredentials', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\ResourceDefinition[]|\SamIT\Rancher\Generated\Collections\ResourceDefinitionCollection
+	 * @return ResourceDefinition[]|ResourceDefinitionCollection
 	 */
-	public function getResourceDefinitions(): Collections\ResourceDefinitionCollection
+	public function getResourceDefinitions(?int $limit = NULL): ResourceDefinitionCollection
 	{
-		return $this->retrieveEntities('/resourcedefinitions');
+		return $this->retrieveEntities('/resourcedefinitions', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\Schema[]|\SamIT\Rancher\Generated\Collections\SchemaCollection
+	 * @return Schema[]|SchemaCollection
 	 */
-	public function getSchemas(): Collections\SchemaCollection
+	public function getSchemas(?int $limit = NULL): SchemaCollection
 	{
-		return $this->retrieveEntities('/schemas');
+		return $this->retrieveEntities('/schemas', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\Secret[]|\SamIT\Rancher\Generated\Collections\SecretCollection
+	 * @return Secret[]|SecretCollection
 	 */
-	public function getSecrets(): Collections\SecretCollection
+	public function getSecrets(?int $limit = NULL): SecretCollection
 	{
-		return $this->retrieveEntities('/secrets');
+		return $this->retrieveEntities('/secrets', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\Service[]|\SamIT\Rancher\Generated\Collections\ServiceCollection
+	 * @return Service[]|ServiceCollection
 	 */
-	public function getServices(): Collections\ServiceCollection
+	public function getServices(?int $limit = NULL): ServiceCollection
 	{
-		return $this->retrieveEntities('/services');
+		return $this->retrieveEntities('/services', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\ServiceConsumeMap[]|\SamIT\Rancher\Generated\Collections\ServiceConsumeMapCollection
+	 * @return ServiceConsumeMap[]|ServiceConsumeMapCollection
 	 */
-	public function getServiceConsumeMaps(): Collections\ServiceConsumeMapCollection
+	public function getServiceConsumeMaps(?int $limit = NULL): ServiceConsumeMapCollection
 	{
-		return $this->retrieveEntities('/serviceconsumemaps');
+		return $this->retrieveEntities('/serviceconsumemaps', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\ServiceEvent[]|\SamIT\Rancher\Generated\Collections\ServiceEventCollection
+	 * @return ServiceEvent[]|ServiceEventCollection
 	 */
-	public function getServiceEvents(): Collections\ServiceEventCollection
+	public function getServiceEvents(?int $limit = NULL): ServiceEventCollection
 	{
-		return $this->retrieveEntities('/serviceevents');
+		return $this->retrieveEntities('/serviceevents', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\ServiceExposeMap[]|\SamIT\Rancher\Generated\Collections\ServiceExposeMapCollection
+	 * @return ServiceExposeMap[]|ServiceExposeMapCollection
 	 */
-	public function getServiceExposeMaps(): Collections\ServiceExposeMapCollection
+	public function getServiceExposeMaps(?int $limit = NULL): ServiceExposeMapCollection
 	{
-		return $this->retrieveEntities('/serviceexposemaps');
+		return $this->retrieveEntities('/serviceexposemaps', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\ServiceLog[]|\SamIT\Rancher\Generated\Collections\ServiceLogCollection
+	 * @return ServiceLog[]|ServiceLogCollection
 	 */
-	public function getServiceLogs(): Collections\ServiceLogCollection
+	public function getServiceLogs(?int $limit = NULL): ServiceLogCollection
 	{
-		return $this->retrieveEntities('/servicelogs');
+		return $this->retrieveEntities('/servicelogs', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\ServiceProxy[]|\SamIT\Rancher\Generated\Collections\ServiceProxyCollection
+	 * @return ServiceProxy[]|ServiceProxyCollection
 	 */
-	public function getServiceProxies(): Collections\ServiceProxyCollection
+	public function getServiceProxies(?int $limit = NULL): ServiceProxyCollection
 	{
-		return $this->retrieveEntities('/serviceproxies');
+		return $this->retrieveEntities('/serviceproxies', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\Setting[]|\SamIT\Rancher\Generated\Collections\SettingCollection
+	 * @return Setting[]|SettingCollection
 	 */
-	public function getSettings(): Collections\SettingCollection
+	public function getSettings(?int $limit = NULL): SettingCollection
 	{
-		return $this->retrieveEntities('/settings');
+		return $this->retrieveEntities('/settings', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\Snapshot[]|\SamIT\Rancher\Generated\Collections\SnapshotCollection
+	 * @return Snapshot[]|SnapshotCollection
 	 */
-	public function getSnapshots(): Collections\SnapshotCollection
+	public function getSnapshots(?int $limit = NULL): SnapshotCollection
 	{
-		return $this->retrieveEntities('/snapshots');
+		return $this->retrieveEntities('/snapshots', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\Stack[]|\SamIT\Rancher\Generated\Collections\StackCollection
+	 * @return Stack[]|StackCollection
 	 */
-	public function getStacks(): Collections\StackCollection
+	public function getStacks(?int $limit = NULL): StackCollection
 	{
-		return $this->retrieveEntities('/stacks');
+		return $this->retrieveEntities('/stacks', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\StorageDriver[]|\SamIT\Rancher\Generated\Collections\StorageDriverCollection
+	 * @return StorageDriver[]|StorageDriverCollection
 	 */
-	public function getStorageDrivers(): Collections\StorageDriverCollection
+	public function getStorageDrivers(?int $limit = NULL): StorageDriverCollection
 	{
-		return $this->retrieveEntities('/storagedrivers');
+		return $this->retrieveEntities('/storagedrivers', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\StorageDriverService[]|\SamIT\Rancher\Generated\Collections\StorageDriverServiceCollection
+	 * @return StorageDriverService[]|StorageDriverServiceCollection
 	 */
-	public function getStorageDriverServices(): Collections\StorageDriverServiceCollection
+	public function getStorageDriverServices(?int $limit = NULL): StorageDriverServiceCollection
 	{
-		return $this->retrieveEntities('/storagedriverservices');
+		return $this->retrieveEntities('/storagedriverservices', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\StoragePool[]|\SamIT\Rancher\Generated\Collections\StoragePoolCollection
+	 * @return StoragePool[]|StoragePoolCollection
 	 */
-	public function getStoragePools(): Collections\StoragePoolCollection
+	public function getStoragePools(?int $limit = NULL): StoragePoolCollection
 	{
-		return $this->retrieveEntities('/storagepools');
+		return $this->retrieveEntities('/storagepools', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\Subnet[]|\SamIT\Rancher\Generated\Collections\SubnetCollection
+	 * @return Subnet[]|SubnetCollection
 	 */
-	public function getSubnets(): Collections\SubnetCollection
+	public function getSubnets(?int $limit = NULL): SubnetCollection
 	{
-		return $this->retrieveEntities('/subnets');
+		return $this->retrieveEntities('/subnets', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\Task[]|\SamIT\Rancher\Generated\Collections\TaskCollection
+	 * @return Task[]|TaskCollection
 	 */
-	public function getTasks(): Collections\TaskCollection
+	public function getTasks(?int $limit = NULL): TaskCollection
 	{
-		return $this->retrieveEntities('/tasks');
+		return $this->retrieveEntities('/tasks', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\TaskInstance[]|\SamIT\Rancher\Generated\Collections\TaskInstanceCollection
+	 * @return TaskInstance[]|TaskInstanceCollection
 	 */
-	public function getTaskInstances(): Collections\TaskInstanceCollection
+	public function getTaskInstances(?int $limit = NULL): TaskInstanceCollection
 	{
-		return $this->retrieveEntities('/taskinstances');
+		return $this->retrieveEntities('/taskinstances', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\TypeDocumentation[]|\SamIT\Rancher\Generated\Collections\TypeDocumentationCollection
+	 * @return TypeDocumentation[]|TypeDocumentationCollection
 	 */
-	public function getTypeDocumentations(): Collections\TypeDocumentationCollection
+	public function getTypeDocumentations(?int $limit = NULL): TypeDocumentationCollection
 	{
-		return $this->retrieveEntities('/typedocumentations');
+		return $this->retrieveEntities('/typedocumentations', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\UserPreference[]|\SamIT\Rancher\Generated\Collections\UserPreferenceCollection
+	 * @return UserPreference[]|UserPreferenceCollection
 	 */
-	public function getUserPreferences(): Collections\UserPreferenceCollection
+	public function getUserPreferences(?int $limit = NULL): UserPreferenceCollection
 	{
-		return $this->retrieveEntities('/userpreferences');
+		return $this->retrieveEntities('/userpreferences', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\VirtualMachine[]|\SamIT\Rancher\Generated\Collections\VirtualMachineCollection
+	 * @return VirtualMachine[]|VirtualMachineCollection
 	 */
-	public function getVirtualMachines(): Collections\VirtualMachineCollection
+	public function getVirtualMachines(?int $limit = NULL): VirtualMachineCollection
 	{
-		return $this->retrieveEntities('/virtualmachines');
+		return $this->retrieveEntities('/virtualmachines', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\Volume[]|\SamIT\Rancher\Generated\Collections\VolumeCollection
+	 * @return Volume[]|VolumeCollection
 	 */
-	public function getVolumes(): Collections\VolumeCollection
+	public function getVolumes(?int $limit = NULL): VolumeCollection
 	{
-		return $this->retrieveEntities('/volumes');
+		return $this->retrieveEntities('/volumes', $limit);
 	}
 
 
 	/**
-	 * @return \SamIT\Rancher\Generated\Entities\VolumeTemplate[]|\SamIT\Rancher\Generated\Collections\VolumeTemplateCollection
+	 * @return VolumeTemplate[]|VolumeTemplateCollection
 	 */
-	public function getVolumeTemplates(): Collections\VolumeTemplateCollection
+	public function getVolumeTemplates(?int $limit = NULL): VolumeTemplateCollection
 	{
-		return $this->retrieveEntities('/volumetemplates');
+		return $this->retrieveEntities('/volumetemplates', $limit);
 	}
 
 }

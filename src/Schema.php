@@ -5,7 +5,10 @@ namespace SamIT\Rancher;
 
 
 use Nette\PhpGenerator\ClassType;
+use Nette\PhpGenerator\Helpers;
 use Nette\PhpGenerator\PhpFile;
+use Nette\PhpGenerator\PhpLiteral;
+use Nette\PhpGenerator\PhpNamespace;
 use SamIT\Rancher\Types\Collection;
 use SamIT\Rancher\Types\Entity;
 use SamIT\Rancher\Types\EnumGenerator;
@@ -129,35 +132,32 @@ class Schema extends Entity
      * @return ClassType
      * @throws \Exception
      */
-    public function generateClass(
-        string $namespace,
-        EnumGenerator $enumGenerator,
-        string $directory
+    public function generateEntityClass(
+        PhpNamespace $namespace,
+        EnumGenerator $enumGenerator
     ) : ClassType {
-        $file = new \Nette\PhpGenerator\PhpFile();
-        $object = $file->addClass("{$namespace}\\{$this->getClassName()}")
+        ;
+        $object = $namespace->addClass($this->getClassName())
             ->addExtend(Entity::class);
 
         $this->addFields($object, $enumGenerator);
         $this->addLinks($object);
-        file_put_contents("$directory/{$this->getClassName()}.php", $file);
         return $object;
     }
 
 
     public function generateCollectionClass(
-        string $baseClass,
-        string $namespace,
-        EnumGenerator $enumGenerator,
-        string $directory
+        ClassType $baseClass,
+        PhpNamespace $namespace,
+        EnumGenerator $enumGenerator
     ) : ClassType {
-        $file = new \Nette\PhpGenerator\PhpFile();
-        $object = $file->addClass("{$namespace}\\{$this->getClassName()}Collection");
+        $namespace->addUse($baseClass->getNamespace()->getName() . '\\' . $baseClass->getName(), null, $aliasOut);
+        $object = $namespace->addClass($this->getClassName() . "Collection");
         $object->addExtend(Collection::class);
         $object->addMethod('__construct')
-            ->addBody('$this->resourceClass = \\' . $baseClass . '::class;');
-        file_put_contents("$directory/{$this->getClassName()}Collection.php", $file);
+            ->addBody('$this->resourceClass = ' . $aliasOut. '::class;');
         return $object;
+
     }
 
     public function addEnums(EnumGenerator $enumGenerator)

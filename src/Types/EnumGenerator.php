@@ -3,8 +3,10 @@
 
 namespace SamIT\Rancher\Types;
 
+use Nette\PhpGenerator\ClassType;
 use Nette\PhpGenerator\PhpFile;
 use MyCLabs\Enum\Enum;
+use Nette\PhpGenerator\PhpNamespace;
 
 /**
  * This class helps create enumeration types.
@@ -16,6 +18,8 @@ class EnumGenerator
 
     private $options = [];
     private $names = [];
+
+    /** @var PhpNamespace */
     private $namespace;
 
     public function __construct()
@@ -39,34 +43,43 @@ class EnumGenerator
         $this->names[$fieldName][$entityName] = $key;
     }
 
-    public function createClasses($folder, $namespace)
+    public function createClasses(PhpNamespace $namespace, &$files = [])
     {
+        $result = [];
         $this->namespace = $namespace;
         foreach($this->names as $fieldName => $names) {
             if (count(array_unique($names)) == 1) {
+                $className = $this->className($fieldName, null);
+
+                $files[$namespace->getName() . '\\' . $className] = $file = new PhpFile();
+
                 // Create class for fieldName.
-                $file = new PhpFile();
-                $object = $file->addNamespace($namespace)->addClass($this->className($fieldName, null));
+                $object = $file->addNamespace($namespace->getName())->addClass($className);
                 $object->setAbstract(false);
                 $object->addExtend(Enum::class);
                 foreach ($this->options[$names[key($names)]] as $option) {
                     $object->addConstant(strtoupper(strtr($option, ['-' => '_'])), $option);
                 }
-                file_put_contents("$folder/{$object->getName()}.php", $file->__toString());
+                $result[$object->getNamespace()->getName() . "\\" . $object->getName()] = $object;
             } else {
                 foreach($names as $entityName => $key) {
                     // Create base class.
-                    $file = new PhpFile();
-                    $object = $file->addNamespace($namespace)->addClass($this->className($fieldName, $entityName));
+                    $className = $this->className($fieldName, $entityName);
+                    $files[$namespace->getName() . '\\' . $className] = $file = new PhpFile();
+                    $object = $file->addNamespace($namespace->getName())->addClass($className);
                     $object->setAbstract(false);
                     $object->addExtend(Enum::class);
                     foreach ($this->options[$key] as $option) {
                         $object->addConstant(strtoupper(strtr($option, ['-' => '_'])), $option);
                     }
-                    file_put_contents("$folder/{$object->getName()}.php", $file->__toString());
+                    $result[$object->getNamespace()->getName() . "\\" . $object->getName()] = $object;
                 }
             }
+
+
+
         }
+        return $result;
 
     }
 
@@ -85,9 +98,9 @@ class EnumGenerator
 
 
         if (count(array_unique($this->names[$fieldName])) == 1) {
-            return "\\{$this->namespace}\\{$this->className($fieldName)}";
+            return "\\{$this->namespace->getName()}\\{$this->className($fieldName)}";
         } else {
-            return "\\{$this->namespace}\\{$this->className($fieldName, $entityName)}";
+            return "\\{$this->namespace->getName()}\\{$this->className($fieldName, $entityName)}";
         }
     }
 
