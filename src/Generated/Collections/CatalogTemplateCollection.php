@@ -11,4 +11,10 @@ class CatalogTemplateCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = CatalogTemplate::class;
 	}
 
+
+	public function first(): ?CatalogTemplate
+	{
+		return $this->data[0];
+	}
+
 }

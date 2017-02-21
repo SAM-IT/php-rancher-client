@@ -11,4 +11,10 @@ class ServiceCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = Service::class;
 	}
 
+
+	public function first(): ?Service
+	{
+		return $this->data[0];
+	}
+
 }

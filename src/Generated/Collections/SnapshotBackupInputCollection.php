@@ -11,4 +11,10 @@ class SnapshotBackupInputCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = SnapshotBackupInput::class;
 	}
 
+
+	public function first(): ?SnapshotBackupInput
+	{
+		return $this->data[0];
+	}
+
 }

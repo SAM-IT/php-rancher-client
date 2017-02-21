@@ -3,6 +3,9 @@ namespace SamIT\Rancher\Generated\Entities;
 
 class SecretReference extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = ['gid', 'mode', 'name', 'secretId', 'uid'];
+
 	/** @var string */
 	public $gid;
 

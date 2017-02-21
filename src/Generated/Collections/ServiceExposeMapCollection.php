@@ -11,4 +11,10 @@ class ServiceExposeMapCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = ServiceExposeMap::class;
 	}
 
+
+	public function first(): ?ServiceExposeMap
+	{
+		return $this->data[0];
+	}
+
 }

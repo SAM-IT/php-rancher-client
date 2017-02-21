@@ -11,4 +11,10 @@ class OpenldapconfigCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = Openldapconfig::class;
 	}
 
+
+	public function first(): ?Openldapconfig
+	{
+		return $this->data[0];
+	}
+
 }

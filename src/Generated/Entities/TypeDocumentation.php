@@ -3,6 +3,9 @@ namespace SamIT\Rancher\Generated\Entities;
 
 class TypeDocumentation extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = ['description', 'id', 'resourceFields'];
+
 	/** @var string */
 	public $description;
 

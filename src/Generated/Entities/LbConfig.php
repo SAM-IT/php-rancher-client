@@ -3,6 +3,15 @@ namespace SamIT\Rancher\Generated\Entities;
 
 class LbConfig extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = [
+		'config',
+		'portRules',
+		'certificateIds',
+		'defaultCertificateId',
+		'stickinessPolicy',
+	];
+
 	/** @var string */
 	public $config;
 

@@ -11,4 +11,10 @@ class TargetPortRuleCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = TargetPortRule::class;
 	}
 
+
+	public function first(): ?TargetPortRule
+	{
+		return $this->data[0];
+	}
+
 }

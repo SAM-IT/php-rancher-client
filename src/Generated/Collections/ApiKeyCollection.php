@@ -11,4 +11,10 @@ class ApiKeyCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = ApiKey::class;
 	}
 
+
+	public function first(): ?ApiKey
+	{
+		return $this->data[0];
+	}
+
 }

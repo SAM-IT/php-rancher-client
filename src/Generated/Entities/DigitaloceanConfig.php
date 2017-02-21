@@ -3,6 +3,22 @@ namespace SamIT\Rancher\Generated\Entities;
 
 class DigitaloceanConfig extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = [
+		'accessToken',
+		'backups',
+		'image',
+		'ipv6',
+		'privateNetworking',
+		'region',
+		'size',
+		'sshKeyFingerprint',
+		'sshKeyPath',
+		'sshPort',
+		'sshUser',
+		'userdata',
+	];
+
 	/** @var string */
 	public $accessToken;
 

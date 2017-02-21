@@ -11,4 +11,10 @@ class KubernetesServiceCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = KubernetesService::class;
 	}
 
+
+	public function first(): ?KubernetesService
+	{
+		return $this->data[0];
+	}
+
 }

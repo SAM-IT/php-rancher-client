@@ -11,4 +11,10 @@ class VirtualMachineDiskCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = VirtualMachineDisk::class;
 	}
 
+
+	public function first(): ?VirtualMachineDisk
+	{
+		return $this->data[0];
+	}
+
 }

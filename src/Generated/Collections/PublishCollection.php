@@ -11,4 +11,10 @@ class PublishCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = Publish::class;
 	}
 
+
+	public function first(): ?Publish
+	{
+		return $this->data[0];
+	}
+
 }

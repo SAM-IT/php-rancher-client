@@ -11,4 +11,10 @@ class HostAccessCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = HostAccess::class;
 	}
 
+
+	public function first(): ?HostAccess
+	{
+		return $this->data[0];
+	}
+
 }

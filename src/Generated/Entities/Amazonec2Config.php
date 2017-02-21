@@ -3,6 +3,40 @@ namespace SamIT\Rancher\Generated\Entities;
 
 class Amazonec2Config extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = [
+		'accessKey',
+		'ami',
+		'blockDurationMinutes',
+		'deviceName',
+		'endpoint',
+		'iamInstanceProfile',
+		'insecureTransport',
+		'instanceType',
+		'keypairName',
+		'monitoring',
+		'openPort',
+		'privateAddressOnly',
+		'region',
+		'requestSpotInstance',
+		'retries',
+		'rootSize',
+		'secretKey',
+		'securityGroup',
+		'sessionToken',
+		'spotPrice',
+		'sshKeypath',
+		'sshUser',
+		'subnetId',
+		'tags',
+		'useEbsOptimizedInstance',
+		'usePrivateAddress',
+		'userdata',
+		'volumeType',
+		'vpcId',
+		'zone',
+	];
+
 	/** @var string */
 	public $accessKey;
 

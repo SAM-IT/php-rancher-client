@@ -11,4 +11,10 @@ class TypeDocumentationCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = TypeDocumentation::class;
 	}
 
+
+	public function first(): ?TypeDocumentation
+	{
+		return $this->data[0];
+	}
+
 }

@@ -11,4 +11,10 @@ class AccountCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = Account::class;
 	}
 
+
+	public function first(): ?Account
+	{
+		return $this->data[0];
+	}
+
 }

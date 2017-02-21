@@ -11,4 +11,10 @@ class StatsAccessCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = StatsAccess::class;
 	}
 
+
+	public function first(): ?StatsAccess
+	{
+		return $this->data[0];
+	}
+
 }

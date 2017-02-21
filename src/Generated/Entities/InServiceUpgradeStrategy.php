@@ -3,6 +3,17 @@ namespace SamIT\Rancher\Generated\Entities;
 
 class InServiceUpgradeStrategy extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = [
+		'batchSize',
+		'intervalMillis',
+		'launchConfig',
+		'previousLaunchConfig',
+		'previousSecondaryLaunchConfigs',
+		'secondaryLaunchConfigs',
+		'startFirst',
+	];
+
 	/** @var int */
 	public $batchSize;
 

@@ -11,4 +11,10 @@ class ServiceUpgradeCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = ServiceUpgrade::class;
 	}
 
+
+	public function first(): ?ServiceUpgrade
+	{
+		return $this->data[0];
+	}
+
 }

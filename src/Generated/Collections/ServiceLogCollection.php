@@ -11,4 +11,10 @@ class ServiceLogCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = ServiceLog::class;
 	}
 
+
+	public function first(): ?ServiceLog
+	{
+		return $this->data[0];
+	}
+
 }

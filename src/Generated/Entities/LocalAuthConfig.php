@@ -3,6 +3,9 @@ namespace SamIT\Rancher\Generated\Entities;
 
 class LocalAuthConfig extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = ['accessMode', 'enabled', 'name', 'password', 'username'];
+
 	/** @var string */
 	public $accessMode;
 

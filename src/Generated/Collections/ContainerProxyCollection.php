@@ -11,4 +11,10 @@ class ContainerProxyCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = ContainerProxy::class;
 	}
 
+
+	public function first(): ?ContainerProxy
+	{
+		return $this->data[0];
+	}
+
 }

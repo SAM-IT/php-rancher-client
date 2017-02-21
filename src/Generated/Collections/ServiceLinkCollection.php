@@ -11,4 +11,10 @@ class ServiceLinkCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = ServiceLink::class;
 	}
 
+
+	public function first(): ?ServiceLink
+	{
+		return $this->data[0];
+	}
+
 }

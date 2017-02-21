@@ -11,4 +11,10 @@ class ActiveSettingCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = ActiveSetting::class;
 	}
 
+
+	public function first(): ?ActiveSetting
+	{
+		return $this->data[0];
+	}
+
 }

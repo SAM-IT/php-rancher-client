@@ -11,4 +11,10 @@ class PullTaskCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = PullTask::class;
 	}
 
+
+	public function first(): ?PullTask
+	{
+		return $this->data[0];
+	}
+
 }

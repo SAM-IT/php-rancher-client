@@ -3,6 +3,9 @@ namespace SamIT\Rancher\Generated\Entities;
 
 class ServiceBinding extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = ['labels', 'ports'];
+
 	/** @var StringMap */
 	public $labels = [];
 

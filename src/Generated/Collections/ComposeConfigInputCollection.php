@@ -11,4 +11,10 @@ class ComposeConfigInputCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = ComposeConfigInput::class;
 	}
 
+
+	public function first(): ?ComposeConfigInput
+	{
+		return $this->data[0];
+	}
+
 }

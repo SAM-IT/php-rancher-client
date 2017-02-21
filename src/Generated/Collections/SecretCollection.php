@@ -11,4 +11,10 @@ class SecretCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = Secret::class;
 	}
 
+
+	public function first(): ?Secret
+	{
+		return $this->data[0];
+	}
+
 }

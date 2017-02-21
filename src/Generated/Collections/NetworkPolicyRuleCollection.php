@@ -11,4 +11,10 @@ class NetworkPolicyRuleCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = NetworkPolicyRule::class;
 	}
 
+
+	public function first(): ?NetworkPolicyRule
+	{
+		return $this->data[0];
+	}
+
 }

@@ -11,4 +11,10 @@ class PacketConfigCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = PacketConfig::class;
 	}
 
+
+	public function first(): ?PacketConfig
+	{
+		return $this->data[0];
+	}
+
 }

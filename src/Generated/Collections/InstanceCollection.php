@@ -11,4 +11,10 @@ class InstanceCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = Instance::class;
 	}
 
+
+	public function first(): ?Instance
+	{
+		return $this->data[0];
+	}
+
 }

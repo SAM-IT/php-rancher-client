@@ -11,4 +11,10 @@ class InstanceLinkCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = InstanceLink::class;
 	}
 
+
+	public function first(): ?InstanceLink
+	{
+		return $this->data[0];
+	}
+
 }

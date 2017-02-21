@@ -6,6 +6,28 @@ use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
 class Mount extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = [
+		'accountId',
+		'created',
+		'data',
+		'description',
+		'id',
+		'instanceId',
+		'kind',
+		'name',
+		'path',
+		'permissions',
+		'removeTime',
+		'removed',
+		'state',
+		'uuid',
+		'volumeId',
+		'transitioning',
+		'transitioningMessage',
+		'transitioningProgress',
+	];
+
 	/**
 	 * @var string
 	 * @api-type reference[account]
@@ -76,18 +98,21 @@ class Mount extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): Account
+	public function getAccount(): \SamIT\Rancher\Generated\Collections\AccounCollection
 	{
+		return $this->client->retrieveEntities($this->links['account']);
 	}
 
 
-	public function getInstance(): Instance
+	public function getInstance(): \SamIT\Rancher\Generated\Collections\InstancCollection
 	{
+		return $this->client->retrieveEntities($this->links['instance']);
 	}
 
 
-	public function getVolume(): Volume
+	public function getVolume(): \SamIT\Rancher\Generated\Collections\VolumCollection
 	{
+		return $this->client->retrieveEntities($this->links['volume']);
 	}
 
 }

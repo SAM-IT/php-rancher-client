@@ -3,6 +3,34 @@ namespace SamIT\Rancher\Generated\Entities;
 
 class Openldapconfig extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = [
+		'accessMode',
+		'connectionTimeout',
+		'domain',
+		'enabled',
+		'groupDNField',
+		'groupMemberMappingAttribute',
+		'groupMemberUserAttribute',
+		'groupNameField',
+		'groupObjectClass',
+		'groupSearchField',
+		'loginDomain',
+		'name',
+		'port',
+		'server',
+		'serviceAccountPassword',
+		'serviceAccountUsername',
+		'tls',
+		'userDisabledBitMask',
+		'userEnabledAttribute',
+		'userLoginField',
+		'userMemberAttribute',
+		'userNameField',
+		'userObjectClass',
+		'userSearchField',
+	];
+
 	/** @var string */
 	public $accessMode;
 

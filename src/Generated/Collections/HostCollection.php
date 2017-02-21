@@ -11,4 +11,10 @@ class HostCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = Host::class;
 	}
 
+
+	public function first(): ?Host
+	{
+		return $this->data[0];
+	}
+
 }

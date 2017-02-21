@@ -11,4 +11,10 @@ class GenericConfigCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = GenericConfig::class;
 	}
 
+
+	public function first(): ?GenericConfig
+	{
+		return $this->data[0];
+	}
+
 }

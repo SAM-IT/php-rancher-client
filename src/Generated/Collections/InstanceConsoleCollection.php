@@ -11,4 +11,10 @@ class InstanceConsoleCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = InstanceConsole::class;
 	}
 
+
+	public function first(): ?InstanceConsole
+	{
+		return $this->data[0];
+	}
+
 }

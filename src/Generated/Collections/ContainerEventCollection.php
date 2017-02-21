@@ -11,4 +11,10 @@ class ContainerEventCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = ContainerEvent::class;
 	}
 
+
+	public function first(): ?ContainerEvent
+	{
+		return $this->data[0];
+	}
+
 }

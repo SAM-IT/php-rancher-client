@@ -11,4 +11,10 @@ class ServiceUpgradeStrategyCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = ServiceUpgradeStrategy::class;
 	}
 
+
+	public function first(): ?ServiceUpgradeStrategy
+	{
+		return $this->data[0];
+	}
+
 }

@@ -11,4 +11,10 @@ class DnsServiceCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = DnsService::class;
 	}
 
+
+	public function first(): ?DnsService
+	{
+		return $this->data[0];
+	}
+
 }

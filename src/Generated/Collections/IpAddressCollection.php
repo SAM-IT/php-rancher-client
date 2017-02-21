@@ -11,4 +11,10 @@ class IpAddressCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = IpAddress::class;
 	}
 
+
+	public function first(): ?IpAddress
+	{
+		return $this->data[0];
+	}
+
 }

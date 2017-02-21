@@ -6,6 +6,25 @@ use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
 class Secret extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = [
+		'accountId',
+		'created',
+		'data',
+		'description',
+		'id',
+		'kind',
+		'name',
+		'removeTime',
+		'removed',
+		'state',
+		'uuid',
+		'value',
+		'transitioning',
+		'transitioningMessage',
+		'transitioningProgress',
+	];
+
 	/**
 	 * @var string
 	 * @api-type reference[account]
@@ -61,8 +80,9 @@ class Secret extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): Account
+	public function getAccount(): \SamIT\Rancher\Generated\Collections\AccounCollection
 	{
+		return $this->client->retrieveEntities($this->links['account']);
 	}
 
 }

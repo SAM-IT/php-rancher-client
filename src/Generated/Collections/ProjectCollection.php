@@ -11,4 +11,10 @@ class ProjectCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = Project::class;
 	}
 
+
+	public function first(): ?Project
+	{
+		return $this->data[0];
+	}
+
 }

@@ -11,4 +11,10 @@ class AgentCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = Agent::class;
 	}
 
+
+	public function first(): ?Agent
+	{
+		return $this->data[0];
+	}
+
 }

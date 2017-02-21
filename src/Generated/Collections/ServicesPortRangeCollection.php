@@ -11,4 +11,10 @@ class ServicesPortRangeCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = ServicesPortRange::class;
 	}
 
+
+	public function first(): ?ServicesPortRange
+	{
+		return $this->data[0];
+	}
+
 }

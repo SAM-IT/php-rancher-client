@@ -11,4 +11,10 @@ class ConfigItemStatusCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = ConfigItemStatus::class;
 	}
 
+
+	public function first(): ?ConfigItemStatus
+	{
+		return $this->data[0];
+	}
+
 }

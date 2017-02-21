@@ -6,6 +6,38 @@ use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
 class Volume extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = [
+		'accessMode',
+		'accountId',
+		'created',
+		'data',
+		'description',
+		'externalId',
+		'hostId',
+		'id',
+		'imageId',
+		'instanceId',
+		'kind',
+		'name',
+		'removeTime',
+		'removed',
+		'sizeMb',
+		'stackId',
+		'state',
+		'storageDriverId',
+		'uri',
+		'uuid',
+		'volumeTemplateId',
+		'transitioning',
+		'transitioningMessage',
+		'transitioningProgress',
+		'isHostPath',
+		'driver',
+		'driverOpts',
+		'mounts',
+	];
+
 	/** @var string */
 	public $accessMode;
 
@@ -118,38 +150,69 @@ class Volume extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): Account
+	public function getAccount(): \SamIT\Rancher\Generated\Collections\AccounCollection
 	{
+		return $this->client->retrieveEntities($this->links['account']);
 	}
 
 
-	public function getHost(): Host
+	public function getHost(): \SamIT\Rancher\Generated\Collections\HosCollection
 	{
+		return $this->client->retrieveEntities($this->links['host']);
 	}
 
 
-	public function getImage(): Image
+	public function getImage(): \SamIT\Rancher\Generated\Collections\ImagCollection
 	{
+		return $this->client->retrieveEntities($this->links['image']);
 	}
 
 
-	public function getInstance(): Instance
+	public function getInstance(): \SamIT\Rancher\Generated\Collections\InstancCollection
 	{
+		return $this->client->retrieveEntities($this->links['instance']);
 	}
 
 
-	public function getStack(): Stack
+	public function getStack(): \SamIT\Rancher\Generated\Collections\StacCollection
 	{
+		return $this->client->retrieveEntities($this->links['stack']);
 	}
 
 
-	public function getStorageDriver(): StorageDriver
+	public function getStorageDriver(): \SamIT\Rancher\Generated\Collections\StorageDriveCollection
 	{
+		return $this->client->retrieveEntities($this->links['storageDriver']);
 	}
 
 
-	public function getVolumeTemplate(): VolumeTemplate
+	public function getVolumeTemplate(): \SamIT\Rancher\Generated\Collections\VolumeTemplatCollection
 	{
+		return $this->client->retrieveEntities($this->links['volumeTemplate']);
+	}
+
+
+	public function getSnapshots(): \SamIT\Rancher\Generated\Collections\SnapshotCollection
+	{
+		return $this->client->retrieveEntities($this->links['snapshots']);
+	}
+
+
+	public function getStoragePools(): \SamIT\Rancher\Generated\Collections\StoragePoolCollection
+	{
+		return $this->client->retrieveEntities($this->links['storagePools']);
+	}
+
+
+	public function getMounts(): \SamIT\Rancher\Generated\Collections\MountCollection
+	{
+		return $this->client->retrieveEntities($this->links['mounts']);
+	}
+
+
+	public function getBackups(): \SamIT\Rancher\Generated\Collections\BackupCollection
+	{
+		return $this->client->retrieveEntities($this->links['backups']);
 	}
 
 }

@@ -11,4 +11,10 @@ class ScalePolicyCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = ScalePolicy::class;
 	}
 
+
+	public function first(): ?ScalePolicy
+	{
+		return $this->data[0];
+	}
+
 }

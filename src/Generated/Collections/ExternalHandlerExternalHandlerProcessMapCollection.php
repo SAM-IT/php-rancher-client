@@ -11,4 +11,10 @@ class ExternalHandlerExternalHandlerProcessMapCollection extends \SamIT\Rancher\
 		$this->resourceClass = ExternalHandlerExternalHandlerProcessMap::class;
 	}
 
+
+	public function first(): ?ExternalHandlerExternalHandlerProcessMap
+	{
+		return $this->data[0];
+	}
+
 }

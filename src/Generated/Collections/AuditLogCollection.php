@@ -11,4 +11,10 @@ class AuditLogCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = AuditLog::class;
 	}
 
+
+	public function first(): ?AuditLog
+	{
+		return $this->data[0];
+	}
+
 }

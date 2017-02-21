@@ -3,6 +3,21 @@ namespace SamIT\Rancher\Generated\Entities;
 
 class Databasechangelog extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = [
+		'author',
+		'comments',
+		'dateexecuted',
+		'description',
+		'exectype',
+		'filename',
+		'id',
+		'liquibase',
+		'md5sum',
+		'orderexecuted',
+		'tag',
+	];
+
 	/** @var string */
 	public $author;
 

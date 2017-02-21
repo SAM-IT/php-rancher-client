@@ -3,6 +3,9 @@ namespace SamIT\Rancher\Generated\Entities;
 
 class ActiveSetting extends Setting
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = ['activeValue', 'id', 'inDb', 'name', 'source', 'value'];
+
 	/** @var json */
 	public $activeValue;
 

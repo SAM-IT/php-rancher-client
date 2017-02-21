@@ -11,4 +11,10 @@ class ExternalHandlerCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = ExternalHandler::class;
 	}
 
+
+	public function first(): ?ExternalHandler
+	{
+		return $this->data[0];
+	}
+
 }

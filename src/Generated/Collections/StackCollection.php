@@ -11,4 +11,10 @@ class StackCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = Stack::class;
 	}
 
+
+	public function first(): ?Stack
+	{
+		return $this->data[0];
+	}
+
 }

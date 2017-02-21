@@ -11,4 +11,10 @@ class ServiceProxyCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = ServiceProxy::class;
 	}
 
+
+	public function first(): ?ServiceProxy
+	{
+		return $this->data[0];
+	}
+
 }

@@ -11,4 +11,10 @@ class ProjectTemplateCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = ProjectTemplate::class;
 	}
 
+
+	public function first(): ?ProjectTemplate
+	{
+		return $this->data[0];
+	}
+
 }

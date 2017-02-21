@@ -3,6 +3,18 @@ namespace SamIT\Rancher\Generated\Entities;
 
 class ProcessDefinition extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = [
+		'extensionBased',
+		'id',
+		'name',
+		'postProcessListeners',
+		'preProcessListeners',
+		'processHandlers',
+		'resourceType',
+		'stateTransitions',
+	];
+
 	/** @var boolean */
 	public $extensionBased;
 

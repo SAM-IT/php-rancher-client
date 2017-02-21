@@ -5,6 +5,9 @@ use SamIT\Rancher\Generated\Enums\ModeEnum;
 
 class LoadBalancerCookieStickinessPolicy extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = ['cookie', 'domain', 'indirect', 'mode', 'name', 'nocache', 'postonly'];
+
 	/** @var string */
 	public $cookie;
 

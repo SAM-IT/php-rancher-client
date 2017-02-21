@@ -11,4 +11,10 @@ class ExternalStoragePoolEventCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = ExternalStoragePoolEvent::class;
 	}
 
+
+	public function first(): ?ExternalStoragePoolEvent
+	{
+		return $this->data[0];
+	}
+
 }

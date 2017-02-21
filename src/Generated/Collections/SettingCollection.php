@@ -11,4 +11,10 @@ class SettingCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = Setting::class;
 	}
 
+
+	public function first(): ?Setting
+	{
+		return $this->data[0];
+	}
+
 }

@@ -11,4 +11,10 @@ class MachineDriverCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = MachineDriver::class;
 	}
 
+
+	public function first(): ?MachineDriver
+	{
+		return $this->data[0];
+	}
+
 }

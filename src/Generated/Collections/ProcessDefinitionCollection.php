@@ -11,4 +11,10 @@ class ProcessDefinitionCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = ProcessDefinition::class;
 	}
 
+
+	public function first(): ?ProcessDefinition
+	{
+		return $this->data[0];
+	}
+
 }

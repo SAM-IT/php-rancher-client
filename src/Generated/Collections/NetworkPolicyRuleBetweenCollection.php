@@ -11,4 +11,10 @@ class NetworkPolicyRuleBetweenCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = NetworkPolicyRuleBetween::class;
 	}
 
+
+	public function first(): ?NetworkPolicyRuleBetween
+	{
+		return $this->data[0];
+	}
+
 }

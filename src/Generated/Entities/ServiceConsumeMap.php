@@ -6,6 +6,27 @@ use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
 class ServiceConsumeMap extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = [
+		'accountId',
+		'consumedServiceId',
+		'created',
+		'data',
+		'description',
+		'id',
+		'kind',
+		'name',
+		'removeTime',
+		'removed',
+		'serviceId',
+		'state',
+		'uuid',
+		'transitioning',
+		'transitioningMessage',
+		'transitioningProgress',
+		'ports',
+	];
+
 	/**
 	 * @var string
 	 * @api-type reference[account]
@@ -73,18 +94,27 @@ class ServiceConsumeMap extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): Account
+	public function getAccount(): \SamIT\Rancher\Generated\Collections\AccounCollection
 	{
+		return $this->client->retrieveEntities($this->links['account']);
 	}
 
 
-	public function getConsumedService(): ConsumedService
+	public function getConsumedService(): \SamIT\Rancher\Generated\Collections\ConsumedServicCollection
 	{
+		return $this->client->retrieveEntities($this->links['consumedService']);
 	}
 
 
-	public function getService(): Service
+	public function getService(): \SamIT\Rancher\Generated\Collections\ServicCollection
 	{
+		return $this->client->retrieveEntities($this->links['service']);
+	}
+
+
+	public function getInstanceLinks(): \SamIT\Rancher\Generated\Collections\InstanceLinkCollection
+	{
+		return $this->client->retrieveEntities($this->links['instanceLinks']);
 	}
 
 }

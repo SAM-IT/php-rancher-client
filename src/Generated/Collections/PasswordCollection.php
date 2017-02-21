@@ -11,4 +11,10 @@ class PasswordCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = Password::class;
 	}
 
+
+	public function first(): ?Password
+	{
+		return $this->data[0];
+	}
+
 }

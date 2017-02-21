@@ -11,4 +11,10 @@ class SetServiceLinksInputCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = SetServiceLinksInput::class;
 	}
 
+
+	public function first(): ?SetServiceLinksInput
+	{
+		return $this->data[0];
+	}
+
 }

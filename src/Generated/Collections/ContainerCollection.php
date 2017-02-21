@@ -11,4 +11,10 @@ class ContainerCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = Container::class;
 	}
 
+
+	public function first(): ?Container
+	{
+		return $this->data[0];
+	}
+
 }

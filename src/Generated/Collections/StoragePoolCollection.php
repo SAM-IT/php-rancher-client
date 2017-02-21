@@ -11,4 +11,10 @@ class StoragePoolCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = StoragePool::class;
 	}
 
+
+	public function first(): ?StoragePool
+	{
+		return $this->data[0];
+	}
+
 }

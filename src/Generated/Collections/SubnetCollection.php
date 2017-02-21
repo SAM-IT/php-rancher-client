@@ -11,4 +11,10 @@ class SubnetCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = Subnet::class;
 	}
 
+
+	public function first(): ?Subnet
+	{
+		return $this->data[0];
+	}
+
 }

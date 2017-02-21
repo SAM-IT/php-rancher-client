@@ -11,4 +11,10 @@ class ProcessExecutionCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = ProcessExecution::class;
 	}
 
+
+	public function first(): ?ProcessExecution
+	{
+		return $this->data[0];
+	}
+
 }

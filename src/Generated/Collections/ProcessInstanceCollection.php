@@ -11,4 +11,10 @@ class ProcessInstanceCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = ProcessInstance::class;
 	}
 
+
+	public function first(): ?ProcessInstance
+	{
+		return $this->data[0];
+	}
+
 }

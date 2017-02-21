@@ -3,6 +3,19 @@ namespace SamIT\Rancher\Generated;
 
 class Schema extends \SamIT\Rancher\Schema
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = [
+		'collectionActions',
+		'collectionFields',
+		'collectionFilters',
+		'collectionMethods',
+		'includeableLinks',
+		'pluralName',
+		'resourceActions',
+		'resourceFields',
+		'resourceMethods',
+	];
+
 	/** @var string[] */
 	public $links = [];
 
@@ -32,11 +45,5 @@ class Schema extends \SamIT\Rancher\Schema
 
 	/** @var string[] */
 	public $resourceMethods = [];
-
-
-	public function generateClass(string $namespace, \SamIT\Rancher\Types\EnumGenerator $enumGenerator, string $directory): \Nette\PhpGenerator\ClassType
-	{
-		return parent::generateClass($namespace, $enumGenerator, $directory);
-	}
 
 }

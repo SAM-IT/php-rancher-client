@@ -11,4 +11,10 @@ class InstanceConsoleInputCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = InstanceConsoleInput::class;
 	}
 
+
+	public function first(): ?InstanceConsoleInput
+	{
+		return $this->data[0];
+	}
+
 }

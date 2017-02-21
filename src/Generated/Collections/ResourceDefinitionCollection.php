@@ -11,4 +11,10 @@ class ResourceDefinitionCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = ResourceDefinition::class;
 	}
 
+
+	public function first(): ?ResourceDefinition
+	{
+		return $this->data[0];
+	}
+
 }

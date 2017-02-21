@@ -11,4 +11,10 @@ class StackUpgradeCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = StackUpgrade::class;
 	}
 
+
+	public function first(): ?StackUpgrade
+	{
+		return $this->data[0];
+	}
+
 }

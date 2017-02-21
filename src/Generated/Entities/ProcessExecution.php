@@ -3,6 +3,9 @@ namespace SamIT\Rancher\Generated\Entities;
 
 class ProcessExecution extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = ['created', 'id', 'log', 'processInstanceId', 'uuid'];
+
 	/** @var date */
 	public $created;
 
@@ -28,8 +31,9 @@ class ProcessExecution extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getProcessInstance(): ProcessInstance
+	public function getProcessInstance(): \SamIT\Rancher\Generated\Collections\ProcessInstancCollection
 	{
+		return $this->client->retrieveEntities($this->links['processInstance']);
 	}
 
 }

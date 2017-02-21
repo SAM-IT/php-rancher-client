@@ -6,6 +6,26 @@ use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
 class Agent extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = [
+		'accountId',
+		'created',
+		'data',
+		'description',
+		'id',
+		'kind',
+		'managedConfig',
+		'name',
+		'removeTime',
+		'removed',
+		'state',
+		'uri',
+		'uuid',
+		'transitioning',
+		'transitioningMessage',
+		'transitioningProgress',
+	];
+
 	/**
 	 * @var string
 	 * @api-type reference[account]
@@ -64,8 +84,39 @@ class Agent extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): Account
+	public function getAccount(): \SamIT\Rancher\Generated\Collections\AccounCollection
 	{
+		return $this->client->retrieveEntities($this->links['account']);
+	}
+
+
+	public function getInstances(): \SamIT\Rancher\Generated\Collections\InstanceCollection
+	{
+		return $this->client->retrieveEntities($this->links['instances']);
+	}
+
+
+	public function getHosts(): \SamIT\Rancher\Generated\Collections\HostCollection
+	{
+		return $this->client->retrieveEntities($this->links['hosts']);
+	}
+
+
+	public function getStoragePools(): \SamIT\Rancher\Generated\Collections\StoragePoolCollection
+	{
+		return $this->client->retrieveEntities($this->links['storagePools']);
+	}
+
+
+	public function getConfigItemStatuses(): \SamIT\Rancher\Generated\Collections\ConfigItemStatuseCollection
+	{
+		return $this->client->retrieveEntities($this->links['configItemStatuses']);
+	}
+
+
+	public function getPhysicalHosts(): \SamIT\Rancher\Generated\Collections\PhysicalHostCollection
+	{
+		return $this->client->retrieveEntities($this->links['physicalHosts']);
 	}
 
 }

@@ -3,6 +3,23 @@ namespace SamIT\Rancher\Generated\Entities;
 
 class ServiceLog extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = [
+		'accountId',
+		'created',
+		'data',
+		'description',
+		'endTime',
+		'eventType',
+		'id',
+		'instanceId',
+		'kind',
+		'level',
+		'serviceId',
+		'subLog',
+		'transactionId',
+	];
+
 	/**
 	 * @var string
 	 * @api-type reference[account]
@@ -58,18 +75,21 @@ class ServiceLog extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): Account
+	public function getAccount(): \SamIT\Rancher\Generated\Collections\AccounCollection
 	{
+		return $this->client->retrieveEntities($this->links['account']);
 	}
 
 
-	public function getInstance(): Instance
+	public function getInstance(): \SamIT\Rancher\Generated\Collections\InstancCollection
 	{
+		return $this->client->retrieveEntities($this->links['instance']);
 	}
 
 
-	public function getService(): Service
+	public function getService(): \SamIT\Rancher\Generated\Collections\ServicCollection
 	{
+		return $this->client->retrieveEntities($this->links['service']);
 	}
 
 }

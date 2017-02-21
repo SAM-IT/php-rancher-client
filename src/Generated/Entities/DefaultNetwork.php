@@ -7,6 +7,31 @@ use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
 class DefaultNetwork extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = [
+		'accountId',
+		'created',
+		'data',
+		'defaultPolicyAction',
+		'description',
+		'dns',
+		'dnsSearch',
+		'hostPorts',
+		'id',
+		'kind',
+		'metadata',
+		'name',
+		'policy',
+		'removeTime',
+		'removed',
+		'state',
+		'subnets',
+		'transitioning',
+		'transitioningMessage',
+		'transitioningProgress',
+		'uuid',
+	];
+
 	/**
 	 * @var string
 	 * @api-type reference[account]
@@ -77,8 +102,21 @@ class DefaultNetwork extends \SamIT\Rancher\Types\Entity
 	public static $entityLinks = ['self' => 'https://rancher.sam-it.eu/v2-beta/schemas/defaultnetwork'];
 
 
-	public function getAccount(): Account
+	public function getAccount(): \SamIT\Rancher\Generated\Collections\AccounCollection
 	{
+		return $this->client->retrieveEntities($this->links['account']);
+	}
+
+
+	public function getIpAddresses(): \SamIT\Rancher\Generated\Collections\IpAddresseCollection
+	{
+		return $this->client->retrieveEntities($this->links['ipAddresses']);
+	}
+
+
+	public function getSubnets(): \SamIT\Rancher\Generated\Collections\SubnetCollection
+	{
+		return $this->client->retrieveEntities($this->links['subnets']);
 	}
 
 }

@@ -6,6 +6,32 @@ use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
 class StoragePool extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = [
+		'accountId',
+		'created',
+		'data',
+		'description',
+		'driverName',
+		'externalId',
+		'id',
+		'kind',
+		'name',
+		'removeTime',
+		'removed',
+		'state',
+		'storageDriverId',
+		'uuid',
+		'volumeAccessMode',
+		'transitioning',
+		'transitioningMessage',
+		'transitioningProgress',
+		'hostIds',
+		'blockDevicePath',
+		'volumeCapabilities',
+		'volumeIds',
+	];
+
 	/**
 	 * @var string
 	 * @api-type reference[account]
@@ -85,13 +111,39 @@ class StoragePool extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): Account
+	public function getAccount(): \SamIT\Rancher\Generated\Collections\AccounCollection
 	{
+		return $this->client->retrieveEntities($this->links['account']);
 	}
 
 
-	public function getStorageDriver(): StorageDriver
+	public function getStorageDriver(): \SamIT\Rancher\Generated\Collections\StorageDriveCollection
 	{
+		return $this->client->retrieveEntities($this->links['storageDriver']);
+	}
+
+
+	public function getImages(): \SamIT\Rancher\Generated\Collections\ImageCollection
+	{
+		return $this->client->retrieveEntities($this->links['images']);
+	}
+
+
+	public function getCredentials(): \SamIT\Rancher\Generated\Collections\CredentialCollection
+	{
+		return $this->client->retrieveEntities($this->links['credentials']);
+	}
+
+
+	public function getHosts(): \SamIT\Rancher\Generated\Collections\HostCollection
+	{
+		return $this->client->retrieveEntities($this->links['hosts']);
+	}
+
+
+	public function getVolumes(): \SamIT\Rancher\Generated\Collections\VolumeCollection
+	{
+		return $this->client->retrieveEntities($this->links['volumes']);
 	}
 
 }

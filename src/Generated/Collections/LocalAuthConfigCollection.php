@@ -11,4 +11,10 @@ class LocalAuthConfigCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = LocalAuthConfig::class;
 	}
 
+
+	public function first(): ?LocalAuthConfig
+	{
+		return $this->data[0];
+	}
+
 }

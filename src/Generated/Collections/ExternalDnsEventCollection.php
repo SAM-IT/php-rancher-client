@@ -11,4 +11,10 @@ class ExternalDnsEventCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = ExternalDnsEvent::class;
 	}
 
+
+	public function first(): ?ExternalDnsEvent
+	{
+		return $this->data[0];
+	}
+
 }

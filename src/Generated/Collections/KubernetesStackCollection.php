@@ -11,4 +11,10 @@ class KubernetesStackCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = KubernetesStack::class;
 	}
 
+
+	public function first(): ?KubernetesStack
+	{
+		return $this->data[0];
+	}
+
 }

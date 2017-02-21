@@ -3,6 +3,22 @@ namespace SamIT\Rancher\Generated\Entities;
 
 class Publish extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = [
+		'data',
+		'id',
+		'name',
+		'previousIds',
+		'publisher',
+		'resourceId',
+		'resourceType',
+		'time',
+		'transitioning',
+		'transitioningInternalMessage',
+		'transitioningMessage',
+		'transitioningProgress',
+	];
+
 	/** @var JsonMap */
 	public $data = [];
 

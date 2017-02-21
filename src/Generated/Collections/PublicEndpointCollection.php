@@ -11,4 +11,10 @@ class PublicEndpointCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = PublicEndpoint::class;
 	}
 
+
+	public function first(): ?PublicEndpoint
+	{
+		return $this->data[0];
+	}
+
 }

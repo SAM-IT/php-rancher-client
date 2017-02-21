@@ -11,4 +11,10 @@ class RestoreFromBackupInputCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = RestoreFromBackupInput::class;
 	}
 
+
+	public function first(): ?RestoreFromBackupInput
+	{
+		return $this->data[0];
+	}
+
 }

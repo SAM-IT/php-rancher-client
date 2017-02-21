@@ -11,4 +11,10 @@ class MountEntryCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = MountEntry::class;
 	}
 
+
+	public function first(): ?MountEntry
+	{
+		return $this->data[0];
+	}
+
 }

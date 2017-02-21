@@ -3,6 +3,26 @@ namespace SamIT\Rancher\Generated\Entities;
 
 class ProcessInstance extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = [
+		'accountId',
+		'data',
+		'endTime',
+		'executionCount',
+		'exitReason',
+		'id',
+		'phase',
+		'priority',
+		'processName',
+		'resourceId',
+		'resourceType',
+		'result',
+		'runAfter',
+		'runningProcessServerId',
+		'startProcessServerId',
+		'startTime',
+	];
+
 	/**
 	 * @var string
 	 * @api-type reference[account]
@@ -61,8 +81,15 @@ class ProcessInstance extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): Account
+	public function getAccount(): \SamIT\Rancher\Generated\Collections\AccounCollection
 	{
+		return $this->client->retrieveEntities($this->links['account']);
+	}
+
+
+	public function getProcessExecutions(): \SamIT\Rancher\Generated\Collections\ProcessExecutionCollection
+	{
+		return $this->client->retrieveEntities($this->links['processExecutions']);
 	}
 
 }

@@ -11,4 +11,10 @@ class ExtensionPointCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = ExtensionPoint::class;
 	}
 
+
+	public function first(): ?ExtensionPoint
+	{
+		return $this->data[0];
+	}
+
 }

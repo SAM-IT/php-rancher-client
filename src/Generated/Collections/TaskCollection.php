@@ -11,4 +11,10 @@ class TaskCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = Task::class;
 	}
 
+
+	public function first(): ?Task
+	{
+		return $this->data[0];
+	}
+
 }

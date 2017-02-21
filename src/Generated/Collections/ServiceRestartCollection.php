@@ -11,4 +11,10 @@ class ServiceRestartCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = ServiceRestart::class;
 	}
 
+
+	public function first(): ?ServiceRestart
+	{
+		return $this->data[0];
+	}
+
 }

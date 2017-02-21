@@ -11,4 +11,10 @@ class InstanceStopCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = InstanceStop::class;
 	}
 
+
+	public function first(): ?InstanceStop
+	{
+		return $this->data[0];
+	}
+
 }

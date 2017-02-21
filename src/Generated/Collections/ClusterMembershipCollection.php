@@ -11,4 +11,10 @@ class ClusterMembershipCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = ClusterMembership::class;
 	}
 
+
+	public function first(): ?ClusterMembership
+	{
+		return $this->data[0];
+	}
+
 }

@@ -6,6 +6,26 @@ use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
 class Credential extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = [
+		'accountId',
+		'created',
+		'data',
+		'description',
+		'id',
+		'kind',
+		'name',
+		'publicValue',
+		'removeTime',
+		'removed',
+		'secretValue',
+		'state',
+		'uuid',
+		'transitioning',
+		'transitioningMessage',
+		'transitioningProgress',
+	];
+
 	/**
 	 * @var string
 	 * @api-type reference[account]
@@ -64,8 +84,21 @@ class Credential extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): Account
+	public function getAccount(): \SamIT\Rancher\Generated\Collections\AccounCollection
 	{
+		return $this->client->retrieveEntities($this->links['account']);
+	}
+
+
+	public function getImages(): \SamIT\Rancher\Generated\Collections\ImageCollection
+	{
+		return $this->client->retrieveEntities($this->links['images']);
+	}
+
+
+	public function getInstances(): \SamIT\Rancher\Generated\Collections\InstanceCollection
+	{
+		return $this->client->retrieveEntities($this->links['instances']);
 	}
 
 }

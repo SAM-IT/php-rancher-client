@@ -11,4 +11,10 @@ class CredentialCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = Credential::class;
 	}
 
+
+	public function first(): ?Credential
+	{
+		return $this->data[0];
+	}
+
 }

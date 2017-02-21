@@ -11,4 +11,10 @@ class GenericObjectCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = GenericObject::class;
 	}
 
+
+	public function first(): ?GenericObject
+	{
+		return $this->data[0];
+	}
+
 }

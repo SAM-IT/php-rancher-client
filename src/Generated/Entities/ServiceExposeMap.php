@@ -6,6 +6,28 @@ use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
 class ServiceExposeMap extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = [
+		'accountId',
+		'created',
+		'data',
+		'description',
+		'id',
+		'instanceId',
+		'ipAddress',
+		'kind',
+		'managed',
+		'name',
+		'removeTime',
+		'removed',
+		'serviceId',
+		'state',
+		'uuid',
+		'transitioning',
+		'transitioningMessage',
+		'transitioningProgress',
+	];
+
 	/**
 	 * @var string
 	 * @api-type reference[account]
@@ -76,18 +98,21 @@ class ServiceExposeMap extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): Account
+	public function getAccount(): \SamIT\Rancher\Generated\Collections\AccounCollection
 	{
+		return $this->client->retrieveEntities($this->links['account']);
 	}
 
 
-	public function getInstance(): Instance
+	public function getInstance(): \SamIT\Rancher\Generated\Collections\InstancCollection
 	{
+		return $this->client->retrieveEntities($this->links['instance']);
 	}
 
 
-	public function getService(): Service
+	public function getService(): \SamIT\Rancher\Generated\Collections\ServicCollection
 	{
+		return $this->client->retrieveEntities($this->links['service']);
 	}
 
 }

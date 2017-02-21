@@ -11,4 +11,10 @@ class InstanceHealthCheckCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = InstanceHealthCheck::class;
 	}
 
+
+	public function first(): ?InstanceHealthCheck
+	{
+		return $this->data[0];
+	}
+
 }

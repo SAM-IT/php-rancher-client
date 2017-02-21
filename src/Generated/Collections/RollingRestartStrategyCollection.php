@@ -11,4 +11,10 @@ class RollingRestartStrategyCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = RollingRestartStrategy::class;
 	}
 
+
+	public function first(): ?RollingRestartStrategy
+	{
+		return $this->data[0];
+	}
+
 }

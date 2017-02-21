@@ -11,4 +11,10 @@ class RegisterCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = Register::class;
 	}
 
+
+	public function first(): ?Register
+	{
+		return $this->data[0];
+	}
+
 }

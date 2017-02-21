@@ -11,4 +11,10 @@ class ContainerLogsCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = ContainerLogs::class;
 	}
 
+
+	public function first(): ?ContainerLogs
+	{
+		return $this->data[0];
+	}
+
 }

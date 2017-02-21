@@ -11,4 +11,10 @@ class Amazonec2ConfigCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = Amazonec2Config::class;
 	}
 
+
+	public function first(): ?Amazonec2Config
+	{
+		return $this->data[0];
+	}
+
 }

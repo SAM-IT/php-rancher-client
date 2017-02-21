@@ -11,4 +11,10 @@ class DatabasechangelogCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = Databasechangelog::class;
 	}
 
+
+	public function first(): ?Databasechangelog
+	{
+		return $this->data[0];
+	}
+
 }

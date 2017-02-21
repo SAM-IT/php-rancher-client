@@ -11,4 +11,10 @@ class BindingCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = Binding::class;
 	}
 
+
+	public function first(): ?Binding
+	{
+		return $this->data[0];
+	}
+
 }

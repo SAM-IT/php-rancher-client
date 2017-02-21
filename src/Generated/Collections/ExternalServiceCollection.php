@@ -11,4 +11,10 @@ class ExternalServiceCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = ExternalService::class;
 	}
 
+
+	public function first(): ?ExternalService
+	{
+		return $this->data[0];
+	}
+
 }

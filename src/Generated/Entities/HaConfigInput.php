@@ -3,6 +3,26 @@ namespace SamIT\Rancher\Generated\Entities;
 
 class HaConfigInput extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = [
+		'cert',
+		'certChain',
+		'clusterSize',
+		'hostRegistrationUrl',
+		'httpEnabled',
+		'httpPort',
+		'httpsPort',
+		'key',
+		'ppHttpPort',
+		'ppHttpsPort',
+		'redisPort',
+		'swarmEnabled',
+		'swarmPort',
+		'zookeeperClientPort',
+		'zookeeperLeaderPort',
+		'zookeeperQuorumPort',
+	];
+
 	/** @var string */
 	public $cert;
 

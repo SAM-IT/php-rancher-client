@@ -11,4 +11,10 @@ class ExternalHostEventCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = ExternalHostEvent::class;
 	}
 
+
+	public function first(): ?ExternalHostEvent
+	{
+		return $this->data[0];
+	}
+
 }

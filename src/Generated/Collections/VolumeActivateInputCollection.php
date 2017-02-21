@@ -11,4 +11,10 @@ class VolumeActivateInputCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = VolumeActivateInput::class;
 	}
 
+
+	public function first(): ?VolumeActivateInput
+	{
+		return $this->data[0];
+	}
+
 }

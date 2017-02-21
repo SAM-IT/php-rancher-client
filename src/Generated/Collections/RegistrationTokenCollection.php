@@ -11,4 +11,10 @@ class RegistrationTokenCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = RegistrationToken::class;
 	}
 
+
+	public function first(): ?RegistrationToken
+	{
+		return $this->data[0];
+	}
+
 }

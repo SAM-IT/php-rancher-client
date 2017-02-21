@@ -11,4 +11,10 @@ class LogConfigCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = LogConfig::class;
 	}
 
+
+	public function first(): ?LogConfig
+	{
+		return $this->data[0];
+	}
+
 }

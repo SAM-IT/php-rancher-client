@@ -11,4 +11,10 @@ class ProjectMemberCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = ProjectMember::class;
 	}
 
+
+	public function first(): ?ProjectMember
+	{
+		return $this->data[0];
+	}
+
 }

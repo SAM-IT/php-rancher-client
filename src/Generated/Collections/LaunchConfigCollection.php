@@ -11,4 +11,10 @@ class LaunchConfigCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = LaunchConfig::class;
 	}
 
+
+	public function first(): ?LaunchConfig
+	{
+		return $this->data[0];
+	}
+
 }

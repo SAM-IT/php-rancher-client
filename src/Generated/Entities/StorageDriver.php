@@ -8,6 +8,29 @@ use SamIT\Rancher\Generated\Enums\VolumeAccessModeEnum;
 
 class StorageDriver extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = [
+		'accountId',
+		'created',
+		'data',
+		'description',
+		'id',
+		'kind',
+		'name',
+		'removeTime',
+		'removed',
+		'serviceId',
+		'state',
+		'uuid',
+		'transitioning',
+		'transitioningMessage',
+		'transitioningProgress',
+		'volumeAccessMode',
+		'volumeCapabilities',
+		'blockDevicePath',
+		'scope',
+	];
+
 	/**
 	 * @var string
 	 * @api-type reference[account]
@@ -78,13 +101,27 @@ class StorageDriver extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): Account
+	public function getAccount(): \SamIT\Rancher\Generated\Collections\AccounCollection
 	{
+		return $this->client->retrieveEntities($this->links['account']);
 	}
 
 
-	public function getService(): Service
+	public function getService(): \SamIT\Rancher\Generated\Collections\ServicCollection
 	{
+		return $this->client->retrieveEntities($this->links['service']);
+	}
+
+
+	public function getStoragePools(): \SamIT\Rancher\Generated\Collections\StoragePoolCollection
+	{
+		return $this->client->retrieveEntities($this->links['storagePools']);
+	}
+
+
+	public function getVolumes(): \SamIT\Rancher\Generated\Collections\VolumeCollection
+	{
+		return $this->client->retrieveEntities($this->links['volumes']);
 	}
 
 }

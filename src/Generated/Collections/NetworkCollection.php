@@ -11,4 +11,10 @@ class NetworkCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = Network::class;
 	}
 
+
+	public function first(): ?Network
+	{
+		return $this->data[0];
+	}
+
 }

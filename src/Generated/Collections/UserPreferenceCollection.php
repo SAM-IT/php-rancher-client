@@ -11,4 +11,10 @@ class UserPreferenceCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = UserPreference::class;
 	}
 
+
+	public function first(): ?UserPreference
+	{
+		return $this->data[0];
+	}
+
 }

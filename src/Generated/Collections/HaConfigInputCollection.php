@@ -11,4 +11,10 @@ class HaConfigInputCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = HaConfigInput::class;
 	}
 
+
+	public function first(): ?HaConfigInput
+	{
+		return $this->data[0];
+	}
+
 }

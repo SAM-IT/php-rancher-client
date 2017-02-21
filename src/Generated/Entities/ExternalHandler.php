@@ -6,6 +6,27 @@ use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
 class ExternalHandler extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = [
+		'created',
+		'data',
+		'description',
+		'id',
+		'kind',
+		'name',
+		'priority',
+		'removeTime',
+		'removed',
+		'state',
+		'uuid',
+		'transitioning',
+		'transitioningMessage',
+		'transitioningProgress',
+		'processConfigs',
+		'retries',
+		'timeoutMillis',
+	];
+
 	/** @var date */
 	public $created;
 
@@ -62,5 +83,17 @@ class ExternalHandler extends \SamIT\Rancher\Types\Entity
 		'self' => 'https://rancher.sam-it.eu/v2-beta/schemas/externalhandler',
 		'collection' => 'https://rancher.sam-it.eu/v2-beta/externalhandlers',
 	];
+
+
+	public function getExternalHandlerProcesses(): \SamIT\Rancher\Generated\Collections\ExternalHandlerProcesseCollection
+	{
+		return $this->client->retrieveEntities($this->links['externalHandlerProcesses']);
+	}
+
+
+	public function getExternalHandlerExternalHandlerProcessMaps(): \SamIT\Rancher\Generated\Collections\ExternalHandlerExternalHandlerProcessMapCollection
+	{
+		return $this->client->retrieveEntities($this->links['externalHandlerExternalHandlerProcessMaps']);
+	}
 
 }

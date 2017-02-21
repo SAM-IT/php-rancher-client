@@ -3,6 +3,9 @@ namespace SamIT\Rancher\Generated\Entities;
 
 class MountEntry extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = ['instanceId', 'instanceName', 'path', 'volumeId', 'volumeName'];
+
 	/**
 	 * @var string
 	 * @api-type reference[instance]

@@ -11,4 +11,10 @@ class ProcessPoolCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = ProcessPool::class;
 	}
 
+
+	public function first(): ?ProcessPool
+	{
+		return $this->data[0];
+	}
+
 }

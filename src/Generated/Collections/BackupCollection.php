@@ -11,4 +11,10 @@ class BackupCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = Backup::class;
 	}
 
+
+	public function first(): ?Backup
+	{
+		return $this->data[0];
+	}
+
 }

@@ -11,4 +11,10 @@ class ChangeSecretInputCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = ChangeSecretInput::class;
 	}
 
+
+	public function first(): ?ChangeSecretInput
+	{
+		return $this->data[0];
+	}
+
 }

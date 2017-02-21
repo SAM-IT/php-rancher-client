@@ -3,6 +3,18 @@ namespace SamIT\Rancher\Generated\Entities;
 
 class Azureadconfig extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = [
+		'accessMode',
+		'adminAccountPassword',
+		'adminAccountUsername',
+		'clientId',
+		'domain',
+		'enabled',
+		'name',
+		'tenantId',
+	];
+
 	/** @var string */
 	public $accessMode;
 

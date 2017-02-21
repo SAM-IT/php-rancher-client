@@ -7,6 +7,32 @@ use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
 class Network extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = [
+		'accountId',
+		'created',
+		'data',
+		'description',
+		'id',
+		'kind',
+		'name',
+		'networkDriverId',
+		'removeTime',
+		'removed',
+		'state',
+		'uuid',
+		'transitioning',
+		'transitioningMessage',
+		'transitioningProgress',
+		'dns',
+		'dnsSearch',
+		'metadata',
+		'subnets',
+		'hostPorts',
+		'defaultPolicyAction',
+		'policy',
+	];
+
 	/**
 	 * @var string
 	 * @api-type reference[account]
@@ -86,13 +112,27 @@ class Network extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): Account
+	public function getAccount(): \SamIT\Rancher\Generated\Collections\AccounCollection
 	{
+		return $this->client->retrieveEntities($this->links['account']);
 	}
 
 
-	public function getNetworkDriver(): NetworkDriver
+	public function getNetworkDriver(): \SamIT\Rancher\Generated\Collections\NetworkDriveCollection
 	{
+		return $this->client->retrieveEntities($this->links['networkDriver']);
+	}
+
+
+	public function getIpAddresses(): \SamIT\Rancher\Generated\Collections\IpAddresseCollection
+	{
+		return $this->client->retrieveEntities($this->links['ipAddresses']);
+	}
+
+
+	public function getSubnets(): \SamIT\Rancher\Generated\Collections\SubnetCollection
+	{
+		return $this->client->retrieveEntities($this->links['subnets']);
 	}
 
 }

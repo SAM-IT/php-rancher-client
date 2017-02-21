@@ -8,6 +8,27 @@ use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
 class ProjectMember extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = [
+		'created',
+		'data',
+		'description',
+		'externalId',
+		'externalIdType',
+		'id',
+		'kind',
+		'name',
+		'projectId',
+		'removeTime',
+		'removed',
+		'role',
+		'state',
+		'uuid',
+		'transitioning',
+		'transitioningMessage',
+		'transitioningProgress',
+	];
+
 	/** @var date */
 	public $created;
 
@@ -69,8 +90,9 @@ class ProjectMember extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getProject(): Project
+	public function getProject(): \SamIT\Rancher\Generated\Collections\ProjecCollection
 	{
+		return $this->client->retrieveEntities($this->links['project']);
 	}
 
 }

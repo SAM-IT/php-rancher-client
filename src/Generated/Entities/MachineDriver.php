@@ -6,6 +6,30 @@ use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
 class MachineDriver extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = [
+		'created',
+		'data',
+		'description',
+		'id',
+		'kind',
+		'name',
+		'removeTime',
+		'removed',
+		'state',
+		'uuid',
+		'transitioning',
+		'transitioningMessage',
+		'transitioningProgress',
+		'url',
+		'externalId',
+		'builtin',
+		'defaultActive',
+		'activateOnCreate',
+		'checksum',
+		'uiUrl',
+	];
+
 	/** @var date */
 	public $created;
 

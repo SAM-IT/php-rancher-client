@@ -3,6 +3,9 @@ namespace SamIT\Rancher\Generated\Entities;
 
 class SnapshotBackupInput extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = ['backupTargetId', 'data', 'name', 'removeTime'];
+
 	/**
 	 * @var string
 	 * @api-type reference[backupTarget]
@@ -24,8 +27,9 @@ class SnapshotBackupInput extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getBackupTarget(): BackupTarget
+	public function getBackupTarget(): \SamIT\Rancher\Generated\Collections\BackupTargeCollection
 	{
+		return $this->client->retrieveEntities($this->links['backupTarget']);
 	}
 
 }

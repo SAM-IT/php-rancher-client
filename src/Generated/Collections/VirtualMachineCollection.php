@@ -11,4 +11,10 @@ class VirtualMachineCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = VirtualMachine::class;
 	}
 
+
+	public function first(): ?VirtualMachine
+	{
+		return $this->data[0];
+	}
+
 }

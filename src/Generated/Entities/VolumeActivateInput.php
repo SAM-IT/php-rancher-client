@@ -3,6 +3,9 @@ namespace SamIT\Rancher\Generated\Entities;
 
 class VolumeActivateInput extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = ['hostId'];
+
 	/** @var reference */
 	public $hostId;
 

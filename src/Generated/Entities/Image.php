@@ -6,6 +6,24 @@ use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
 class Image extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = [
+		'accountId',
+		'created',
+		'data',
+		'description',
+		'id',
+		'kind',
+		'name',
+		'removeTime',
+		'removed',
+		'state',
+		'uuid',
+		'transitioning',
+		'transitioningMessage',
+		'transitioningProgress',
+	];
+
 	/**
 	 * @var string
 	 * @api-type reference[account]
@@ -58,8 +76,27 @@ class Image extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): Account
+	public function getAccount(): \SamIT\Rancher\Generated\Collections\AccounCollection
 	{
+		return $this->client->retrieveEntities($this->links['account']);
+	}
+
+
+	public function getInstances(): \SamIT\Rancher\Generated\Collections\InstanceCollection
+	{
+		return $this->client->retrieveEntities($this->links['instances']);
+	}
+
+
+	public function getStoragePools(): \SamIT\Rancher\Generated\Collections\StoragePoolCollection
+	{
+		return $this->client->retrieveEntities($this->links['storagePools']);
+	}
+
+
+	public function getVolumes(): \SamIT\Rancher\Generated\Collections\VolumeCollection
+	{
+		return $this->client->retrieveEntities($this->links['volumes']);
 	}
 
 }

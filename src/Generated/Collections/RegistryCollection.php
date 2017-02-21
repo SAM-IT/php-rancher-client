@@ -11,4 +11,10 @@ class RegistryCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = Registry::class;
 	}
 
+
+	public function first(): ?Registry
+	{
+		return $this->data[0];
+	}
+
 }

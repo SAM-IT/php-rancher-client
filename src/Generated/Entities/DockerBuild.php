@@ -3,6 +3,9 @@ namespace SamIT\Rancher\Generated\Entities;
 
 class DockerBuild extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = ['context', 'dockerfile', 'forcerm', 'nocache', 'remote', 'rm'];
+
 	/** @var string */
 	public $context;
 

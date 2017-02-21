@@ -6,6 +6,28 @@ use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
 class Backup extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = [
+		'accountId',
+		'backupTargetId',
+		'created',
+		'data',
+		'description',
+		'id',
+		'kind',
+		'name',
+		'removeTime',
+		'removed',
+		'snapshotId',
+		'state',
+		'uri',
+		'uuid',
+		'volumeId',
+		'transitioning',
+		'transitioningMessage',
+		'transitioningProgress',
+	];
+
 	/**
 	 * @var string
 	 * @api-type reference[account]
@@ -79,23 +101,27 @@ class Backup extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): Account
+	public function getAccount(): \SamIT\Rancher\Generated\Collections\AccounCollection
 	{
+		return $this->client->retrieveEntities($this->links['account']);
 	}
 
 
-	public function getBackupTarget(): BackupTarget
+	public function getBackupTarget(): \SamIT\Rancher\Generated\Collections\BackupTargeCollection
 	{
+		return $this->client->retrieveEntities($this->links['backupTarget']);
 	}
 
 
-	public function getSnapshot(): Snapshot
+	public function getSnapshot(): \SamIT\Rancher\Generated\Collections\SnapshoCollection
 	{
+		return $this->client->retrieveEntities($this->links['snapshot']);
 	}
 
 
-	public function getVolume(): Volume
+	public function getVolume(): \SamIT\Rancher\Generated\Collections\VolumCollection
 	{
+		return $this->client->retrieveEntities($this->links['volume']);
 	}
 
 }

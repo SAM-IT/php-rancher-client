@@ -11,4 +11,10 @@ class ExternalVolumeEventCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = ExternalVolumeEvent::class;
 	}
 
+
+	public function first(): ?ExternalVolumeEvent
+	{
+		return $this->data[0];
+	}
+
 }

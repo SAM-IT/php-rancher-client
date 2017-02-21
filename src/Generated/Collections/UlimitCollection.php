@@ -11,4 +11,10 @@ class UlimitCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = Ulimit::class;
 	}
 
+
+	public function first(): ?Ulimit
+	{
+		return $this->data[0];
+	}
+
 }

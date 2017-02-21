@@ -11,4 +11,10 @@ class StateTransitionCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = StateTransition::class;
 	}
 
+
+	public function first(): ?StateTransition
+	{
+		return $this->data[0];
+	}
+
 }

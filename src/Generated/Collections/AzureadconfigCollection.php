@@ -11,4 +11,10 @@ class AzureadconfigCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = Azureadconfig::class;
 	}
 
+
+	public function first(): ?Azureadconfig
+	{
+		return $this->data[0];
+	}
+
 }

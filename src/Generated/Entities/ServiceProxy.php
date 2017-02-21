@@ -5,6 +5,9 @@ use SamIT\Rancher\Generated\Enums\SchemeEnum;
 
 class ServiceProxy extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = ['port', 'scheme', 'service', 'token', 'url'];
+
 	/** @var int */
 	public $port;
 

@@ -11,4 +11,10 @@ class AddRemoveServiceLinkInputCollection extends \SamIT\Rancher\Types\Collectio
 		$this->resourceClass = AddRemoveServiceLinkInput::class;
 	}
 
+
+	public function first(): ?AddRemoveServiceLinkInput
+	{
+		return $this->data[0];
+	}
+
 }

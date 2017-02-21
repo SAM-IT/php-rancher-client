@@ -11,4 +11,10 @@ class MachineCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = Machine::class;
 	}
 
+
+	public function first(): ?Machine
+	{
+		return $this->data[0];
+	}
+
 }

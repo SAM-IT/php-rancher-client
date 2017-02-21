@@ -3,6 +3,19 @@ namespace SamIT\Rancher\Generated\Entities;
 
 class ProcessPool extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = [
+		'activeTasks',
+		'completedTasks',
+		'maxPoolSize',
+		'minPoolSize',
+		'name',
+		'poolSize',
+		'queueRemainingCapacity',
+		'queueSize',
+		'rejectedTasks',
+	];
+
 	/** @var int */
 	public $activeTasks;
 

@@ -11,4 +11,10 @@ class LoadBalancerServiceCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = LoadBalancerService::class;
 	}
 
+
+	public function first(): ?LoadBalancerService
+	{
+		return $this->data[0];
+	}
+
 }

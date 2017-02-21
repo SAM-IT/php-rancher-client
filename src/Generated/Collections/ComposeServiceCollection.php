@@ -11,4 +11,10 @@ class ComposeServiceCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = ComposeService::class;
 	}
 
+
+	public function first(): ?ComposeService
+	{
+		return $this->data[0];
+	}
+
 }

@@ -6,6 +6,35 @@ use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
 class KubernetesStack extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = [
+		'accountId',
+		'binding',
+		'created',
+		'data',
+		'description',
+		'environment',
+		'externalId',
+		'group',
+		'healthState',
+		'id',
+		'kind',
+		'name',
+		'previousEnvironment',
+		'previousExternalId',
+		'removeTime',
+		'removed',
+		'serviceIds',
+		'state',
+		'system',
+		'transitioning',
+		'transitioningMessage',
+		'transitioningProgress',
+		'uuid',
+		'templates',
+		'namespace',
+	];
+
 	/**
 	 * @var string
 	 * @api-type reference[account]
@@ -91,8 +120,39 @@ class KubernetesStack extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): Account
+	public function getAccount(): \SamIT\Rancher\Generated\Collections\AccounCollection
 	{
+		return $this->client->retrieveEntities($this->links['account']);
+	}
+
+
+	public function getVolumeTemplates(): \SamIT\Rancher\Generated\Collections\VolumeTemplateCollection
+	{
+		return $this->client->retrieveEntities($this->links['volumeTemplates']);
+	}
+
+
+	public function getVolumes(): \SamIT\Rancher\Generated\Collections\VolumeCollection
+	{
+		return $this->client->retrieveEntities($this->links['volumes']);
+	}
+
+
+	public function getConfigItemStatuses(): \SamIT\Rancher\Generated\Collections\ConfigItemStatuseCollection
+	{
+		return $this->client->retrieveEntities($this->links['configItemStatuses']);
+	}
+
+
+	public function getServices(): \SamIT\Rancher\Generated\Collections\ServiceCollection
+	{
+		return $this->client->retrieveEntities($this->links['services']);
+	}
+
+
+	public function getSecrets(): \SamIT\Rancher\Generated\Collections\SecretCollection
+	{
+		return $this->client->retrieveEntities($this->links['secrets']);
 	}
 
 }

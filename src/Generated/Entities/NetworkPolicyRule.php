@@ -6,6 +6,9 @@ use SamIT\Rancher\Generated\Enums\WithinEnum;
 
 class NetworkPolicyRule extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = ['action', 'between', 'from', 'ports', 'to', 'within'];
+
 	/** @var ActionEnum */
 	public $action;
 

@@ -11,4 +11,10 @@ class AzureConfigCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = AzureConfig::class;
 	}
 
+
+	public function first(): ?AzureConfig
+	{
+		return $this->data[0];
+	}
+
 }

@@ -11,4 +11,10 @@ class StorageDriverServiceCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = StorageDriverService::class;
 	}
 
+
+	public function first(): ?StorageDriverService
+	{
+		return $this->data[0];
+	}
+
 }

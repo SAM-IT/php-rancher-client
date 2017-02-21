@@ -3,6 +3,9 @@ namespace SamIT\Rancher\Generated\Entities;
 
 class NfsConfig extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = ['server', 'share', 'mountOptions'];
+
 	/** @var string */
 	public $server;
 

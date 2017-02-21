@@ -11,4 +11,10 @@ class TaskInstanceCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = TaskInstance::class;
 	}
 
+
+	public function first(): ?TaskInstance
+	{
+		return $this->data[0];
+	}
+
 }

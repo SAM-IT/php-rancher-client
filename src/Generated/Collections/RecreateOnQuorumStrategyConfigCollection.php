@@ -11,4 +11,10 @@ class RecreateOnQuorumStrategyConfigCollection extends \SamIT\Rancher\Types\Coll
 		$this->resourceClass = RecreateOnQuorumStrategyConfig::class;
 	}
 
+
+	public function first(): ?RecreateOnQuorumStrategyConfig
+	{
+		return $this->data[0];
+	}
+
 }

@@ -11,4 +11,10 @@ class DockerBuildCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = DockerBuild::class;
 	}
 
+
+	public function first(): ?DockerBuild
+	{
+		return $this->data[0];
+	}
+
 }

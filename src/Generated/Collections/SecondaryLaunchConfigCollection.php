@@ -11,4 +11,10 @@ class SecondaryLaunchConfigCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = SecondaryLaunchConfig::class;
 	}
 
+
+	public function first(): ?SecondaryLaunchConfig
+	{
+		return $this->data[0];
+	}
+
 }

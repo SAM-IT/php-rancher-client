@@ -5,6 +5,21 @@ use SamIT\Rancher\Generated\Enums\StrategyEnum;
 
 class InstanceHealthCheck extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = [
+		'healthyThreshold',
+		'initializingTimeout',
+		'interval',
+		'name',
+		'port',
+		'recreateOnQuorumStrategyConfig',
+		'reinitializingTimeout',
+		'requestLine',
+		'responseTimeout',
+		'strategy',
+		'unhealthyThreshold',
+	];
+
 	/** @var int */
 	public $healthyThreshold;
 

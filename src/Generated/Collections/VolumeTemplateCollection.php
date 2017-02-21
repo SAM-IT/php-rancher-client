@@ -11,4 +11,10 @@ class VolumeTemplateCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = VolumeTemplate::class;
 	}
 
+
+	public function first(): ?VolumeTemplate
+	{
+		return $this->data[0];
+	}
+
 }

@@ -11,4 +11,10 @@ class ServiceConsumeMapCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = ServiceConsumeMap::class;
 	}
 
+
+	public function first(): ?ServiceConsumeMap
+	{
+		return $this->data[0];
+	}
+
 }

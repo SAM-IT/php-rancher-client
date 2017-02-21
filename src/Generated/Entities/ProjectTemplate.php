@@ -6,6 +6,27 @@ use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
 class ProjectTemplate extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = [
+		'accountId',
+		'created',
+		'data',
+		'description',
+		'externalId',
+		'id',
+		'isPublic',
+		'kind',
+		'name',
+		'removeTime',
+		'removed',
+		'state',
+		'uuid',
+		'transitioning',
+		'transitioningMessage',
+		'transitioningProgress',
+		'stacks',
+	];
+
 	/**
 	 * @var string
 	 * @api-type reference[account]
@@ -67,8 +88,15 @@ class ProjectTemplate extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): Account
+	public function getAccount(): \SamIT\Rancher\Generated\Collections\AccounCollection
 	{
+		return $this->client->retrieveEntities($this->links['account']);
+	}
+
+
+	public function getAccounts(): \SamIT\Rancher\Generated\Collections\AccountCollection
+	{
+		return $this->client->retrieveEntities($this->links['accounts']);
 	}
 
 }

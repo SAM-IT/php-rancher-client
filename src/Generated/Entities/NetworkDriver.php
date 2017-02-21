@@ -6,6 +6,28 @@ use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
 class NetworkDriver extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = [
+		'accountId',
+		'created',
+		'data',
+		'description',
+		'id',
+		'kind',
+		'name',
+		'removeTime',
+		'removed',
+		'serviceId',
+		'state',
+		'uuid',
+		'transitioning',
+		'transitioningMessage',
+		'transitioningProgress',
+		'defaultNetwork',
+		'cniConfig',
+		'networkMetadata',
+	];
+
 	/**
 	 * @var string
 	 * @api-type reference[account]
@@ -73,13 +95,21 @@ class NetworkDriver extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): Account
+	public function getAccount(): \SamIT\Rancher\Generated\Collections\AccounCollection
 	{
+		return $this->client->retrieveEntities($this->links['account']);
 	}
 
 
-	public function getService(): Service
+	public function getService(): \SamIT\Rancher\Generated\Collections\ServicCollection
 	{
+		return $this->client->retrieveEntities($this->links['service']);
+	}
+
+
+	public function getNetworks(): \SamIT\Rancher\Generated\Collections\NetworkCollection
+	{
+		return $this->client->retrieveEntities($this->links['networks']);
 	}
 
 }

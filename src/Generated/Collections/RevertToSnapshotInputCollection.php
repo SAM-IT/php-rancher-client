@@ -11,4 +11,10 @@ class RevertToSnapshotInputCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = RevertToSnapshotInput::class;
 	}
 
+
+	public function first(): ?RevertToSnapshotInput
+	{
+		return $this->data[0];
+	}
+
 }

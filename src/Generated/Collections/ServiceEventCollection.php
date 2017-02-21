@@ -11,4 +11,10 @@ class ServiceEventCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = ServiceEvent::class;
 	}
 
+
+	public function first(): ?ServiceEvent
+	{
+		return $this->data[0];
+	}
+
 }

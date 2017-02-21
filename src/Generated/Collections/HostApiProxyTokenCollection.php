@@ -11,4 +11,10 @@ class HostApiProxyTokenCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = HostApiProxyToken::class;
 	}
 
+
+	public function first(): ?HostApiProxyToken
+	{
+		return $this->data[0];
+	}
+
 }

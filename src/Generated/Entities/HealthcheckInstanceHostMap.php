@@ -6,6 +6,27 @@ use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
 class HealthcheckInstanceHostMap extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = [
+		'accountId',
+		'created',
+		'data',
+		'description',
+		'healthState',
+		'hostId',
+		'id',
+		'instanceId',
+		'kind',
+		'name',
+		'removeTime',
+		'removed',
+		'state',
+		'uuid',
+		'transitioning',
+		'transitioningMessage',
+		'transitioningProgress',
+	];
+
 	/**
 	 * @var string
 	 * @api-type reference[account]
@@ -73,18 +94,21 @@ class HealthcheckInstanceHostMap extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): Account
+	public function getAccount(): \SamIT\Rancher\Generated\Collections\AccounCollection
 	{
+		return $this->client->retrieveEntities($this->links['account']);
 	}
 
 
-	public function getHost(): Host
+	public function getHost(): \SamIT\Rancher\Generated\Collections\HosCollection
 	{
+		return $this->client->retrieveEntities($this->links['host']);
 	}
 
 
-	public function getInstance(): Instance
+	public function getInstance(): \SamIT\Rancher\Generated\Collections\InstancCollection
 	{
+		return $this->client->retrieveEntities($this->links['instance']);
 	}
 
 }

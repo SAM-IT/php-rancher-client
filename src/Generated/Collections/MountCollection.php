@@ -11,4 +11,10 @@ class MountCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = Mount::class;
 	}
 
+
+	public function first(): ?Mount
+	{
+		return $this->data[0];
+	}
+
 }

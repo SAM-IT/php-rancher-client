@@ -11,4 +11,10 @@ class VolumeSnapshotInputCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = VolumeSnapshotInput::class;
 	}
 
+
+	public function first(): ?VolumeSnapshotInput
+	{
+		return $this->data[0];
+	}
+
 }

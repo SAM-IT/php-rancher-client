@@ -3,6 +3,9 @@ namespace SamIT\Rancher\Generated\Entities;
 
 class BlkioDeviceOption extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = ['readBps', 'readIops', 'weight', 'writeBps', 'writeIops'];
+
 	/** @var int */
 	public $readBps;
 

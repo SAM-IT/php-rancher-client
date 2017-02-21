@@ -11,4 +11,10 @@ class ExternalServiceEventCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = ExternalServiceEvent::class;
 	}
 
+
+	public function first(): ?ExternalServiceEvent
+	{
+		return $this->data[0];
+	}
+
 }

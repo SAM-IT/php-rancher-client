@@ -11,4 +11,10 @@ class ImageCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = Image::class;
 	}
 
+
+	public function first(): ?Image
+	{
+		return $this->data[0];
+	}
+
 }

@@ -11,4 +11,10 @@ class FieldDocumentationCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = FieldDocumentation::class;
 	}
 
+
+	public function first(): ?FieldDocumentation
+	{
+		return $this->data[0];
+	}
+
 }

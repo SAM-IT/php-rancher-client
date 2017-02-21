@@ -6,6 +6,25 @@ use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
 class ExternalStoragePoolEvent extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = [
+		'accountId',
+		'created',
+		'data',
+		'eventType',
+		'externalId',
+		'id',
+		'kind',
+		'reportedAccountId',
+		'state',
+		'transitioning',
+		'transitioningMessage',
+		'transitioningProgress',
+		'uuid',
+		'hostUuids',
+		'storagePool',
+	];
+
 	/**
 	 * @var string
 	 * @api-type reference[account]
@@ -64,13 +83,15 @@ class ExternalStoragePoolEvent extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): Account
+	public function getAccount(): \SamIT\Rancher\Generated\Collections\AccounCollection
 	{
+		return $this->client->retrieveEntities($this->links['account']);
 	}
 
 
-	public function getReportedAccount(): ReportedAccount
+	public function getReportedAccount(): \SamIT\Rancher\Generated\Collections\ReportedAccounCollection
 	{
+		return $this->client->retrieveEntities($this->links['reportedAccount']);
 	}
 
 }

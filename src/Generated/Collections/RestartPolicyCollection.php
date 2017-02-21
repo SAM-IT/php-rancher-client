@@ -11,4 +11,10 @@ class RestartPolicyCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = RestartPolicy::class;
 	}
 
+
+	public function first(): ?RestartPolicy
+	{
+		return $this->data[0];
+	}
+
 }

@@ -3,6 +3,20 @@ namespace SamIT\Rancher\Generated\Entities;
 
 class Identity extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = [
+		'all',
+		'externalId',
+		'externalIdType',
+		'id',
+		'login',
+		'name',
+		'profilePicture',
+		'profileUrl',
+		'projectId',
+		'role',
+	];
+
 	/** @var string */
 	public $all;
 

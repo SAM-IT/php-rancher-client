@@ -11,4 +11,10 @@ class PhysicalHostCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = PhysicalHost::class;
 	}
 
+
+	public function first(): ?PhysicalHost
+	{
+		return $this->data[0];
+	}
+
 }

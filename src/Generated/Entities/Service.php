@@ -6,6 +6,47 @@ use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
 class Service extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = [
+		'accountId',
+		'createIndex',
+		'created',
+		'data',
+		'description',
+		'externalId',
+		'healthState',
+		'id',
+		'kind',
+		'name',
+		'removeTime',
+		'removed',
+		'selectorContainer',
+		'selectorLink',
+		'stackId',
+		'state',
+		'system',
+		'uuid',
+		'vip',
+		'transitioning',
+		'transitioningMessage',
+		'transitioningProgress',
+		'scale',
+		'currentScale',
+		'scalePolicy',
+		'launchConfig',
+		'upgrade',
+		'secondaryLaunchConfigs',
+		'metadata',
+		'fqdn',
+		'publicEndpoints',
+		'retainIp',
+		'assignServiceIpAddress',
+		'startOnCreate',
+		'linkedServices',
+		'instanceIds',
+		'lbConfig',
+	];
+
 	/**
 	 * @var string
 	 * @api-type reference[account]
@@ -130,13 +171,63 @@ class Service extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): Account
+	public function getAccount(): \SamIT\Rancher\Generated\Collections\AccounCollection
 	{
+		return $this->client->retrieveEntities($this->links['account']);
 	}
 
 
-	public function getStack(): Stack
+	public function getStack(): \SamIT\Rancher\Generated\Collections\StacCollection
 	{
+		return $this->client->retrieveEntities($this->links['stack']);
+	}
+
+
+	public function getConsumedbyservices(): \SamIT\Rancher\Generated\Collections\ConsumedbyserviceCollection
+	{
+		return $this->client->retrieveEntities($this->links['consumedbyservices']);
+	}
+
+
+	public function getInstances(): \SamIT\Rancher\Generated\Collections\InstanceCollection
+	{
+		return $this->client->retrieveEntities($this->links['instances']);
+	}
+
+
+	public function getStorageDrivers(): \SamIT\Rancher\Generated\Collections\StorageDriverCollection
+	{
+		return $this->client->retrieveEntities($this->links['storageDrivers']);
+	}
+
+
+	public function getConsumedservices(): \SamIT\Rancher\Generated\Collections\ConsumedserviceCollection
+	{
+		return $this->client->retrieveEntities($this->links['consumedservices']);
+	}
+
+
+	public function getConfigItemStatuses(): \SamIT\Rancher\Generated\Collections\ConfigItemStatuseCollection
+	{
+		return $this->client->retrieveEntities($this->links['configItemStatuses']);
+	}
+
+
+	public function getServiceExposeMaps(): \SamIT\Rancher\Generated\Collections\ServiceExposeMapCollection
+	{
+		return $this->client->retrieveEntities($this->links['serviceExposeMaps']);
+	}
+
+
+	public function getNetworkDrivers(): \SamIT\Rancher\Generated\Collections\NetworkDriverCollection
+	{
+		return $this->client->retrieveEntities($this->links['networkDrivers']);
+	}
+
+
+	public function getServiceLogs(): \SamIT\Rancher\Generated\Collections\ServiceLogCollection
+	{
+		return $this->client->retrieveEntities($this->links['serviceLogs']);
 	}
 
 }

@@ -11,4 +11,10 @@ class CertificateCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = Certificate::class;
 	}
 
+
+	public function first(): ?Certificate
+	{
+		return $this->data[0];
+	}
+
 }

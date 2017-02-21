@@ -11,4 +11,10 @@ class NetworkDriverCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = NetworkDriver::class;
 	}
 
+
+	public function first(): ?NetworkDriver
+	{
+		return $this->data[0];
+	}
+
 }

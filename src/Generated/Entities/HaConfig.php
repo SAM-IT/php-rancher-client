@@ -3,6 +3,9 @@ namespace SamIT\Rancher\Generated\Entities;
 
 class HaConfig extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = ['clusterSize', 'dbSize', 'enabled', 'dbHost'];
+
 	/** @var int */
 	public $clusterSize;
 

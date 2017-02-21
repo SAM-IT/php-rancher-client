@@ -11,4 +11,10 @@ class ExternalHandlerProcessConfigCollection extends \SamIT\Rancher\Types\Collec
 		$this->resourceClass = ExternalHandlerProcessConfig::class;
 	}
 
+
+	public function first(): ?ExternalHandlerProcessConfig
+	{
+		return $this->data[0];
+	}
+
 }

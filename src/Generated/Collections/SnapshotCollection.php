@@ -11,4 +11,10 @@ class SnapshotCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = Snapshot::class;
 	}
 
+
+	public function first(): ?Snapshot
+	{
+		return $this->data[0];
+	}
+
 }

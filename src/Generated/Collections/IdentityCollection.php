@@ -11,4 +11,10 @@ class IdentityCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = Identity::class;
 	}
 
+
+	public function first(): ?Identity
+	{
+		return $this->data[0];
+	}
+
 }

@@ -3,6 +3,32 @@ namespace SamIT\Rancher\Generated\Entities;
 
 class AzureConfig extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = [
+		'availabilitySet',
+		'clientId',
+		'clientSecret',
+		'customData',
+		'dns',
+		'dockerPort',
+		'environment',
+		'image',
+		'location',
+		'noPublicIp',
+		'openPort',
+		'privateIpAddress',
+		'resourceGroup',
+		'size',
+		'sshUser',
+		'staticPublicIp',
+		'storageType',
+		'subnet',
+		'subnetPrefix',
+		'subscriptionId',
+		'usePrivateIp',
+		'vnet',
+	];
+
 	/** @var string */
 	public $availabilitySet;
 

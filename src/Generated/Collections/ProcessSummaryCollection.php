@@ -11,4 +11,10 @@ class ProcessSummaryCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = ProcessSummary::class;
 	}
 
+
+	public function first(): ?ProcessSummary
+	{
+		return $this->data[0];
+	}
+
 }

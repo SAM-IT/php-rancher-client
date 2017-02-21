@@ -6,6 +6,29 @@ use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
 class VolumeTemplate extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = [
+		'accountId',
+		'created',
+		'data',
+		'description',
+		'driver',
+		'external',
+		'id',
+		'kind',
+		'name',
+		'perContainer',
+		'removeTime',
+		'removed',
+		'stackId',
+		'state',
+		'uuid',
+		'transitioning',
+		'transitioningMessage',
+		'transitioningProgress',
+		'driverOpts',
+	];
+
 	/**
 	 * @var string
 	 * @api-type reference[account]
@@ -76,13 +99,21 @@ class VolumeTemplate extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): Account
+	public function getAccount(): \SamIT\Rancher\Generated\Collections\AccounCollection
 	{
+		return $this->client->retrieveEntities($this->links['account']);
 	}
 
 
-	public function getStack(): Stack
+	public function getStack(): \SamIT\Rancher\Generated\Collections\StacCollection
 	{
+		return $this->client->retrieveEntities($this->links['stack']);
+	}
+
+
+	public function getVolumes(): \SamIT\Rancher\Generated\Collections\VolumeCollection
+	{
+		return $this->client->retrieveEntities($this->links['volumes']);
 	}
 
 }

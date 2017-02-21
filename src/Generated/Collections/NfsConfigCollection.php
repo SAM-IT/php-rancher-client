@@ -11,4 +11,10 @@ class NfsConfigCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = NfsConfig::class;
 	}
 
+
+	public function first(): ?NfsConfig
+	{
+		return $this->data[0];
+	}
+
 }

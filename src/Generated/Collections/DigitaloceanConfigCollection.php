@@ -11,4 +11,10 @@ class DigitaloceanConfigCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = DigitaloceanConfig::class;
 	}
 
+
+	public function first(): ?DigitaloceanConfig
+	{
+		return $this->data[0];
+	}
+
 }

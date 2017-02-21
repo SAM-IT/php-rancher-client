@@ -11,4 +11,10 @@ class LdapconfigCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = Ldapconfig::class;
 	}
 
+
+	public function first(): ?Ldapconfig
+	{
+		return $this->data[0];
+	}
+
 }

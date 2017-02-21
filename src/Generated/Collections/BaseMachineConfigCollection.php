@@ -11,4 +11,10 @@ class BaseMachineConfigCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = BaseMachineConfig::class;
 	}
 
+
+	public function first(): ?BaseMachineConfig
+	{
+		return $this->data[0];
+	}
+
 }

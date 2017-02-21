@@ -11,4 +11,10 @@ class SetProjectMembersInputCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = SetProjectMembersInput::class;
 	}
 
+
+	public function first(): ?SetProjectMembersInput
+	{
+		return $this->data[0];
+	}
+
 }

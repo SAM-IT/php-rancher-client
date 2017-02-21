@@ -11,4 +11,10 @@ class LoadBalancerCookieStickinessPolicyCollection extends \SamIT\Rancher\Types\
 		$this->resourceClass = LoadBalancerCookieStickinessPolicy::class;
 	}
 
+
+	public function first(): ?LoadBalancerCookieStickinessPolicy
+	{
+		return $this->data[0];
+	}
+
 }

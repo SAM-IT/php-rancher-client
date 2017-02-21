@@ -11,4 +11,10 @@ class ContainerExecCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = ContainerExec::class;
 	}
 
+
+	public function first(): ?ContainerExec
+	{
+		return $this->data[0];
+	}
+
 }

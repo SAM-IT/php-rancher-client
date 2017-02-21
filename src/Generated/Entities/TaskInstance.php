@@ -3,6 +3,17 @@ namespace SamIT\Rancher\Generated\Entities;
 
 class TaskInstance extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = [
+		'endTime',
+		'exception',
+		'id',
+		'name',
+		'serverId',
+		'startTime',
+		'taskId',
+	];
+
 	/** @var date */
 	public $endTime;
 
@@ -34,8 +45,9 @@ class TaskInstance extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getTask(): Task
+	public function getTask(): \SamIT\Rancher\Generated\Collections\TasCollection
 	{
+		return $this->client->retrieveEntities($this->links['task']);
 	}
 
 }

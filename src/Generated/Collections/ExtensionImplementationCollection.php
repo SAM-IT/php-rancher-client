@@ -11,4 +11,10 @@ class ExtensionImplementationCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = ExtensionImplementation::class;
 	}
 
+
+	public function first(): ?ExtensionImplementation
+	{
+		return $this->data[0];
+	}
+
 }

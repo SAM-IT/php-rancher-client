@@ -3,6 +3,9 @@ namespace SamIT\Rancher\Generated\Entities;
 
 class ClusterMembership extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = ['clustered', 'config', 'heartbeat', 'id', 'name', 'uuid'];
+
 	/** @var boolean */
 	public $clustered;
 

@@ -5,6 +5,33 @@ use SamIT\Rancher\Generated\Enums\AccessModeEnum;
 
 class Ldapconfig extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = [
+		'accessMode',
+		'allowedIdentities',
+		'connectionTimeout',
+		'domain',
+		'enabled',
+		'groupMemberMappingAttribute',
+		'groupNameField',
+		'groupObjectClass',
+		'groupSearchField',
+		'loginDomain',
+		'name',
+		'port',
+		'server',
+		'serviceAccountPassword',
+		'serviceAccountUsername',
+		'tls',
+		'userDisabledBitMask',
+		'userEnabledAttribute',
+		'userLoginField',
+		'userMemberAttribute',
+		'userNameField',
+		'userObjectClass',
+		'userSearchField',
+	];
+
 	/** @var AccessModeEnum */
 	public $accessMode;
 

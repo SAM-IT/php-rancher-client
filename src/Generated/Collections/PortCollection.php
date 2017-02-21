@@ -11,4 +11,10 @@ class PortCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = Port::class;
 	}
 
+
+	public function first(): ?Port
+	{
+		return $this->data[0];
+	}
+
 }

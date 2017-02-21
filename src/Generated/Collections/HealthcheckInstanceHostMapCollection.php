@@ -11,4 +11,10 @@ class HealthcheckInstanceHostMapCollection extends \SamIT\Rancher\Types\Collecti
 		$this->resourceClass = HealthcheckInstanceHostMap::class;
 	}
 
+
+	public function first(): ?HealthcheckInstanceHostMap
+	{
+		return $this->data[0];
+	}
+
 }

@@ -11,4 +11,10 @@ class LbTargetConfigCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = LbTargetConfig::class;
 	}
 
+
+	public function first(): ?LbTargetConfig
+	{
+		return $this->data[0];
+	}
+
 }

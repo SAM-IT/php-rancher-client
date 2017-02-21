@@ -11,4 +11,10 @@ class SchemaCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = Schema::class;
 	}
 
+
+	public function first(): ?Schema
+	{
+		return $this->data[0];
+	}
+
 }

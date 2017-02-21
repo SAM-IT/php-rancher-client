@@ -11,4 +11,10 @@ class LabelCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = Label::class;
 	}
 
+
+	public function first(): ?Label
+	{
+		return $this->data[0];
+	}
+
 }

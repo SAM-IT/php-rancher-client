@@ -5,6 +5,19 @@ use SamIT\Rancher\Generated\Enums\ProtocolEnum;
 
 class PortRule extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = [
+		'backendName',
+		'hostname',
+		'path',
+		'priority',
+		'protocol',
+		'selector',
+		'serviceId',
+		'sourcePort',
+		'targetPort',
+	];
+
 	/** @var string */
 	public $backendName;
 

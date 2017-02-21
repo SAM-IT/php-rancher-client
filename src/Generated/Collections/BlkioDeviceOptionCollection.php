@@ -11,4 +11,10 @@ class BlkioDeviceOptionCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = BlkioDeviceOption::class;
 	}
 
+
+	public function first(): ?BlkioDeviceOption
+	{
+		return $this->data[0];
+	}
+
 }

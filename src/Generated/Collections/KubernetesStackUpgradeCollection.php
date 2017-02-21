@@ -11,4 +11,10 @@ class KubernetesStackUpgradeCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = KubernetesStackUpgrade::class;
 	}
 
+
+	public function first(): ?KubernetesStackUpgrade
+	{
+		return $this->data[0];
+	}
+
 }

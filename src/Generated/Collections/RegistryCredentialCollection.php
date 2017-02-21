@@ -11,4 +11,10 @@ class RegistryCredentialCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = RegistryCredential::class;
 	}
 
+
+	public function first(): ?RegistryCredential
+	{
+		return $this->data[0];
+	}
+
 }

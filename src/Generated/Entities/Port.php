@@ -6,6 +6,31 @@ use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
 class Port extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = [
+		'accountId',
+		'created',
+		'data',
+		'description',
+		'id',
+		'instanceId',
+		'kind',
+		'name',
+		'privateIpAddressId',
+		'privatePort',
+		'protocol',
+		'publicIpAddressId',
+		'publicPort',
+		'removeTime',
+		'removed',
+		'state',
+		'uuid',
+		'transitioning',
+		'transitioningMessage',
+		'transitioningProgress',
+		'bindAddress',
+	];
+
 	/**
 	 * @var string
 	 * @api-type reference[account]
@@ -88,23 +113,27 @@ class Port extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): Account
+	public function getAccount(): \SamIT\Rancher\Generated\Collections\AccounCollection
 	{
+		return $this->client->retrieveEntities($this->links['account']);
 	}
 
 
-	public function getInstance(): Instance
+	public function getInstance(): \SamIT\Rancher\Generated\Collections\InstancCollection
 	{
+		return $this->client->retrieveEntities($this->links['instance']);
 	}
 
 
-	public function getPrivateIpAddress(): PrivateIpAddress
+	public function getPrivateIpAddress(): \SamIT\Rancher\Generated\Collections\PrivateIpAddresCollection
 	{
+		return $this->client->retrieveEntities($this->links['privateIpAddress']);
 	}
 
 
-	public function getPublicIpAddress(): PublicIpAddress
+	public function getPublicIpAddress(): \SamIT\Rancher\Generated\Collections\PublicIpAddresCollection
 	{
+		return $this->client->retrieveEntities($this->links['publicIpAddress']);
 	}
 
 }

@@ -11,4 +11,10 @@ class AddOutputsInputCollection extends \SamIT\Rancher\Types\Collection
 		$this->resourceClass = AddOutputsInput::class;
 	}
 
+
+	public function first(): ?AddOutputsInput
+	{
+		return $this->data[0];
+	}
+
 }

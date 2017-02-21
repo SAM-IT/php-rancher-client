@@ -3,6 +3,9 @@ namespace SamIT\Rancher\Generated\Entities;
 
 class PublicEndpoint extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = ['hostId', 'instanceId', 'ipAddress', 'port', 'serviceId'];
+
 	/**
 	 * @var string
 	 * @api-type reference[host]

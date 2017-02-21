@@ -3,6 +3,19 @@ namespace SamIT\Rancher\Generated\Entities;
 
 class ConfigItemStatus extends \SamIT\Rancher\Types\Entity
 {
+	/** @var string[] The list of fields for this type. */
+	protected const RESOURCE_FIELDS = [
+		'accountId',
+		'agentId',
+		'appliedUpdated',
+		'appliedVersion',
+		'id',
+		'name',
+		'requestedUpdated',
+		'requestedVersion',
+		'sourceVersion',
+	];
+
 	/**
 	 * @var string
 	 * @api-type reference[account]
@@ -43,13 +56,15 @@ class ConfigItemStatus extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): Account
+	public function getAccount(): \SamIT\Rancher\Generated\Collections\AccounCollection
 	{
+		return $this->client->retrieveEntities($this->links['account']);
 	}
 
 
-	public function getAgent(): Agent
+	public function getAgent(): \SamIT\Rancher\Generated\Collections\AgenCollection
 	{
+		return $this->client->retrieveEntities($this->links['agent']);
 	}
 
 }
