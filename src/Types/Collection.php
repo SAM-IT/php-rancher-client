@@ -6,7 +6,7 @@ namespace SamIT\Rancher\Types;
 
 use Traversable;
 
-class Collection implements \IteratorAggregate
+abstract class Collection implements \IteratorAggregate
 {
     protected $resourceClass;
 
@@ -51,4 +51,7 @@ class Collection implements \IteratorAggregate
         $instance = new $className();
         return $instance;
     }
+
+    abstract  public function first();
+
 }

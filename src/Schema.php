@@ -5,9 +5,6 @@ namespace SamIT\Rancher;
 
 
 use Nette\PhpGenerator\ClassType;
-use Nette\PhpGenerator\Helpers;
-use Nette\PhpGenerator\PhpFile;
-use Nette\PhpGenerator\PhpLiteral;
 use Nette\PhpGenerator\PhpNamespace;
 use SamIT\Rancher\Types\Collection;
 use SamIT\Rancher\Types\Entity;
@@ -21,7 +18,6 @@ class Schema extends Entity
     public $id;
     public $type;
     public $links;
-
 
     /** @var ResourceField[] */
     public $resourceFields = [];
@@ -81,23 +77,20 @@ class Schema extends Entity
 
         $this->addFields($object);
 
-        $generateClass = $object->addMethod('generateClass')
-            ->setBody('return parent::generateClass($namespace, $enumGenerator, $directory);')
-            ->setReturnType(ClassType::class);
-        $generateClass->addParameter('namespace')
-            ->setTypeHint('string')
-            ->setOptional(false);
-        $generateClass->addParameter('enumGenerator')
-            ->setTypeHint(EnumGenerator::class)
-            ->setOptional(false);
-        $generateClass->addParameter('directory')
-            ->setTypeHint('string')
-            ->setOptional(false);
-
-
         return $file;
 
 
+    }
+
+    protected function addIncludeableLinks(ClassType $object)
+    {
+        if (isset($this->includeableLinks) && is_array($this->includeableLinks)) {
+            foreach ($this->includeableLinks as $pluralName) {
+                $object->addMethod('get' . ucfirst($pluralName))
+                    ->setReturnType("\\SamIT\\Rancher\\Generated\\Collections\\" . substr(ucfirst($pluralName), 0, -1) . "Collection")
+                    ->addBody('return $this->client->retrieveEntities($this->links[?]);', [$pluralName]);
+            }
+        }
     }
 
     protected function addLinks(ClassType $object)
@@ -110,6 +103,9 @@ class Schema extends Entity
     }
     protected function addFields(ClassType $object, EnumGenerator $enumGenerator = null, $parent = null)
     {
+        $object->addConstant('RESOURCE_FIELDS', array_keys($this->resourceFields))
+            ->setVisibility('protected')
+            ->addComment('@var string[] The list of fields for this type.');
         /**
          * @var string $name
          * @var  ResourceField $def
@@ -136,12 +132,16 @@ class Schema extends Entity
         PhpNamespace $namespace,
         EnumGenerator $enumGenerator
     ) : ClassType {
-        ;
+        if (get_class($this) == __CLASS__) {
+            throw new \Exception("Unexpected stuff.");
+        }
         $object = $namespace->addClass($this->getClassName())
             ->addExtend(Entity::class);
 
         $this->addFields($object, $enumGenerator);
         $this->addLinks($object);
+
+        $this->addIncludeableLinks($object);
         return $object;
     }
 
@@ -156,6 +156,11 @@ class Schema extends Entity
         $object->addExtend(Collection::class);
         $object->addMethod('__construct')
             ->addBody('$this->resourceClass = ' . $aliasOut. '::class;');
+
+        $object->addMethod('first')
+            ->setReturnType($baseClass->getNamespace()->getName() . '\\' . $baseClass->getName())
+            ->setReturnNullable(true)
+            ->setBody('return $this->data[0];');
         return $object;
 
     }

@@ -129,14 +129,14 @@ class Client
     /**
      * Creates the classes for a schema.
      * Also updates the hierarchy tree.
-     * @param Schema $schema
+     * @param \SamIT\Rancher\Generated\Schema $schema
      * @param PhpNamespace $entityNamespace
      * @param PhpNamespace $collectionNamespace
      * @param EnumGenerator $enumGenerator
      * @param ClassType $client
      */
     private function parseSchema(
-        Schema $schema,
+        \SamIT\Rancher\Generated\Schema $schema,
         PhpNamespace $entityNamespace,
         PhpNamespace$collectionNamespace,
         EnumGenerator $enumGenerator,
@@ -225,7 +225,7 @@ class Client
      * @param int|null|null $limit
      * @return Entity[]|Collection
      */
-    protected function retrieveEntities($url, ?int $limit = null) : Collection
+    public function retrieveEntities($url, ?int $limit = null) : Collection
     {
 
         $entityConfigs = $this->retrieveRawEntities($url, $limit);
@@ -233,12 +233,46 @@ class Client
             $collection = Collection::createCollection($entityConfigs['resourceType'], $this->namespace . "\\Collections");
             // Iterate over data.
             foreach($entityConfigs['data'] as $entityConfig) {
-                $collection->add(Entity::createEntity($entityConfig, $this->namespace . "\\Entities"));
+                $collection->add(Entity::createEntity($entityConfig, $this->namespace . "\\Entities", $this));
             }
 
             return $collection;
         }
 
+    }
+
+    public function updateEntity(Entity $entity)
+    {
+        if (isset($entity->actions['update'])) {
+            $response = $this->httpClient->put($entity->actions['update'], [
+                'json' => $entity->jsonSerialize()
+            ]);
+            if ($response->getStatusCode() === 200) {
+                $entityConfig = \GuzzleHttp\json_decode($response->getBody()->getContents(), true);
+                Entity::applyConfig($entity, $entityConfig);
+                return true;
+            }
+
+
+        } else {
+            throw new \Exception("Updating not supported.");
+        }
+
+
+    }
+
+    public function reloadEntity(Entity $entity)
+    {
+        if (isset($entity->links['self'])) {
+            $response = $this->httpClient->get($entity->links['self']);
+            if ($response->getStatusCode() === 200) {
+                $entityConfig = \GuzzleHttp\json_decode($response->getBody()->getContents(), true);
+                Entity::applyConfig($entity, $entityConfig);
+                return true;
+            }
+        } else {
+            throw new \Exception("Reloading not supported.");
+        }
     }
 
 
