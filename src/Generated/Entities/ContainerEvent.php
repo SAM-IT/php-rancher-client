@@ -1,6 +1,8 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Collections\AccounCollection;
+use SamIT\Rancher\Generated\Collections\HosCollection;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
@@ -87,13 +89,13 @@ class ContainerEvent extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): \SamIT\Rancher\Generated\Collections\AccounCollection
+	public function getAccount(): AccounCollection
 	{
 		return $this->client->retrieveEntities($this->links['account']);
 	}
 
 
-	public function getHost(): \SamIT\Rancher\Generated\Collections\HosCollection
+	public function getHost(): HosCollection
 	{
 		return $this->client->retrieveEntities($this->links['host']);
 	}

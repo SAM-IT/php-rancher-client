@@ -1,6 +1,8 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Collections\ProcessInstancCollection;
+
 class ProcessExecution extends \SamIT\Rancher\Types\Entity
 {
 	/** @var string[] The list of fields for this type. */
@@ -31,7 +33,7 @@ class ProcessExecution extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getProcessInstance(): \SamIT\Rancher\Generated\Collections\ProcessInstancCollection
+	public function getProcessInstance(): ProcessInstancCollection
 	{
 		return $this->client->retrieveEntities($this->links['processInstance']);
 	}

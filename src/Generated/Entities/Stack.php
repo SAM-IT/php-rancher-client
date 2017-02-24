@@ -1,6 +1,12 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Collections\AccounCollection;
+use SamIT\Rancher\Generated\Collections\ConfigItemStatuseCollection;
+use SamIT\Rancher\Generated\Collections\SecretCollection;
+use SamIT\Rancher\Generated\Collections\ServiceCollection;
+use SamIT\Rancher\Generated\Collections\VolumeCollection;
+use SamIT\Rancher\Generated\Collections\VolumeTemplateCollection;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
@@ -128,37 +134,37 @@ class Stack extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): \SamIT\Rancher\Generated\Collections\AccounCollection
+	public function getAccount(): AccounCollection
 	{
 		return $this->client->retrieveEntities($this->links['account']);
 	}
 
 
-	public function getVolumeTemplates(): \SamIT\Rancher\Generated\Collections\VolumeTemplateCollection
+	public function getVolumeTemplates(): VolumeTemplateCollection
 	{
 		return $this->client->retrieveEntities($this->links['volumeTemplates']);
 	}
 
 
-	public function getVolumes(): \SamIT\Rancher\Generated\Collections\VolumeCollection
+	public function getVolumes(): VolumeCollection
 	{
 		return $this->client->retrieveEntities($this->links['volumes']);
 	}
 
 
-	public function getConfigItemStatuses(): \SamIT\Rancher\Generated\Collections\ConfigItemStatuseCollection
+	public function getConfigItemStatuses(): ConfigItemStatuseCollection
 	{
 		return $this->client->retrieveEntities($this->links['configItemStatuses']);
 	}
 
 
-	public function getServices(): \SamIT\Rancher\Generated\Collections\ServiceCollection
+	public function getServices(): ServiceCollection
 	{
 		return $this->client->retrieveEntities($this->links['services']);
 	}
 
 
-	public function getSecrets(): \SamIT\Rancher\Generated\Collections\SecretCollection
+	public function getSecrets(): SecretCollection
 	{
 		return $this->client->retrieveEntities($this->links['secrets']);
 	}

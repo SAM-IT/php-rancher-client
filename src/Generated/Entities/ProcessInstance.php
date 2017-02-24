@@ -1,6 +1,9 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Collections\AccounCollection;
+use SamIT\Rancher\Generated\Collections\ProcessExecutionCollection;
+
 class ProcessInstance extends \SamIT\Rancher\Types\Entity
 {
 	/** @var string[] The list of fields for this type. */
@@ -81,13 +84,13 @@ class ProcessInstance extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): \SamIT\Rancher\Generated\Collections\AccounCollection
+	public function getAccount(): AccounCollection
 	{
 		return $this->client->retrieveEntities($this->links['account']);
 	}
 
 
-	public function getProcessExecutions(): \SamIT\Rancher\Generated\Collections\ProcessExecutionCollection
+	public function getProcessExecutions(): ProcessExecutionCollection
 	{
 		return $this->client->retrieveEntities($this->links['processExecutions']);
 	}

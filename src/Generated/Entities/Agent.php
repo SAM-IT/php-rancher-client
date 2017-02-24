@@ -1,6 +1,12 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Collections\AccounCollection;
+use SamIT\Rancher\Generated\Collections\ConfigItemStatuseCollection;
+use SamIT\Rancher\Generated\Collections\HostCollection;
+use SamIT\Rancher\Generated\Collections\InstanceCollection;
+use SamIT\Rancher\Generated\Collections\PhysicalHostCollection;
+use SamIT\Rancher\Generated\Collections\StoragePoolCollection;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
@@ -84,37 +90,37 @@ class Agent extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): \SamIT\Rancher\Generated\Collections\AccounCollection
+	public function getAccount(): AccounCollection
 	{
 		return $this->client->retrieveEntities($this->links['account']);
 	}
 
 
-	public function getInstances(): \SamIT\Rancher\Generated\Collections\InstanceCollection
+	public function getInstances(): InstanceCollection
 	{
 		return $this->client->retrieveEntities($this->links['instances']);
 	}
 
 
-	public function getHosts(): \SamIT\Rancher\Generated\Collections\HostCollection
+	public function getHosts(): HostCollection
 	{
 		return $this->client->retrieveEntities($this->links['hosts']);
 	}
 
 
-	public function getStoragePools(): \SamIT\Rancher\Generated\Collections\StoragePoolCollection
+	public function getStoragePools(): StoragePoolCollection
 	{
 		return $this->client->retrieveEntities($this->links['storagePools']);
 	}
 
 
-	public function getConfigItemStatuses(): \SamIT\Rancher\Generated\Collections\ConfigItemStatuseCollection
+	public function getConfigItemStatuses(): ConfigItemStatuseCollection
 	{
 		return $this->client->retrieveEntities($this->links['configItemStatuses']);
 	}
 
 
-	public function getPhysicalHosts(): \SamIT\Rancher\Generated\Collections\PhysicalHostCollection
+	public function getPhysicalHosts(): PhysicalHostCollection
 	{
 		return $this->client->retrieveEntities($this->links['physicalHosts']);
 	}

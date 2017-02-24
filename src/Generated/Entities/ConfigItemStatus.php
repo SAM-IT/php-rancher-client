@@ -1,6 +1,9 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Collections\AccounCollection;
+use SamIT\Rancher\Generated\Collections\AgenCollection;
+
 class ConfigItemStatus extends \SamIT\Rancher\Types\Entity
 {
 	/** @var string[] The list of fields for this type. */
@@ -56,13 +59,13 @@ class ConfigItemStatus extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): \SamIT\Rancher\Generated\Collections\AccounCollection
+	public function getAccount(): AccounCollection
 	{
 		return $this->client->retrieveEntities($this->links['account']);
 	}
 
 
-	public function getAgent(): \SamIT\Rancher\Generated\Collections\AgenCollection
+	public function getAgent(): AgenCollection
 	{
 		return $this->client->retrieveEntities($this->links['agent']);
 	}

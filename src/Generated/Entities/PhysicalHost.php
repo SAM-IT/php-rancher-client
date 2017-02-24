@@ -1,6 +1,8 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Collections\AccounCollection;
+use SamIT\Rancher\Generated\Collections\HostCollection;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
@@ -84,13 +86,13 @@ class PhysicalHost extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): \SamIT\Rancher\Generated\Collections\AccounCollection
+	public function getAccount(): AccounCollection
 	{
 		return $this->client->retrieveEntities($this->links['account']);
 	}
 
 
-	public function getHosts(): \SamIT\Rancher\Generated\Collections\HostCollection
+	public function getHosts(): HostCollection
 	{
 		return $this->client->retrieveEntities($this->links['hosts']);
 	}

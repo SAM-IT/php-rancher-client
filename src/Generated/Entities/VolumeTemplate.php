@@ -1,6 +1,9 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Collections\AccounCollection;
+use SamIT\Rancher\Generated\Collections\StacCollection;
+use SamIT\Rancher\Generated\Collections\VolumeCollection;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
@@ -99,19 +102,19 @@ class VolumeTemplate extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): \SamIT\Rancher\Generated\Collections\AccounCollection
+	public function getAccount(): AccounCollection
 	{
 		return $this->client->retrieveEntities($this->links['account']);
 	}
 
 
-	public function getStack(): \SamIT\Rancher\Generated\Collections\StacCollection
+	public function getStack(): StacCollection
 	{
 		return $this->client->retrieveEntities($this->links['stack']);
 	}
 
 
-	public function getVolumes(): \SamIT\Rancher\Generated\Collections\VolumeCollection
+	public function getVolumes(): VolumeCollection
 	{
 		return $this->client->retrieveEntities($this->links['volumes']);
 	}

@@ -1,6 +1,24 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Collections\AccounCollection;
+use SamIT\Rancher\Generated\Collections\AgenCollection;
+use SamIT\Rancher\Generated\Collections\CredentialCollection;
+use SamIT\Rancher\Generated\Collections\HealthcheckInstanceHostMapCollection;
+use SamIT\Rancher\Generated\Collections\HostCollection;
+use SamIT\Rancher\Generated\Collections\InstanceCollection;
+use SamIT\Rancher\Generated\Collections\InstanceLabelCollection;
+use SamIT\Rancher\Generated\Collections\InstanceLinkCollection;
+use SamIT\Rancher\Generated\Collections\MountCollection;
+use SamIT\Rancher\Generated\Collections\NetworkContaineCollection;
+use SamIT\Rancher\Generated\Collections\PortCollection;
+use SamIT\Rancher\Generated\Collections\RegistryCredentiaCollection;
+use SamIT\Rancher\Generated\Collections\ServiceCollection;
+use SamIT\Rancher\Generated\Collections\ServiceEventCollection;
+use SamIT\Rancher\Generated\Collections\ServiceExposeMapCollection;
+use SamIT\Rancher\Generated\Collections\ServiceLogCollection;
+use SamIT\Rancher\Generated\Collections\TargetInstanceLinkCollection;
+use SamIT\Rancher\Generated\Collections\VolumeCollection;
 use SamIT\Rancher\Generated\Enums\HealthStateEnum;
 use SamIT\Rancher\Generated\Enums\InstanceTriggeredStopEnum;
 use SamIT\Rancher\Generated\Enums\PidModeEnum;
@@ -451,13 +469,13 @@ class Container extends Instance
 	];
 
 
-	public function getAccount(): \SamIT\Rancher\Generated\Collections\AccounCollection
+	public function getAccount(): AccounCollection
 	{
 		return $this->client->retrieveEntities($this->links['account']);
 	}
 
 
-	public function getAgent(): \SamIT\Rancher\Generated\Collections\AgenCollection
+	public function getAgent(): AgenCollection
 	{
 		return $this->client->retrieveEntities($this->links['agent']);
 	}
@@ -468,13 +486,13 @@ class Container extends Instance
 	}
 
 
-	public function getNetworkContainer(): \SamIT\Rancher\Generated\Collections\NetworkContaineCollection
+	public function getNetworkContainer(): NetworkContaineCollection
 	{
 		return $this->client->retrieveEntities($this->links['networkContainer']);
 	}
 
 
-	public function getRegistryCredential(): \SamIT\Rancher\Generated\Collections\RegistryCredentiaCollection
+	public function getRegistryCredential(): RegistryCredentiaCollection
 	{
 		return $this->client->retrieveEntities($this->links['registryCredential']);
 	}
@@ -490,85 +508,85 @@ class Container extends Instance
 	}
 
 
-	public function getCredentials(): \SamIT\Rancher\Generated\Collections\CredentialCollection
+	public function getCredentials(): CredentialCollection
 	{
 		return $this->client->retrieveEntities($this->links['credentials']);
 	}
 
 
-	public function getInstances(): \SamIT\Rancher\Generated\Collections\InstanceCollection
+	public function getInstances(): InstanceCollection
 	{
 		return $this->client->retrieveEntities($this->links['instances']);
 	}
 
 
-	public function getHosts(): \SamIT\Rancher\Generated\Collections\HostCollection
+	public function getHosts(): HostCollection
 	{
 		return $this->client->retrieveEntities($this->links['hosts']);
 	}
 
 
-	public function getVolumes(): \SamIT\Rancher\Generated\Collections\VolumeCollection
+	public function getVolumes(): VolumeCollection
 	{
 		return $this->client->retrieveEntities($this->links['volumes']);
 	}
 
 
-	public function getMounts(): \SamIT\Rancher\Generated\Collections\MountCollection
+	public function getMounts(): MountCollection
 	{
 		return $this->client->retrieveEntities($this->links['mounts']);
 	}
 
 
-	public function getServiceEvents(): \SamIT\Rancher\Generated\Collections\ServiceEventCollection
+	public function getServiceEvents(): ServiceEventCollection
 	{
 		return $this->client->retrieveEntities($this->links['serviceEvents']);
 	}
 
 
-	public function getServiceExposeMaps(): \SamIT\Rancher\Generated\Collections\ServiceExposeMapCollection
+	public function getServiceExposeMaps(): ServiceExposeMapCollection
 	{
 		return $this->client->retrieveEntities($this->links['serviceExposeMaps']);
 	}
 
 
-	public function getServices(): \SamIT\Rancher\Generated\Collections\ServiceCollection
+	public function getServices(): ServiceCollection
 	{
 		return $this->client->retrieveEntities($this->links['services']);
 	}
 
 
-	public function getPorts(): \SamIT\Rancher\Generated\Collections\PortCollection
+	public function getPorts(): PortCollection
 	{
 		return $this->client->retrieveEntities($this->links['ports']);
 	}
 
 
-	public function getInstanceLinks(): \SamIT\Rancher\Generated\Collections\InstanceLinkCollection
+	public function getInstanceLinks(): InstanceLinkCollection
 	{
 		return $this->client->retrieveEntities($this->links['instanceLinks']);
 	}
 
 
-	public function getHealthcheckInstanceHostMaps(): \SamIT\Rancher\Generated\Collections\HealthcheckInstanceHostMapCollection
+	public function getHealthcheckInstanceHostMaps(): HealthcheckInstanceHostMapCollection
 	{
 		return $this->client->retrieveEntities($this->links['healthcheckInstanceHostMaps']);
 	}
 
 
-	public function getTargetInstanceLinks(): \SamIT\Rancher\Generated\Collections\TargetInstanceLinkCollection
+	public function getTargetInstanceLinks(): TargetInstanceLinkCollection
 	{
 		return $this->client->retrieveEntities($this->links['targetInstanceLinks']);
 	}
 
 
-	public function getInstanceLabels(): \SamIT\Rancher\Generated\Collections\InstanceLabelCollection
+	public function getInstanceLabels(): InstanceLabelCollection
 	{
 		return $this->client->retrieveEntities($this->links['instanceLabels']);
 	}
 
 
-	public function getServiceLogs(): \SamIT\Rancher\Generated\Collections\ServiceLogCollection
+	public function getServiceLogs(): ServiceLogCollection
 	{
 		return $this->client->retrieveEntities($this->links['serviceLogs']);
 	}

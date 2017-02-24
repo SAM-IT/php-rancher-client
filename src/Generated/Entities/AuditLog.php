@@ -1,6 +1,8 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Collections\AccounCollection;
+use SamIT\Rancher\Generated\Collections\AuthenticatedAsAccounCollection;
 use SamIT\Rancher\Generated\Enums\AuthTypeEnum;
 
 class AuditLog extends \SamIT\Rancher\Types\Entity
@@ -85,13 +87,13 @@ class AuditLog extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): \SamIT\Rancher\Generated\Collections\AccounCollection
+	public function getAccount(): AccounCollection
 	{
 		return $this->client->retrieveEntities($this->links['account']);
 	}
 
 
-	public function getAuthenticatedAsAccount(): \SamIT\Rancher\Generated\Collections\AuthenticatedAsAccounCollection
+	public function getAuthenticatedAsAccount(): AuthenticatedAsAccounCollection
 	{
 		return $this->client->retrieveEntities($this->links['authenticatedAsAccount']);
 	}

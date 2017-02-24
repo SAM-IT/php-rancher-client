@@ -1,6 +1,8 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Collections\TasCollection;
+
 class TaskInstance extends \SamIT\Rancher\Types\Entity
 {
 	/** @var string[] The list of fields for this type. */
@@ -45,7 +47,7 @@ class TaskInstance extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getTask(): \SamIT\Rancher\Generated\Collections\TasCollection
+	public function getTask(): TasCollection
 	{
 		return $this->client->retrieveEntities($this->links['task']);
 	}

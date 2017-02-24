@@ -1,6 +1,8 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Collections\BackupTargeCollection;
+
 class SnapshotBackupInput extends \SamIT\Rancher\Types\Entity
 {
 	/** @var string[] The list of fields for this type. */
@@ -27,7 +29,7 @@ class SnapshotBackupInput extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getBackupTarget(): \SamIT\Rancher\Generated\Collections\BackupTargeCollection
+	public function getBackupTarget(): BackupTargeCollection
 	{
 		return $this->client->retrieveEntities($this->links['backupTarget']);
 	}

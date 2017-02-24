@@ -1,6 +1,9 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Collections\AccounCollection;
+use SamIT\Rancher\Generated\Collections\NetworkCollection;
+use SamIT\Rancher\Generated\Collections\ServicCollection;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
@@ -95,19 +98,19 @@ class NetworkDriver extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): \SamIT\Rancher\Generated\Collections\AccounCollection
+	public function getAccount(): AccounCollection
 	{
 		return $this->client->retrieveEntities($this->links['account']);
 	}
 
 
-	public function getService(): \SamIT\Rancher\Generated\Collections\ServicCollection
+	public function getService(): ServicCollection
 	{
 		return $this->client->retrieveEntities($this->links['service']);
 	}
 
 
-	public function getNetworks(): \SamIT\Rancher\Generated\Collections\NetworkCollection
+	public function getNetworks(): NetworkCollection
 	{
 		return $this->client->retrieveEntities($this->links['networks']);
 	}

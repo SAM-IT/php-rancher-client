@@ -1,6 +1,9 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Collections\AccounCollection;
+use SamIT\Rancher\Generated\Collections\IpAddresseCollection;
+use SamIT\Rancher\Generated\Collections\NetworCollection;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
@@ -103,19 +106,19 @@ class Subnet extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): \SamIT\Rancher\Generated\Collections\AccounCollection
+	public function getAccount(): AccounCollection
 	{
 		return $this->client->retrieveEntities($this->links['account']);
 	}
 
 
-	public function getNetwork(): \SamIT\Rancher\Generated\Collections\NetworCollection
+	public function getNetwork(): NetworCollection
 	{
 		return $this->client->retrieveEntities($this->links['network']);
 	}
 
 
-	public function getIpAddresses(): \SamIT\Rancher\Generated\Collections\IpAddresseCollection
+	public function getIpAddresses(): IpAddresseCollection
 	{
 		return $this->client->retrieveEntities($this->links['ipAddresses']);
 	}

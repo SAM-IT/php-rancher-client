@@ -1,6 +1,12 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Collections\AccounCollection;
+use SamIT\Rancher\Generated\Collections\CredentialCollection;
+use SamIT\Rancher\Generated\Collections\HostCollection;
+use SamIT\Rancher\Generated\Collections\ImageCollection;
+use SamIT\Rancher\Generated\Collections\StorageDriveCollection;
+use SamIT\Rancher\Generated\Collections\VolumeCollection;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
@@ -111,37 +117,37 @@ class StoragePool extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): \SamIT\Rancher\Generated\Collections\AccounCollection
+	public function getAccount(): AccounCollection
 	{
 		return $this->client->retrieveEntities($this->links['account']);
 	}
 
 
-	public function getStorageDriver(): \SamIT\Rancher\Generated\Collections\StorageDriveCollection
+	public function getStorageDriver(): StorageDriveCollection
 	{
 		return $this->client->retrieveEntities($this->links['storageDriver']);
 	}
 
 
-	public function getImages(): \SamIT\Rancher\Generated\Collections\ImageCollection
+	public function getImages(): ImageCollection
 	{
 		return $this->client->retrieveEntities($this->links['images']);
 	}
 
 
-	public function getCredentials(): \SamIT\Rancher\Generated\Collections\CredentialCollection
+	public function getCredentials(): CredentialCollection
 	{
 		return $this->client->retrieveEntities($this->links['credentials']);
 	}
 
 
-	public function getHosts(): \SamIT\Rancher\Generated\Collections\HostCollection
+	public function getHosts(): HostCollection
 	{
 		return $this->client->retrieveEntities($this->links['hosts']);
 	}
 
 
-	public function getVolumes(): \SamIT\Rancher\Generated\Collections\VolumeCollection
+	public function getVolumes(): VolumeCollection
 	{
 		return $this->client->retrieveEntities($this->links['volumes']);
 	}

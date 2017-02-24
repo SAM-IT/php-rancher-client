@@ -1,6 +1,10 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Collections\AccounCollection;
+use SamIT\Rancher\Generated\Collections\ServicCollection;
+use SamIT\Rancher\Generated\Collections\StoragePoolCollection;
+use SamIT\Rancher\Generated\Collections\VolumeCollection;
 use SamIT\Rancher\Generated\Enums\ScopeEnum;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
@@ -101,25 +105,25 @@ class StorageDriver extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): \SamIT\Rancher\Generated\Collections\AccounCollection
+	public function getAccount(): AccounCollection
 	{
 		return $this->client->retrieveEntities($this->links['account']);
 	}
 
 
-	public function getService(): \SamIT\Rancher\Generated\Collections\ServicCollection
+	public function getService(): ServicCollection
 	{
 		return $this->client->retrieveEntities($this->links['service']);
 	}
 
 
-	public function getStoragePools(): \SamIT\Rancher\Generated\Collections\StoragePoolCollection
+	public function getStoragePools(): StoragePoolCollection
 	{
 		return $this->client->retrieveEntities($this->links['storagePools']);
 	}
 
 
-	public function getVolumes(): \SamIT\Rancher\Generated\Collections\VolumeCollection
+	public function getVolumes(): VolumeCollection
 	{
 		return $this->client->retrieveEntities($this->links['volumes']);
 	}

@@ -1,6 +1,8 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Collections\ExternalHandlerCollection;
+use SamIT\Rancher\Generated\Collections\ExternalHandlerExternalHandlerProcessMapCollection;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
@@ -69,13 +71,13 @@ class ExternalHandlerProcess extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getExternalHandlerExternalHandlerProcessMaps(): \SamIT\Rancher\Generated\Collections\ExternalHandlerExternalHandlerProcessMapCollection
+	public function getExternalHandlerExternalHandlerProcessMaps(): ExternalHandlerExternalHandlerProcessMapCollection
 	{
 		return $this->client->retrieveEntities($this->links['externalHandlerExternalHandlerProcessMaps']);
 	}
 
 
-	public function getExternalHandlers(): \SamIT\Rancher\Generated\Collections\ExternalHandlerCollection
+	public function getExternalHandlers(): ExternalHandlerCollection
 	{
 		return $this->client->retrieveEntities($this->links['externalHandlers']);
 	}

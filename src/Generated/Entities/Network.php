@@ -1,6 +1,10 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Collections\AccounCollection;
+use SamIT\Rancher\Generated\Collections\IpAddresseCollection;
+use SamIT\Rancher\Generated\Collections\NetworkDriveCollection;
+use SamIT\Rancher\Generated\Collections\SubnetCollection;
 use SamIT\Rancher\Generated\Enums\DefaultPolicyActionEnum;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
@@ -112,25 +116,25 @@ class Network extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): \SamIT\Rancher\Generated\Collections\AccounCollection
+	public function getAccount(): AccounCollection
 	{
 		return $this->client->retrieveEntities($this->links['account']);
 	}
 
 
-	public function getNetworkDriver(): \SamIT\Rancher\Generated\Collections\NetworkDriveCollection
+	public function getNetworkDriver(): NetworkDriveCollection
 	{
 		return $this->client->retrieveEntities($this->links['networkDriver']);
 	}
 
 
-	public function getIpAddresses(): \SamIT\Rancher\Generated\Collections\IpAddresseCollection
+	public function getIpAddresses(): IpAddresseCollection
 	{
 		return $this->client->retrieveEntities($this->links['ipAddresses']);
 	}
 
 
-	public function getSubnets(): \SamIT\Rancher\Generated\Collections\SubnetCollection
+	public function getSubnets(): SubnetCollection
 	{
 		return $this->client->retrieveEntities($this->links['subnets']);
 	}

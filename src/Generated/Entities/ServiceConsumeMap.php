@@ -1,6 +1,10 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Collections\AccounCollection;
+use SamIT\Rancher\Generated\Collections\ConsumedServicCollection;
+use SamIT\Rancher\Generated\Collections\InstanceLinkCollection;
+use SamIT\Rancher\Generated\Collections\ServicCollection;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
@@ -94,25 +98,25 @@ class ServiceConsumeMap extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): \SamIT\Rancher\Generated\Collections\AccounCollection
+	public function getAccount(): AccounCollection
 	{
 		return $this->client->retrieveEntities($this->links['account']);
 	}
 
 
-	public function getConsumedService(): \SamIT\Rancher\Generated\Collections\ConsumedServicCollection
+	public function getConsumedService(): ConsumedServicCollection
 	{
 		return $this->client->retrieveEntities($this->links['consumedService']);
 	}
 
 
-	public function getService(): \SamIT\Rancher\Generated\Collections\ServicCollection
+	public function getService(): ServicCollection
 	{
 		return $this->client->retrieveEntities($this->links['service']);
 	}
 
 
-	public function getInstanceLinks(): \SamIT\Rancher\Generated\Collections\InstanceLinkCollection
+	public function getInstanceLinks(): InstanceLinkCollection
 	{
 		return $this->client->retrieveEntities($this->links['instanceLinks']);
 	}

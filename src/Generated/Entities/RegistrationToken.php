@@ -1,6 +1,9 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Collections\AccounCollection;
+use SamIT\Rancher\Generated\Collections\ImageCollection;
+use SamIT\Rancher\Generated\Collections\InstanceCollection;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
@@ -47,19 +50,19 @@ class RegistrationToken extends Credential
 	];
 
 
-	public function getAccount(): \SamIT\Rancher\Generated\Collections\AccounCollection
+	public function getAccount(): AccounCollection
 	{
 		return $this->client->retrieveEntities($this->links['account']);
 	}
 
 
-	public function getImages(): \SamIT\Rancher\Generated\Collections\ImageCollection
+	public function getImages(): ImageCollection
 	{
 		return $this->client->retrieveEntities($this->links['images']);
 	}
 
 
-	public function getInstances(): \SamIT\Rancher\Generated\Collections\InstanceCollection
+	public function getInstances(): InstanceCollection
 	{
 		return $this->client->retrieveEntities($this->links['instances']);
 	}

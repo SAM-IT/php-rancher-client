@@ -1,6 +1,10 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Collections\AccounCollection;
+use SamIT\Rancher\Generated\Collections\InstanceCollection;
+use SamIT\Rancher\Generated\Collections\StoragePoolCollection;
+use SamIT\Rancher\Generated\Collections\VolumeCollection;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
@@ -76,25 +80,25 @@ class Image extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): \SamIT\Rancher\Generated\Collections\AccounCollection
+	public function getAccount(): AccounCollection
 	{
 		return $this->client->retrieveEntities($this->links['account']);
 	}
 
 
-	public function getInstances(): \SamIT\Rancher\Generated\Collections\InstanceCollection
+	public function getInstances(): InstanceCollection
 	{
 		return $this->client->retrieveEntities($this->links['instances']);
 	}
 
 
-	public function getStoragePools(): \SamIT\Rancher\Generated\Collections\StoragePoolCollection
+	public function getStoragePools(): StoragePoolCollection
 	{
 		return $this->client->retrieveEntities($this->links['storagePools']);
 	}
 
 
-	public function getVolumes(): \SamIT\Rancher\Generated\Collections\VolumeCollection
+	public function getVolumes(): VolumeCollection
 	{
 		return $this->client->retrieveEntities($this->links['volumes']);
 	}

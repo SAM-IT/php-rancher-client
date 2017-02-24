@@ -1,6 +1,10 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Collections\AccounCollection;
+use SamIT\Rancher\Generated\Collections\InstancCollection;
+use SamIT\Rancher\Generated\Collections\PrivateIpAddresCollection;
+use SamIT\Rancher\Generated\Collections\PublicIpAddresCollection;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
@@ -113,25 +117,25 @@ class Port extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): \SamIT\Rancher\Generated\Collections\AccounCollection
+	public function getAccount(): AccounCollection
 	{
 		return $this->client->retrieveEntities($this->links['account']);
 	}
 
 
-	public function getInstance(): \SamIT\Rancher\Generated\Collections\InstancCollection
+	public function getInstance(): InstancCollection
 	{
 		return $this->client->retrieveEntities($this->links['instance']);
 	}
 
 
-	public function getPrivateIpAddress(): \SamIT\Rancher\Generated\Collections\PrivateIpAddresCollection
+	public function getPrivateIpAddress(): PrivateIpAddresCollection
 	{
 		return $this->client->retrieveEntities($this->links['privateIpAddress']);
 	}
 
 
-	public function getPublicIpAddress(): \SamIT\Rancher\Generated\Collections\PublicIpAddresCollection
+	public function getPublicIpAddress(): PublicIpAddresCollection
 	{
 		return $this->client->retrieveEntities($this->links['publicIpAddress']);
 	}

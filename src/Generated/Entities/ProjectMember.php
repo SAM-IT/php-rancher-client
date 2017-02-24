@@ -1,6 +1,7 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Collections\ProjecCollection;
 use SamIT\Rancher\Generated\Enums\ExternalIdTypeEnum;
 use SamIT\Rancher\Generated\Enums\RoleEnum;
 use SamIT\Rancher\Generated\Enums\StateEnum;
@@ -90,7 +91,7 @@ class ProjectMember extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getProject(): \SamIT\Rancher\Generated\Collections\ProjecCollection
+	public function getProject(): ProjecCollection
 	{
 		return $this->client->retrieveEntities($this->links['project']);
 	}
