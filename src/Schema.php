@@ -86,9 +86,12 @@ class Schema extends Entity
     {
         if (isset($this->includeableLinks) && is_array($this->includeableLinks)) {
             foreach ($this->includeableLinks as $pluralName) {
+                $class = "\\SamIT\\Rancher\\Generated\\Collections\\" . substr(ucfirst($pluralName), 0, -1) . "Collection";
+                $object->getNamespace()->addUse($class);
                 $object->addMethod('get' . ucfirst($pluralName))
-                    ->setReturnType("\\SamIT\\Rancher\\Generated\\Collections\\" . substr(ucfirst($pluralName), 0, -1) . "Collection")
+                    ->setReturnType($class)
                     ->addBody('return $this->client->retrieveEntities($this->links[?]);', [$pluralName]);
+
             }
         }
     }

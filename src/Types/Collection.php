@@ -6,7 +6,7 @@ namespace SamIT\Rancher\Types;
 
 use Traversable;
 
-abstract class Collection implements \IteratorAggregate
+abstract class Collection implements \IteratorAggregate, \Countable
 {
     protected $resourceClass;
 
@@ -53,5 +53,10 @@ abstract class Collection implements \IteratorAggregate
     }
 
     abstract  public function first();
+
+    public function count()
+    {
+        return count($this->data);
+    }
 
 }

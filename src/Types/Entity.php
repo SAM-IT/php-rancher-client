@@ -52,6 +52,10 @@ class Entity implements \JsonSerializable
     }
 
 
+    public function updateable() : bool
+    {
+        return isset($this->actions['update']);
+    }
     public function update()
     {
         return $this->client->updateEntity($this);

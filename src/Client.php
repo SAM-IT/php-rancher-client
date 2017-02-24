@@ -60,12 +60,6 @@ class Client
         $this->schemaUrl = $this->httpClient->head($endpoint)->getHeaderLine('X-Api-Schemas');
     }
 
-    public function getSchemaUrl()
-    {
-        return $this->schemaUrl;
-    }
-
-
     public function loadBaseSchema()
     {
         $schemaConfig = json_decode($this->httpClient->get($this->schemaUrl . '/schema')->getBody()->getContents(), true);
@@ -245,12 +239,20 @@ class Client
     {
         if (isset($entity->actions['update'])) {
             $response = $this->httpClient->put($entity->actions['update'], [
-                'json' => $entity->jsonSerialize()
+                'json' => $entity->jsonSerialize(),
+                'exceptions' => false
             ]);
-            if ($response->getStatusCode() === 200) {
-                $entityConfig = \GuzzleHttp\json_decode($response->getBody()->getContents(), true);
-                Entity::applyConfig($entity, $entityConfig);
-                return true;
+            $responseData = \GuzzleHttp\json_decode($response->getBody()->getContents(), true);
+            switch($response->getStatusCode()) {
+                case 200:
+                    Entity::applyConfig($entity, $responseData);
+                    return true;
+                case 405:
+                    echo "Bad method 405";
+                    break;
+                default:
+                    var_dump($responseData);
+                    die();
             }
 
 
