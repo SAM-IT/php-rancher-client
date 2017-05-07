@@ -1,3 +1,4 @@
 credentials.php
 vendor
 .idea
+composer.lock
