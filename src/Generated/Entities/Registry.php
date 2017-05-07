@@ -48,6 +48,7 @@ class Registry extends StoragePool
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getServerAddress(): string
 	{

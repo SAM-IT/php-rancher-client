@@ -6,6 +6,7 @@ use SamIT\Rancher\Generated\Client;
 use SamIT\Rancher\Generated\Enums\DefaultPolicyActionEnum;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
+use SamIT\Rancher\Types\JsonMap;
 
 class Network extends \SamIT\Rancher\Types\Entity
 {
@@ -47,7 +48,7 @@ class Network extends \SamIT\Rancher\Types\Entity
 	 * @api-create false
 	 * @api-nullable true
 	 * @api-type date
-	 * @var DateTimeInterface
+	 * @var \\DateTimeInterface
 	 */
 	protected $created;
 
@@ -101,7 +102,7 @@ class Network extends \SamIT\Rancher\Types\Entity
 	 * @api-create false
 	 * @api-nullable true
 	 * @api-type date
-	 * @var DateTimeInterface
+	 * @var \\DateTimeInterface
 	 */
 	protected $removed;
 
@@ -173,7 +174,7 @@ class Network extends \SamIT\Rancher\Types\Entity
 	 * @api-create true
 	 * @api-nullable false
 	 * @api-type map[json]
-	 * @var SamIT\Rancher\Types\JsonMap
+	 * @var \\SamIT\Rancher\Types\JsonMap
 	 */
 	protected $metadata = [];
 
@@ -226,7 +227,7 @@ class Network extends \SamIT\Rancher\Types\Entity
 	}
 
 
-	public static function create(\NetworkDriver $networkDriverId, array $dns, array $dnsSearch, \JsonMap $metadata, array $subnets, \boolean $hostPorts, DefaultPolicyActionEnum $defaultPolicyAction)
+	public static function create(\NetworkDriver $networkDriverId, array $dns, array $dnsSearch, JsonMap $metadata, array $subnets, \boolean $hostPorts, DefaultPolicyActionEnum $defaultPolicyAction)
 	{
 		$result = new static();
 		$result->networkDriverId = $networkDriverId;
@@ -242,9 +243,10 @@ class Network extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[account]
 	 * @return string
 	 */
-	public function getAccountId(): string
+	public function getAccountId(): ?string
 	{
 		return $this->accountId;
 	}
@@ -261,8 +263,10 @@ class Network extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type date
+	 * @return \\DateTimeInterface
 	 */
-	public function getCreated(): DateTimeInterface
+	public function getCreated(): ?DateTimeInterface
 	{
 		return $this->created;
 	}
@@ -270,8 +274,9 @@ class Network extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getDescription(): string
+	public function getDescription(): ?string
 	{
 		return $this->description;
 	}
@@ -285,8 +290,9 @@ class Network extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getId(): string
+	public function getId(): ?string
 	{
 		return $this->id;
 	}
@@ -294,8 +300,9 @@ class Network extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getKind(): string
+	public function getKind(): ?string
 	{
 		return $this->kind;
 	}
@@ -303,8 +310,9 @@ class Network extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getName(): string
+	public function getName(): ?string
 	{
 		return $this->name;
 	}
@@ -318,6 +326,7 @@ class Network extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[networkDriver]
 	 * @return string
 	 */
 	public function getNetworkDriverId(): string
@@ -337,8 +346,10 @@ class Network extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type date
+	 * @return \\DateTimeInterface
 	 */
-	public function getRemoved(): DateTimeInterface
+	public function getRemoved(): ?DateTimeInterface
 	{
 		return $this->removed;
 	}
@@ -346,6 +357,7 @@ class Network extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return StateEnum
 	 */
 	public function getState(): StateEnum
@@ -356,8 +368,9 @@ class Network extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getUuid(): string
+	public function getUuid(): ?string
 	{
 		return $this->uuid;
 	}
@@ -365,6 +378,7 @@ class Network extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return TransitioningEnum
 	 */
 	public function getTransitioning(): TransitioningEnum
@@ -375,8 +389,9 @@ class Network extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getTransitioningMessage(): string
+	public function getTransitioningMessage(): ?string
 	{
 		return $this->transitioningMessage;
 	}
@@ -384,8 +399,9 @@ class Network extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getTransitioningProgress(): int
+	public function getTransitioningProgress(): ?int
 	{
 		return $this->transitioningProgress;
 	}
@@ -393,6 +409,7 @@ class Network extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
 	public function getDns(): array
@@ -403,6 +420,7 @@ class Network extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
 	public function getDnsSearch(): array
@@ -413,9 +431,10 @@ class Network extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
-	 * @return SamIT\Rancher\Types\JsonMap
+	 * @api-type map[json]
+	 * @return \\SamIT\Rancher\Types\JsonMap
 	 */
-	public function getMetadata(): SamIT\Rancher\Generated\Entities\JsonMap
+	public function getMetadata(): \SamIT\Rancher\Types\JsonMap
 	{
 		return $this->metadata;
 	}
@@ -429,6 +448,7 @@ class Network extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[subnet]
 	 * @return Subnet[]
 	 */
 	public function getSubnets(): array
@@ -439,6 +459,7 @@ class Network extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getHostPorts(): \boolean
 	{
@@ -448,6 +469,7 @@ class Network extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return DefaultPolicyActionEnum
 	 */
 	public function getDefaultPolicyAction(): DefaultPolicyActionEnum
@@ -464,9 +486,10 @@ class Network extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[networkPolicyRule]
 	 * @return NetworkPolicyRule[]
 	 */
-	public function getPolicy(): array
+	public function getPolicy(): ?array
 	{
 		return $this->policy;
 	}

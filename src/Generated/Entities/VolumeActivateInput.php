@@ -38,9 +38,10 @@ class VolumeActivateInput extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference
 	 * @return Reference
 	 */
-	public function getHostId(): Reference
+	public function getHostId(): ?Reference
 	{
 		return $this->hostId;
 	}

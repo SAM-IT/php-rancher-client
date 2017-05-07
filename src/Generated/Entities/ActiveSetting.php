@@ -13,7 +13,7 @@ class ActiveSetting extends Setting
 	 * @api-create false
 	 * @api-nullable false
 	 * @api-type json
-	 * @var array
+	 * @var \array
 	 */
 	protected $activeValue;
 

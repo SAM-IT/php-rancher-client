@@ -25,9 +25,9 @@ class Client
     private $parentClasses = [
         'Registry' => 'StoragePool',
         'Machine' => 'PhysicalHost',
-        'Container' => 'Instance',
+//        'Container' => 'Instance',
         'NetworkDriverService' => 'Service',
-        'LoadBalancerService' => 'Service',
+//        'LoadBalancerService' => 'Service',
         'LbConfig' => 'LbTargetConfig',
         'ExternalService' => 'Service',
         'ActiveSetting' => 'Setting',
@@ -126,6 +126,12 @@ class Client
             echo "Writing $fileName...";
             $bytes = file_put_contents($fileName, $file);
             echo "$bytes written\n";
+//            try {
+//                include($fileName);
+//            } catch (\ParseError $p) {
+//                echo "Parse error in $fileName: {$p->getMessage()}\n";
+//                die();
+//            }
         }
 
     }
@@ -150,7 +156,7 @@ class Client
         ClassType $client
     ) {
         $file = new PhpFile();
-        $baseClass = $schema->generateEntityClass($file->addNamespace($entityNamespace->getName()), $enumGenerator);
+        $baseClass = $schema->generateEntityClass($file->addNamespace($entityNamespace->getName()), $enumGenerator, $mapNamespace);
         $this->files[$entityNamespace->getName() . '\\' . $baseClass->getName()] = $file;
         $this->classes[$baseClass->getNamespace()->getName() . "\\" . $baseClass->getName()] = $baseClass;
 

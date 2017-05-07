@@ -95,6 +95,7 @@ class LoadBalancerCookieStickinessPolicy extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getCookie(): string
 	{
@@ -110,6 +111,7 @@ class LoadBalancerCookieStickinessPolicy extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getDomain(): string
 	{
@@ -125,8 +127,9 @@ class LoadBalancerCookieStickinessPolicy extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
-	public function getIndirect(): \boolean
+	public function getIndirect(): ?\boolean
 	{
 		return $this->indirect;
 	}
@@ -140,9 +143,10 @@ class LoadBalancerCookieStickinessPolicy extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return ModeEnum
 	 */
-	public function getMode(): ModeEnum
+	public function getMode(): ?ModeEnum
 	{
 		return $this->mode;
 	}
@@ -156,8 +160,9 @@ class LoadBalancerCookieStickinessPolicy extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getName(): string
+	public function getName(): ?string
 	{
 		return $this->name;
 	}
@@ -171,8 +176,9 @@ class LoadBalancerCookieStickinessPolicy extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
-	public function getNocache(): \boolean
+	public function getNocache(): ?\boolean
 	{
 		return $this->nocache;
 	}
@@ -186,8 +192,9 @@ class LoadBalancerCookieStickinessPolicy extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
-	public function getPostonly(): \boolean
+	public function getPostonly(): ?\boolean
 	{
 		return $this->postonly;
 	}

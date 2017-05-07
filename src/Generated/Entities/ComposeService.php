@@ -5,6 +5,7 @@ use DateTimeInterface;
 use SamIT\Rancher\Generated\Client;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
+use SamIT\Rancher\Generated\Maps\ServiceMap;
 
 class ComposeService extends \SamIT\Rancher\Types\Entity
 {
@@ -54,7 +55,7 @@ class ComposeService extends \SamIT\Rancher\Types\Entity
 	 * @api-create false
 	 * @api-nullable true
 	 * @api-type date
-	 * @var DateTimeInterface
+	 * @var \\DateTimeInterface
 	 */
 	protected $created;
 
@@ -171,7 +172,7 @@ class ComposeService extends \SamIT\Rancher\Types\Entity
 	 * @api-create false
 	 * @api-nullable true
 	 * @api-type date
-	 * @var DateTimeInterface
+	 * @var \\DateTimeInterface
 	 */
 	protected $removed;
 
@@ -315,9 +316,10 @@ class ComposeService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[account]
 	 * @return string
 	 */
-	public function getAccountId(): string
+	public function getAccountId(): ?string
 	{
 		return $this->accountId;
 	}
@@ -334,8 +336,10 @@ class ComposeService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type date
+	 * @return \\DateTimeInterface
 	 */
-	public function getCreated(): DateTimeInterface
+	public function getCreated(): ?DateTimeInterface
 	{
 		return $this->created;
 	}
@@ -343,6 +347,7 @@ class ComposeService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
 	public function getCurrentScale(): int
 	{
@@ -352,8 +357,9 @@ class ComposeService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getDescription(): string
+	public function getDescription(): ?string
 	{
 		return $this->description;
 	}
@@ -367,8 +373,9 @@ class ComposeService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getExternalId(): string
+	public function getExternalId(): ?string
 	{
 		return $this->externalId;
 	}
@@ -376,8 +383,9 @@ class ComposeService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getFqdn(): string
+	public function getFqdn(): ?string
 	{
 		return $this->fqdn;
 	}
@@ -385,8 +393,9 @@ class ComposeService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getHealthState(): string
+	public function getHealthState(): ?string
 	{
 		return $this->healthState;
 	}
@@ -394,8 +403,9 @@ class ComposeService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getId(): string
+	public function getId(): ?string
 	{
 		return $this->id;
 	}
@@ -403,9 +413,10 @@ class ComposeService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[reference[instance]]
 	 * @return string[][]
 	 */
-	public function getInstanceIds(): array
+	public function getInstanceIds(): ?array
 	{
 		return $this->instanceIds;
 	}
@@ -413,8 +424,9 @@ class ComposeService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getKind(): string
+	public function getKind(): ?string
 	{
 		return $this->kind;
 	}
@@ -422,9 +434,10 @@ class ComposeService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type launchConfig
 	 * @return LaunchConfig
 	 */
-	public function getLaunchConfig(): LaunchConfig
+	public function getLaunchConfig(): ?LaunchConfig
 	{
 		return $this->launchConfig;
 	}
@@ -432,9 +445,10 @@ class ComposeService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type map[reference[service]]
 	 * @return Reference[service]Map
 	 */
-	public function getLinkedServices(): SamIT\Rancher\Generated\Entities\Reference[service]Map
+	public function getLinkedServices(): ?\SamIT\Rancher\Generated\Maps\ServiceMap
 	{
 		return $this->linkedServices;
 	}
@@ -442,8 +456,9 @@ class ComposeService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getName(): string
+	public function getName(): ?string
 	{
 		return $this->name;
 	}
@@ -457,9 +472,10 @@ class ComposeService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[publicEndpoint]
 	 * @return PublicEndpoint[]
 	 */
-	public function getPublicEndpoints(): array
+	public function getPublicEndpoints(): ?array
 	{
 		return $this->publicEndpoints;
 	}
@@ -473,8 +489,10 @@ class ComposeService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type date
+	 * @return \\DateTimeInterface
 	 */
-	public function getRemoved(): DateTimeInterface
+	public function getRemoved(): ?DateTimeInterface
 	{
 		return $this->removed;
 	}
@@ -482,6 +500,7 @@ class ComposeService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
 	public function getScale(): int
 	{
@@ -497,9 +516,10 @@ class ComposeService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type scalePolicy
 	 * @return ScalePolicy
 	 */
-	public function getScalePolicy(): ScalePolicy
+	public function getScalePolicy(): ?ScalePolicy
 	{
 		return $this->scalePolicy;
 	}
@@ -513,8 +533,9 @@ class ComposeService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getSelectorContainer(): string
+	public function getSelectorContainer(): ?string
 	{
 		return $this->selectorContainer;
 	}
@@ -528,8 +549,9 @@ class ComposeService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getSelectorLink(): string
+	public function getSelectorLink(): ?string
 	{
 		return $this->selectorLink;
 	}
@@ -543,9 +565,10 @@ class ComposeService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[stack]
 	 * @return string
 	 */
-	public function getStackId(): string
+	public function getStackId(): ?string
 	{
 		return $this->stackId;
 	}
@@ -562,8 +585,9 @@ class ComposeService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
-	public function getStartOnCreate(): \boolean
+	public function getStartOnCreate(): ?\boolean
 	{
 		return $this->startOnCreate;
 	}
@@ -571,6 +595,7 @@ class ComposeService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return StateEnum
 	 */
 	public function getState(): StateEnum
@@ -581,6 +606,7 @@ class ComposeService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getSystem(): \boolean
 	{
@@ -590,6 +616,7 @@ class ComposeService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return TransitioningEnum
 	 */
 	public function getTransitioning(): TransitioningEnum
@@ -600,8 +627,9 @@ class ComposeService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getTransitioningMessage(): string
+	public function getTransitioningMessage(): ?string
 	{
 		return $this->transitioningMessage;
 	}
@@ -609,8 +637,9 @@ class ComposeService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getTransitioningProgress(): int
+	public function getTransitioningProgress(): ?int
 	{
 		return $this->transitioningProgress;
 	}
@@ -618,8 +647,9 @@ class ComposeService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getUuid(): string
+	public function getUuid(): ?string
 	{
 		return $this->uuid;
 	}
@@ -627,8 +657,9 @@ class ComposeService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getVip(): string
+	public function getVip(): ?string
 	{
 		return $this->vip;
 	}

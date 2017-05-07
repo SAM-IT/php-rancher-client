@@ -5,6 +5,7 @@ use DateTimeInterface;
 use SamIT\Rancher\Generated\Client;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
+use SamIT\Rancher\Types\StringMap;
 
 class Volume extends \SamIT\Rancher\Types\Entity
 {
@@ -61,7 +62,7 @@ class Volume extends \SamIT\Rancher\Types\Entity
 	 * @api-create false
 	 * @api-nullable true
 	 * @api-type date
-	 * @var DateTimeInterface
+	 * @var \\DateTimeInterface
 	 */
 	protected $created;
 
@@ -142,7 +143,7 @@ class Volume extends \SamIT\Rancher\Types\Entity
 	 * @api-create false
 	 * @api-nullable true
 	 * @api-type date
-	 * @var DateTimeInterface
+	 * @var \\DateTimeInterface
 	 */
 	protected $removed;
 
@@ -259,7 +260,7 @@ class Volume extends \SamIT\Rancher\Types\Entity
 	 * @api-create true
 	 * @api-nullable true
 	 * @api-type map[string]
-	 * @var string[]
+	 * @var \\SamIT\Rancher\Types\StringMap
 	 */
 	protected $driverOpts = [];
 
@@ -296,8 +297,9 @@ class Volume extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getAccessMode(): string
+	public function getAccessMode(): ?string
 	{
 		return $this->accessMode;
 	}
@@ -305,9 +307,10 @@ class Volume extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[account]
 	 * @return string
 	 */
-	public function getAccountId(): string
+	public function getAccountId(): ?string
 	{
 		return $this->accountId;
 	}
@@ -324,8 +327,10 @@ class Volume extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type date
+	 * @return \\DateTimeInterface
 	 */
-	public function getCreated(): DateTimeInterface
+	public function getCreated(): ?DateTimeInterface
 	{
 		return $this->created;
 	}
@@ -333,8 +338,9 @@ class Volume extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getDescription(): string
+	public function getDescription(): ?string
 	{
 		return $this->description;
 	}
@@ -348,8 +354,9 @@ class Volume extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getExternalId(): string
+	public function getExternalId(): ?string
 	{
 		return $this->externalId;
 	}
@@ -357,9 +364,10 @@ class Volume extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[host]
 	 * @return string
 	 */
-	public function getHostId(): string
+	public function getHostId(): ?string
 	{
 		return $this->hostId;
 	}
@@ -382,8 +390,9 @@ class Volume extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getId(): string
+	public function getId(): ?string
 	{
 		return $this->id;
 	}
@@ -391,9 +400,10 @@ class Volume extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[image]
 	 * @return string
 	 */
-	public function getImageId(): string
+	public function getImageId(): ?string
 	{
 		return $this->imageId;
 	}
@@ -410,9 +420,10 @@ class Volume extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[instance]
 	 * @return string
 	 */
-	public function getInstanceId(): string
+	public function getInstanceId(): ?string
 	{
 		return $this->instanceId;
 	}
@@ -429,8 +440,9 @@ class Volume extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getKind(): string
+	public function getKind(): ?string
 	{
 		return $this->kind;
 	}
@@ -438,8 +450,9 @@ class Volume extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getName(): string
+	public function getName(): ?string
 	{
 		return $this->name;
 	}
@@ -447,8 +460,10 @@ class Volume extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type date
+	 * @return \\DateTimeInterface
 	 */
-	public function getRemoved(): DateTimeInterface
+	public function getRemoved(): ?DateTimeInterface
 	{
 		return $this->removed;
 	}
@@ -456,8 +471,9 @@ class Volume extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getSizeMb(): int
+	public function getSizeMb(): ?int
 	{
 		return $this->sizeMb;
 	}
@@ -465,9 +481,10 @@ class Volume extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[stack]
 	 * @return string
 	 */
-	public function getStackId(): string
+	public function getStackId(): ?string
 	{
 		return $this->stackId;
 	}
@@ -484,6 +501,7 @@ class Volume extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return StateEnum
 	 */
 	public function getState(): StateEnum
@@ -494,6 +512,7 @@ class Volume extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[storageDriver]
 	 * @return string
 	 */
 	public function getStorageDriverId(): string
@@ -513,8 +532,9 @@ class Volume extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getUri(): string
+	public function getUri(): ?string
 	{
 		return $this->uri;
 	}
@@ -522,8 +542,9 @@ class Volume extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getUuid(): string
+	public function getUuid(): ?string
 	{
 		return $this->uuid;
 	}
@@ -531,9 +552,10 @@ class Volume extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[volumeTemplate]
 	 * @return string
 	 */
-	public function getVolumeTemplateId(): string
+	public function getVolumeTemplateId(): ?string
 	{
 		return $this->volumeTemplateId;
 	}
@@ -550,6 +572,7 @@ class Volume extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return TransitioningEnum
 	 */
 	public function getTransitioning(): TransitioningEnum
@@ -560,8 +583,9 @@ class Volume extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getTransitioningMessage(): string
+	public function getTransitioningMessage(): ?string
 	{
 		return $this->transitioningMessage;
 	}
@@ -569,8 +593,9 @@ class Volume extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getTransitioningProgress(): int
+	public function getTransitioningProgress(): ?int
 	{
 		return $this->transitioningProgress;
 	}
@@ -578,6 +603,7 @@ class Volume extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getIsHostPath(): \boolean
 	{
@@ -587,6 +613,7 @@ class Volume extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getDriver(): string
 	{
@@ -596,15 +623,16 @@ class Volume extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
-	 * @return string[]
+	 * @api-type map[string]
+	 * @return \\SamIT\Rancher\Types\StringMap
 	 */
-	public function getDriverOpts(): array
+	public function getDriverOpts(): ?\SamIT\Rancher\Types\StringMap
 	{
 		return $this->driverOpts;
 	}
 
 
-	public function setDriverOpts(array $value = NULL)
+	public function setDriverOpts(StringMap $value = NULL)
 	{
 		$this->driverOpts = $value;
 	}
@@ -612,6 +640,7 @@ class Volume extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[mountEntry]
 	 * @return MountEntry[]
 	 */
 	public function getMounts(): array

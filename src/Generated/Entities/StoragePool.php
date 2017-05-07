@@ -46,7 +46,7 @@ class StoragePool extends \SamIT\Rancher\Types\Entity
 	 * @api-create false
 	 * @api-nullable true
 	 * @api-type date
-	 * @var DateTimeInterface
+	 * @var \\DateTimeInterface
 	 */
 	protected $created;
 
@@ -109,7 +109,7 @@ class StoragePool extends \SamIT\Rancher\Types\Entity
 	 * @api-create false
 	 * @api-nullable true
 	 * @api-type date
-	 * @var DateTimeInterface
+	 * @var \\DateTimeInterface
 	 */
 	protected $removed;
 
@@ -234,9 +234,10 @@ class StoragePool extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[account]
 	 * @return string
 	 */
-	public function getAccountId(): string
+	public function getAccountId(): ?string
 	{
 		return $this->accountId;
 	}
@@ -253,8 +254,10 @@ class StoragePool extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type date
+	 * @return \\DateTimeInterface
 	 */
-	public function getCreated(): DateTimeInterface
+	public function getCreated(): ?DateTimeInterface
 	{
 		return $this->created;
 	}
@@ -262,8 +265,9 @@ class StoragePool extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getDescription(): string
+	public function getDescription(): ?string
 	{
 		return $this->description;
 	}
@@ -277,8 +281,9 @@ class StoragePool extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getDriverName(): string
+	public function getDriverName(): ?string
 	{
 		return $this->driverName;
 	}
@@ -286,8 +291,9 @@ class StoragePool extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getExternalId(): string
+	public function getExternalId(): ?string
 	{
 		return $this->externalId;
 	}
@@ -295,8 +301,9 @@ class StoragePool extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getId(): string
+	public function getId(): ?string
 	{
 		return $this->id;
 	}
@@ -304,8 +311,9 @@ class StoragePool extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getKind(): string
+	public function getKind(): ?string
 	{
 		return $this->kind;
 	}
@@ -313,8 +321,9 @@ class StoragePool extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getName(): string
+	public function getName(): ?string
 	{
 		return $this->name;
 	}
@@ -328,8 +337,10 @@ class StoragePool extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type date
+	 * @return \\DateTimeInterface
 	 */
-	public function getRemoved(): DateTimeInterface
+	public function getRemoved(): ?DateTimeInterface
 	{
 		return $this->removed;
 	}
@@ -337,6 +348,7 @@ class StoragePool extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return StateEnum
 	 */
 	public function getState(): StateEnum
@@ -347,9 +359,10 @@ class StoragePool extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[storageDriver]
 	 * @return string
 	 */
-	public function getStorageDriverId(): string
+	public function getStorageDriverId(): ?string
 	{
 		return $this->storageDriverId;
 	}
@@ -366,8 +379,9 @@ class StoragePool extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getUuid(): string
+	public function getUuid(): ?string
 	{
 		return $this->uuid;
 	}
@@ -375,8 +389,9 @@ class StoragePool extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getVolumeAccessMode(): string
+	public function getVolumeAccessMode(): ?string
 	{
 		return $this->volumeAccessMode;
 	}
@@ -384,6 +399,7 @@ class StoragePool extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return TransitioningEnum
 	 */
 	public function getTransitioning(): TransitioningEnum
@@ -394,8 +410,9 @@ class StoragePool extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getTransitioningMessage(): string
+	public function getTransitioningMessage(): ?string
 	{
 		return $this->transitioningMessage;
 	}
@@ -403,8 +420,9 @@ class StoragePool extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getTransitioningProgress(): int
+	public function getTransitioningProgress(): ?int
 	{
 		return $this->transitioningProgress;
 	}
@@ -412,9 +430,10 @@ class StoragePool extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[reference[host]]
 	 * @return string[][]
 	 */
-	public function getHostIds(): array
+	public function getHostIds(): ?array
 	{
 		return $this->hostIds;
 	}
@@ -422,8 +441,9 @@ class StoragePool extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getBlockDevicePath(): string
+	public function getBlockDevicePath(): ?string
 	{
 		return $this->blockDevicePath;
 	}
@@ -431,9 +451,10 @@ class StoragePool extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
-	public function getVolumeCapabilities(): array
+	public function getVolumeCapabilities(): ?array
 	{
 		return $this->volumeCapabilities;
 	}
@@ -441,9 +462,10 @@ class StoragePool extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[reference[volume]]
 	 * @return string[][]
 	 */
-	public function getVolumeIds(): array
+	public function getVolumeIds(): ?array
 	{
 		return $this->volumeIds;
 	}

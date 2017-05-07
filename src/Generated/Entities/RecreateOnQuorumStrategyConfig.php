@@ -38,8 +38,9 @@ class RecreateOnQuorumStrategyConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getQuorum(): int
+	public function getQuorum(): ?int
 	{
 		return $this->quorum;
 	}

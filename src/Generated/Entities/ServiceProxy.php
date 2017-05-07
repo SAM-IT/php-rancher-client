@@ -78,8 +78,9 @@ class ServiceProxy extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getPort(): int
+	public function getPort(): ?int
 	{
 		return $this->port;
 	}
@@ -87,6 +88,7 @@ class ServiceProxy extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return SchemeEnum
 	 */
 	public function getScheme(): SchemeEnum
@@ -97,6 +99,7 @@ class ServiceProxy extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getService(): string
 	{
@@ -106,6 +109,7 @@ class ServiceProxy extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getToken(): string
 	{
@@ -115,6 +119,7 @@ class ServiceProxy extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getUrl(): string
 	{

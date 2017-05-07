@@ -292,6 +292,7 @@ class AzureConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getAvailabilitySet(): string
 	{
@@ -301,6 +302,7 @@ class AzureConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getClientId(): string
 	{
@@ -310,6 +312,7 @@ class AzureConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getClientSecret(): string
 	{
@@ -319,6 +322,7 @@ class AzureConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getCustomData(): string
 	{
@@ -328,6 +332,7 @@ class AzureConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getDns(): string
 	{
@@ -337,6 +342,7 @@ class AzureConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getDockerPort(): string
 	{
@@ -346,6 +352,7 @@ class AzureConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getEnvironment(): string
 	{
@@ -355,6 +362,7 @@ class AzureConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getImage(): string
 	{
@@ -364,6 +372,7 @@ class AzureConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getLocation(): string
 	{
@@ -373,6 +382,7 @@ class AzureConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getNoPublicIp(): \boolean
 	{
@@ -382,6 +392,7 @@ class AzureConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
 	public function getOpenPort(): array
@@ -392,6 +403,7 @@ class AzureConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getPrivateIpAddress(): string
 	{
@@ -401,6 +413,7 @@ class AzureConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getResourceGroup(): string
 	{
@@ -410,6 +423,7 @@ class AzureConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getSize(): string
 	{
@@ -419,6 +433,7 @@ class AzureConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getSshUser(): string
 	{
@@ -428,6 +443,7 @@ class AzureConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getStaticPublicIp(): \boolean
 	{
@@ -437,6 +453,7 @@ class AzureConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getStorageType(): string
 	{
@@ -446,6 +463,7 @@ class AzureConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getSubnet(): string
 	{
@@ -455,6 +473,7 @@ class AzureConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getSubnetPrefix(): string
 	{
@@ -464,6 +483,7 @@ class AzureConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getSubscriptionId(): string
 	{
@@ -473,6 +493,7 @@ class AzureConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getUsePrivateIp(): \boolean
 	{
@@ -482,6 +503,7 @@ class AzureConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getVnet(): string
 	{

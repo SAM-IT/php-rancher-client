@@ -37,6 +37,7 @@ class LbTargetConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[targetPortRule]
 	 * @return TargetPortRule[]
 	 */
 	public function getPortRules(): array

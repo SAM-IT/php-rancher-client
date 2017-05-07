@@ -40,7 +40,7 @@ class Label extends \SamIT\Rancher\Types\Entity
 	 * @api-create false
 	 * @api-nullable true
 	 * @api-type date
-	 * @var DateTimeInterface
+	 * @var \\DateTimeInterface
 	 */
 	protected $created;
 
@@ -94,7 +94,7 @@ class Label extends \SamIT\Rancher\Types\Entity
 	 * @api-create false
 	 * @api-nullable true
 	 * @api-type date
-	 * @var DateTimeInterface
+	 * @var \\DateTimeInterface
 	 */
 	protected $removed;
 
@@ -174,9 +174,10 @@ class Label extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[account]
 	 * @return string
 	 */
-	public function getAccountId(): string
+	public function getAccountId(): ?string
 	{
 		return $this->accountId;
 	}
@@ -193,8 +194,10 @@ class Label extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type date
+	 * @return \\DateTimeInterface
 	 */
-	public function getCreated(): DateTimeInterface
+	public function getCreated(): ?DateTimeInterface
 	{
 		return $this->created;
 	}
@@ -202,8 +205,9 @@ class Label extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getDescription(): string
+	public function getDescription(): ?string
 	{
 		return $this->description;
 	}
@@ -217,8 +221,9 @@ class Label extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getId(): string
+	public function getId(): ?string
 	{
 		return $this->id;
 	}
@@ -226,8 +231,9 @@ class Label extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getKey(): string
+	public function getKey(): ?string
 	{
 		return $this->key;
 	}
@@ -235,8 +241,9 @@ class Label extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getKind(): string
+	public function getKind(): ?string
 	{
 		return $this->kind;
 	}
@@ -244,8 +251,9 @@ class Label extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getName(): string
+	public function getName(): ?string
 	{
 		return $this->name;
 	}
@@ -259,8 +267,10 @@ class Label extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type date
+	 * @return \\DateTimeInterface
 	 */
-	public function getRemoved(): DateTimeInterface
+	public function getRemoved(): ?DateTimeInterface
 	{
 		return $this->removed;
 	}
@@ -268,6 +278,7 @@ class Label extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return StateEnum
 	 */
 	public function getState(): StateEnum
@@ -278,8 +289,9 @@ class Label extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getUuid(): string
+	public function getUuid(): ?string
 	{
 		return $this->uuid;
 	}
@@ -287,8 +299,9 @@ class Label extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getValue(): string
+	public function getValue(): ?string
 	{
 		return $this->value;
 	}
@@ -296,6 +309,7 @@ class Label extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return TransitioningEnum
 	 */
 	public function getTransitioning(): TransitioningEnum
@@ -306,8 +320,9 @@ class Label extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getTransitioningMessage(): string
+	public function getTransitioningMessage(): ?string
 	{
 		return $this->transitioningMessage;
 	}
@@ -315,8 +330,9 @@ class Label extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getTransitioningProgress(): int
+	public function getTransitioningProgress(): ?int
 	{
 		return $this->transitioningProgress;
 	}

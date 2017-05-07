@@ -5,6 +5,7 @@ use DateTimeInterface;
 use SamIT\Rancher\Generated\Client;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
+use SamIT\Rancher\Types\StringMap;
 
 class Machine extends PhysicalHost
 {
@@ -101,7 +102,7 @@ class Machine extends PhysicalHost
 	 * @api-create true
 	 * @api-nullable true
 	 * @api-type map[string]
-	 * @var string[]
+	 * @var \\SamIT\Rancher\Types\StringMap
 	 */
 	protected $engineEnv = [];
 
@@ -128,7 +129,7 @@ class Machine extends PhysicalHost
 	 * @api-create true
 	 * @api-nullable true
 	 * @api-type map[string]
-	 * @var string[]
+	 * @var \\SamIT\Rancher\Types\StringMap
 	 */
 	protected $engineLabel = [];
 
@@ -137,7 +138,7 @@ class Machine extends PhysicalHost
 	 * @api-create true
 	 * @api-nullable true
 	 * @api-type map[string]
-	 * @var string[]
+	 * @var \\SamIT\Rancher\Types\StringMap
 	 */
 	protected $engineOpt = [];
 
@@ -173,7 +174,7 @@ class Machine extends PhysicalHost
 	 * @api-create true
 	 * @api-nullable true
 	 * @api-type map[string]
-	 * @var string[]
+	 * @var \\SamIT\Rancher\Types\StringMap
 	 */
 	protected $labels = [];
 
@@ -195,9 +196,10 @@ class Machine extends PhysicalHost
 
 	/**
 	 * @simple-getter
+	 * @api-type amazonec2Config
 	 * @return Amazonec2Config
 	 */
-	public function getAmazonec2Config(): Amazonec2Config
+	public function getAmazonec2Config(): ?Amazonec2Config
 	{
 		return $this->amazonec2Config;
 	}
@@ -211,8 +213,9 @@ class Machine extends PhysicalHost
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getAuthCertificateAuthority(): string
+	public function getAuthCertificateAuthority(): ?string
 	{
 		return $this->authCertificateAuthority;
 	}
@@ -226,8 +229,9 @@ class Machine extends PhysicalHost
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getAuthKey(): string
+	public function getAuthKey(): ?string
 	{
 		return $this->authKey;
 	}
@@ -241,9 +245,10 @@ class Machine extends PhysicalHost
 
 	/**
 	 * @simple-getter
+	 * @api-type azureConfig
 	 * @return AzureConfig
 	 */
-	public function getAzureConfig(): AzureConfig
+	public function getAzureConfig(): ?AzureConfig
 	{
 		return $this->azureConfig;
 	}
@@ -257,9 +262,10 @@ class Machine extends PhysicalHost
 
 	/**
 	 * @simple-getter
+	 * @api-type digitaloceanConfig
 	 * @return DigitaloceanConfig
 	 */
-	public function getDigitaloceanConfig(): DigitaloceanConfig
+	public function getDigitaloceanConfig(): ?DigitaloceanConfig
 	{
 		return $this->digitaloceanConfig;
 	}
@@ -273,8 +279,9 @@ class Machine extends PhysicalHost
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getDockerVersion(): string
+	public function getDockerVersion(): ?string
 	{
 		return $this->dockerVersion;
 	}
@@ -288,15 +295,16 @@ class Machine extends PhysicalHost
 
 	/**
 	 * @simple-getter
-	 * @return string[]
+	 * @api-type map[string]
+	 * @return \\SamIT\Rancher\Types\StringMap
 	 */
-	public function getEngineEnv(): array
+	public function getEngineEnv(): ?\SamIT\Rancher\Types\StringMap
 	{
 		return $this->engineEnv;
 	}
 
 
-	public function setEngineEnv(array $value = NULL)
+	public function setEngineEnv(StringMap $value = NULL)
 	{
 		$this->engineEnv = $value;
 	}
@@ -304,9 +312,10 @@ class Machine extends PhysicalHost
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
-	public function getEngineInsecureRegistry(): array
+	public function getEngineInsecureRegistry(): ?array
 	{
 		return $this->engineInsecureRegistry;
 	}
@@ -320,8 +329,9 @@ class Machine extends PhysicalHost
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getEngineInstallUrl(): string
+	public function getEngineInstallUrl(): ?string
 	{
 		return $this->engineInstallUrl;
 	}
@@ -335,15 +345,16 @@ class Machine extends PhysicalHost
 
 	/**
 	 * @simple-getter
-	 * @return string[]
+	 * @api-type map[string]
+	 * @return \\SamIT\Rancher\Types\StringMap
 	 */
-	public function getEngineLabel(): array
+	public function getEngineLabel(): ?\SamIT\Rancher\Types\StringMap
 	{
 		return $this->engineLabel;
 	}
 
 
-	public function setEngineLabel(array $value = NULL)
+	public function setEngineLabel(StringMap $value = NULL)
 	{
 		$this->engineLabel = $value;
 	}
@@ -351,15 +362,16 @@ class Machine extends PhysicalHost
 
 	/**
 	 * @simple-getter
-	 * @return string[]
+	 * @api-type map[string]
+	 * @return \\SamIT\Rancher\Types\StringMap
 	 */
-	public function getEngineOpt(): array
+	public function getEngineOpt(): ?\SamIT\Rancher\Types\StringMap
 	{
 		return $this->engineOpt;
 	}
 
 
-	public function setEngineOpt(array $value = NULL)
+	public function setEngineOpt(StringMap $value = NULL)
 	{
 		$this->engineOpt = $value;
 	}
@@ -367,9 +379,10 @@ class Machine extends PhysicalHost
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
-	public function getEngineRegistryMirror(): array
+	public function getEngineRegistryMirror(): ?array
 	{
 		return $this->engineRegistryMirror;
 	}
@@ -383,8 +396,9 @@ class Machine extends PhysicalHost
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getEngineStorageDriver(): string
+	public function getEngineStorageDriver(): ?string
 	{
 		return $this->engineStorageDriver;
 	}
@@ -398,9 +412,10 @@ class Machine extends PhysicalHost
 
 	/**
 	 * @simple-getter
+	 * @api-type genericConfig
 	 * @return GenericConfig
 	 */
-	public function getGenericConfig(): GenericConfig
+	public function getGenericConfig(): ?GenericConfig
 	{
 		return $this->genericConfig;
 	}
@@ -414,15 +429,16 @@ class Machine extends PhysicalHost
 
 	/**
 	 * @simple-getter
-	 * @return string[]
+	 * @api-type map[string]
+	 * @return \\SamIT\Rancher\Types\StringMap
 	 */
-	public function getLabels(): array
+	public function getLabels(): ?\SamIT\Rancher\Types\StringMap
 	{
 		return $this->labels;
 	}
 
 
-	public function setLabels(array $value = NULL)
+	public function setLabels(StringMap $value = NULL)
 	{
 		$this->labels = $value;
 	}
@@ -430,9 +446,10 @@ class Machine extends PhysicalHost
 
 	/**
 	 * @simple-getter
+	 * @api-type packetConfig
 	 * @return PacketConfig
 	 */
-	public function getPacketConfig(): PacketConfig
+	public function getPacketConfig(): ?PacketConfig
 	{
 		return $this->packetConfig;
 	}

@@ -5,6 +5,8 @@ use DateTimeInterface;
 use SamIT\Rancher\Generated\Client;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
+use SamIT\Rancher\Generated\Maps\ServiceMap;
+use SamIT\Rancher\Types\JsonMap;
 
 class StorageDriverService extends Service
 {
@@ -66,6 +68,7 @@ class StorageDriverService extends Service
 
 	/**
 	 * @simple-getter
+	 * @api-type storageDriver
 	 * @return StorageDriver
 	 */
 	public function getStorageDriver(): StorageDriver

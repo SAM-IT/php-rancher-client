@@ -2,6 +2,7 @@
 namespace SamIT\Rancher\Generated\Entities;
 
 use SamIT\Rancher\Generated\Client;
+use SamIT\Rancher\Types\StringMap;
 
 class LogConfig extends \SamIT\Rancher\Types\Entity
 {
@@ -13,7 +14,7 @@ class LogConfig extends \SamIT\Rancher\Types\Entity
 	 * @api-create true
 	 * @api-nullable true
 	 * @api-type map[string]
-	 * @var string[]
+	 * @var \\SamIT\Rancher\Types\StringMap
 	 */
 	protected $config = [];
 
@@ -45,9 +46,10 @@ class LogConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
-	 * @return string[]
+	 * @api-type map[string]
+	 * @return \\SamIT\Rancher\Types\StringMap
 	 */
-	public function getConfig(): array
+	public function getConfig(): ?\SamIT\Rancher\Types\StringMap
 	{
 		return $this->config;
 	}
@@ -55,8 +57,9 @@ class LogConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getDriver(): string
+	public function getDriver(): ?string
 	{
 		return $this->driver;
 	}

@@ -39,6 +39,7 @@ class RevertToSnapshotInput extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[snapshot]
 	 * @return string
 	 */
 	public function getSnapshotId(): string

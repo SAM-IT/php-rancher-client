@@ -5,6 +5,8 @@ use DateTimeInterface;
 use SamIT\Rancher\Generated\Client;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
+use SamIT\Rancher\Generated\Maps\ServiceMap;
+use SamIT\Rancher\Types\JsonMap;
 
 class DnsService extends Service
 {

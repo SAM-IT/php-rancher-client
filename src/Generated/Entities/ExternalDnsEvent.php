@@ -41,7 +41,7 @@ class ExternalDnsEvent extends \SamIT\Rancher\Types\Entity
 	 * @api-create false
 	 * @api-nullable true
 	 * @api-type date
-	 * @var DateTimeInterface
+	 * @var \\DateTimeInterface
 	 */
 	protected $created;
 
@@ -184,9 +184,10 @@ class ExternalDnsEvent extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[account]
 	 * @return string
 	 */
-	public function getAccountId(): string
+	public function getAccountId(): ?string
 	{
 		return $this->accountId;
 	}
@@ -203,8 +204,10 @@ class ExternalDnsEvent extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type date
+	 * @return \\DateTimeInterface
 	 */
-	public function getCreated(): DateTimeInterface
+	public function getCreated(): ?DateTimeInterface
 	{
 		return $this->created;
 	}
@@ -212,8 +215,9 @@ class ExternalDnsEvent extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getEventType(): string
+	public function getEventType(): ?string
 	{
 		return $this->eventType;
 	}
@@ -221,8 +225,9 @@ class ExternalDnsEvent extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getExternalId(): string
+	public function getExternalId(): ?string
 	{
 		return $this->externalId;
 	}
@@ -230,8 +235,9 @@ class ExternalDnsEvent extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getId(): string
+	public function getId(): ?string
 	{
 		return $this->id;
 	}
@@ -239,8 +245,9 @@ class ExternalDnsEvent extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getKind(): string
+	public function getKind(): ?string
 	{
 		return $this->kind;
 	}
@@ -248,9 +255,10 @@ class ExternalDnsEvent extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[account]
 	 * @return string
 	 */
-	public function getReportedAccountId(): string
+	public function getReportedAccountId(): ?string
 	{
 		return $this->reportedAccountId;
 	}
@@ -259,7 +267,7 @@ class ExternalDnsEvent extends \SamIT\Rancher\Types\Entity
 	/**
 	 * --> getter from reference: reference[account]
 	 */
-	public function getReportedAccount(): ?ReportedAccount
+	public function getReportedAccount(): ?Account
 	{
 		return $this->client()->getReportedAccount($this->reportedAccountId);
 	}
@@ -267,6 +275,7 @@ class ExternalDnsEvent extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return StateEnum
 	 */
 	public function getState(): StateEnum
@@ -277,6 +286,7 @@ class ExternalDnsEvent extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return TransitioningEnum
 	 */
 	public function getTransitioning(): TransitioningEnum
@@ -287,8 +297,9 @@ class ExternalDnsEvent extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getTransitioningMessage(): string
+	public function getTransitioningMessage(): ?string
 	{
 		return $this->transitioningMessage;
 	}
@@ -296,8 +307,9 @@ class ExternalDnsEvent extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getTransitioningProgress(): int
+	public function getTransitioningProgress(): ?int
 	{
 		return $this->transitioningProgress;
 	}
@@ -305,8 +317,9 @@ class ExternalDnsEvent extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getUuid(): string
+	public function getUuid(): ?string
 	{
 		return $this->uuid;
 	}
@@ -314,6 +327,7 @@ class ExternalDnsEvent extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getServiceName(): string
 	{
@@ -323,6 +337,7 @@ class ExternalDnsEvent extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getStackName(): string
 	{
@@ -332,6 +347,7 @@ class ExternalDnsEvent extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getFqdn(): string
 	{

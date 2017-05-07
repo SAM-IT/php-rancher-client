@@ -45,9 +45,10 @@ class ServiceUpgrade extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type inServiceUpgradeStrategy
 	 * @return InServiceUpgradeStrategy
 	 */
-	public function getInServiceStrategy(): InServiceUpgradeStrategy
+	public function getInServiceStrategy(): ?InServiceUpgradeStrategy
 	{
 		return $this->inServiceStrategy;
 	}
@@ -55,9 +56,10 @@ class ServiceUpgrade extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type toServiceUpgradeStrategy
 	 * @return ToServiceUpgradeStrategy
 	 */
-	public function getToServiceStrategy(): ToServiceUpgradeStrategy
+	public function getToServiceStrategy(): ?ToServiceUpgradeStrategy
 	{
 		return $this->toServiceStrategy;
 	}

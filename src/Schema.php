@@ -77,7 +77,7 @@ class Schema extends Entity
             ->setValue([])
             ->addComment('@var string[]');
 
-        $this->addFields($object);
+        $this->addFields($object, new EnumGenerator(), new PhpNamespace());
 
         return $file;
 
@@ -116,7 +116,7 @@ class Schema extends Entity
             ->addComment('@var string[]');
 
     }
-    protected function addFields(ClassType $object, EnumGenerator $enumGenerator = null, $parent = null)
+    protected function addFields(ClassType $object, EnumGenerator $enumGenerator, PhpNamespace $mapNamespace, $parent = null)
     {
         $object->addConstant('RESOURCE_FIELDS', array_keys($this->resourceFields))
             ->setVisibility('protected')
@@ -129,7 +129,7 @@ class Schema extends Entity
             if (isset($parent) && property_exists($parent, $name)) {
                 continue;
             }
-            $def->addTo($object, $name, $enumGenerator);
+            $def->addTo($object, $name, $enumGenerator, $mapNamespace);
 
         }
 
@@ -145,7 +145,8 @@ class Schema extends Entity
      */
     public function generateEntityClass(
         PhpNamespace $namespace,
-        EnumGenerator $enumGenerator
+        EnumGenerator $enumGenerator,
+        PhpNamespace $mapNamespace
     ) : ClassType {
         if (get_class($this) == __CLASS__) {
             throw new \Exception("Unexpected stuff.");
@@ -168,7 +169,7 @@ class Schema extends Entity
         foreach($this->resourceFields as $key => $field) {
             if ($field->create && !$field->nullable) {
                 $constructor->addParameter($key)
-                    ->setTypeHint($field->getPhpType($key, $enumGenerator));
+                    ->setTypeHint(ResourceField::getPhpType($field->type, $key, $enumGenerator, $mapNamespace));
                 $constructor->addBody('$result->? = ?;', [
                     $key, new PhpLiteral("$$key")
                 ]);
@@ -176,7 +177,7 @@ class Schema extends Entity
         }
         $constructor->addBody('return $result;');
 
-        $this->addFields($object, $enumGenerator);
+        $this->addFields($object, $enumGenerator, $mapNamespace);
         $this->addLinks($object);
 
         $this->addIncludeableLinks($object);

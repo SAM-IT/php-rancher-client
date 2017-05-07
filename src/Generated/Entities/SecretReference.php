@@ -77,6 +77,7 @@ class SecretReference extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getGid(): string
 	{
@@ -86,6 +87,7 @@ class SecretReference extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getMode(): string
 	{
@@ -95,6 +97,7 @@ class SecretReference extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getName(): string
 	{
@@ -104,6 +107,7 @@ class SecretReference extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[secret]
 	 * @return string
 	 */
 	public function getSecretId(): string
@@ -123,6 +127,7 @@ class SecretReference extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getUid(): string
 	{

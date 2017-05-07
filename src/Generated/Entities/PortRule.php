@@ -120,8 +120,9 @@ class PortRule extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getBackendName(): string
+	public function getBackendName(): ?string
 	{
 		return $this->backendName;
 	}
@@ -129,8 +130,9 @@ class PortRule extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getHostname(): string
+	public function getHostname(): ?string
 	{
 		return $this->hostname;
 	}
@@ -138,8 +140,9 @@ class PortRule extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getPath(): string
+	public function getPath(): ?string
 	{
 		return $this->path;
 	}
@@ -147,8 +150,9 @@ class PortRule extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getPriority(): int
+	public function getPriority(): ?int
 	{
 		return $this->priority;
 	}
@@ -156,6 +160,7 @@ class PortRule extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return ProtocolEnum
 	 */
 	public function getProtocol(): ProtocolEnum
@@ -166,8 +171,9 @@ class PortRule extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getSelector(): string
+	public function getSelector(): ?string
 	{
 		return $this->selector;
 	}
@@ -175,9 +181,10 @@ class PortRule extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[service]
 	 * @return string
 	 */
-	public function getServiceId(): string
+	public function getServiceId(): ?string
 	{
 		return $this->serviceId;
 	}
@@ -194,8 +201,9 @@ class PortRule extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getSourcePort(): int
+	public function getSourcePort(): ?int
 	{
 		return $this->sourcePort;
 	}
@@ -203,8 +211,9 @@ class PortRule extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getTargetPort(): int
+	public function getTargetPort(): ?int
 	{
 		return $this->targetPort;
 	}

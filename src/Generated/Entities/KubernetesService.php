@@ -5,6 +5,7 @@ use DateTimeInterface;
 use SamIT\Rancher\Generated\Client;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
+use SamIT\Rancher\Generated\Maps\ServiceMap;
 
 class KubernetesService extends \SamIT\Rancher\Types\Entity
 {
@@ -47,7 +48,7 @@ class KubernetesService extends \SamIT\Rancher\Types\Entity
 	 * @api-create false
 	 * @api-nullable true
 	 * @api-type date
-	 * @var DateTimeInterface
+	 * @var \\DateTimeInterface
 	 */
 	protected $created;
 
@@ -128,7 +129,7 @@ class KubernetesService extends \SamIT\Rancher\Types\Entity
 	 * @api-create false
 	 * @api-nullable true
 	 * @api-type date
-	 * @var DateTimeInterface
+	 * @var \\DateTimeInterface
 	 */
 	protected $removed;
 
@@ -218,7 +219,7 @@ class KubernetesService extends \SamIT\Rancher\Types\Entity
 	 * @api-create false
 	 * @api-nullable false
 	 * @api-type json
-	 * @var array
+	 * @var \array
 	 */
 	protected $template;
 
@@ -244,9 +245,10 @@ class KubernetesService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[account]
 	 * @return string
 	 */
-	public function getAccountId(): string
+	public function getAccountId(): ?string
 	{
 		return $this->accountId;
 	}
@@ -263,8 +265,10 @@ class KubernetesService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type date
+	 * @return \\DateTimeInterface
 	 */
-	public function getCreated(): DateTimeInterface
+	public function getCreated(): ?DateTimeInterface
 	{
 		return $this->created;
 	}
@@ -272,8 +276,9 @@ class KubernetesService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getDescription(): string
+	public function getDescription(): ?string
 	{
 		return $this->description;
 	}
@@ -287,8 +292,9 @@ class KubernetesService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getExternalId(): string
+	public function getExternalId(): ?string
 	{
 		return $this->externalId;
 	}
@@ -296,8 +302,9 @@ class KubernetesService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getHealthState(): string
+	public function getHealthState(): ?string
 	{
 		return $this->healthState;
 	}
@@ -305,8 +312,9 @@ class KubernetesService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getId(): string
+	public function getId(): ?string
 	{
 		return $this->id;
 	}
@@ -314,9 +322,10 @@ class KubernetesService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[reference[instance]]
 	 * @return string[][]
 	 */
-	public function getInstanceIds(): array
+	public function getInstanceIds(): ?array
 	{
 		return $this->instanceIds;
 	}
@@ -324,8 +333,9 @@ class KubernetesService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getKind(): string
+	public function getKind(): ?string
 	{
 		return $this->kind;
 	}
@@ -333,9 +343,10 @@ class KubernetesService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type map[reference[service]]
 	 * @return Reference[service]Map
 	 */
-	public function getLinkedServices(): SamIT\Rancher\Generated\Entities\Reference[service]Map
+	public function getLinkedServices(): ?\SamIT\Rancher\Generated\Maps\ServiceMap
 	{
 		return $this->linkedServices;
 	}
@@ -343,8 +354,9 @@ class KubernetesService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getName(): string
+	public function getName(): ?string
 	{
 		return $this->name;
 	}
@@ -358,8 +370,10 @@ class KubernetesService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type date
+	 * @return \\DateTimeInterface
 	 */
-	public function getRemoved(): DateTimeInterface
+	public function getRemoved(): ?DateTimeInterface
 	{
 		return $this->removed;
 	}
@@ -367,8 +381,9 @@ class KubernetesService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getSelectorContainer(): string
+	public function getSelectorContainer(): ?string
 	{
 		return $this->selectorContainer;
 	}
@@ -376,9 +391,10 @@ class KubernetesService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[stack]
 	 * @return string
 	 */
-	public function getStackId(): string
+	public function getStackId(): ?string
 	{
 		return $this->stackId;
 	}
@@ -395,6 +411,7 @@ class KubernetesService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return StateEnum
 	 */
 	public function getState(): StateEnum
@@ -405,6 +422,7 @@ class KubernetesService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getSystem(): \boolean
 	{
@@ -414,6 +432,7 @@ class KubernetesService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return TransitioningEnum
 	 */
 	public function getTransitioning(): TransitioningEnum
@@ -424,8 +443,9 @@ class KubernetesService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getTransitioningMessage(): string
+	public function getTransitioningMessage(): ?string
 	{
 		return $this->transitioningMessage;
 	}
@@ -433,8 +453,9 @@ class KubernetesService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getTransitioningProgress(): int
+	public function getTransitioningProgress(): ?int
 	{
 		return $this->transitioningProgress;
 	}
@@ -442,8 +463,9 @@ class KubernetesService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getUuid(): string
+	public function getUuid(): ?string
 	{
 		return $this->uuid;
 	}
@@ -451,8 +473,9 @@ class KubernetesService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getVip(): string
+	public function getVip(): ?string
 	{
 		return $this->vip;
 	}
@@ -460,6 +483,8 @@ class KubernetesService extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type json
+	 * @return \array
 	 */
 	public function getTemplate(): array
 	{

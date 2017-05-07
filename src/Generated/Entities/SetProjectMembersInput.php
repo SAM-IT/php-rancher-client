@@ -39,6 +39,7 @@ class SetProjectMembersInput extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[projectMember]
 	 * @return ProjectMember[]
 	 */
 	public function getMembers(): array

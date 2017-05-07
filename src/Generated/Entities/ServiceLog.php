@@ -36,7 +36,7 @@ class ServiceLog extends \SamIT\Rancher\Types\Entity
 	 * @api-create false
 	 * @api-nullable true
 	 * @api-type date
-	 * @var DateTimeInterface
+	 * @var \\DateTimeInterface
 	 */
 	protected $created;
 
@@ -54,7 +54,7 @@ class ServiceLog extends \SamIT\Rancher\Types\Entity
 	 * @api-create false
 	 * @api-nullable true
 	 * @api-type date
-	 * @var DateTimeInterface
+	 * @var \\DateTimeInterface
 	 */
 	protected $endTime;
 
@@ -152,9 +152,10 @@ class ServiceLog extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[account]
 	 * @return string
 	 */
-	public function getAccountId(): string
+	public function getAccountId(): ?string
 	{
 		return $this->accountId;
 	}
@@ -171,8 +172,10 @@ class ServiceLog extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type date
+	 * @return \\DateTimeInterface
 	 */
-	public function getCreated(): DateTimeInterface
+	public function getCreated(): ?DateTimeInterface
 	{
 		return $this->created;
 	}
@@ -180,8 +183,9 @@ class ServiceLog extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getDescription(): string
+	public function getDescription(): ?string
 	{
 		return $this->description;
 	}
@@ -195,8 +199,10 @@ class ServiceLog extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type date
+	 * @return \\DateTimeInterface
 	 */
-	public function getEndTime(): DateTimeInterface
+	public function getEndTime(): ?DateTimeInterface
 	{
 		return $this->endTime;
 	}
@@ -204,8 +210,9 @@ class ServiceLog extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getEventType(): string
+	public function getEventType(): ?string
 	{
 		return $this->eventType;
 	}
@@ -213,8 +220,9 @@ class ServiceLog extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getId(): string
+	public function getId(): ?string
 	{
 		return $this->id;
 	}
@@ -222,9 +230,10 @@ class ServiceLog extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[instance]
 	 * @return string
 	 */
-	public function getInstanceId(): string
+	public function getInstanceId(): ?string
 	{
 		return $this->instanceId;
 	}
@@ -241,8 +250,9 @@ class ServiceLog extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getKind(): string
+	public function getKind(): ?string
 	{
 		return $this->kind;
 	}
@@ -250,8 +260,9 @@ class ServiceLog extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getLevel(): string
+	public function getLevel(): ?string
 	{
 		return $this->level;
 	}
@@ -259,9 +270,10 @@ class ServiceLog extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[service]
 	 * @return string
 	 */
-	public function getServiceId(): string
+	public function getServiceId(): ?string
 	{
 		return $this->serviceId;
 	}
@@ -278,6 +290,7 @@ class ServiceLog extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getSubLog(): \boolean
 	{
@@ -287,8 +300,9 @@ class ServiceLog extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getTransactionId(): string
+	public function getTransactionId(): ?string
 	{
 		return $this->transactionId;
 	}

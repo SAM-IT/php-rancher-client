@@ -6,6 +6,7 @@ use SamIT\Rancher\Generated\Client;
 use SamIT\Rancher\Generated\Enums\ModeEnum;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
+use SamIT\Rancher\Types\StringMap;
 
 class PullTask extends GenericObject
 {
@@ -43,7 +44,7 @@ class PullTask extends GenericObject
 	 * @api-create false
 	 * @api-nullable true
 	 * @api-type date
-	 * @var DateTimeInterface
+	 * @var \\DateTimeInterface
 	 */
 	protected $created;
 
@@ -88,7 +89,7 @@ class PullTask extends GenericObject
 	 * @api-create false
 	 * @api-nullable true
 	 * @api-type date
-	 * @var DateTimeInterface
+	 * @var \\DateTimeInterface
 	 */
 	protected $removed;
 
@@ -151,7 +152,7 @@ class PullTask extends GenericObject
 	 * @api-create true
 	 * @api-nullable false
 	 * @api-type map[string]
-	 * @var string[]
+	 * @var \\SamIT\Rancher\Types\StringMap
 	 */
 	protected $labels = [];
 
@@ -169,7 +170,7 @@ class PullTask extends GenericObject
 	 * @api-create false
 	 * @api-nullable false
 	 * @api-type map[string]
-	 * @var string[]
+	 * @var \\SamIT\Rancher\Types\StringMap
 	 */
 	protected $status = [];
 
@@ -186,7 +187,7 @@ class PullTask extends GenericObject
 	}
 
 
-	public static function create(string $image, array $labels, ModeEnum $mode)
+	public static function create(string $image, StringMap $labels, ModeEnum $mode)
 	{
 		$result = new static();
 		$result->image = $image;
@@ -198,9 +199,10 @@ class PullTask extends GenericObject
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[account]
 	 * @return string
 	 */
-	public function getAccountId(): string
+	public function getAccountId(): ?string
 	{
 		return $this->accountId;
 	}
@@ -217,8 +219,10 @@ class PullTask extends GenericObject
 
 	/**
 	 * @simple-getter
+	 * @api-type date
+	 * @return \\DateTimeInterface
 	 */
-	public function getCreated(): DateTimeInterface
+	public function getCreated(): ?DateTimeInterface
 	{
 		return $this->created;
 	}
@@ -226,8 +230,9 @@ class PullTask extends GenericObject
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getDescription(): string
+	public function getDescription(): ?string
 	{
 		return $this->description;
 	}
@@ -241,8 +246,9 @@ class PullTask extends GenericObject
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getId(): string
+	public function getId(): ?string
 	{
 		return $this->id;
 	}
@@ -250,8 +256,9 @@ class PullTask extends GenericObject
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getKind(): string
+	public function getKind(): ?string
 	{
 		return $this->kind;
 	}
@@ -259,8 +266,9 @@ class PullTask extends GenericObject
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getName(): string
+	public function getName(): ?string
 	{
 		return $this->name;
 	}
@@ -268,8 +276,10 @@ class PullTask extends GenericObject
 
 	/**
 	 * @simple-getter
+	 * @api-type date
+	 * @return \\DateTimeInterface
 	 */
-	public function getRemoved(): DateTimeInterface
+	public function getRemoved(): ?DateTimeInterface
 	{
 		return $this->removed;
 	}
@@ -277,6 +287,7 @@ class PullTask extends GenericObject
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return StateEnum
 	 */
 	public function getState(): StateEnum
@@ -287,6 +298,7 @@ class PullTask extends GenericObject
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return TransitioningEnum
 	 */
 	public function getTransitioning(): TransitioningEnum
@@ -297,8 +309,9 @@ class PullTask extends GenericObject
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getTransitioningMessage(): string
+	public function getTransitioningMessage(): ?string
 	{
 		return $this->transitioningMessage;
 	}
@@ -306,8 +319,9 @@ class PullTask extends GenericObject
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getTransitioningProgress(): int
+	public function getTransitioningProgress(): ?int
 	{
 		return $this->transitioningProgress;
 	}
@@ -315,8 +329,9 @@ class PullTask extends GenericObject
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getUuid(): string
+	public function getUuid(): ?string
 	{
 		return $this->uuid;
 	}
@@ -324,6 +339,7 @@ class PullTask extends GenericObject
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getImage(): string
 	{
@@ -333,9 +349,10 @@ class PullTask extends GenericObject
 
 	/**
 	 * @simple-getter
-	 * @return string[]
+	 * @api-type map[string]
+	 * @return \\SamIT\Rancher\Types\StringMap
 	 */
-	public function getLabels(): array
+	public function getLabels(): \SamIT\Rancher\Types\StringMap
 	{
 		return $this->labels;
 	}
@@ -343,6 +360,7 @@ class PullTask extends GenericObject
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return ModeEnum
 	 */
 	public function getMode(): ModeEnum
@@ -353,9 +371,10 @@ class PullTask extends GenericObject
 
 	/**
 	 * @simple-getter
-	 * @return string[]
+	 * @api-type map[string]
+	 * @return \\SamIT\Rancher\Types\StringMap
 	 */
-	public function getStatus(): array
+	public function getStatus(): \SamIT\Rancher\Types\StringMap
 	{
 		return $this->status;
 	}

@@ -40,6 +40,7 @@ class Subscribe extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
 	public function getEventNames(): array

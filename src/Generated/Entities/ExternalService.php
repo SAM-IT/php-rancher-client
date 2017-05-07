@@ -5,6 +5,8 @@ use DateTimeInterface;
 use SamIT\Rancher\Generated\Client;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
+use SamIT\Rancher\Generated\Maps\ServiceMap;
+use SamIT\Rancher\Types\JsonMap;
 
 class ExternalService extends Service
 {
@@ -74,9 +76,10 @@ class ExternalService extends Service
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
-	public function getExternalIpAddresses(): array
+	public function getExternalIpAddresses(): ?array
 	{
 		return $this->externalIpAddresses;
 	}
@@ -90,8 +93,9 @@ class ExternalService extends Service
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getHostname(): string
+	public function getHostname(): ?string
 	{
 		return $this->hostname;
 	}
@@ -105,9 +109,10 @@ class ExternalService extends Service
 
 	/**
 	 * @simple-getter
+	 * @api-type instanceHealthCheck
 	 * @return InstanceHealthCheck
 	 */
-	public function getHealthCheck(): InstanceHealthCheck
+	public function getHealthCheck(): ?InstanceHealthCheck
 	{
 		return $this->healthCheck;
 	}

@@ -39,7 +39,7 @@ class ExternalVolumeEvent extends \SamIT\Rancher\Types\Entity
 	 * @api-create false
 	 * @api-nullable true
 	 * @api-type date
-	 * @var DateTimeInterface
+	 * @var \\DateTimeInterface
 	 */
 	protected $created;
 
@@ -164,9 +164,10 @@ class ExternalVolumeEvent extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[account]
 	 * @return string
 	 */
-	public function getAccountId(): string
+	public function getAccountId(): ?string
 	{
 		return $this->accountId;
 	}
@@ -183,8 +184,10 @@ class ExternalVolumeEvent extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type date
+	 * @return \\DateTimeInterface
 	 */
-	public function getCreated(): DateTimeInterface
+	public function getCreated(): ?DateTimeInterface
 	{
 		return $this->created;
 	}
@@ -192,8 +195,9 @@ class ExternalVolumeEvent extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getEventType(): string
+	public function getEventType(): ?string
 	{
 		return $this->eventType;
 	}
@@ -201,8 +205,9 @@ class ExternalVolumeEvent extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getExternalId(): string
+	public function getExternalId(): ?string
 	{
 		return $this->externalId;
 	}
@@ -210,8 +215,9 @@ class ExternalVolumeEvent extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getId(): string
+	public function getId(): ?string
 	{
 		return $this->id;
 	}
@@ -219,8 +225,9 @@ class ExternalVolumeEvent extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getKind(): string
+	public function getKind(): ?string
 	{
 		return $this->kind;
 	}
@@ -228,9 +235,10 @@ class ExternalVolumeEvent extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[account]
 	 * @return string
 	 */
-	public function getReportedAccountId(): string
+	public function getReportedAccountId(): ?string
 	{
 		return $this->reportedAccountId;
 	}
@@ -239,7 +247,7 @@ class ExternalVolumeEvent extends \SamIT\Rancher\Types\Entity
 	/**
 	 * --> getter from reference: reference[account]
 	 */
-	public function getReportedAccount(): ?ReportedAccount
+	public function getReportedAccount(): ?Account
 	{
 		return $this->client()->getReportedAccount($this->reportedAccountId);
 	}
@@ -247,6 +255,7 @@ class ExternalVolumeEvent extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return StateEnum
 	 */
 	public function getState(): StateEnum
@@ -257,6 +266,7 @@ class ExternalVolumeEvent extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return TransitioningEnum
 	 */
 	public function getTransitioning(): TransitioningEnum
@@ -267,8 +277,9 @@ class ExternalVolumeEvent extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getTransitioningMessage(): string
+	public function getTransitioningMessage(): ?string
 	{
 		return $this->transitioningMessage;
 	}
@@ -276,8 +287,9 @@ class ExternalVolumeEvent extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getTransitioningProgress(): int
+	public function getTransitioningProgress(): ?int
 	{
 		return $this->transitioningProgress;
 	}
@@ -285,8 +297,9 @@ class ExternalVolumeEvent extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getUuid(): string
+	public function getUuid(): ?string
 	{
 		return $this->uuid;
 	}
@@ -294,6 +307,7 @@ class ExternalVolumeEvent extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type volume
 	 * @return Volume
 	 */
 	public function getVolume(): Volume

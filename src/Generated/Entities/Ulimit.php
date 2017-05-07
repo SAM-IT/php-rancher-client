@@ -55,8 +55,9 @@ class Ulimit extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getHard(): int
+	public function getHard(): ?int
 	{
 		return $this->hard;
 	}
@@ -64,6 +65,7 @@ class Ulimit extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getName(): string
 	{
@@ -73,8 +75,9 @@ class Ulimit extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getSoft(): int
+	public function getSoft(): ?int
 	{
 		return $this->soft;
 	}

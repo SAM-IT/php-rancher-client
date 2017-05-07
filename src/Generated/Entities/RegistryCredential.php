@@ -69,6 +69,7 @@ class RegistryCredential extends Credential
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[registry]
 	 * @return string
 	 */
 	public function getRegistryId(): string

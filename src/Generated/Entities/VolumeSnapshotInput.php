@@ -39,6 +39,7 @@ class VolumeSnapshotInput extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getName(): string
 	{

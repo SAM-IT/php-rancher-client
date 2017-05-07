@@ -54,8 +54,9 @@ class ScalePolicy extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getIncrement(): int
+	public function getIncrement(): ?int
 	{
 		return $this->increment;
 	}
@@ -63,8 +64,9 @@ class ScalePolicy extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getMax(): int
+	public function getMax(): ?int
 	{
 		return $this->max;
 	}
@@ -72,8 +74,9 @@ class ScalePolicy extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getMin(): int
+	public function getMin(): ?int
 	{
 		return $this->min;
 	}

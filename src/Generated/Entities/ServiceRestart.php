@@ -37,6 +37,7 @@ class ServiceRestart extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type rollingRestartStrategy
 	 * @return RollingRestartStrategy
 	 */
 	public function getRollingRestartStrategy(): RollingRestartStrategy

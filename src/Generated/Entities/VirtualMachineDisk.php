@@ -2,6 +2,7 @@
 namespace SamIT\Rancher\Generated\Entities;
 
 use SamIT\Rancher\Generated\Client;
+use SamIT\Rancher\Types\StringMap;
 
 class VirtualMachineDisk extends \SamIT\Rancher\Types\Entity
 {
@@ -31,7 +32,7 @@ class VirtualMachineDisk extends \SamIT\Rancher\Types\Entity
 	 * @api-create true
 	 * @api-nullable false
 	 * @api-type map[string]
-	 * @var string[]
+	 * @var \\SamIT\Rancher\Types\StringMap
 	 */
 	protected $opts = [];
 
@@ -83,7 +84,7 @@ class VirtualMachineDisk extends \SamIT\Rancher\Types\Entity
 	}
 
 
-	public static function create(string $driver, array $opts, \boolean $root, string $size)
+	public static function create(string $driver, StringMap $opts, \boolean $root, string $size)
 	{
 		$result = new static();
 		$result->driver = $driver;
@@ -96,6 +97,7 @@ class VirtualMachineDisk extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getDriver(): string
 	{
@@ -105,8 +107,9 @@ class VirtualMachineDisk extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getName(): string
+	public function getName(): ?string
 	{
 		return $this->name;
 	}
@@ -114,9 +117,10 @@ class VirtualMachineDisk extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
-	 * @return string[]
+	 * @api-type map[string]
+	 * @return \\SamIT\Rancher\Types\StringMap
 	 */
-	public function getOpts(): array
+	public function getOpts(): \SamIT\Rancher\Types\StringMap
 	{
 		return $this->opts;
 	}
@@ -124,8 +128,9 @@ class VirtualMachineDisk extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getReadIops(): int
+	public function getReadIops(): ?int
 	{
 		return $this->readIops;
 	}
@@ -133,6 +138,7 @@ class VirtualMachineDisk extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getRoot(): \boolean
 	{
@@ -142,6 +148,7 @@ class VirtualMachineDisk extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getSize(): string
 	{
@@ -151,8 +158,9 @@ class VirtualMachineDisk extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getWriteIops(): int
+	public function getWriteIops(): ?int
 	{
 		return $this->writeIops;
 	}

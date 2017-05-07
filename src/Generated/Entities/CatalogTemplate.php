@@ -2,6 +2,7 @@
 namespace SamIT\Rancher\Generated\Entities;
 
 use SamIT\Rancher\Generated\Client;
+use SamIT\Rancher\Types\JsonMap;
 
 class CatalogTemplate extends \SamIT\Rancher\Types\Entity
 {
@@ -22,7 +23,7 @@ class CatalogTemplate extends \SamIT\Rancher\Types\Entity
 	 * @api-create true
 	 * @api-nullable false
 	 * @api-type map[json]
-	 * @var SamIT\Rancher\Types\JsonMap
+	 * @var \\SamIT\Rancher\Types\JsonMap
 	 */
 	protected $answers = [];
 
@@ -99,7 +100,7 @@ class CatalogTemplate extends \SamIT\Rancher\Types\Entity
 	}
 
 
-	public static function create(\JsonMap $answers, \Binding $binding, string $description, string $dockerCompose, string $name, string $rancherCompose, string $templateId, string $templateVersionId)
+	public static function create(JsonMap $answers, \Binding $binding, string $description, string $dockerCompose, string $name, string $rancherCompose, string $templateId, string $templateVersionId)
 	{
 		$result = new static();
 		$result->answers = $answers;
@@ -116,9 +117,10 @@ class CatalogTemplate extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
-	 * @return SamIT\Rancher\Types\JsonMap
+	 * @api-type map[json]
+	 * @return \\SamIT\Rancher\Types\JsonMap
 	 */
-	public function getAnswers(): SamIT\Rancher\Generated\Entities\JsonMap
+	public function getAnswers(): \SamIT\Rancher\Types\JsonMap
 	{
 		return $this->answers;
 	}
@@ -126,6 +128,7 @@ class CatalogTemplate extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type binding
 	 * @return Binding
 	 */
 	public function getBinding(): Binding
@@ -136,6 +139,7 @@ class CatalogTemplate extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getDescription(): string
 	{
@@ -145,6 +149,7 @@ class CatalogTemplate extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getDockerCompose(): string
 	{
@@ -154,6 +159,7 @@ class CatalogTemplate extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getName(): string
 	{
@@ -163,6 +169,7 @@ class CatalogTemplate extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getRancherCompose(): string
 	{
@@ -172,6 +179,7 @@ class CatalogTemplate extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getTemplateId(): string
 	{
@@ -181,6 +189,7 @@ class CatalogTemplate extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getTemplateVersionId(): string
 	{

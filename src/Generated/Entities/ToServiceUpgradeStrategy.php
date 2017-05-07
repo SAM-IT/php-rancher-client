@@ -71,7 +71,7 @@ class ToServiceUpgradeStrategy extends \SamIT\Rancher\Types\Entity
 	}
 
 
-	public static function create(\ToService $toServiceId, \boolean $updateLinks)
+	public static function create(\Service $toServiceId, \boolean $updateLinks)
 	{
 		$result = new static();
 		$result->toServiceId = $toServiceId;
@@ -82,8 +82,9 @@ class ToServiceUpgradeStrategy extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getBatchSize(): int
+	public function getBatchSize(): ?int
 	{
 		return $this->batchSize;
 	}
@@ -91,8 +92,9 @@ class ToServiceUpgradeStrategy extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getFinalScale(): int
+	public function getFinalScale(): ?int
 	{
 		return $this->finalScale;
 	}
@@ -100,8 +102,9 @@ class ToServiceUpgradeStrategy extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getIntervalMillis(): int
+	public function getIntervalMillis(): ?int
 	{
 		return $this->intervalMillis;
 	}
@@ -109,6 +112,7 @@ class ToServiceUpgradeStrategy extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[service]
 	 * @return string
 	 */
 	public function getToServiceId(): string
@@ -120,7 +124,7 @@ class ToServiceUpgradeStrategy extends \SamIT\Rancher\Types\Entity
 	/**
 	 * --> getter from reference: reference[service]
 	 */
-	public function getToService(): ?ToService
+	public function getToService(): ?Service
 	{
 		return $this->client()->getToService($this->toServiceId);
 	}
@@ -128,6 +132,7 @@ class ToServiceUpgradeStrategy extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getUpdateLinks(): \boolean
 	{

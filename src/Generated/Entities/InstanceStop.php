@@ -47,6 +47,7 @@ class InstanceStop extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getRemove(): \boolean
 	{
@@ -56,6 +57,7 @@ class InstanceStop extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
 	public function getTimeout(): int
 	{

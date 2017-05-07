@@ -76,6 +76,7 @@ class PublicEndpoint extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[host]
 	 * @return string
 	 */
 	public function getHostId(): string
@@ -95,6 +96,7 @@ class PublicEndpoint extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[instance]
 	 * @return string
 	 */
 	public function getInstanceId(): string
@@ -114,6 +116,7 @@ class PublicEndpoint extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getIpAddress(): string
 	{
@@ -123,8 +126,9 @@ class PublicEndpoint extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getPort(): int
+	public function getPort(): ?int
 	{
 		return $this->port;
 	}
@@ -132,6 +136,7 @@ class PublicEndpoint extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[service]
 	 * @return string
 	 */
 	public function getServiceId(): string

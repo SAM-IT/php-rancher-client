@@ -48,6 +48,7 @@ class SnapshotBackupInput extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[backupTarget]
 	 * @return string
 	 */
 	public function getBackupTargetId(): string
@@ -67,8 +68,9 @@ class SnapshotBackupInput extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getName(): string
+	public function getName(): ?string
 	{
 		return $this->name;
 	}

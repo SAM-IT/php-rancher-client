@@ -46,6 +46,7 @@ class ContainerLogs extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getFollow(): \boolean
 	{
@@ -55,8 +56,9 @@ class ContainerLogs extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getLines(): int
+	public function getLines(): ?int
 	{
 		return $this->lines;
 	}

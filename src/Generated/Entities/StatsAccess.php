@@ -45,6 +45,7 @@ class StatsAccess extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getToken(): string
 	{
@@ -54,6 +55,7 @@ class StatsAccess extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getUrl(): string
 	{

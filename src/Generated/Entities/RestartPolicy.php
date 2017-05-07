@@ -47,6 +47,7 @@ class RestartPolicy extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
 	public function getMaximumRetryCount(): int
 	{
@@ -56,6 +57,7 @@ class RestartPolicy extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getName(): string
 	{

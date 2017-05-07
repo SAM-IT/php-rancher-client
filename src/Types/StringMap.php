@@ -6,7 +6,7 @@ namespace SamIT\Rancher\Types;
 
 use Traversable;
 
-class JsonMap implements MapInterface
+class StringMap implements MapInterface
 {
     use MapArrayAccessTrait;
     public $data = [];
@@ -24,22 +24,21 @@ class JsonMap implements MapInterface
         return new \ArrayIterator($this->data);
     }
 
-    /**
-     * @param string $key
-     * @param array $value
-     */
     public function set(string $key, $value)
     {
         $this->data[$key] = $value;
     }
 
 
-    /**
-     * @param string $key
-     * @return array
-     */
-    public function get(string $key): array {
+
+    public function get(string $key) : string {
         return $this->data[$key];
     }
+
+    public function count()
+    {
+        return count($this->data);
+    }
+
 
 }

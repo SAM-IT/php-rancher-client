@@ -39,6 +39,7 @@ class RestoreFromBackupInput extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[backup]
 	 * @return string
 	 */
 	public function getBackupId(): string

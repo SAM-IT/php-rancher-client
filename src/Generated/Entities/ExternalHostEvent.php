@@ -41,7 +41,7 @@ class ExternalHostEvent extends \SamIT\Rancher\Types\Entity
 	 * @api-create false
 	 * @api-nullable true
 	 * @api-type date
-	 * @var DateTimeInterface
+	 * @var \\DateTimeInterface
 	 */
 	protected $created;
 
@@ -185,9 +185,10 @@ class ExternalHostEvent extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[account]
 	 * @return string
 	 */
-	public function getAccountId(): string
+	public function getAccountId(): ?string
 	{
 		return $this->accountId;
 	}
@@ -204,8 +205,10 @@ class ExternalHostEvent extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type date
+	 * @return \\DateTimeInterface
 	 */
-	public function getCreated(): DateTimeInterface
+	public function getCreated(): ?DateTimeInterface
 	{
 		return $this->created;
 	}
@@ -213,8 +216,9 @@ class ExternalHostEvent extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getEventType(): string
+	public function getEventType(): ?string
 	{
 		return $this->eventType;
 	}
@@ -222,8 +226,9 @@ class ExternalHostEvent extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getExternalId(): string
+	public function getExternalId(): ?string
 	{
 		return $this->externalId;
 	}
@@ -231,8 +236,9 @@ class ExternalHostEvent extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getId(): string
+	public function getId(): ?string
 	{
 		return $this->id;
 	}
@@ -240,8 +246,9 @@ class ExternalHostEvent extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getKind(): string
+	public function getKind(): ?string
 	{
 		return $this->kind;
 	}
@@ -249,9 +256,10 @@ class ExternalHostEvent extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[account]
 	 * @return string
 	 */
-	public function getReportedAccountId(): string
+	public function getReportedAccountId(): ?string
 	{
 		return $this->reportedAccountId;
 	}
@@ -260,7 +268,7 @@ class ExternalHostEvent extends \SamIT\Rancher\Types\Entity
 	/**
 	 * --> getter from reference: reference[account]
 	 */
-	public function getReportedAccount(): ?ReportedAccount
+	public function getReportedAccount(): ?Account
 	{
 		return $this->client()->getReportedAccount($this->reportedAccountId);
 	}
@@ -268,6 +276,7 @@ class ExternalHostEvent extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return StateEnum
 	 */
 	public function getState(): StateEnum
@@ -278,6 +287,7 @@ class ExternalHostEvent extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return TransitioningEnum
 	 */
 	public function getTransitioning(): TransitioningEnum
@@ -288,8 +298,9 @@ class ExternalHostEvent extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getTransitioningMessage(): string
+	public function getTransitioningMessage(): ?string
 	{
 		return $this->transitioningMessage;
 	}
@@ -297,8 +308,9 @@ class ExternalHostEvent extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getTransitioningProgress(): int
+	public function getTransitioningProgress(): ?int
 	{
 		return $this->transitioningProgress;
 	}
@@ -306,8 +318,9 @@ class ExternalHostEvent extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getUuid(): string
+	public function getUuid(): ?string
 	{
 		return $this->uuid;
 	}
@@ -315,8 +328,9 @@ class ExternalHostEvent extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getHostLabel(): string
+	public function getHostLabel(): ?string
 	{
 		return $this->hostLabel;
 	}
@@ -324,9 +338,10 @@ class ExternalHostEvent extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[host]
 	 * @return string
 	 */
-	public function getHostId(): string
+	public function getHostId(): ?string
 	{
 		return $this->hostId;
 	}
@@ -343,6 +358,7 @@ class ExternalHostEvent extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getDeleteHost(): \boolean
 	{

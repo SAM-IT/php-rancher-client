@@ -5,6 +5,8 @@ use DateTimeInterface;
 use SamIT\Rancher\Generated\Client;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
+use SamIT\Rancher\Generated\Maps\ServiceMap;
+use SamIT\Rancher\Types\JsonMap;
 
 class NetworkDriverService extends Service
 {
@@ -66,6 +68,7 @@ class NetworkDriverService extends Service
 
 	/**
 	 * @simple-getter
+	 * @api-type networkDriver
 	 * @return NetworkDriver
 	 */
 	public function getNetworkDriver(): NetworkDriver

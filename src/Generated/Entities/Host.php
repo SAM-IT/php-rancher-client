@@ -5,6 +5,7 @@ use DateTimeInterface;
 use SamIT\Rancher\Generated\Client;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
+use SamIT\Rancher\Types\StringMap;
 
 class Host extends \SamIT\Rancher\Types\Entity
 {
@@ -86,7 +87,7 @@ class Host extends \SamIT\Rancher\Types\Entity
 	 * @api-create false
 	 * @api-nullable true
 	 * @api-type date
-	 * @var DateTimeInterface
+	 * @var \\DateTimeInterface
 	 */
 	protected $created;
 
@@ -176,7 +177,7 @@ class Host extends \SamIT\Rancher\Types\Entity
 	 * @api-create false
 	 * @api-nullable true
 	 * @api-type date
-	 * @var DateTimeInterface
+	 * @var \\DateTimeInterface
 	 */
 	protected $removed;
 
@@ -239,7 +240,7 @@ class Host extends \SamIT\Rancher\Types\Entity
 	 * @api-create false
 	 * @api-nullable false
 	 * @api-type json
-	 * @var array
+	 * @var \array
 	 */
 	protected $info;
 
@@ -275,7 +276,7 @@ class Host extends \SamIT\Rancher\Types\Entity
 	 * @api-create true
 	 * @api-nullable true
 	 * @api-type map[string]
-	 * @var string[]
+	 * @var \\SamIT\Rancher\Types\StringMap
 	 */
 	protected $labels = [];
 
@@ -356,7 +357,7 @@ class Host extends \SamIT\Rancher\Types\Entity
 	 * @api-create true
 	 * @api-nullable true
 	 * @api-type map[string]
-	 * @var string[]
+	 * @var \\SamIT\Rancher\Types\StringMap
 	 */
 	protected $engineEnv = [];
 
@@ -383,7 +384,7 @@ class Host extends \SamIT\Rancher\Types\Entity
 	 * @api-create true
 	 * @api-nullable true
 	 * @api-type map[string]
-	 * @var string[]
+	 * @var \\SamIT\Rancher\Types\StringMap
 	 */
 	protected $engineLabel = [];
 
@@ -392,7 +393,7 @@ class Host extends \SamIT\Rancher\Types\Entity
 	 * @api-create true
 	 * @api-nullable true
 	 * @api-type map[string]
-	 * @var string[]
+	 * @var \\SamIT\Rancher\Types\StringMap
 	 */
 	protected $engineOpt = [];
 
@@ -455,9 +456,10 @@ class Host extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[account]
 	 * @return string
 	 */
-	public function getAccountId(): string
+	public function getAccountId(): ?string
 	{
 		return $this->accountId;
 	}
@@ -474,8 +476,9 @@ class Host extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getAgentState(): string
+	public function getAgentState(): ?string
 	{
 		return $this->agentState;
 	}
@@ -483,8 +486,9 @@ class Host extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getComputeTotal(): int
+	public function getComputeTotal(): ?int
 	{
 		return $this->computeTotal;
 	}
@@ -492,8 +496,10 @@ class Host extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type date
+	 * @return \\DateTimeInterface
 	 */
-	public function getCreated(): DateTimeInterface
+	public function getCreated(): ?DateTimeInterface
 	{
 		return $this->created;
 	}
@@ -501,8 +507,9 @@ class Host extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getDescription(): string
+	public function getDescription(): ?string
 	{
 		return $this->description;
 	}
@@ -516,9 +523,10 @@ class Host extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[hostTemplate]
 	 * @return string
 	 */
-	public function getHostTemplateId(): string
+	public function getHostTemplateId(): ?string
 	{
 		return $this->hostTemplateId;
 	}
@@ -535,8 +543,9 @@ class Host extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getId(): string
+	public function getId(): ?string
 	{
 		return $this->id;
 	}
@@ -544,8 +553,9 @@ class Host extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getKind(): string
+	public function getKind(): ?string
 	{
 		return $this->kind;
 	}
@@ -553,8 +563,9 @@ class Host extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getLocalStorageMb(): int
+	public function getLocalStorageMb(): ?int
 	{
 		return $this->localStorageMb;
 	}
@@ -568,8 +579,9 @@ class Host extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getMemory(): int
+	public function getMemory(): ?int
 	{
 		return $this->memory;
 	}
@@ -583,8 +595,9 @@ class Host extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getMilliCpu(): int
+	public function getMilliCpu(): ?int
 	{
 		return $this->milliCpu;
 	}
@@ -598,8 +611,9 @@ class Host extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getName(): string
+	public function getName(): ?string
 	{
 		return $this->name;
 	}
@@ -613,9 +627,10 @@ class Host extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[physicalHost]
 	 * @return string
 	 */
-	public function getPhysicalHostId(): string
+	public function getPhysicalHostId(): ?string
 	{
 		return $this->physicalHostId;
 	}
@@ -632,8 +647,10 @@ class Host extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type date
+	 * @return \\DateTimeInterface
 	 */
-	public function getRemoved(): DateTimeInterface
+	public function getRemoved(): ?DateTimeInterface
 	{
 		return $this->removed;
 	}
@@ -641,9 +658,10 @@ class Host extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[stack]
 	 * @return string
 	 */
-	public function getStackId(): string
+	public function getStackId(): ?string
 	{
 		return $this->stackId;
 	}
@@ -660,6 +678,7 @@ class Host extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return StateEnum
 	 */
 	public function getState(): StateEnum
@@ -670,8 +689,9 @@ class Host extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getUuid(): string
+	public function getUuid(): ?string
 	{
 		return $this->uuid;
 	}
@@ -679,6 +699,7 @@ class Host extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return TransitioningEnum
 	 */
 	public function getTransitioning(): TransitioningEnum
@@ -689,8 +710,9 @@ class Host extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getTransitioningMessage(): string
+	public function getTransitioningMessage(): ?string
 	{
 		return $this->transitioningMessage;
 	}
@@ -698,8 +720,9 @@ class Host extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getTransitioningProgress(): int
+	public function getTransitioningProgress(): ?int
 	{
 		return $this->transitioningProgress;
 	}
@@ -707,6 +730,8 @@ class Host extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type json
+	 * @return \array
 	 */
 	public function getInfo(): array
 	{
@@ -716,6 +741,7 @@ class Host extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getHostname(): string
 	{
@@ -725,8 +751,9 @@ class Host extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getAgentIpAddress(): string
+	public function getAgentIpAddress(): ?string
 	{
 		return $this->agentIpAddress;
 	}
@@ -734,6 +761,7 @@ class Host extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[reference[instance]]
 	 * @return string[][]
 	 */
 	public function getInstanceIds(): array
@@ -744,15 +772,16 @@ class Host extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
-	 * @return string[]
+	 * @api-type map[string]
+	 * @return \\SamIT\Rancher\Types\StringMap
 	 */
-	public function getLabels(): array
+	public function getLabels(): ?\SamIT\Rancher\Types\StringMap
 	{
 		return $this->labels;
 	}
 
 
-	public function setLabels(array $value = NULL)
+	public function setLabels(StringMap $value = NULL)
 	{
 		$this->labels = $value;
 	}
@@ -760,9 +789,10 @@ class Host extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[publicEndpoint]
 	 * @return PublicEndpoint[]
 	 */
-	public function getPublicEndpoints(): array
+	public function getPublicEndpoints(): ?array
 	{
 		return $this->publicEndpoints;
 	}
@@ -770,9 +800,10 @@ class Host extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type amazonec2Config
 	 * @return Amazonec2Config
 	 */
-	public function getAmazonec2Config(): Amazonec2Config
+	public function getAmazonec2Config(): ?Amazonec2Config
 	{
 		return $this->amazonec2Config;
 	}
@@ -786,8 +817,9 @@ class Host extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getAuthCertificateAuthority(): string
+	public function getAuthCertificateAuthority(): ?string
 	{
 		return $this->authCertificateAuthority;
 	}
@@ -801,8 +833,9 @@ class Host extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getAuthKey(): string
+	public function getAuthKey(): ?string
 	{
 		return $this->authKey;
 	}
@@ -816,9 +849,10 @@ class Host extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type azureConfig
 	 * @return AzureConfig
 	 */
-	public function getAzureConfig(): AzureConfig
+	public function getAzureConfig(): ?AzureConfig
 	{
 		return $this->azureConfig;
 	}
@@ -832,9 +866,10 @@ class Host extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type digitaloceanConfig
 	 * @return DigitaloceanConfig
 	 */
-	public function getDigitaloceanConfig(): DigitaloceanConfig
+	public function getDigitaloceanConfig(): ?DigitaloceanConfig
 	{
 		return $this->digitaloceanConfig;
 	}
@@ -848,8 +883,9 @@ class Host extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getDockerVersion(): string
+	public function getDockerVersion(): ?string
 	{
 		return $this->dockerVersion;
 	}
@@ -863,8 +899,9 @@ class Host extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getDriver(): string
+	public function getDriver(): ?string
 	{
 		return $this->driver;
 	}
@@ -872,15 +909,16 @@ class Host extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
-	 * @return string[]
+	 * @api-type map[string]
+	 * @return \\SamIT\Rancher\Types\StringMap
 	 */
-	public function getEngineEnv(): array
+	public function getEngineEnv(): ?\SamIT\Rancher\Types\StringMap
 	{
 		return $this->engineEnv;
 	}
 
 
-	public function setEngineEnv(array $value = NULL)
+	public function setEngineEnv(StringMap $value = NULL)
 	{
 		$this->engineEnv = $value;
 	}
@@ -888,9 +926,10 @@ class Host extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
-	public function getEngineInsecureRegistry(): array
+	public function getEngineInsecureRegistry(): ?array
 	{
 		return $this->engineInsecureRegistry;
 	}
@@ -904,8 +943,9 @@ class Host extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getEngineInstallUrl(): string
+	public function getEngineInstallUrl(): ?string
 	{
 		return $this->engineInstallUrl;
 	}
@@ -919,15 +959,16 @@ class Host extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
-	 * @return string[]
+	 * @api-type map[string]
+	 * @return \\SamIT\Rancher\Types\StringMap
 	 */
-	public function getEngineLabel(): array
+	public function getEngineLabel(): ?\SamIT\Rancher\Types\StringMap
 	{
 		return $this->engineLabel;
 	}
 
 
-	public function setEngineLabel(array $value = NULL)
+	public function setEngineLabel(StringMap $value = NULL)
 	{
 		$this->engineLabel = $value;
 	}
@@ -935,15 +976,16 @@ class Host extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
-	 * @return string[]
+	 * @api-type map[string]
+	 * @return \\SamIT\Rancher\Types\StringMap
 	 */
-	public function getEngineOpt(): array
+	public function getEngineOpt(): ?\SamIT\Rancher\Types\StringMap
 	{
 		return $this->engineOpt;
 	}
 
 
-	public function setEngineOpt(array $value = NULL)
+	public function setEngineOpt(StringMap $value = NULL)
 	{
 		$this->engineOpt = $value;
 	}
@@ -951,9 +993,10 @@ class Host extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
-	public function getEngineRegistryMirror(): array
+	public function getEngineRegistryMirror(): ?array
 	{
 		return $this->engineRegistryMirror;
 	}
@@ -967,8 +1010,9 @@ class Host extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getEngineStorageDriver(): string
+	public function getEngineStorageDriver(): ?string
 	{
 		return $this->engineStorageDriver;
 	}
@@ -982,9 +1026,10 @@ class Host extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type genericConfig
 	 * @return GenericConfig
 	 */
-	public function getGenericConfig(): GenericConfig
+	public function getGenericConfig(): ?GenericConfig
 	{
 		return $this->genericConfig;
 	}
@@ -998,9 +1043,10 @@ class Host extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type packetConfig
 	 * @return PacketConfig
 	 */
-	public function getPacketConfig(): PacketConfig
+	public function getPacketConfig(): ?PacketConfig
 	{
 		return $this->packetConfig;
 	}

@@ -2,6 +2,8 @@
 namespace SamIT\Rancher\Generated\Entities;
 
 use SamIT\Rancher\Generated\Client;
+use SamIT\Rancher\Types\JsonMap;
+use SamIT\Rancher\Types\StringMap;
 
 class StackUpgrade extends \SamIT\Rancher\Types\Entity
 {
@@ -47,7 +49,7 @@ class StackUpgrade extends \SamIT\Rancher\Types\Entity
 	 * @api-create true
 	 * @api-nullable false
 	 * @api-type map[string]
-	 * @var string[]
+	 * @var \\SamIT\Rancher\Types\StringMap
 	 */
 	protected $environment = [];
 
@@ -56,7 +58,7 @@ class StackUpgrade extends \SamIT\Rancher\Types\Entity
 	 * @api-create true
 	 * @api-nullable false
 	 * @api-type map[json]
-	 * @var SamIT\Rancher\Types\JsonMap
+	 * @var \\SamIT\Rancher\Types\JsonMap
 	 */
 	protected $answers = [];
 
@@ -65,7 +67,7 @@ class StackUpgrade extends \SamIT\Rancher\Types\Entity
 	 * @api-create true
 	 * @api-nullable false
 	 * @api-type map[string]
-	 * @var string[]
+	 * @var \\SamIT\Rancher\Types\StringMap
 	 */
 	protected $templates = [];
 
@@ -79,7 +81,7 @@ class StackUpgrade extends \SamIT\Rancher\Types\Entity
 	}
 
 
-	public static function create(string $dockerCompose, string $rancherCompose, string $externalId, array $environment, \JsonMap $answers, array $templates)
+	public static function create(string $dockerCompose, string $rancherCompose, string $externalId, StringMap $environment, JsonMap $answers, StringMap $templates)
 	{
 		$result = new static();
 		$result->dockerCompose = $dockerCompose;
@@ -94,6 +96,7 @@ class StackUpgrade extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getDockerCompose(): string
 	{
@@ -103,6 +106,7 @@ class StackUpgrade extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getRancherCompose(): string
 	{
@@ -112,6 +116,7 @@ class StackUpgrade extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getExternalId(): string
 	{
@@ -121,9 +126,10 @@ class StackUpgrade extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
-	 * @return string[]
+	 * @api-type map[string]
+	 * @return \\SamIT\Rancher\Types\StringMap
 	 */
-	public function getEnvironment(): array
+	public function getEnvironment(): \SamIT\Rancher\Types\StringMap
 	{
 		return $this->environment;
 	}
@@ -131,9 +137,10 @@ class StackUpgrade extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
-	 * @return SamIT\Rancher\Types\JsonMap
+	 * @api-type map[json]
+	 * @return \\SamIT\Rancher\Types\JsonMap
 	 */
-	public function getAnswers(): SamIT\Rancher\Generated\Entities\JsonMap
+	public function getAnswers(): \SamIT\Rancher\Types\JsonMap
 	{
 		return $this->answers;
 	}
@@ -141,9 +148,10 @@ class StackUpgrade extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
-	 * @return string[]
+	 * @api-type map[string]
+	 * @return \\SamIT\Rancher\Types\StringMap
 	 */
-	public function getTemplates(): array
+	public function getTemplates(): \SamIT\Rancher\Types\StringMap
 	{
 		return $this->templates;
 	}

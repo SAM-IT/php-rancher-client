@@ -72,6 +72,7 @@ class MountEntry extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[instance]
 	 * @return string
 	 */
 	public function getInstanceId(): string
@@ -91,6 +92,7 @@ class MountEntry extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getInstanceName(): string
 	{
@@ -100,6 +102,7 @@ class MountEntry extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getPath(): string
 	{
@@ -109,6 +112,7 @@ class MountEntry extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[volume]
 	 * @return string
 	 */
 	public function getVolumeId(): string
@@ -128,6 +132,7 @@ class MountEntry extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getVolumeName(): string
 	{

@@ -5,6 +5,7 @@ use DateTimeInterface;
 use SamIT\Rancher\Generated\Client;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
+use SamIT\Rancher\Types\JsonMap;
 
 class NetworkDriver extends \SamIT\Rancher\Types\Entity
 {
@@ -42,7 +43,7 @@ class NetworkDriver extends \SamIT\Rancher\Types\Entity
 	 * @api-create false
 	 * @api-nullable true
 	 * @api-type date
-	 * @var DateTimeInterface
+	 * @var \\DateTimeInterface
 	 */
 	protected $created;
 
@@ -87,7 +88,7 @@ class NetworkDriver extends \SamIT\Rancher\Types\Entity
 	 * @api-create false
 	 * @api-nullable true
 	 * @api-type date
-	 * @var DateTimeInterface
+	 * @var \\DateTimeInterface
 	 */
 	protected $removed;
 
@@ -159,7 +160,7 @@ class NetworkDriver extends \SamIT\Rancher\Types\Entity
 	 * @api-create true
 	 * @api-nullable false
 	 * @api-type map[json]
-	 * @var SamIT\Rancher\Types\JsonMap
+	 * @var \\SamIT\Rancher\Types\JsonMap
 	 */
 	protected $cniConfig = [];
 
@@ -168,7 +169,7 @@ class NetworkDriver extends \SamIT\Rancher\Types\Entity
 	 * @api-create true
 	 * @api-nullable false
 	 * @api-type map[json]
-	 * @var SamIT\Rancher\Types\JsonMap
+	 * @var \\SamIT\Rancher\Types\JsonMap
 	 */
 	protected $networkMetadata = [];
 
@@ -185,7 +186,7 @@ class NetworkDriver extends \SamIT\Rancher\Types\Entity
 	}
 
 
-	public static function create(\DefaultNetwork $defaultNetwork, \JsonMap $cniConfig, \JsonMap $networkMetadata)
+	public static function create(\DefaultNetwork $defaultNetwork, JsonMap $cniConfig, JsonMap $networkMetadata)
 	{
 		$result = new static();
 		$result->defaultNetwork = $defaultNetwork;
@@ -197,9 +198,10 @@ class NetworkDriver extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[account]
 	 * @return string
 	 */
-	public function getAccountId(): string
+	public function getAccountId(): ?string
 	{
 		return $this->accountId;
 	}
@@ -216,8 +218,10 @@ class NetworkDriver extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type date
+	 * @return \\DateTimeInterface
 	 */
-	public function getCreated(): DateTimeInterface
+	public function getCreated(): ?DateTimeInterface
 	{
 		return $this->created;
 	}
@@ -225,8 +229,9 @@ class NetworkDriver extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getDescription(): string
+	public function getDescription(): ?string
 	{
 		return $this->description;
 	}
@@ -240,8 +245,9 @@ class NetworkDriver extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getId(): string
+	public function getId(): ?string
 	{
 		return $this->id;
 	}
@@ -249,8 +255,9 @@ class NetworkDriver extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getKind(): string
+	public function getKind(): ?string
 	{
 		return $this->kind;
 	}
@@ -258,8 +265,9 @@ class NetworkDriver extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getName(): string
+	public function getName(): ?string
 	{
 		return $this->name;
 	}
@@ -273,8 +281,10 @@ class NetworkDriver extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type date
+	 * @return \\DateTimeInterface
 	 */
-	public function getRemoved(): DateTimeInterface
+	public function getRemoved(): ?DateTimeInterface
 	{
 		return $this->removed;
 	}
@@ -282,9 +292,10 @@ class NetworkDriver extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[service]
 	 * @return string
 	 */
-	public function getServiceId(): string
+	public function getServiceId(): ?string
 	{
 		return $this->serviceId;
 	}
@@ -301,6 +312,7 @@ class NetworkDriver extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return StateEnum
 	 */
 	public function getState(): StateEnum
@@ -311,8 +323,9 @@ class NetworkDriver extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getUuid(): string
+	public function getUuid(): ?string
 	{
 		return $this->uuid;
 	}
@@ -320,6 +333,7 @@ class NetworkDriver extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return TransitioningEnum
 	 */
 	public function getTransitioning(): TransitioningEnum
@@ -330,8 +344,9 @@ class NetworkDriver extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getTransitioningMessage(): string
+	public function getTransitioningMessage(): ?string
 	{
 		return $this->transitioningMessage;
 	}
@@ -339,8 +354,9 @@ class NetworkDriver extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getTransitioningProgress(): int
+	public function getTransitioningProgress(): ?int
 	{
 		return $this->transitioningProgress;
 	}
@@ -348,6 +364,7 @@ class NetworkDriver extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type defaultNetwork
 	 * @return DefaultNetwork
 	 */
 	public function getDefaultNetwork(): DefaultNetwork
@@ -358,9 +375,10 @@ class NetworkDriver extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
-	 * @return SamIT\Rancher\Types\JsonMap
+	 * @api-type map[json]
+	 * @return \\SamIT\Rancher\Types\JsonMap
 	 */
-	public function getCniConfig(): SamIT\Rancher\Generated\Entities\JsonMap
+	public function getCniConfig(): \SamIT\Rancher\Types\JsonMap
 	{
 		return $this->cniConfig;
 	}
@@ -368,9 +386,10 @@ class NetworkDriver extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
-	 * @return SamIT\Rancher\Types\JsonMap
+	 * @api-type map[json]
+	 * @return \\SamIT\Rancher\Types\JsonMap
 	 */
-	public function getNetworkMetadata(): SamIT\Rancher\Generated\Entities\JsonMap
+	public function getNetworkMetadata(): \SamIT\Rancher\Types\JsonMap
 	{
 		return $this->networkMetadata;
 	}

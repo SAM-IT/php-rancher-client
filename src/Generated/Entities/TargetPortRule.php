@@ -63,8 +63,9 @@ class TargetPortRule extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getBackendName(): string
+	public function getBackendName(): ?string
 	{
 		return $this->backendName;
 	}
@@ -72,8 +73,9 @@ class TargetPortRule extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getHostname(): string
+	public function getHostname(): ?string
 	{
 		return $this->hostname;
 	}
@@ -81,8 +83,9 @@ class TargetPortRule extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getPath(): string
+	public function getPath(): ?string
 	{
 		return $this->path;
 	}
@@ -90,8 +93,9 @@ class TargetPortRule extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getTargetPort(): int
+	public function getTargetPort(): ?int
 	{
 		return $this->targetPort;
 	}

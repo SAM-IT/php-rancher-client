@@ -5,6 +5,7 @@ use DateTimeInterface;
 use SamIT\Rancher\Generated\Client;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
+use SamIT\Rancher\Types\JsonMap;
 
 class HostTemplate extends \SamIT\Rancher\Types\Entity
 {
@@ -42,7 +43,7 @@ class HostTemplate extends \SamIT\Rancher\Types\Entity
 	 * @api-create false
 	 * @api-nullable true
 	 * @api-type date
-	 * @var DateTimeInterface
+	 * @var \\DateTimeInterface
 	 */
 	protected $created;
 
@@ -105,7 +106,7 @@ class HostTemplate extends \SamIT\Rancher\Types\Entity
 	 * @api-create false
 	 * @api-nullable true
 	 * @api-type date
-	 * @var DateTimeInterface
+	 * @var \\DateTimeInterface
 	 */
 	protected $removed;
 
@@ -159,7 +160,7 @@ class HostTemplate extends \SamIT\Rancher\Types\Entity
 	 * @api-create true
 	 * @api-nullable false
 	 * @api-type map[json]
-	 * @var SamIT\Rancher\Types\JsonMap
+	 * @var \\SamIT\Rancher\Types\JsonMap
 	 */
 	protected $secretValues = [];
 
@@ -168,7 +169,7 @@ class HostTemplate extends \SamIT\Rancher\Types\Entity
 	 * @api-create true
 	 * @api-nullable false
 	 * @api-type map[json]
-	 * @var SamIT\Rancher\Types\JsonMap
+	 * @var \\SamIT\Rancher\Types\JsonMap
 	 */
 	protected $publicValues = [];
 
@@ -185,7 +186,7 @@ class HostTemplate extends \SamIT\Rancher\Types\Entity
 	}
 
 
-	public static function create(\JsonMap $secretValues, \JsonMap $publicValues)
+	public static function create(JsonMap $secretValues, JsonMap $publicValues)
 	{
 		$result = new static();
 		$result->secretValues = $secretValues;
@@ -196,9 +197,10 @@ class HostTemplate extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[account]
 	 * @return string
 	 */
-	public function getAccountId(): string
+	public function getAccountId(): ?string
 	{
 		return $this->accountId;
 	}
@@ -215,8 +217,10 @@ class HostTemplate extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type date
+	 * @return \\DateTimeInterface
 	 */
-	public function getCreated(): DateTimeInterface
+	public function getCreated(): ?DateTimeInterface
 	{
 		return $this->created;
 	}
@@ -224,8 +228,9 @@ class HostTemplate extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getDescription(): string
+	public function getDescription(): ?string
 	{
 		return $this->description;
 	}
@@ -239,8 +244,9 @@ class HostTemplate extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getDriver(): string
+	public function getDriver(): ?string
 	{
 		return $this->driver;
 	}
@@ -248,8 +254,9 @@ class HostTemplate extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getFlavorPrefix(): string
+	public function getFlavorPrefix(): ?string
 	{
 		return $this->flavorPrefix;
 	}
@@ -257,8 +264,9 @@ class HostTemplate extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getId(): string
+	public function getId(): ?string
 	{
 		return $this->id;
 	}
@@ -266,8 +274,9 @@ class HostTemplate extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getKind(): string
+	public function getKind(): ?string
 	{
 		return $this->kind;
 	}
@@ -275,8 +284,9 @@ class HostTemplate extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getName(): string
+	public function getName(): ?string
 	{
 		return $this->name;
 	}
@@ -290,8 +300,10 @@ class HostTemplate extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type date
+	 * @return \\DateTimeInterface
 	 */
-	public function getRemoved(): DateTimeInterface
+	public function getRemoved(): ?DateTimeInterface
 	{
 		return $this->removed;
 	}
@@ -299,6 +311,7 @@ class HostTemplate extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return StateEnum
 	 */
 	public function getState(): StateEnum
@@ -309,8 +322,9 @@ class HostTemplate extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getUuid(): string
+	public function getUuid(): ?string
 	{
 		return $this->uuid;
 	}
@@ -318,6 +332,7 @@ class HostTemplate extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return TransitioningEnum
 	 */
 	public function getTransitioning(): TransitioningEnum
@@ -328,8 +343,9 @@ class HostTemplate extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getTransitioningMessage(): string
+	public function getTransitioningMessage(): ?string
 	{
 		return $this->transitioningMessage;
 	}
@@ -337,8 +353,9 @@ class HostTemplate extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getTransitioningProgress(): int
+	public function getTransitioningProgress(): ?int
 	{
 		return $this->transitioningProgress;
 	}
@@ -346,9 +363,10 @@ class HostTemplate extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
-	 * @return SamIT\Rancher\Types\JsonMap
+	 * @api-type map[json]
+	 * @return \\SamIT\Rancher\Types\JsonMap
 	 */
-	public function getSecretValues(): SamIT\Rancher\Generated\Entities\JsonMap
+	public function getSecretValues(): \SamIT\Rancher\Types\JsonMap
 	{
 		return $this->secretValues;
 	}
@@ -356,9 +374,10 @@ class HostTemplate extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
-	 * @return SamIT\Rancher\Types\JsonMap
+	 * @api-type map[json]
+	 * @return \\SamIT\Rancher\Types\JsonMap
 	 */
-	public function getPublicValues(): SamIT\Rancher\Generated\Entities\JsonMap
+	public function getPublicValues(): \SamIT\Rancher\Types\JsonMap
 	{
 		return $this->publicValues;
 	}

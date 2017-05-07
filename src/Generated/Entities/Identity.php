@@ -133,8 +133,9 @@ class Identity extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getAll(): string
+	public function getAll(): ?string
 	{
 		return $this->all;
 	}
@@ -142,6 +143,7 @@ class Identity extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getExternalId(): string
 	{
@@ -151,6 +153,7 @@ class Identity extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getExternalIdType(): string
 	{
@@ -160,8 +163,9 @@ class Identity extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getId(): string
+	public function getId(): ?string
 	{
 		return $this->id;
 	}
@@ -169,8 +173,9 @@ class Identity extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getLogin(): string
+	public function getLogin(): ?string
 	{
 		return $this->login;
 	}
@@ -178,8 +183,9 @@ class Identity extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getName(): string
+	public function getName(): ?string
 	{
 		return $this->name;
 	}
@@ -187,8 +193,9 @@ class Identity extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getProfilePicture(): string
+	public function getProfilePicture(): ?string
 	{
 		return $this->profilePicture;
 	}
@@ -196,8 +203,9 @@ class Identity extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getProfileUrl(): string
+	public function getProfileUrl(): ?string
 	{
 		return $this->profileUrl;
 	}
@@ -205,9 +213,10 @@ class Identity extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[project]
 	 * @return string
 	 */
-	public function getProjectId(): string
+	public function getProjectId(): ?string
 	{
 		return $this->projectId;
 	}
@@ -224,8 +233,9 @@ class Identity extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getRole(): string
+	public function getRole(): ?string
 	{
 		return $this->role;
 	}

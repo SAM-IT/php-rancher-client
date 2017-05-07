@@ -93,6 +93,7 @@ class PacketConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getApiKey(): string
 	{
@@ -102,6 +103,7 @@ class PacketConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getBillingCycle(): string
 	{
@@ -111,6 +113,7 @@ class PacketConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getFacilityCode(): string
 	{
@@ -120,6 +123,7 @@ class PacketConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getOs(): string
 	{
@@ -129,6 +133,7 @@ class PacketConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getPlan(): string
 	{
@@ -138,6 +143,7 @@ class PacketConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getProjectId(): string
 	{

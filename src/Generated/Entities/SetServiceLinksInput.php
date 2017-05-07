@@ -38,9 +38,10 @@ class SetServiceLinksInput extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[serviceLink]
 	 * @return ServiceLink[]
 	 */
-	public function getServiceLinks(): array
+	public function getServiceLinks(): ?array
 	{
 		return $this->serviceLinks;
 	}

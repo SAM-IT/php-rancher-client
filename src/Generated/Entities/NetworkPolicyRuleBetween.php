@@ -49,6 +49,7 @@ class NetworkPolicyRuleBetween extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getGroupBy(): string
 	{
@@ -58,6 +59,7 @@ class NetworkPolicyRuleBetween extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getSelector(): string
 	{

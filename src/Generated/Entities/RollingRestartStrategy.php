@@ -47,8 +47,9 @@ class RollingRestartStrategy extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getBatchSize(): int
+	public function getBatchSize(): ?int
 	{
 		return $this->batchSize;
 	}
@@ -56,8 +57,9 @@ class RollingRestartStrategy extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getIntervalMillis(): int
+	public function getIntervalMillis(): ?int
 	{
 		return $this->intervalMillis;
 	}

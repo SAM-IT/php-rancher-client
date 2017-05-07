@@ -8,8 +8,12 @@ use SamIT\Rancher\Generated\Enums\InstanceTriggeredStopEnum;
 use SamIT\Rancher\Generated\Enums\PidModeEnum;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
+use SamIT\Rancher\Generated\Maps\BlkioDeviceOptionMap;
+use SamIT\Rancher\Generated\Maps\InstanceMap;
+use SamIT\Rancher\Generated\Maps\VolumeMap;
+use SamIT\Rancher\Types\StringMap;
 
-class Container extends Instance
+class Container extends \SamIT\Rancher\Types\Entity
 {
 	/** @var string[] The list of fields for this type. */
 	protected const RESOURCE_FIELDS = [
@@ -130,6 +134,15 @@ class Container extends Instance
 
 	/**
 	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type reference[account]
+	 * @var string
+	 */
+	protected $accountId;
+
+	/**
+	 * @api-update false
 	 * @api-create true
 	 * @api-nullable true
 	 * @api-type int
@@ -150,10 +163,28 @@ class Container extends Instance
 	 * @api-update false
 	 * @api-create false
 	 * @api-nullable true
+	 * @api-type date
+	 * @var \\DateTimeInterface
+	 */
+	protected $created;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
 	 * @api-type string
 	 * @var string
 	 */
 	protected $deploymentUnitUuid;
+
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $description;
 
 	/**
 	 * @api-update false
@@ -168,8 +199,17 @@ class Container extends Instance
 	 * @api-update false
 	 * @api-create false
 	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $externalId;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
 	 * @api-type date
-	 * @var DateTimeInterface
+	 * @var \\DateTimeInterface
 	 */
 	protected $firstRunning;
 
@@ -184,12 +224,30 @@ class Container extends Instance
 
 	/**
 	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type reference[host]
+	 * @var string
+	 */
+	protected $hostId;
+
+	/**
+	 * @api-update false
 	 * @api-create true
 	 * @api-nullable true
 	 * @api-type string
 	 * @var string
 	 */
 	protected $hostname;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type int
+	 * @var string
+	 */
+	protected $id;
 
 	/**
 	 * @api-update false
@@ -208,6 +266,15 @@ class Container extends Instance
 	 * @var InstanceTriggeredStopEnum
 	 */
 	protected $instanceTriggeredStop;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $kind;
 
 	/**
 	 * @api-update false
@@ -235,6 +302,15 @@ class Container extends Instance
 	 * @var MountEntry[]
 	 */
 	protected $mounts = [];
+
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $name;
 
 	/**
 	 * @api-update false
@@ -289,6 +365,15 @@ class Container extends Instance
 	 * @var string
 	 */
 	protected $registryCredentialId;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type date
+	 * @var \\DateTimeInterface
+	 */
+	protected $removed;
 
 	/**
 	 * @api-update false
@@ -348,10 +433,55 @@ class Container extends Instance
 	 * @api-update false
 	 * @api-create false
 	 * @api-nullable false
+	 * @api-type enum
+	 * @var StateEnum
+	 */
+	protected $state;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
 	 * @api-type boolean
 	 * @var boolean
 	 */
 	protected $system;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type enum
+	 * @var TransitioningEnum
+	 */
+	protected $transitioning;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $transitioningMessage;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $transitioningProgress;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $uuid;
 
 	/**
 	 * @api-update false
@@ -376,7 +506,7 @@ class Container extends Instance
 	 * @api-create true
 	 * @api-nullable false
 	 * @api-type map[string]
-	 * @var string[]
+	 * @var \\SamIT\Rancher\Types\StringMap
 	 */
 	protected $environment = [];
 
@@ -556,7 +686,7 @@ class Container extends Instance
 	 * @api-create true
 	 * @api-nullable true
 	 * @api-type map[string]
-	 * @var string[]
+	 * @var \\SamIT\Rancher\Types\StringMap
 	 */
 	protected $lxcConf = [];
 
@@ -592,7 +722,7 @@ class Container extends Instance
 	 * @api-create true
 	 * @api-nullable false
 	 * @api-type map[string]
-	 * @var string[]
+	 * @var \\SamIT\Rancher\Types\StringMap
 	 */
 	protected $labels = [];
 
@@ -844,7 +974,7 @@ class Container extends Instance
 	 * @api-create true
 	 * @api-nullable true
 	 * @api-type map[string]
-	 * @var string[]
+	 * @var \\SamIT\Rancher\Types\StringMap
 	 */
 	protected $tmpfs = [];
 
@@ -880,7 +1010,7 @@ class Container extends Instance
 	 * @api-create true
 	 * @api-nullable true
 	 * @api-type map[string]
-	 * @var string[]
+	 * @var \\SamIT\Rancher\Types\StringMap
 	 */
 	protected $sysctls = [];
 
@@ -889,7 +1019,7 @@ class Container extends Instance
 	 * @api-create true
 	 * @api-nullable true
 	 * @api-type map[string]
-	 * @var string[]
+	 * @var \\SamIT\Rancher\Types\StringMap
 	 */
 	protected $storageOpt = [];
 
@@ -1026,10 +1156,53 @@ class Container extends Instance
 	];
 
 
+	protected function client(): Client
+	{
+		return parent::client();
+	}
+
+
+	public static function create(\boolean $startOnCreate, StringMap $environment, \boolean $publishAllPorts, \boolean $privileged, \boolean $stdinOpen, \boolean $tty, StringMap $labels, \boolean $readOnly, array $secrets)
+	{
+		$result = new static();
+		$result->startOnCreate = $startOnCreate;
+		$result->environment = $environment;
+		$result->publishAllPorts = $publishAllPorts;
+		$result->privileged = $privileged;
+		$result->stdinOpen = $stdinOpen;
+		$result->tty = $tty;
+		$result->labels = $labels;
+		$result->readOnly = $readOnly;
+		$result->secrets = $secrets;
+		return $result;
+	}
+
+
 	/**
 	 * @simple-getter
+	 * @api-type reference[account]
+	 * @return string
 	 */
-	public function getCount(): int
+	public function getAccountId(): ?string
+	{
+		return $this->accountId;
+	}
+
+
+	/**
+	 * --> getter from reference: reference[account]
+	 */
+	public function getAccount(): ?Account
+	{
+		return $this->client()->getAccount($this->accountId);
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @api-type int
+	 */
+	public function getCount(): ?int
 	{
 		return $this->count;
 	}
@@ -1037,8 +1210,9 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getCreateIndex(): int
+	public function getCreateIndex(): ?int
 	{
 		return $this->createIndex;
 	}
@@ -1046,8 +1220,20 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type date
+	 * @return \\DateTimeInterface
 	 */
-	public function getDeploymentUnitUuid(): string
+	public function getCreated(): ?DateTimeInterface
+	{
+		return $this->created;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @api-type string
+	 */
+	public function getDeploymentUnitUuid(): ?string
 	{
 		return $this->deploymentUnitUuid;
 	}
@@ -1055,9 +1241,26 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type string
+	 */
+	public function getDescription(): ?string
+	{
+		return $this->description;
+	}
+
+
+	public function setDescription(string $value = NULL)
+	{
+		$this->description = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
-	public function getExpose(): array
+	public function getExpose(): ?array
 	{
 		return $this->expose;
 	}
@@ -1065,8 +1268,20 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getFirstRunning(): DateTimeInterface
+	public function getExternalId(): ?string
+	{
+		return $this->externalId;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @api-type date
+	 * @return \\DateTimeInterface
+	 */
+	public function getFirstRunning(): ?DateTimeInterface
 	{
 		return $this->firstRunning;
 	}
@@ -1074,9 +1289,10 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return HealthStateEnum
 	 */
-	public function getHealthState(): HealthStateEnum
+	public function getHealthState(): ?HealthStateEnum
 	{
 		return $this->healthState;
 	}
@@ -1084,8 +1300,29 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[host]
+	 * @return string
 	 */
-	public function getHostname(): string
+	public function getHostId(): ?string
+	{
+		return $this->hostId;
+	}
+
+
+	/**
+	 * --> getter from reference: reference[host]
+	 */
+	public function getHost(): ?Host
+	{
+		return $this->client()->getHost($this->hostId);
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @api-type string
+	 */
+	public function getHostname(): ?string
 	{
 		return $this->hostname;
 	}
@@ -1093,8 +1330,19 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getImageUuid(): string
+	public function getId(): ?string
+	{
+		return $this->id;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @api-type string
+	 */
+	public function getImageUuid(): ?string
 	{
 		return $this->imageUuid;
 	}
@@ -1102,9 +1350,10 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return InstanceTriggeredStopEnum
 	 */
-	public function getInstanceTriggeredStop(): InstanceTriggeredStopEnum
+	public function getInstanceTriggeredStop(): ?InstanceTriggeredStopEnum
 	{
 		return $this->instanceTriggeredStop;
 	}
@@ -1112,8 +1361,19 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getMemoryReservation(): int
+	public function getKind(): ?string
+	{
+		return $this->kind;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @api-type int
+	 */
+	public function getMemoryReservation(): ?int
 	{
 		return $this->memoryReservation;
 	}
@@ -1121,8 +1381,9 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getMilliCpuReservation(): int
+	public function getMilliCpuReservation(): ?int
 	{
 		return $this->milliCpuReservation;
 	}
@@ -1130,6 +1391,7 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type array[mountEntry]
 	 * @return MountEntry[]
 	 */
 	public function getMounts(): array
@@ -1140,6 +1402,23 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type string
+	 */
+	public function getName(): ?string
+	{
+		return $this->name;
+	}
+
+
+	public function setName(string $value = NULL)
+	{
+		$this->name = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getNativeContainer(): \boolean
 	{
@@ -1149,9 +1428,10 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[container]
 	 * @return string
 	 */
-	public function getNetworkContainerId(): string
+	public function getNetworkContainerId(): ?string
 	{
 		return $this->networkContainerId;
 	}
@@ -1160,7 +1440,7 @@ class Container extends Instance
 	/**
 	 * --> getter from reference: reference[container]
 	 */
-	public function getNetworkContainer(): ?NetworkContainer
+	public function getNetworkContainer(): ?Container
 	{
 		return $this->client()->getNetworkContainer($this->networkContainerId);
 	}
@@ -1168,9 +1448,10 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type array[reference[network]]
 	 * @return string[][]
 	 */
-	public function getNetworkIds(): array
+	public function getNetworkIds(): ?array
 	{
 		return $this->networkIds;
 	}
@@ -1178,9 +1459,10 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
-	public function getPorts(): array
+	public function getPorts(): ?array
 	{
 		return $this->ports;
 	}
@@ -1188,6 +1470,7 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getPrimaryIpAddress(): string
 	{
@@ -1197,9 +1480,10 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[registryCredential]
 	 * @return string
 	 */
-	public function getRegistryCredentialId(): string
+	public function getRegistryCredentialId(): ?string
 	{
 		return $this->registryCredentialId;
 	}
@@ -1216,9 +1500,21 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type date
+	 * @return \\DateTimeInterface
+	 */
+	public function getRemoved(): ?DateTimeInterface
+	{
+		return $this->removed;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @api-type reference[host]
 	 * @return string
 	 */
-	public function getRequestedHostId(): string
+	public function getRequestedHostId(): ?string
 	{
 		return $this->requestedHostId;
 	}
@@ -1227,7 +1523,7 @@ class Container extends Instance
 	/**
 	 * --> getter from reference: reference[host]
 	 */
-	public function getRequestedHost(): ?RequestedHost
+	public function getRequestedHost(): ?Host
 	{
 		return $this->client()->getRequestedHost($this->requestedHostId);
 	}
@@ -1235,9 +1531,10 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[service]
 	 * @return string
 	 */
-	public function getServiceId(): string
+	public function getServiceId(): ?string
 	{
 		return $this->serviceId;
 	}
@@ -1254,9 +1551,10 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type array[reference[service]]
 	 * @return string[][]
 	 */
-	public function getServiceIds(): array
+	public function getServiceIds(): ?array
 	{
 		return $this->serviceIds;
 	}
@@ -1264,9 +1562,10 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[stack]
 	 * @return string
 	 */
-	public function getStackId(): string
+	public function getStackId(): ?string
 	{
 		return $this->stackId;
 	}
@@ -1283,8 +1582,9 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getStartCount(): int
+	public function getStartCount(): ?int
 	{
 		return $this->startCount;
 	}
@@ -1292,6 +1592,7 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getStartOnCreate(): \boolean
 	{
@@ -1301,6 +1602,18 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
+	 * @return StateEnum
+	 */
+	public function getState(): StateEnum
+	{
+		return $this->state;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getSystem(): \boolean
 	{
@@ -1310,6 +1623,48 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
+	 * @return TransitioningEnum
+	 */
+	public function getTransitioning(): TransitioningEnum
+	{
+		return $this->transitioning;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @api-type string
+	 */
+	public function getTransitioningMessage(): ?string
+	{
+		return $this->transitioningMessage;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @api-type int
+	 */
+	public function getTransitioningProgress(): ?int
+	{
+		return $this->transitioningProgress;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @api-type string
+	 */
+	public function getUuid(): ?string
+	{
+		return $this->uuid;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getVersion(): string
 	{
@@ -1319,8 +1674,9 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getVolumeDriver(): string
+	public function getVolumeDriver(): ?string
 	{
 		return $this->volumeDriver;
 	}
@@ -1328,9 +1684,10 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
-	 * @return string[]
+	 * @api-type map[string]
+	 * @return \\SamIT\Rancher\Types\StringMap
 	 */
-	public function getEnvironment(): array
+	public function getEnvironment(): \SamIT\Rancher\Types\StringMap
 	{
 		return $this->environment;
 	}
@@ -1338,9 +1695,10 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
-	public function getCommand(): array
+	public function getCommand(): ?array
 	{
 		return $this->command;
 	}
@@ -1348,8 +1706,9 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getWorkingDir(): string
+	public function getWorkingDir(): ?string
 	{
 		return $this->workingDir;
 	}
@@ -1357,8 +1716,9 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getUser(): string
+	public function getUser(): ?string
 	{
 		return $this->user;
 	}
@@ -1366,6 +1726,7 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getPublishAllPorts(): \boolean
 	{
@@ -1375,6 +1736,7 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[network]
 	 * @return string
 	 */
 	public function getPrimaryNetworkId(): string
@@ -1386,7 +1748,7 @@ class Container extends Instance
 	/**
 	 * --> getter from reference: reference[network]
 	 */
-	public function getPrimaryNetwork(): ?PrimaryNetwork
+	public function getPrimaryNetwork(): ?Network
 	{
 		return $this->client()->getPrimaryNetwork($this->primaryNetworkId);
 	}
@@ -1394,6 +1756,7 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getPrivileged(): \boolean
 	{
@@ -1403,9 +1766,10 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type array[enum]
 	 * @return []
 	 */
-	public function getCapAdd(): array
+	public function getCapAdd(): ?array
 	{
 		return $this->capAdd;
 	}
@@ -1413,9 +1777,10 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type array[enum]
 	 * @return []
 	 */
-	public function getCapDrop(): array
+	public function getCapDrop(): ?array
 	{
 		return $this->capDrop;
 	}
@@ -1423,9 +1788,10 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
-	public function getDns(): array
+	public function getDns(): ?array
 	{
 		return $this->dns;
 	}
@@ -1433,9 +1799,10 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
-	public function getDnsSearch(): array
+	public function getDnsSearch(): ?array
 	{
 		return $this->dnsSearch;
 	}
@@ -1443,9 +1810,10 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type map[reference[instance]]
 	 * @return Reference[instance]Map
 	 */
-	public function getInstanceLinks(): SamIT\Rancher\Generated\Entities\Reference[instance]Map
+	public function getInstanceLinks(): ?\SamIT\Rancher\Generated\Maps\InstanceMap
 	{
 		return $this->instanceLinks;
 	}
@@ -1453,8 +1821,9 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getDomainName(): string
+	public function getDomainName(): ?string
 	{
 		return $this->domainName;
 	}
@@ -1462,8 +1831,9 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getMemorySwap(): int
+	public function getMemorySwap(): ?int
 	{
 		return $this->memorySwap;
 	}
@@ -1471,8 +1841,9 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getMemory(): int
+	public function getMemory(): ?int
 	{
 		return $this->memory;
 	}
@@ -1480,8 +1851,9 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getCpuSet(): string
+	public function getCpuSet(): ?string
 	{
 		return $this->cpuSet;
 	}
@@ -1489,8 +1861,9 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getCpuShares(): int
+	public function getCpuShares(): ?int
 	{
 		return $this->cpuShares;
 	}
@@ -1498,6 +1871,7 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getStdinOpen(): \boolean
 	{
@@ -1507,6 +1881,7 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getTty(): \boolean
 	{
@@ -1516,9 +1891,10 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
-	public function getEntryPoint(): array
+	public function getEntryPoint(): ?array
 	{
 		return $this->entryPoint;
 	}
@@ -1526,9 +1902,10 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
-	 * @return string[]
+	 * @api-type map[string]
+	 * @return \\SamIT\Rancher\Types\StringMap
 	 */
-	public function getLxcConf(): array
+	public function getLxcConf(): ?\SamIT\Rancher\Types\StringMap
 	{
 		return $this->lxcConf;
 	}
@@ -1536,9 +1913,10 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type restartPolicy
 	 * @return RestartPolicy
 	 */
-	public function getRestartPolicy(): RestartPolicy
+	public function getRestartPolicy(): ?RestartPolicy
 	{
 		return $this->restartPolicy;
 	}
@@ -1546,9 +1924,10 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
-	public function getDevices(): array
+	public function getDevices(): ?array
 	{
 		return $this->devices;
 	}
@@ -1556,9 +1935,10 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type map[blkioDeviceOption]
 	 * @return BlkioDeviceOptionMap
 	 */
-	public function getBlkioDeviceOptions(): SamIT\Rancher\Generated\Entities\BlkioDeviceOptionMap
+	public function getBlkioDeviceOptions(): ?\SamIT\Rancher\Generated\Maps\BlkioDeviceOptionMap
 	{
 		return $this->blkioDeviceOptions;
 	}
@@ -1566,9 +1946,10 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
-	 * @return string[]
+	 * @api-type map[string]
+	 * @return \\SamIT\Rancher\Types\StringMap
 	 */
-	public function getLabels(): array
+	public function getLabels(): \SamIT\Rancher\Types\StringMap
 	{
 		return $this->labels;
 	}
@@ -1576,9 +1957,10 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type instanceHealthCheck
 	 * @return InstanceHealthCheck
 	 */
-	public function getHealthCheck(): InstanceHealthCheck
+	public function getHealthCheck(): ?InstanceHealthCheck
 	{
 		return $this->healthCheck;
 	}
@@ -1586,9 +1968,10 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
-	public function getSecurityOpt(): array
+	public function getSecurityOpt(): ?array
 	{
 		return $this->securityOpt;
 	}
@@ -1596,9 +1979,10 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type logConfig
 	 * @return LogConfig
 	 */
-	public function getLogConfig(): LogConfig
+	public function getLogConfig(): ?LogConfig
 	{
 		return $this->logConfig;
 	}
@@ -1606,9 +1990,10 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return PidModeEnum
 	 */
-	public function getPidMode(): PidModeEnum
+	public function getPidMode(): ?PidModeEnum
 	{
 		return $this->pidMode;
 	}
@@ -1616,9 +2001,10 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
-	public function getExtraHosts(): array
+	public function getExtraHosts(): ?array
 	{
 		return $this->extraHosts;
 	}
@@ -1626,6 +2012,7 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getReadOnly(): \boolean
 	{
@@ -1635,9 +2022,10 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type dockerBuild
 	 * @return DockerBuild
 	 */
-	public function getBuild(): DockerBuild
+	public function getBuild(): ?DockerBuild
 	{
 		return $this->build;
 	}
@@ -1645,9 +2033,10 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type map[reference[volume]]
 	 * @return Reference[volume]Map
 	 */
-	public function getDataVolumeMounts(): SamIT\Rancher\Generated\Entities\Reference[volume]Map
+	public function getDataVolumeMounts(): ?\SamIT\Rancher\Generated\Maps\VolumeMap
 	{
 		return $this->dataVolumeMounts;
 	}
@@ -1655,8 +2044,9 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getBlkioWeight(): int
+	public function getBlkioWeight(): ?int
 	{
 		return $this->blkioWeight;
 	}
@@ -1664,8 +2054,9 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getCgroupParent(): string
+	public function getCgroupParent(): ?string
 	{
 		return $this->cgroupParent;
 	}
@@ -1673,8 +2064,9 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getUsernsMode(): string
+	public function getUsernsMode(): ?string
 	{
 		return $this->usernsMode;
 	}
@@ -1682,8 +2074,9 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getPidsLimit(): int
+	public function getPidsLimit(): ?int
 	{
 		return $this->pidsLimit;
 	}
@@ -1691,8 +2084,9 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getDiskQuota(): int
+	public function getDiskQuota(): ?int
 	{
 		return $this->diskQuota;
 	}
@@ -1700,8 +2094,9 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getCpuCount(): int
+	public function getCpuCount(): ?int
 	{
 		return $this->cpuCount;
 	}
@@ -1709,8 +2104,9 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getCpuPercent(): int
+	public function getCpuPercent(): ?int
 	{
 		return $this->cpuPercent;
 	}
@@ -1718,8 +2114,9 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getIoMaximumIOps(): int
+	public function getIoMaximumIOps(): ?int
 	{
 		return $this->ioMaximumIOps;
 	}
@@ -1727,8 +2124,9 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getIoMaximumBandwidth(): int
+	public function getIoMaximumBandwidth(): ?int
 	{
 		return $this->ioMaximumBandwidth;
 	}
@@ -1736,8 +2134,9 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getCpuPeriod(): int
+	public function getCpuPeriod(): ?int
 	{
 		return $this->cpuPeriod;
 	}
@@ -1745,8 +2144,9 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getCpuQuota(): int
+	public function getCpuQuota(): ?int
 	{
 		return $this->cpuQuota;
 	}
@@ -1754,8 +2154,9 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getCpuSetMems(): string
+	public function getCpuSetMems(): ?string
 	{
 		return $this->cpuSetMems;
 	}
@@ -1763,9 +2164,10 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
-	public function getDnsOpt(): array
+	public function getDnsOpt(): ?array
 	{
 		return $this->dnsOpt;
 	}
@@ -1773,9 +2175,10 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
-	public function getGroupAdd(): array
+	public function getGroupAdd(): ?array
 	{
 		return $this->groupAdd;
 	}
@@ -1783,8 +2186,9 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getIsolation(): string
+	public function getIsolation(): ?string
 	{
 		return $this->isolation;
 	}
@@ -1792,8 +2196,9 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getKernelMemory(): int
+	public function getKernelMemory(): ?int
 	{
 		return $this->kernelMemory;
 	}
@@ -1801,8 +2206,9 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getMemorySwappiness(): int
+	public function getMemorySwappiness(): ?int
 	{
 		return $this->memorySwappiness;
 	}
@@ -1810,8 +2216,9 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
-	public function getOomKillDisable(): \boolean
+	public function getOomKillDisable(): ?\boolean
 	{
 		return $this->oomKillDisable;
 	}
@@ -1819,8 +2226,9 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getShmSize(): int
+	public function getShmSize(): ?int
 	{
 		return $this->shmSize;
 	}
@@ -1828,9 +2236,10 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
-	 * @return string[]
+	 * @api-type map[string]
+	 * @return \\SamIT\Rancher\Types\StringMap
 	 */
-	public function getTmpfs(): array
+	public function getTmpfs(): ?\SamIT\Rancher\Types\StringMap
 	{
 		return $this->tmpfs;
 	}
@@ -1838,8 +2247,9 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getUts(): string
+	public function getUts(): ?string
 	{
 		return $this->uts;
 	}
@@ -1847,8 +2257,9 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getIpcMode(): string
+	public function getIpcMode(): ?string
 	{
 		return $this->ipcMode;
 	}
@@ -1856,8 +2267,9 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getStopSignal(): string
+	public function getStopSignal(): ?string
 	{
 		return $this->stopSignal;
 	}
@@ -1865,9 +2277,10 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
-	 * @return string[]
+	 * @api-type map[string]
+	 * @return \\SamIT\Rancher\Types\StringMap
 	 */
-	public function getSysctls(): array
+	public function getSysctls(): ?\SamIT\Rancher\Types\StringMap
 	{
 		return $this->sysctls;
 	}
@@ -1875,9 +2288,10 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
-	 * @return string[]
+	 * @api-type map[string]
+	 * @return \\SamIT\Rancher\Types\StringMap
 	 */
-	public function getStorageOpt(): array
+	public function getStorageOpt(): ?\SamIT\Rancher\Types\StringMap
 	{
 		return $this->storageOpt;
 	}
@@ -1885,8 +2299,9 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getOomScoreAdj(): int
+	public function getOomScoreAdj(): ?int
 	{
 		return $this->oomScoreAdj;
 	}
@@ -1894,9 +2309,10 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type array[ulimit]
 	 * @return Ulimit[]
 	 */
-	public function getUlimits(): array
+	public function getUlimits(): ?array
 	{
 		return $this->ulimits;
 	}
@@ -1904,8 +2320,9 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getIp(): string
+	public function getIp(): ?string
 	{
 		return $this->ip;
 	}
@@ -1913,8 +2330,9 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getIp6(): string
+	public function getIp6(): ?string
 	{
 		return $this->ip6;
 	}
@@ -1922,9 +2340,10 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
-	public function getNetAlias(): array
+	public function getNetAlias(): ?array
 	{
 		return $this->netAlias;
 	}
@@ -1932,9 +2351,10 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
-	public function getHealthCmd(): array
+	public function getHealthCmd(): ?array
 	{
 		return $this->healthCmd;
 	}
@@ -1942,8 +2362,9 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getHealthInterval(): int
+	public function getHealthInterval(): ?int
 	{
 		return $this->healthInterval;
 	}
@@ -1951,8 +2372,9 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getHealthTimeout(): int
+	public function getHealthTimeout(): ?int
 	{
 		return $this->healthTimeout;
 	}
@@ -1960,8 +2382,9 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getHealthRetries(): int
+	public function getHealthRetries(): ?int
 	{
 		return $this->healthRetries;
 	}
@@ -1969,6 +2392,7 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type array[secretReference]
 	 * @return SecretReference[]
 	 */
 	public function getSecrets(): array
@@ -1979,9 +2403,10 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
-	public function getUserPorts(): array
+	public function getUserPorts(): ?array
 	{
 		return $this->userPorts;
 	}
@@ -1989,8 +2414,9 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getNetworkMode(): string
+	public function getNetworkMode(): ?string
 	{
 		return $this->networkMode;
 	}
@@ -1998,9 +2424,10 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
-	public function getDataVolumes(): array
+	public function getDataVolumes(): ?array
 	{
 		return $this->dataVolumes;
 	}
@@ -2008,9 +2435,10 @@ class Container extends Instance
 
 	/**
 	 * @simple-getter
+	 * @api-type array[reference[container]]
 	 * @return weird[]
 	 */
-	public function getDataVolumesFrom(): array
+	public function getDataVolumesFrom(): ?array
 	{
 		return $this->dataVolumesFrom;
 	}

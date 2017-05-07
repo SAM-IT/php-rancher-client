@@ -5,6 +5,8 @@ use DateTimeInterface;
 use SamIT\Rancher\Generated\Client;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
+use SamIT\Rancher\Types\JsonMap;
+use SamIT\Rancher\Types\StringMap;
 
 class KubernetesStack extends Stack
 {
@@ -63,6 +65,7 @@ class KubernetesStack extends Stack
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getNamespace(): string
 	{

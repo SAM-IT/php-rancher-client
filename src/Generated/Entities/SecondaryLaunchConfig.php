@@ -9,6 +9,10 @@ use SamIT\Rancher\Generated\Enums\KindEnum;
 use SamIT\Rancher\Generated\Enums\PidModeEnum;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
+use SamIT\Rancher\Generated\Maps\BlkioDeviceOptionMap;
+use SamIT\Rancher\Generated\Maps\InstanceMap;
+use SamIT\Rancher\Generated\Maps\VolumeMap;
+use SamIT\Rancher\Types\StringMap;
 
 class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 {
@@ -293,7 +297,7 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 	 * @api-create false
 	 * @api-nullable true
 	 * @api-type date
-	 * @var DateTimeInterface
+	 * @var \\DateTimeInterface
 	 */
 	protected $created;
 
@@ -428,7 +432,7 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 	 * @api-create true
 	 * @api-nullable false
 	 * @api-type map[string]
-	 * @var string[]
+	 * @var \\SamIT\Rancher\Types\StringMap
 	 */
 	protected $environment = [];
 
@@ -464,7 +468,7 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 	 * @api-create false
 	 * @api-nullable true
 	 * @api-type date
-	 * @var DateTimeInterface
+	 * @var \\DateTimeInterface
 	 */
 	protected $firstRunning;
 
@@ -662,7 +666,7 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 	 * @api-create true
 	 * @api-nullable false
 	 * @api-type map[string]
-	 * @var string[]
+	 * @var \\SamIT\Rancher\Types\StringMap
 	 */
 	protected $labels = [];
 
@@ -680,7 +684,7 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 	 * @api-create true
 	 * @api-nullable true
 	 * @api-type map[string]
-	 * @var string[]
+	 * @var \\SamIT\Rancher\Types\StringMap
 	 */
 	protected $lxcConf = [];
 
@@ -914,7 +918,7 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 	 * @api-create false
 	 * @api-nullable true
 	 * @api-type date
-	 * @var DateTimeInterface
+	 * @var \\DateTimeInterface
 	 */
 	protected $removed;
 
@@ -1040,7 +1044,7 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 	 * @api-create true
 	 * @api-nullable true
 	 * @api-type map[string]
-	 * @var string[]
+	 * @var \\SamIT\Rancher\Types\StringMap
 	 */
 	protected $storageOpt = [];
 
@@ -1049,7 +1053,7 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 	 * @api-create true
 	 * @api-nullable true
 	 * @api-type map[string]
-	 * @var string[]
+	 * @var \\SamIT\Rancher\Types\StringMap
 	 */
 	protected $sysctls = [];
 
@@ -1067,7 +1071,7 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 	 * @api-create true
 	 * @api-nullable true
 	 * @api-type map[string]
-	 * @var string[]
+	 * @var \\SamIT\Rancher\Types\StringMap
 	 */
 	protected $tmpfs = [];
 
@@ -1218,7 +1222,7 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 	}
 
 
-	public static function create(array $environment, array $labels, string $name, \boolean $privileged, \boolean $publishAllPorts, \boolean $readOnly, array $secrets, \boolean $startOnCreate, \boolean $stdinOpen, \boolean $tty)
+	public static function create(StringMap $environment, StringMap $labels, string $name, \boolean $privileged, \boolean $publishAllPorts, \boolean $readOnly, array $secrets, \boolean $startOnCreate, \boolean $stdinOpen, \boolean $tty)
 	{
 		$result = new static();
 		$result->environment = $environment;
@@ -1237,9 +1241,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[account]
 	 * @return string
 	 */
-	public function getAccountId(): string
+	public function getAccountId(): ?string
 	{
 		return $this->accountId;
 	}
@@ -1256,9 +1261,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type map[blkioDeviceOption]
 	 * @return BlkioDeviceOptionMap
 	 */
-	public function getBlkioDeviceOptions(): SamIT\Rancher\Generated\Entities\BlkioDeviceOptionMap
+	public function getBlkioDeviceOptions(): ?\SamIT\Rancher\Generated\Maps\BlkioDeviceOptionMap
 	{
 		return $this->blkioDeviceOptions;
 	}
@@ -1266,8 +1272,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getBlkioWeight(): int
+	public function getBlkioWeight(): ?int
 	{
 		return $this->blkioWeight;
 	}
@@ -1275,9 +1282,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type dockerBuild
 	 * @return DockerBuild
 	 */
-	public function getBuild(): DockerBuild
+	public function getBuild(): ?DockerBuild
 	{
 		return $this->build;
 	}
@@ -1285,9 +1293,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[enum]
 	 * @return []
 	 */
-	public function getCapAdd(): array
+	public function getCapAdd(): ?array
 	{
 		return $this->capAdd;
 	}
@@ -1295,9 +1304,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[enum]
 	 * @return []
 	 */
-	public function getCapDrop(): array
+	public function getCapDrop(): ?array
 	{
 		return $this->capDrop;
 	}
@@ -1305,8 +1315,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getCgroupParent(): string
+	public function getCgroupParent(): ?string
 	{
 		return $this->cgroupParent;
 	}
@@ -1314,9 +1325,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
-	public function getCommand(): array
+	public function getCommand(): ?array
 	{
 		return $this->command;
 	}
@@ -1324,8 +1336,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getCount(): int
+	public function getCount(): ?int
 	{
 		return $this->count;
 	}
@@ -1333,8 +1346,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getCpuCount(): int
+	public function getCpuCount(): ?int
 	{
 		return $this->cpuCount;
 	}
@@ -1342,8 +1356,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getCpuPercent(): int
+	public function getCpuPercent(): ?int
 	{
 		return $this->cpuPercent;
 	}
@@ -1351,8 +1366,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getCpuPeriod(): int
+	public function getCpuPeriod(): ?int
 	{
 		return $this->cpuPeriod;
 	}
@@ -1360,8 +1376,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getCpuQuota(): int
+	public function getCpuQuota(): ?int
 	{
 		return $this->cpuQuota;
 	}
@@ -1369,8 +1386,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getCpuSet(): string
+	public function getCpuSet(): ?string
 	{
 		return $this->cpuSet;
 	}
@@ -1378,8 +1396,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getCpuSetMems(): string
+	public function getCpuSetMems(): ?string
 	{
 		return $this->cpuSetMems;
 	}
@@ -1387,8 +1406,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getCpuShares(): int
+	public function getCpuShares(): ?int
 	{
 		return $this->cpuShares;
 	}
@@ -1396,8 +1416,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getCreateIndex(): int
+	public function getCreateIndex(): ?int
 	{
 		return $this->createIndex;
 	}
@@ -1405,8 +1426,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type date
+	 * @return \\DateTimeInterface
 	 */
-	public function getCreated(): DateTimeInterface
+	public function getCreated(): ?DateTimeInterface
 	{
 		return $this->created;
 	}
@@ -1414,9 +1437,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type map[reference[volume]]
 	 * @return Reference[volume]Map
 	 */
-	public function getDataVolumeMounts(): SamIT\Rancher\Generated\Entities\Reference[volume]Map
+	public function getDataVolumeMounts(): ?\SamIT\Rancher\Generated\Maps\VolumeMap
 	{
 		return $this->dataVolumeMounts;
 	}
@@ -1424,9 +1448,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
-	public function getDataVolumes(): array
+	public function getDataVolumes(): ?array
 	{
 		return $this->dataVolumes;
 	}
@@ -1434,9 +1459,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[reference[container]]
 	 * @return weird[]
 	 */
-	public function getDataVolumesFrom(): array
+	public function getDataVolumesFrom(): ?array
 	{
 		return $this->dataVolumesFrom;
 	}
@@ -1444,9 +1470,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
-	public function getDataVolumesFromLaunchConfigs(): array
+	public function getDataVolumesFromLaunchConfigs(): ?array
 	{
 		return $this->dataVolumesFromLaunchConfigs;
 	}
@@ -1454,8 +1481,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getDeploymentUnitUuid(): string
+	public function getDeploymentUnitUuid(): ?string
 	{
 		return $this->deploymentUnitUuid;
 	}
@@ -1463,8 +1491,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getDescription(): string
+	public function getDescription(): ?string
 	{
 		return $this->description;
 	}
@@ -1478,9 +1507,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
-	public function getDevices(): array
+	public function getDevices(): ?array
 	{
 		return $this->devices;
 	}
@@ -1488,8 +1518,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getDiskQuota(): int
+	public function getDiskQuota(): ?int
 	{
 		return $this->diskQuota;
 	}
@@ -1497,9 +1528,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[virtualMachineDisk]
 	 * @return VirtualMachineDisk[]
 	 */
-	public function getDisks(): array
+	public function getDisks(): ?array
 	{
 		return $this->disks;
 	}
@@ -1507,9 +1539,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
-	public function getDns(): array
+	public function getDns(): ?array
 	{
 		return $this->dns;
 	}
@@ -1517,9 +1550,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
-	public function getDnsOpt(): array
+	public function getDnsOpt(): ?array
 	{
 		return $this->dnsOpt;
 	}
@@ -1527,9 +1561,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
-	public function getDnsSearch(): array
+	public function getDnsSearch(): ?array
 	{
 		return $this->dnsSearch;
 	}
@@ -1537,8 +1572,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getDomainName(): string
+	public function getDomainName(): ?string
 	{
 		return $this->domainName;
 	}
@@ -1546,9 +1582,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
-	public function getEntryPoint(): array
+	public function getEntryPoint(): ?array
 	{
 		return $this->entryPoint;
 	}
@@ -1556,9 +1593,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
-	 * @return string[]
+	 * @api-type map[string]
+	 * @return \\SamIT\Rancher\Types\StringMap
 	 */
-	public function getEnvironment(): array
+	public function getEnvironment(): \SamIT\Rancher\Types\StringMap
 	{
 		return $this->environment;
 	}
@@ -1566,9 +1604,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
-	public function getExpose(): array
+	public function getExpose(): ?array
 	{
 		return $this->expose;
 	}
@@ -1576,8 +1615,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getExternalId(): string
+	public function getExternalId(): ?string
 	{
 		return $this->externalId;
 	}
@@ -1585,9 +1625,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
-	public function getExtraHosts(): array
+	public function getExtraHosts(): ?array
 	{
 		return $this->extraHosts;
 	}
@@ -1595,8 +1636,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type date
+	 * @return \\DateTimeInterface
 	 */
-	public function getFirstRunning(): DateTimeInterface
+	public function getFirstRunning(): ?DateTimeInterface
 	{
 		return $this->firstRunning;
 	}
@@ -1604,9 +1647,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
-	public function getGroupAdd(): array
+	public function getGroupAdd(): ?array
 	{
 		return $this->groupAdd;
 	}
@@ -1614,9 +1658,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type instanceHealthCheck
 	 * @return InstanceHealthCheck
 	 */
-	public function getHealthCheck(): InstanceHealthCheck
+	public function getHealthCheck(): ?InstanceHealthCheck
 	{
 		return $this->healthCheck;
 	}
@@ -1624,9 +1669,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
-	public function getHealthCmd(): array
+	public function getHealthCmd(): ?array
 	{
 		return $this->healthCmd;
 	}
@@ -1634,8 +1680,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getHealthInterval(): int
+	public function getHealthInterval(): ?int
 	{
 		return $this->healthInterval;
 	}
@@ -1643,8 +1690,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getHealthRetries(): int
+	public function getHealthRetries(): ?int
 	{
 		return $this->healthRetries;
 	}
@@ -1652,9 +1700,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return HealthStateEnum
 	 */
-	public function getHealthState(): HealthStateEnum
+	public function getHealthState(): ?HealthStateEnum
 	{
 		return $this->healthState;
 	}
@@ -1662,8 +1711,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getHealthTimeout(): int
+	public function getHealthTimeout(): ?int
 	{
 		return $this->healthTimeout;
 	}
@@ -1671,9 +1721,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[host]
 	 * @return string
 	 */
-	public function getHostId(): string
+	public function getHostId(): ?string
 	{
 		return $this->hostId;
 	}
@@ -1690,8 +1741,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getHostname(): string
+	public function getHostname(): ?string
 	{
 		return $this->hostname;
 	}
@@ -1699,8 +1751,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getId(): string
+	public function getId(): ?string
 	{
 		return $this->id;
 	}
@@ -1708,8 +1761,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getImageUuid(): string
+	public function getImageUuid(): ?string
 	{
 		return $this->imageUuid;
 	}
@@ -1717,9 +1771,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type map[reference[instance]]
 	 * @return Reference[instance]Map
 	 */
-	public function getInstanceLinks(): SamIT\Rancher\Generated\Entities\Reference[instance]Map
+	public function getInstanceLinks(): ?\SamIT\Rancher\Generated\Maps\InstanceMap
 	{
 		return $this->instanceLinks;
 	}
@@ -1727,9 +1782,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return InstanceTriggeredStopEnum
 	 */
-	public function getInstanceTriggeredStop(): InstanceTriggeredStopEnum
+	public function getInstanceTriggeredStop(): ?InstanceTriggeredStopEnum
 	{
 		return $this->instanceTriggeredStop;
 	}
@@ -1737,8 +1793,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getIoMaximumBandwidth(): int
+	public function getIoMaximumBandwidth(): ?int
 	{
 		return $this->ioMaximumBandwidth;
 	}
@@ -1746,8 +1803,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getIoMaximumIOps(): int
+	public function getIoMaximumIOps(): ?int
 	{
 		return $this->ioMaximumIOps;
 	}
@@ -1755,8 +1813,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getIp(): string
+	public function getIp(): ?string
 	{
 		return $this->ip;
 	}
@@ -1764,8 +1823,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getIp6(): string
+	public function getIp6(): ?string
 	{
 		return $this->ip6;
 	}
@@ -1773,8 +1833,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getIpcMode(): string
+	public function getIpcMode(): ?string
 	{
 		return $this->ipcMode;
 	}
@@ -1782,8 +1843,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getIsolation(): string
+	public function getIsolation(): ?string
 	{
 		return $this->isolation;
 	}
@@ -1791,8 +1853,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getKernelMemory(): int
+	public function getKernelMemory(): ?int
 	{
 		return $this->kernelMemory;
 	}
@@ -1800,9 +1863,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return KindEnum
 	 */
-	public function getKind(): KindEnum
+	public function getKind(): ?KindEnum
 	{
 		return $this->kind;
 	}
@@ -1810,9 +1874,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
-	 * @return string[]
+	 * @api-type map[string]
+	 * @return \\SamIT\Rancher\Types\StringMap
 	 */
-	public function getLabels(): array
+	public function getLabels(): \SamIT\Rancher\Types\StringMap
 	{
 		return $this->labels;
 	}
@@ -1820,9 +1885,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type logConfig
 	 * @return LogConfig
 	 */
-	public function getLogConfig(): LogConfig
+	public function getLogConfig(): ?LogConfig
 	{
 		return $this->logConfig;
 	}
@@ -1830,9 +1896,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
-	 * @return string[]
+	 * @api-type map[string]
+	 * @return \\SamIT\Rancher\Types\StringMap
 	 */
-	public function getLxcConf(): array
+	public function getLxcConf(): ?\SamIT\Rancher\Types\StringMap
 	{
 		return $this->lxcConf;
 	}
@@ -1840,8 +1907,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getMemory(): int
+	public function getMemory(): ?int
 	{
 		return $this->memory;
 	}
@@ -1849,8 +1917,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getMemoryMb(): int
+	public function getMemoryMb(): ?int
 	{
 		return $this->memoryMb;
 	}
@@ -1858,8 +1927,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getMemoryReservation(): int
+	public function getMemoryReservation(): ?int
 	{
 		return $this->memoryReservation;
 	}
@@ -1867,8 +1937,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getMemorySwap(): int
+	public function getMemorySwap(): ?int
 	{
 		return $this->memorySwap;
 	}
@@ -1876,8 +1947,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getMemorySwappiness(): int
+	public function getMemorySwappiness(): ?int
 	{
 		return $this->memorySwappiness;
 	}
@@ -1885,8 +1957,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getMilliCpuReservation(): int
+	public function getMilliCpuReservation(): ?int
 	{
 		return $this->milliCpuReservation;
 	}
@@ -1894,6 +1967,7 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[mountEntry]
 	 * @return MountEntry[]
 	 */
 	public function getMounts(): array
@@ -1904,6 +1978,7 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getName(): string
 	{
@@ -1913,6 +1988,7 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getNativeContainer(): \boolean
 	{
@@ -1922,9 +1998,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
-	public function getNetAlias(): array
+	public function getNetAlias(): ?array
 	{
 		return $this->netAlias;
 	}
@@ -1932,9 +2009,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[container]
 	 * @return string
 	 */
-	public function getNetworkContainerId(): string
+	public function getNetworkContainerId(): ?string
 	{
 		return $this->networkContainerId;
 	}
@@ -1943,7 +2021,7 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 	/**
 	 * --> getter from reference: reference[container]
 	 */
-	public function getNetworkContainer(): ?NetworkContainer
+	public function getNetworkContainer(): ?Container
 	{
 		return $this->client()->getNetworkContainer($this->networkContainerId);
 	}
@@ -1951,9 +2029,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[reference[network]]
 	 * @return string[][]
 	 */
-	public function getNetworkIds(): array
+	public function getNetworkIds(): ?array
 	{
 		return $this->networkIds;
 	}
@@ -1961,8 +2040,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getNetworkLaunchConfig(): string
+	public function getNetworkLaunchConfig(): ?string
 	{
 		return $this->networkLaunchConfig;
 	}
@@ -1970,8 +2050,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getNetworkMode(): string
+	public function getNetworkMode(): ?string
 	{
 		return $this->networkMode;
 	}
@@ -1979,8 +2060,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
-	public function getOomKillDisable(): \boolean
+	public function getOomKillDisable(): ?\boolean
 	{
 		return $this->oomKillDisable;
 	}
@@ -1988,8 +2070,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getOomScoreAdj(): int
+	public function getOomScoreAdj(): ?int
 	{
 		return $this->oomScoreAdj;
 	}
@@ -1997,9 +2080,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return PidModeEnum
 	 */
-	public function getPidMode(): PidModeEnum
+	public function getPidMode(): ?PidModeEnum
 	{
 		return $this->pidMode;
 	}
@@ -2007,8 +2091,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getPidsLimit(): int
+	public function getPidsLimit(): ?int
 	{
 		return $this->pidsLimit;
 	}
@@ -2016,9 +2101,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
-	public function getPorts(): array
+	public function getPorts(): ?array
 	{
 		return $this->ports;
 	}
@@ -2032,6 +2118,7 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getPrimaryIpAddress(): string
 	{
@@ -2041,6 +2128,7 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[network]
 	 * @return string
 	 */
 	public function getPrimaryNetworkId(): string
@@ -2052,7 +2140,7 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 	/**
 	 * --> getter from reference: reference[network]
 	 */
-	public function getPrimaryNetwork(): ?PrimaryNetwork
+	public function getPrimaryNetwork(): ?Network
 	{
 		return $this->client()->getPrimaryNetwork($this->primaryNetworkId);
 	}
@@ -2060,6 +2148,7 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getPrivileged(): \boolean
 	{
@@ -2069,6 +2158,7 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getPublishAllPorts(): \boolean
 	{
@@ -2078,6 +2168,7 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getReadOnly(): \boolean
 	{
@@ -2087,9 +2178,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[registryCredential]
 	 * @return string
 	 */
-	public function getRegistryCredentialId(): string
+	public function getRegistryCredentialId(): ?string
 	{
 		return $this->registryCredentialId;
 	}
@@ -2106,8 +2198,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type date
+	 * @return \\DateTimeInterface
 	 */
-	public function getRemoved(): DateTimeInterface
+	public function getRemoved(): ?DateTimeInterface
 	{
 		return $this->removed;
 	}
@@ -2115,9 +2209,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[host]
 	 * @return string
 	 */
-	public function getRequestedHostId(): string
+	public function getRequestedHostId(): ?string
 	{
 		return $this->requestedHostId;
 	}
@@ -2126,7 +2221,7 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 	/**
 	 * --> getter from reference: reference[host]
 	 */
-	public function getRequestedHost(): ?RequestedHost
+	public function getRequestedHost(): ?Host
 	{
 		return $this->client()->getRequestedHost($this->requestedHostId);
 	}
@@ -2134,8 +2229,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getRequestedIpAddress(): string
+	public function getRequestedIpAddress(): ?string
 	{
 		return $this->requestedIpAddress;
 	}
@@ -2143,6 +2239,7 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[secretReference]
 	 * @return SecretReference[]
 	 */
 	public function getSecrets(): array
@@ -2153,9 +2250,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
-	public function getSecurityOpt(): array
+	public function getSecurityOpt(): ?array
 	{
 		return $this->securityOpt;
 	}
@@ -2163,9 +2261,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[service]
 	 * @return string
 	 */
-	public function getServiceId(): string
+	public function getServiceId(): ?string
 	{
 		return $this->serviceId;
 	}
@@ -2182,9 +2281,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[reference[service]]
 	 * @return string[][]
 	 */
-	public function getServiceIds(): array
+	public function getServiceIds(): ?array
 	{
 		return $this->serviceIds;
 	}
@@ -2192,8 +2292,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getShmSize(): int
+	public function getShmSize(): ?int
 	{
 		return $this->shmSize;
 	}
@@ -2201,9 +2302,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[stack]
 	 * @return string
 	 */
-	public function getStackId(): string
+	public function getStackId(): ?string
 	{
 		return $this->stackId;
 	}
@@ -2220,8 +2322,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getStartCount(): int
+	public function getStartCount(): ?int
 	{
 		return $this->startCount;
 	}
@@ -2229,6 +2332,7 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getStartOnCreate(): \boolean
 	{
@@ -2238,6 +2342,7 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return StateEnum
 	 */
 	public function getState(): StateEnum
@@ -2248,6 +2353,7 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getStdinOpen(): \boolean
 	{
@@ -2257,8 +2363,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getStopSignal(): string
+	public function getStopSignal(): ?string
 	{
 		return $this->stopSignal;
 	}
@@ -2266,9 +2373,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
-	 * @return string[]
+	 * @api-type map[string]
+	 * @return \\SamIT\Rancher\Types\StringMap
 	 */
-	public function getStorageOpt(): array
+	public function getStorageOpt(): ?\SamIT\Rancher\Types\StringMap
 	{
 		return $this->storageOpt;
 	}
@@ -2276,9 +2384,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
-	 * @return string[]
+	 * @api-type map[string]
+	 * @return \\SamIT\Rancher\Types\StringMap
 	 */
-	public function getSysctls(): array
+	public function getSysctls(): ?\SamIT\Rancher\Types\StringMap
 	{
 		return $this->sysctls;
 	}
@@ -2286,6 +2395,7 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getSystem(): \boolean
 	{
@@ -2295,9 +2405,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
-	 * @return string[]
+	 * @api-type map[string]
+	 * @return \\SamIT\Rancher\Types\StringMap
 	 */
-	public function getTmpfs(): array
+	public function getTmpfs(): ?\SamIT\Rancher\Types\StringMap
 	{
 		return $this->tmpfs;
 	}
@@ -2305,6 +2416,7 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return TransitioningEnum
 	 */
 	public function getTransitioning(): TransitioningEnum
@@ -2315,8 +2427,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getTransitioningMessage(): string
+	public function getTransitioningMessage(): ?string
 	{
 		return $this->transitioningMessage;
 	}
@@ -2324,8 +2437,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getTransitioningProgress(): int
+	public function getTransitioningProgress(): ?int
 	{
 		return $this->transitioningProgress;
 	}
@@ -2333,6 +2447,7 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getTty(): \boolean
 	{
@@ -2342,9 +2457,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[ulimit]
 	 * @return Ulimit[]
 	 */
-	public function getUlimits(): array
+	public function getUlimits(): ?array
 	{
 		return $this->ulimits;
 	}
@@ -2352,8 +2468,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getUser(): string
+	public function getUser(): ?string
 	{
 		return $this->user;
 	}
@@ -2361,9 +2478,10 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
-	public function getUserPorts(): array
+	public function getUserPorts(): ?array
 	{
 		return $this->userPorts;
 	}
@@ -2371,8 +2489,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getUserdata(): string
+	public function getUserdata(): ?string
 	{
 		return $this->userdata;
 	}
@@ -2380,8 +2499,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getUsernsMode(): string
+	public function getUsernsMode(): ?string
 	{
 		return $this->usernsMode;
 	}
@@ -2389,8 +2509,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getUts(): string
+	public function getUts(): ?string
 	{
 		return $this->uts;
 	}
@@ -2398,8 +2519,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getUuid(): string
+	public function getUuid(): ?string
 	{
 		return $this->uuid;
 	}
@@ -2407,8 +2529,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getVcpu(): int
+	public function getVcpu(): ?int
 	{
 		return $this->vcpu;
 	}
@@ -2416,6 +2539,7 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getVersion(): string
 	{
@@ -2425,8 +2549,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getVolumeDriver(): string
+	public function getVolumeDriver(): ?string
 	{
 		return $this->volumeDriver;
 	}
@@ -2434,8 +2559,9 @@ class SecondaryLaunchConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getWorkingDir(): string
+	public function getWorkingDir(): ?string
 	{
 		return $this->workingDir;
 	}

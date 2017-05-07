@@ -41,7 +41,7 @@ class InstanceLink extends \SamIT\Rancher\Types\Entity
 	 * @api-create false
 	 * @api-nullable true
 	 * @api-type date
-	 * @var DateTimeInterface
+	 * @var \\DateTimeInterface
 	 */
 	protected $created;
 
@@ -104,7 +104,7 @@ class InstanceLink extends \SamIT\Rancher\Types\Entity
 	 * @api-create false
 	 * @api-nullable true
 	 * @api-type date
-	 * @var DateTimeInterface
+	 * @var \\DateTimeInterface
 	 */
 	protected $removed;
 
@@ -184,9 +184,10 @@ class InstanceLink extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[account]
 	 * @return string
 	 */
-	public function getAccountId(): string
+	public function getAccountId(): ?string
 	{
 		return $this->accountId;
 	}
@@ -203,8 +204,10 @@ class InstanceLink extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type date
+	 * @return \\DateTimeInterface
 	 */
-	public function getCreated(): DateTimeInterface
+	public function getCreated(): ?DateTimeInterface
 	{
 		return $this->created;
 	}
@@ -212,8 +215,9 @@ class InstanceLink extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getDescription(): string
+	public function getDescription(): ?string
 	{
 		return $this->description;
 	}
@@ -227,8 +231,9 @@ class InstanceLink extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getId(): string
+	public function getId(): ?string
 	{
 		return $this->id;
 	}
@@ -236,9 +241,10 @@ class InstanceLink extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[instance]
 	 * @return string
 	 */
-	public function getInstanceId(): string
+	public function getInstanceId(): ?string
 	{
 		return $this->instanceId;
 	}
@@ -255,8 +261,9 @@ class InstanceLink extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getKind(): string
+	public function getKind(): ?string
 	{
 		return $this->kind;
 	}
@@ -264,8 +271,9 @@ class InstanceLink extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getLinkName(): string
+	public function getLinkName(): ?string
 	{
 		return $this->linkName;
 	}
@@ -273,8 +281,9 @@ class InstanceLink extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getName(): string
+	public function getName(): ?string
 	{
 		return $this->name;
 	}
@@ -288,8 +297,10 @@ class InstanceLink extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type date
+	 * @return \\DateTimeInterface
 	 */
-	public function getRemoved(): DateTimeInterface
+	public function getRemoved(): ?DateTimeInterface
 	{
 		return $this->removed;
 	}
@@ -297,6 +308,7 @@ class InstanceLink extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return StateEnum
 	 */
 	public function getState(): StateEnum
@@ -307,15 +319,16 @@ class InstanceLink extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[instance]
 	 * @return string
 	 */
-	public function getTargetInstanceId(): string
+	public function getTargetInstanceId(): ?string
 	{
 		return $this->targetInstanceId;
 	}
 
 
-	public function setTargetInstanceId(TargetInstance $value = NULL)
+	public function setTargetInstanceId(Instance $value = NULL)
 	{
 		$this->targetInstanceId = $value;
 	}
@@ -324,7 +337,7 @@ class InstanceLink extends \SamIT\Rancher\Types\Entity
 	/**
 	 * --> getter from reference: reference[instance]
 	 */
-	public function getTargetInstance(): ?TargetInstance
+	public function getTargetInstance(): ?Instance
 	{
 		return $this->client()->getTargetInstance($this->targetInstanceId);
 	}
@@ -332,8 +345,9 @@ class InstanceLink extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getUuid(): string
+	public function getUuid(): ?string
 	{
 		return $this->uuid;
 	}
@@ -341,6 +355,7 @@ class InstanceLink extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return TransitioningEnum
 	 */
 	public function getTransitioning(): TransitioningEnum
@@ -351,8 +366,9 @@ class InstanceLink extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getTransitioningMessage(): string
+	public function getTransitioningMessage(): ?string
 	{
 		return $this->transitioningMessage;
 	}
@@ -360,8 +376,9 @@ class InstanceLink extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getTransitioningProgress(): int
+	public function getTransitioningProgress(): ?int
 	{
 		return $this->transitioningProgress;
 	}

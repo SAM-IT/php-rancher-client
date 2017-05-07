@@ -56,6 +56,7 @@ class NfsConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getServer(): string
 	{
@@ -65,6 +66,7 @@ class NfsConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getShare(): string
 	{
@@ -74,8 +76,9 @@ class NfsConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getMountOptions(): string
+	public function getMountOptions(): ?string
 	{
 		return $this->mountOptions;
 	}

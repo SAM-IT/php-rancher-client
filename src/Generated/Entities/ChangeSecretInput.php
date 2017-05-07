@@ -49,6 +49,7 @@ class ChangeSecretInput extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getOldSecret(): string
 	{
@@ -58,6 +59,7 @@ class ChangeSecretInput extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getNewSecret(): string
 	{

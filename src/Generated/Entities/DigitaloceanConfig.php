@@ -174,6 +174,7 @@ class DigitaloceanConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getAccessToken(): string
 	{
@@ -183,6 +184,7 @@ class DigitaloceanConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getBackups(): \boolean
 	{
@@ -192,6 +194,7 @@ class DigitaloceanConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getImage(): string
 	{
@@ -201,6 +204,7 @@ class DigitaloceanConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getIpv6(): \boolean
 	{
@@ -210,6 +214,7 @@ class DigitaloceanConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getPrivateNetworking(): \boolean
 	{
@@ -219,6 +224,7 @@ class DigitaloceanConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getRegion(): string
 	{
@@ -228,6 +234,7 @@ class DigitaloceanConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getSize(): string
 	{
@@ -237,6 +244,7 @@ class DigitaloceanConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getSshKeyFingerprint(): string
 	{
@@ -246,6 +254,7 @@ class DigitaloceanConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getSshKeyPath(): string
 	{
@@ -255,6 +264,7 @@ class DigitaloceanConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getSshPort(): string
 	{
@@ -264,6 +274,7 @@ class DigitaloceanConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getSshUser(): string
 	{
@@ -273,6 +284,7 @@ class DigitaloceanConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getUserdata(): string
 	{

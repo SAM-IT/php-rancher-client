@@ -67,6 +67,7 @@ class ContainerExec extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getAttachStdin(): \boolean
 	{
@@ -76,6 +77,7 @@ class ContainerExec extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getAttachStdout(): \boolean
 	{
@@ -85,6 +87,7 @@ class ContainerExec extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
 	public function getCommand(): array
@@ -95,6 +98,7 @@ class ContainerExec extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getTty(): \boolean
 	{

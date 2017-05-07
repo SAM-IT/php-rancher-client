@@ -91,6 +91,7 @@ class NetworkPolicyRule extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return ActionEnum
 	 */
 	public function getAction(): ActionEnum
@@ -101,6 +102,7 @@ class NetworkPolicyRule extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type networkPolicyRuleBetween
 	 * @return NetworkPolicyRuleBetween
 	 */
 	public function getBetween(): NetworkPolicyRuleBetween
@@ -111,6 +113,7 @@ class NetworkPolicyRule extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type networkPolicyRuleMember
 	 * @return NetworkPolicyRuleMember
 	 */
 	public function getFrom(): NetworkPolicyRuleMember
@@ -121,6 +124,7 @@ class NetworkPolicyRule extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
 	public function getPorts(): array
@@ -131,6 +135,7 @@ class NetworkPolicyRule extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type networkPolicyRuleMember
 	 * @return NetworkPolicyRuleMember
 	 */
 	public function getTo(): NetworkPolicyRuleMember
@@ -141,6 +146,7 @@ class NetworkPolicyRule extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return WithinEnum
 	 */
 	public function getWithin(): WithinEnum

@@ -84,8 +84,9 @@ class DockerBuild extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getContext(): string
+	public function getContext(): ?string
 	{
 		return $this->context;
 	}
@@ -93,8 +94,9 @@ class DockerBuild extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getDockerfile(): string
+	public function getDockerfile(): ?string
 	{
 		return $this->dockerfile;
 	}
@@ -102,6 +104,7 @@ class DockerBuild extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getForcerm(): \boolean
 	{
@@ -111,6 +114,7 @@ class DockerBuild extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getNocache(): \boolean
 	{
@@ -120,8 +124,9 @@ class DockerBuild extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getRemote(): string
+	public function getRemote(): ?string
 	{
 		return $this->remote;
 	}
@@ -129,6 +134,7 @@ class DockerBuild extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getRm(): \boolean
 	{

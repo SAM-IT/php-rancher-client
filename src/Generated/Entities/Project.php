@@ -37,7 +37,7 @@ class Project extends \SamIT\Rancher\Types\Entity
 	 * @api-create false
 	 * @api-nullable true
 	 * @api-type date
-	 * @var DateTimeInterface
+	 * @var \\DateTimeInterface
 	 */
 	protected $created;
 
@@ -109,7 +109,7 @@ class Project extends \SamIT\Rancher\Types\Entity
 	 * @api-create false
 	 * @api-nullable true
 	 * @api-type date
-	 * @var DateTimeInterface
+	 * @var \\DateTimeInterface
 	 */
 	protected $removed;
 
@@ -235,8 +235,10 @@ class Project extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type date
+	 * @return \\DateTimeInterface
 	 */
-	public function getCreated(): DateTimeInterface
+	public function getCreated(): ?DateTimeInterface
 	{
 		return $this->created;
 	}
@@ -244,9 +246,10 @@ class Project extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[network]
 	 * @return string
 	 */
-	public function getDefaultNetworkId(): string
+	public function getDefaultNetworkId(): ?string
 	{
 		return $this->defaultNetworkId;
 	}
@@ -255,7 +258,7 @@ class Project extends \SamIT\Rancher\Types\Entity
 	/**
 	 * --> getter from reference: reference[network]
 	 */
-	public function getDefaultNetwork(): ?DefaultNetwork
+	public function getDefaultNetwork(): ?Network
 	{
 		return $this->client()->getDefaultNetwork($this->defaultNetworkId);
 	}
@@ -263,8 +266,9 @@ class Project extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getDescription(): string
+	public function getDescription(): ?string
 	{
 		return $this->description;
 	}
@@ -278,8 +282,9 @@ class Project extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getHealthState(): string
+	public function getHealthState(): ?string
 	{
 		return $this->healthState;
 	}
@@ -287,8 +292,9 @@ class Project extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getId(): string
+	public function getId(): ?string
 	{
 		return $this->id;
 	}
@@ -296,8 +302,9 @@ class Project extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getKind(): string
+	public function getKind(): ?string
 	{
 		return $this->kind;
 	}
@@ -305,8 +312,9 @@ class Project extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getName(): string
+	public function getName(): ?string
 	{
 		return $this->name;
 	}
@@ -320,9 +328,10 @@ class Project extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[projectTemplate]
 	 * @return string
 	 */
-	public function getProjectTemplateId(): string
+	public function getProjectTemplateId(): ?string
 	{
 		return $this->projectTemplateId;
 	}
@@ -339,8 +348,10 @@ class Project extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type date
+	 * @return \\DateTimeInterface
 	 */
-	public function getRemoved(): DateTimeInterface
+	public function getRemoved(): ?DateTimeInterface
 	{
 		return $this->removed;
 	}
@@ -348,6 +359,7 @@ class Project extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return StateEnum
 	 */
 	public function getState(): StateEnum
@@ -358,6 +370,7 @@ class Project extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return TransitioningEnum
 	 */
 	public function getTransitioning(): TransitioningEnum
@@ -368,8 +381,9 @@ class Project extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getTransitioningMessage(): string
+	public function getTransitioningMessage(): ?string
 	{
 		return $this->transitioningMessage;
 	}
@@ -377,8 +391,9 @@ class Project extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getTransitioningProgress(): int
+	public function getTransitioningProgress(): ?int
 	{
 		return $this->transitioningProgress;
 	}
@@ -386,8 +401,9 @@ class Project extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getUuid(): string
+	public function getUuid(): ?string
 	{
 		return $this->uuid;
 	}
@@ -395,8 +411,9 @@ class Project extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getVersion(): string
+	public function getVersion(): ?string
 	{
 		return $this->version;
 	}
@@ -404,8 +421,9 @@ class Project extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getHostRemoveDelaySeconds(): int
+	public function getHostRemoveDelaySeconds(): ?int
 	{
 		return $this->hostRemoveDelaySeconds;
 	}
@@ -419,9 +437,10 @@ class Project extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[projectMember]
 	 * @return ProjectMember[]
 	 */
-	public function getMembers(): array
+	public function getMembers(): ?array
 	{
 		return $this->members;
 	}
@@ -429,6 +448,7 @@ class Project extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getOrchestration(): string
 	{
@@ -438,6 +458,7 @@ class Project extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getVirtualMachine(): \boolean
 	{
@@ -453,9 +474,10 @@ class Project extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type servicesPortRange
 	 * @return ServicesPortRange
 	 */
-	public function getServicesPortRange(): ServicesPortRange
+	public function getServicesPortRange(): ?ServicesPortRange
 	{
 		return $this->servicesPortRange;
 	}

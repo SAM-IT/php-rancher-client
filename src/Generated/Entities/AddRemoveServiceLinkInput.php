@@ -39,6 +39,7 @@ class AddRemoveServiceLinkInput extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type serviceLink
 	 * @return ServiceLink
 	 */
 	public function getServiceLink(): ServiceLink

@@ -5,6 +5,8 @@ use DateTimeInterface;
 use SamIT\Rancher\Generated\Client;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
+use SamIT\Rancher\Types\JsonMap;
+use SamIT\Rancher\Types\StringMap;
 
 class Stack extends \SamIT\Rancher\Types\Entity
 {
@@ -53,7 +55,7 @@ class Stack extends \SamIT\Rancher\Types\Entity
 	 * @api-create false
 	 * @api-nullable true
 	 * @api-type date
-	 * @var DateTimeInterface
+	 * @var \\DateTimeInterface
 	 */
 	protected $created;
 
@@ -125,7 +127,7 @@ class Stack extends \SamIT\Rancher\Types\Entity
 	 * @api-create false
 	 * @api-nullable true
 	 * @api-type date
-	 * @var DateTimeInterface
+	 * @var \\DateTimeInterface
 	 */
 	protected $removed;
 
@@ -206,7 +208,7 @@ class Stack extends \SamIT\Rancher\Types\Entity
 	 * @api-create true
 	 * @api-nullable false
 	 * @api-type map[string]
-	 * @var string[]
+	 * @var \\SamIT\Rancher\Types\StringMap
 	 */
 	protected $environment = [];
 
@@ -215,7 +217,7 @@ class Stack extends \SamIT\Rancher\Types\Entity
 	 * @api-create true
 	 * @api-nullable false
 	 * @api-type map[json]
-	 * @var SamIT\Rancher\Types\JsonMap
+	 * @var \\SamIT\Rancher\Types\JsonMap
 	 */
 	protected $answers = [];
 
@@ -224,7 +226,7 @@ class Stack extends \SamIT\Rancher\Types\Entity
 	 * @api-create true
 	 * @api-nullable true
 	 * @api-type map[string]
-	 * @var string[]
+	 * @var \\SamIT\Rancher\Types\StringMap
 	 */
 	protected $templates = [];
 
@@ -242,7 +244,7 @@ class Stack extends \SamIT\Rancher\Types\Entity
 	 * @api-create true
 	 * @api-nullable true
 	 * @api-type map[string]
-	 * @var string[]
+	 * @var \\SamIT\Rancher\Types\StringMap
 	 */
 	protected $previousEnvironment = [];
 
@@ -260,7 +262,7 @@ class Stack extends \SamIT\Rancher\Types\Entity
 	 * @api-create true
 	 * @api-nullable true
 	 * @api-type map[string]
-	 * @var string[]
+	 * @var \\SamIT\Rancher\Types\StringMap
 	 */
 	protected $outputs = [];
 
@@ -295,7 +297,7 @@ class Stack extends \SamIT\Rancher\Types\Entity
 	}
 
 
-	public static function create(string $dockerCompose, string $rancherCompose, array $environment, \JsonMap $answers)
+	public static function create(string $dockerCompose, string $rancherCompose, StringMap $environment, JsonMap $answers)
 	{
 		$result = new static();
 		$result->dockerCompose = $dockerCompose;
@@ -308,9 +310,10 @@ class Stack extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[account]
 	 * @return string
 	 */
-	public function getAccountId(): string
+	public function getAccountId(): ?string
 	{
 		return $this->accountId;
 	}
@@ -327,8 +330,10 @@ class Stack extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type date
+	 * @return \\DateTimeInterface
 	 */
-	public function getCreated(): DateTimeInterface
+	public function getCreated(): ?DateTimeInterface
 	{
 		return $this->created;
 	}
@@ -336,8 +341,9 @@ class Stack extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getDescription(): string
+	public function getDescription(): ?string
 	{
 		return $this->description;
 	}
@@ -351,8 +357,9 @@ class Stack extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getExternalId(): string
+	public function getExternalId(): ?string
 	{
 		return $this->externalId;
 	}
@@ -366,8 +373,9 @@ class Stack extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getGroup(): string
+	public function getGroup(): ?string
 	{
 		return $this->group;
 	}
@@ -381,8 +389,9 @@ class Stack extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getHealthState(): string
+	public function getHealthState(): ?string
 	{
 		return $this->healthState;
 	}
@@ -390,8 +399,9 @@ class Stack extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getId(): string
+	public function getId(): ?string
 	{
 		return $this->id;
 	}
@@ -399,8 +409,9 @@ class Stack extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getKind(): string
+	public function getKind(): ?string
 	{
 		return $this->kind;
 	}
@@ -408,8 +419,9 @@ class Stack extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getName(): string
+	public function getName(): ?string
 	{
 		return $this->name;
 	}
@@ -423,8 +435,10 @@ class Stack extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type date
+	 * @return \\DateTimeInterface
 	 */
-	public function getRemoved(): DateTimeInterface
+	public function getRemoved(): ?DateTimeInterface
 	{
 		return $this->removed;
 	}
@@ -432,6 +446,7 @@ class Stack extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return StateEnum
 	 */
 	public function getState(): StateEnum
@@ -442,6 +457,7 @@ class Stack extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getSystem(): \boolean
 	{
@@ -451,8 +467,9 @@ class Stack extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getUuid(): string
+	public function getUuid(): ?string
 	{
 		return $this->uuid;
 	}
@@ -460,6 +477,7 @@ class Stack extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return TransitioningEnum
 	 */
 	public function getTransitioning(): TransitioningEnum
@@ -470,8 +488,9 @@ class Stack extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getTransitioningMessage(): string
+	public function getTransitioningMessage(): ?string
 	{
 		return $this->transitioningMessage;
 	}
@@ -479,8 +498,9 @@ class Stack extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getTransitioningProgress(): int
+	public function getTransitioningProgress(): ?int
 	{
 		return $this->transitioningProgress;
 	}
@@ -488,6 +508,7 @@ class Stack extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getDockerCompose(): string
 	{
@@ -497,6 +518,7 @@ class Stack extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getRancherCompose(): string
 	{
@@ -506,9 +528,10 @@ class Stack extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
-	 * @return string[]
+	 * @api-type map[string]
+	 * @return \\SamIT\Rancher\Types\StringMap
 	 */
-	public function getEnvironment(): array
+	public function getEnvironment(): \SamIT\Rancher\Types\StringMap
 	{
 		return $this->environment;
 	}
@@ -516,9 +539,10 @@ class Stack extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
-	 * @return SamIT\Rancher\Types\JsonMap
+	 * @api-type map[json]
+	 * @return \\SamIT\Rancher\Types\JsonMap
 	 */
-	public function getAnswers(): SamIT\Rancher\Generated\Entities\JsonMap
+	public function getAnswers(): \SamIT\Rancher\Types\JsonMap
 	{
 		return $this->answers;
 	}
@@ -526,9 +550,10 @@ class Stack extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
-	 * @return string[]
+	 * @api-type map[string]
+	 * @return \\SamIT\Rancher\Types\StringMap
 	 */
-	public function getTemplates(): array
+	public function getTemplates(): ?\SamIT\Rancher\Types\StringMap
 	{
 		return $this->templates;
 	}
@@ -536,8 +561,9 @@ class Stack extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getPreviousExternalId(): string
+	public function getPreviousExternalId(): ?string
 	{
 		return $this->previousExternalId;
 	}
@@ -551,15 +577,16 @@ class Stack extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
-	 * @return string[]
+	 * @api-type map[string]
+	 * @return \\SamIT\Rancher\Types\StringMap
 	 */
-	public function getPreviousEnvironment(): array
+	public function getPreviousEnvironment(): ?\SamIT\Rancher\Types\StringMap
 	{
 		return $this->previousEnvironment;
 	}
 
 
-	public function setPreviousEnvironment(array $value = NULL)
+	public function setPreviousEnvironment(StringMap $value = NULL)
 	{
 		$this->previousEnvironment = $value;
 	}
@@ -567,8 +594,9 @@ class Stack extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
-	public function getStartOnCreate(): \boolean
+	public function getStartOnCreate(): ?\boolean
 	{
 		return $this->startOnCreate;
 	}
@@ -576,15 +604,16 @@ class Stack extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
-	 * @return string[]
+	 * @api-type map[string]
+	 * @return \\SamIT\Rancher\Types\StringMap
 	 */
-	public function getOutputs(): array
+	public function getOutputs(): ?\SamIT\Rancher\Types\StringMap
 	{
 		return $this->outputs;
 	}
 
 
-	public function setOutputs(array $value = NULL)
+	public function setOutputs(StringMap $value = NULL)
 	{
 		$this->outputs = $value;
 	}
@@ -592,9 +621,10 @@ class Stack extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type binding
 	 * @return Binding
 	 */
-	public function getBinding(): Binding
+	public function getBinding(): ?Binding
 	{
 		return $this->binding;
 	}
@@ -608,9 +638,10 @@ class Stack extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[reference[service]]
 	 * @return string[][]
 	 */
-	public function getServiceIds(): array
+	public function getServiceIds(): ?array
 	{
 		return $this->serviceIds;
 	}

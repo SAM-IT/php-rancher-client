@@ -6,6 +6,7 @@ use SamIT\Rancher\Generated\Client;
 use SamIT\Rancher\Generated\Enums\DefaultPolicyActionEnum;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
+use SamIT\Rancher\Types\JsonMap;
 
 class DefaultNetwork extends \SamIT\Rancher\Types\Entity
 {
@@ -46,7 +47,7 @@ class DefaultNetwork extends \SamIT\Rancher\Types\Entity
 	 * @api-create false
 	 * @api-nullable true
 	 * @api-type date
-	 * @var DateTimeInterface
+	 * @var \\DateTimeInterface
 	 */
 	protected $created;
 
@@ -118,7 +119,7 @@ class DefaultNetwork extends \SamIT\Rancher\Types\Entity
 	 * @api-create true
 	 * @api-nullable false
 	 * @api-type map[json]
-	 * @var SamIT\Rancher\Types\JsonMap
+	 * @var \\SamIT\Rancher\Types\JsonMap
 	 */
 	protected $metadata = [];
 
@@ -145,7 +146,7 @@ class DefaultNetwork extends \SamIT\Rancher\Types\Entity
 	 * @api-create false
 	 * @api-nullable true
 	 * @api-type date
-	 * @var DateTimeInterface
+	 * @var \\DateTimeInterface
 	 */
 	protected $removed;
 
@@ -213,7 +214,7 @@ class DefaultNetwork extends \SamIT\Rancher\Types\Entity
 	}
 
 
-	public static function create(DefaultPolicyActionEnum $defaultPolicyAction, array $dns, array $dnsSearch, \boolean $hostPorts, \JsonMap $metadata, array $subnets)
+	public static function create(DefaultPolicyActionEnum $defaultPolicyAction, array $dns, array $dnsSearch, \boolean $hostPorts, JsonMap $metadata, array $subnets)
 	{
 		$result = new static();
 		$result->defaultPolicyAction = $defaultPolicyAction;
@@ -228,9 +229,10 @@ class DefaultNetwork extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[account]
 	 * @return string
 	 */
-	public function getAccountId(): string
+	public function getAccountId(): ?string
 	{
 		return $this->accountId;
 	}
@@ -247,8 +249,10 @@ class DefaultNetwork extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type date
+	 * @return \\DateTimeInterface
 	 */
-	public function getCreated(): DateTimeInterface
+	public function getCreated(): ?DateTimeInterface
 	{
 		return $this->created;
 	}
@@ -256,6 +260,7 @@ class DefaultNetwork extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return DefaultPolicyActionEnum
 	 */
 	public function getDefaultPolicyAction(): DefaultPolicyActionEnum
@@ -272,8 +277,9 @@ class DefaultNetwork extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getDescription(): string
+	public function getDescription(): ?string
 	{
 		return $this->description;
 	}
@@ -287,6 +293,7 @@ class DefaultNetwork extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
 	public function getDns(): array
@@ -297,6 +304,7 @@ class DefaultNetwork extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
 	public function getDnsSearch(): array
@@ -307,6 +315,7 @@ class DefaultNetwork extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getHostPorts(): \boolean
 	{
@@ -316,8 +325,9 @@ class DefaultNetwork extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getId(): string
+	public function getId(): ?string
 	{
 		return $this->id;
 	}
@@ -325,8 +335,9 @@ class DefaultNetwork extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getKind(): string
+	public function getKind(): ?string
 	{
 		return $this->kind;
 	}
@@ -334,9 +345,10 @@ class DefaultNetwork extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
-	 * @return SamIT\Rancher\Types\JsonMap
+	 * @api-type map[json]
+	 * @return \\SamIT\Rancher\Types\JsonMap
 	 */
-	public function getMetadata(): SamIT\Rancher\Generated\Entities\JsonMap
+	public function getMetadata(): \SamIT\Rancher\Types\JsonMap
 	{
 		return $this->metadata;
 	}
@@ -350,8 +362,9 @@ class DefaultNetwork extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getName(): string
+	public function getName(): ?string
 	{
 		return $this->name;
 	}
@@ -365,9 +378,10 @@ class DefaultNetwork extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[networkPolicyRule]
 	 * @return NetworkPolicyRule[]
 	 */
-	public function getPolicy(): array
+	public function getPolicy(): ?array
 	{
 		return $this->policy;
 	}
@@ -381,8 +395,10 @@ class DefaultNetwork extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type date
+	 * @return \\DateTimeInterface
 	 */
-	public function getRemoved(): DateTimeInterface
+	public function getRemoved(): ?DateTimeInterface
 	{
 		return $this->removed;
 	}
@@ -390,6 +406,7 @@ class DefaultNetwork extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return StateEnum
 	 */
 	public function getState(): StateEnum
@@ -400,6 +417,7 @@ class DefaultNetwork extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[subnet]
 	 * @return Subnet[]
 	 */
 	public function getSubnets(): array
@@ -410,6 +428,7 @@ class DefaultNetwork extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return TransitioningEnum
 	 */
 	public function getTransitioning(): TransitioningEnum
@@ -420,8 +439,9 @@ class DefaultNetwork extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getTransitioningMessage(): string
+	public function getTransitioningMessage(): ?string
 	{
 		return $this->transitioningMessage;
 	}
@@ -429,8 +449,9 @@ class DefaultNetwork extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getTransitioningProgress(): int
+	public function getTransitioningProgress(): ?int
 	{
 		return $this->transitioningProgress;
 	}
@@ -438,8 +459,9 @@ class DefaultNetwork extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getUuid(): string
+	public function getUuid(): ?string
 	{
 		return $this->uuid;
 	}

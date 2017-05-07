@@ -141,8 +141,9 @@ class InstanceHealthCheck extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getHealthyThreshold(): int
+	public function getHealthyThreshold(): ?int
 	{
 		return $this->healthyThreshold;
 	}
@@ -150,8 +151,9 @@ class InstanceHealthCheck extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getInitializingTimeout(): int
+	public function getInitializingTimeout(): ?int
 	{
 		return $this->initializingTimeout;
 	}
@@ -159,8 +161,9 @@ class InstanceHealthCheck extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getInterval(): int
+	public function getInterval(): ?int
 	{
 		return $this->interval;
 	}
@@ -168,8 +171,9 @@ class InstanceHealthCheck extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getName(): string
+	public function getName(): ?string
 	{
 		return $this->name;
 	}
@@ -183,8 +187,9 @@ class InstanceHealthCheck extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getPort(): int
+	public function getPort(): ?int
 	{
 		return $this->port;
 	}
@@ -192,9 +197,10 @@ class InstanceHealthCheck extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type recreateOnQuorumStrategyConfig
 	 * @return RecreateOnQuorumStrategyConfig
 	 */
-	public function getRecreateOnQuorumStrategyConfig(): RecreateOnQuorumStrategyConfig
+	public function getRecreateOnQuorumStrategyConfig(): ?RecreateOnQuorumStrategyConfig
 	{
 		return $this->recreateOnQuorumStrategyConfig;
 	}
@@ -202,8 +208,9 @@ class InstanceHealthCheck extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getReinitializingTimeout(): int
+	public function getReinitializingTimeout(): ?int
 	{
 		return $this->reinitializingTimeout;
 	}
@@ -211,8 +218,9 @@ class InstanceHealthCheck extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getRequestLine(): string
+	public function getRequestLine(): ?string
 	{
 		return $this->requestLine;
 	}
@@ -220,8 +228,9 @@ class InstanceHealthCheck extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getResponseTimeout(): int
+	public function getResponseTimeout(): ?int
 	{
 		return $this->responseTimeout;
 	}
@@ -229,9 +238,10 @@ class InstanceHealthCheck extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return StrategyEnum
 	 */
-	public function getStrategy(): StrategyEnum
+	public function getStrategy(): ?StrategyEnum
 	{
 		return $this->strategy;
 	}
@@ -239,8 +249,9 @@ class InstanceHealthCheck extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getUnhealthyThreshold(): int
+	public function getUnhealthyThreshold(): ?int
 	{
 		return $this->unhealthyThreshold;
 	}

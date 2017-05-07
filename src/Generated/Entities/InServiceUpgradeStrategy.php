@@ -102,8 +102,9 @@ class InServiceUpgradeStrategy extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getBatchSize(): int
+	public function getBatchSize(): ?int
 	{
 		return $this->batchSize;
 	}
@@ -111,8 +112,9 @@ class InServiceUpgradeStrategy extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getIntervalMillis(): int
+	public function getIntervalMillis(): ?int
 	{
 		return $this->intervalMillis;
 	}
@@ -120,9 +122,10 @@ class InServiceUpgradeStrategy extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type launchConfig
 	 * @return LaunchConfig
 	 */
-	public function getLaunchConfig(): LaunchConfig
+	public function getLaunchConfig(): ?LaunchConfig
 	{
 		return $this->launchConfig;
 	}
@@ -130,9 +133,10 @@ class InServiceUpgradeStrategy extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type launchConfig
 	 * @return LaunchConfig
 	 */
-	public function getPreviousLaunchConfig(): LaunchConfig
+	public function getPreviousLaunchConfig(): ?LaunchConfig
 	{
 		return $this->previousLaunchConfig;
 	}
@@ -140,6 +144,7 @@ class InServiceUpgradeStrategy extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[secondaryLaunchConfig]
 	 * @return SecondaryLaunchConfig[]
 	 */
 	public function getPreviousSecondaryLaunchConfigs(): array
@@ -150,6 +155,7 @@ class InServiceUpgradeStrategy extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[secondaryLaunchConfig]
 	 * @return SecondaryLaunchConfig[]
 	 */
 	public function getSecondaryLaunchConfigs(): array
@@ -160,6 +166,7 @@ class InServiceUpgradeStrategy extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getStartFirst(): \boolean
 	{

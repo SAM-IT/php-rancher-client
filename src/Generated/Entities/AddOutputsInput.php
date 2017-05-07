@@ -2,6 +2,7 @@
 namespace SamIT\Rancher\Generated\Entities;
 
 use SamIT\Rancher\Generated\Client;
+use SamIT\Rancher\Types\StringMap;
 
 class AddOutputsInput extends \SamIT\Rancher\Types\Entity
 {
@@ -13,7 +14,7 @@ class AddOutputsInput extends \SamIT\Rancher\Types\Entity
 	 * @api-create true
 	 * @api-nullable false
 	 * @api-type map[string]
-	 * @var string[]
+	 * @var \\SamIT\Rancher\Types\StringMap
 	 */
 	protected $outputs = [];
 
@@ -27,7 +28,7 @@ class AddOutputsInput extends \SamIT\Rancher\Types\Entity
 	}
 
 
-	public static function create(array $outputs)
+	public static function create(StringMap $outputs)
 	{
 		$result = new static();
 		$result->outputs = $outputs;
@@ -37,9 +38,10 @@ class AddOutputsInput extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
-	 * @return string[]
+	 * @api-type map[string]
+	 * @return \\SamIT\Rancher\Types\StringMap
 	 */
-	public function getOutputs(): array
+	public function getOutputs(): \SamIT\Rancher\Types\StringMap
 	{
 		return $this->outputs;
 	}

@@ -2,6 +2,7 @@
 namespace SamIT\Rancher\Generated\Entities;
 
 use SamIT\Rancher\Generated\Client;
+use SamIT\Rancher\Types\JsonMap;
 
 class Schema extends \SamIT\Rancher\Types\Entity
 {
@@ -23,7 +24,7 @@ class Schema extends \SamIT\Rancher\Types\Entity
 	 * @api-create true
 	 * @api-nullable false
 	 * @api-type map[json]
-	 * @var SamIT\Rancher\Types\JsonMap
+	 * @var \\SamIT\Rancher\Types\JsonMap
 	 */
 	protected $collectionActions = [];
 
@@ -32,7 +33,7 @@ class Schema extends \SamIT\Rancher\Types\Entity
 	 * @api-create true
 	 * @api-nullable false
 	 * @api-type map[json]
-	 * @var SamIT\Rancher\Types\JsonMap
+	 * @var \\SamIT\Rancher\Types\JsonMap
 	 */
 	protected $collectionFields = [];
 
@@ -41,7 +42,7 @@ class Schema extends \SamIT\Rancher\Types\Entity
 	 * @api-create true
 	 * @api-nullable false
 	 * @api-type map[json]
-	 * @var SamIT\Rancher\Types\JsonMap
+	 * @var \\SamIT\Rancher\Types\JsonMap
 	 */
 	protected $collectionFilters = [];
 
@@ -77,7 +78,7 @@ class Schema extends \SamIT\Rancher\Types\Entity
 	 * @api-create true
 	 * @api-nullable false
 	 * @api-type map[json]
-	 * @var SamIT\Rancher\Types\JsonMap
+	 * @var \\SamIT\Rancher\Types\JsonMap
 	 */
 	protected $resourceActions = [];
 
@@ -86,7 +87,7 @@ class Schema extends \SamIT\Rancher\Types\Entity
 	 * @api-create true
 	 * @api-nullable false
 	 * @api-type map[json]
-	 * @var SamIT\Rancher\Types\JsonMap
+	 * @var \\SamIT\Rancher\Types\JsonMap
 	 */
 	protected $resourceFields = [];
 
@@ -112,7 +113,7 @@ class Schema extends \SamIT\Rancher\Types\Entity
 	}
 
 
-	public static function create(\JsonMap $collectionActions, \JsonMap $collectionFields, \JsonMap $collectionFilters, array $collectionMethods, array $includeableLinks, string $pluralName, \JsonMap $resourceActions, \JsonMap $resourceFields, array $resourceMethods)
+	public static function create(JsonMap $collectionActions, JsonMap $collectionFields, JsonMap $collectionFilters, array $collectionMethods, array $includeableLinks, string $pluralName, JsonMap $resourceActions, JsonMap $resourceFields, array $resourceMethods)
 	{
 		$result = new static();
 		$result->collectionActions = $collectionActions;
@@ -130,9 +131,10 @@ class Schema extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
-	 * @return SamIT\Rancher\Types\JsonMap
+	 * @api-type map[json]
+	 * @return \\SamIT\Rancher\Types\JsonMap
 	 */
-	public function getCollectionActions(): SamIT\Rancher\Generated\Entities\JsonMap
+	public function getCollectionActions(): \SamIT\Rancher\Types\JsonMap
 	{
 		return $this->collectionActions;
 	}
@@ -140,9 +142,10 @@ class Schema extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
-	 * @return SamIT\Rancher\Types\JsonMap
+	 * @api-type map[json]
+	 * @return \\SamIT\Rancher\Types\JsonMap
 	 */
-	public function getCollectionFields(): SamIT\Rancher\Generated\Entities\JsonMap
+	public function getCollectionFields(): \SamIT\Rancher\Types\JsonMap
 	{
 		return $this->collectionFields;
 	}
@@ -150,9 +153,10 @@ class Schema extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
-	 * @return SamIT\Rancher\Types\JsonMap
+	 * @api-type map[json]
+	 * @return \\SamIT\Rancher\Types\JsonMap
 	 */
-	public function getCollectionFilters(): SamIT\Rancher\Generated\Entities\JsonMap
+	public function getCollectionFilters(): \SamIT\Rancher\Types\JsonMap
 	{
 		return $this->collectionFilters;
 	}
@@ -160,6 +164,7 @@ class Schema extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
 	public function getCollectionMethods(): array
@@ -170,6 +175,7 @@ class Schema extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
 	public function getIncludeableLinks(): array
@@ -180,6 +186,7 @@ class Schema extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getPluralName(): string
 	{
@@ -189,9 +196,10 @@ class Schema extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
-	 * @return SamIT\Rancher\Types\JsonMap
+	 * @api-type map[json]
+	 * @return \\SamIT\Rancher\Types\JsonMap
 	 */
-	public function getResourceActions(): SamIT\Rancher\Generated\Entities\JsonMap
+	public function getResourceActions(): \SamIT\Rancher\Types\JsonMap
 	{
 		return $this->resourceActions;
 	}
@@ -199,9 +207,10 @@ class Schema extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
-	 * @return SamIT\Rancher\Types\JsonMap
+	 * @api-type map[json]
+	 * @return \\SamIT\Rancher\Types\JsonMap
 	 */
-	public function getResourceFields(): SamIT\Rancher\Generated\Entities\JsonMap
+	public function getResourceFields(): \SamIT\Rancher\Types\JsonMap
 	{
 		return $this->resourceFields;
 	}
@@ -209,6 +218,7 @@ class Schema extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
 	public function getResourceMethods(): array

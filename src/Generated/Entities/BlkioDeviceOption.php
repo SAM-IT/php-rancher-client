@@ -74,8 +74,9 @@ class BlkioDeviceOption extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getReadBps(): int
+	public function getReadBps(): ?int
 	{
 		return $this->readBps;
 	}
@@ -83,8 +84,9 @@ class BlkioDeviceOption extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getReadIops(): int
+	public function getReadIops(): ?int
 	{
 		return $this->readIops;
 	}
@@ -92,8 +94,9 @@ class BlkioDeviceOption extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getWeight(): int
+	public function getWeight(): ?int
 	{
 		return $this->weight;
 	}
@@ -101,8 +104,9 @@ class BlkioDeviceOption extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getWriteBps(): int
+	public function getWriteBps(): ?int
 	{
 		return $this->writeBps;
 	}
@@ -110,8 +114,9 @@ class BlkioDeviceOption extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getWriteIops(): int
+	public function getWriteIops(): ?int
 	{
 		return $this->writeIops;
 	}

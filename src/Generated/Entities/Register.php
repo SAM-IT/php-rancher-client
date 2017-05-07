@@ -5,6 +5,7 @@ use DateTimeInterface;
 use SamIT\Rancher\Generated\Client;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
+use SamIT\Rancher\Types\JsonMap;
 
 class Register extends GenericObject
 {
@@ -55,6 +56,7 @@ class Register extends GenericObject
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getAccessKey(): string
 	{
@@ -64,6 +66,7 @@ class Register extends GenericObject
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getSecretKey(): string
 	{

@@ -47,8 +47,9 @@ class ServicesPortRange extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getEndPort(): int
+	public function getEndPort(): ?int
 	{
 		return $this->endPort;
 	}
@@ -62,8 +63,9 @@ class ServicesPortRange extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getStartPort(): int
+	public function getStartPort(): ?int
 	{
 		return $this->startPort;
 	}

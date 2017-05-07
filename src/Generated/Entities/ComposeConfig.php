@@ -45,6 +45,7 @@ class ComposeConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getDockerComposeConfig(): string
 	{
@@ -54,6 +55,7 @@ class ComposeConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getRancherComposeConfig(): string
 	{

@@ -38,9 +38,10 @@ class ComposeConfigInput extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[reference[service]]
 	 * @return string[][]
 	 */
-	public function getServiceIds(): array
+	public function getServiceIds(): ?array
 	{
 		return $this->serviceIds;
 	}

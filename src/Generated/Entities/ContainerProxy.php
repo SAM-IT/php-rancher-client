@@ -47,8 +47,9 @@ class ContainerProxy extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getPort(): int
+	public function getPort(): ?int
 	{
 		return $this->port;
 	}
@@ -56,6 +57,7 @@ class ContainerProxy extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return SchemeEnum
 	 */
 	public function getScheme(): SchemeEnum

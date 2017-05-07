@@ -54,6 +54,7 @@ class InstanceConsole extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getUrl(): string
 	{
@@ -63,6 +64,7 @@ class InstanceConsole extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getKind(): string
 	{
@@ -72,6 +74,7 @@ class InstanceConsole extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getPassword(): string
 	{

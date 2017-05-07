@@ -65,8 +65,9 @@ class LbConfig extends LbTargetConfig
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getConfig(): string
+	public function getConfig(): ?string
 	{
 		return $this->config;
 	}
@@ -74,9 +75,10 @@ class LbConfig extends LbTargetConfig
 
 	/**
 	 * @simple-getter
+	 * @api-type array[reference[certificate]]
 	 * @return string[][]
 	 */
-	public function getCertificateIds(): array
+	public function getCertificateIds(): ?array
 	{
 		return $this->certificateIds;
 	}
@@ -84,9 +86,10 @@ class LbConfig extends LbTargetConfig
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[certificate]
 	 * @return string
 	 */
-	public function getDefaultCertificateId(): string
+	public function getDefaultCertificateId(): ?string
 	{
 		return $this->defaultCertificateId;
 	}
@@ -95,7 +98,7 @@ class LbConfig extends LbTargetConfig
 	/**
 	 * --> getter from reference: reference[certificate]
 	 */
-	public function getDefaultCertificate(): ?DefaultCertificate
+	public function getDefaultCertificate(): ?Certificate
 	{
 		return $this->client()->getDefaultCertificate($this->defaultCertificateId);
 	}
@@ -103,9 +106,10 @@ class LbConfig extends LbTargetConfig
 
 	/**
 	 * @simple-getter
+	 * @api-type loadBalancerCookieStickinessPolicy
 	 * @return LoadBalancerCookieStickinessPolicy
 	 */
-	public function getStickinessPolicy(): LoadBalancerCookieStickinessPolicy
+	public function getStickinessPolicy(): ?LoadBalancerCookieStickinessPolicy
 	{
 		return $this->stickinessPolicy;
 	}

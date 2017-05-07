@@ -2,6 +2,7 @@
 namespace SamIT\Rancher\Generated\Entities;
 
 use SamIT\Rancher\Generated\Client;
+use SamIT\Rancher\Generated\Maps\FieldDocumentationMap;
 
 class TypeDocumentation extends \SamIT\Rancher\Types\Entity
 {
@@ -58,6 +59,7 @@ class TypeDocumentation extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getDescription(): string
 	{
@@ -73,6 +75,7 @@ class TypeDocumentation extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getId(): string
 	{
@@ -82,9 +85,10 @@ class TypeDocumentation extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type map[fieldDocumentation]
 	 * @return FieldDocumentationMap
 	 */
-	public function getResourceFields(): SamIT\Rancher\Generated\Entities\FieldDocumentationMap
+	public function getResourceFields(): \SamIT\Rancher\Generated\Maps\FieldDocumentationMap
 	{
 		return $this->resourceFields;
 	}

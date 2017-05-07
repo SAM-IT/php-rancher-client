@@ -82,6 +82,7 @@ class GenericConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getEnginePort(): string
 	{
@@ -91,6 +92,7 @@ class GenericConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getIpAddress(): string
 	{
@@ -100,6 +102,7 @@ class GenericConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getSshKey(): string
 	{
@@ -109,6 +112,7 @@ class GenericConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getSshPort(): string
 	{
@@ -118,6 +122,7 @@ class GenericConfig extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getSshUser(): string
 	{

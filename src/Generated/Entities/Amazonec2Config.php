@@ -388,6 +388,7 @@ class Amazonec2Config extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getAccessKey(): string
 	{
@@ -397,6 +398,7 @@ class Amazonec2Config extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getAmi(): string
 	{
@@ -406,6 +408,7 @@ class Amazonec2Config extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getBlockDurationMinutes(): string
 	{
@@ -415,6 +418,7 @@ class Amazonec2Config extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getDeviceName(): string
 	{
@@ -424,6 +428,7 @@ class Amazonec2Config extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getEndpoint(): string
 	{
@@ -433,6 +438,7 @@ class Amazonec2Config extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getIamInstanceProfile(): string
 	{
@@ -442,6 +448,7 @@ class Amazonec2Config extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getInsecureTransport(): \boolean
 	{
@@ -451,6 +458,7 @@ class Amazonec2Config extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getInstanceType(): string
 	{
@@ -460,6 +468,7 @@ class Amazonec2Config extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getKeypairName(): string
 	{
@@ -469,6 +478,7 @@ class Amazonec2Config extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getMonitoring(): \boolean
 	{
@@ -478,6 +488,7 @@ class Amazonec2Config extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
 	public function getOpenPort(): array
@@ -488,6 +499,7 @@ class Amazonec2Config extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getPrivateAddressOnly(): \boolean
 	{
@@ -497,6 +509,7 @@ class Amazonec2Config extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getRegion(): string
 	{
@@ -506,6 +519,7 @@ class Amazonec2Config extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getRequestSpotInstance(): \boolean
 	{
@@ -515,6 +529,7 @@ class Amazonec2Config extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getRetries(): string
 	{
@@ -524,6 +539,7 @@ class Amazonec2Config extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getRootSize(): string
 	{
@@ -533,6 +549,7 @@ class Amazonec2Config extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getSecretKey(): string
 	{
@@ -542,6 +559,7 @@ class Amazonec2Config extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
 	public function getSecurityGroup(): array
@@ -552,6 +570,7 @@ class Amazonec2Config extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getSessionToken(): string
 	{
@@ -561,6 +580,7 @@ class Amazonec2Config extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getSpotPrice(): string
 	{
@@ -570,6 +590,7 @@ class Amazonec2Config extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getSshKeypath(): string
 	{
@@ -579,6 +600,7 @@ class Amazonec2Config extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getSshUser(): string
 	{
@@ -588,6 +610,7 @@ class Amazonec2Config extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getSubnetId(): string
 	{
@@ -597,6 +620,7 @@ class Amazonec2Config extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getTags(): string
 	{
@@ -606,6 +630,7 @@ class Amazonec2Config extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getUseEbsOptimizedInstance(): \boolean
 	{
@@ -615,6 +640,7 @@ class Amazonec2Config extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type boolean
 	 */
 	public function getUsePrivateAddress(): \boolean
 	{
@@ -624,6 +650,7 @@ class Amazonec2Config extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getUserdata(): string
 	{
@@ -633,6 +660,7 @@ class Amazonec2Config extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getVolumeType(): string
 	{
@@ -642,6 +670,7 @@ class Amazonec2Config extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getVpcId(): string
 	{
@@ -651,6 +680,7 @@ class Amazonec2Config extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getZone(): string
 	{

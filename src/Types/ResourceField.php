@@ -5,15 +5,18 @@ namespace SamIT\Rancher\Types;
 
 
 use Nette\PhpGenerator\ClassType;
+use Nette\PhpGenerator\Helpers;
 use Nette\PhpGenerator\PhpLiteral;
+use Nette\PhpGenerator\PhpNamespace;
+use Nette\Utils\Strings;
 
 class ResourceField
 {
     private const TYPE_MAP = [
         'json' => 'array',
-        'map[json]' => JsonMap::class,
-        'map[string]' => 'string[]',
-        'date' => \DateTimeInterface::class
+        'map[json]' => "\\" . JsonMap::class,
+        'map[string]' => "\\" . StringMap::class,
+        'date' => "\\" . \DateTimeInterface::class
     ];
     public $type;
     public $description;
@@ -43,7 +46,7 @@ class ResourceField
      * @param EnumGenerator|null $enumGenerator
      * @throws \Exception
      */
-    public function addTo(ClassType $type, $name, EnumGenerator $enumGenerator = null)
+    public function addTo(ClassType $type, $name, EnumGenerator $enumGenerator, PhpNamespace $mapNamespace)
     {
         $property = $type->addProperty($name);
         $property->addComment($this->description);
@@ -54,10 +57,8 @@ class ResourceField
         $property->addComment("@api-type " . $this->type);
         $property->setVisibility('protected');
 
-        $phpType = $this->getPhpType($name, $enumGenerator);
-        if ($phpType == \DateTimeInterface::class) {
-            $type->getNamespace()->addUse(\DateTimeInterface::class);
-        } elseif (strpos($phpType, '\\') !== false) {
+        $phpType = static::getPhpType($this->type, $name, $enumGenerator, $mapNamespace);
+        if (strpos($phpType, '\\') !== false) {
             $type->getNamespace()->addUse($phpType);
         } elseif (ucfirst($phpType) === $phpType) {
             $phpType = $type->getNamespace()->getName() . "\\" . $phpType;
@@ -76,9 +77,12 @@ class ResourceField
         $getter = $type->addMethod('get' . ucfirst($name));
         $getter
             ->addComment('@simple-getter')
+            ->addComment("@api-type {$this->type}")
             ->addBody('return $this->?;', [
-                $name,
-            ])->setReturnType($phpType);
+                $name
+            ])
+            ->setReturnNullable($this->nullable)
+            ->setReturnType($phpType);
 
 
         if ($this->update) {
@@ -124,35 +128,37 @@ class ResourceField
      * @return string
      * @throws \Exception
      */
-    public function getPhpType(string $name, ?EnumGenerator $enumGenerator)
+    public static function getPhpType(string $type, string $name, ?EnumGenerator $enumGenerator, PhpNamespace $mapNamespace)
     {
         if ($name === 'id') {
             return 'string';
-        } elseif (preg_match('/^array\[(?<sub>.*)\]$/', $this->type, $matches)) {
+        } elseif (array_key_exists($type, self::TYPE_MAP)) {
+            return self::TYPE_MAP[$type];
+        } elseif (preg_match('/^array\[(?<sub>.*)\]$/', $type, $matches)) {
             return 'array';
-        } elseif (preg_match('/^map\[(?<sub>.*)\]$/', $this->type, $matches)) {
+        } elseif (preg_match('/^map\[(?<sub>.*)\]$/', $type, $matches)) {
             if (in_array($matches['sub'], ['string', 'int', 'boolean'])) {
                 return 'array';
             } else {
-                return ucfirst($matches['sub']) . "Map";
+                return "\\{$mapNamespace->getName()}\\" . static::getPhpType($matches['sub'], $name, $enumGenerator, $mapNamespace) . "Map";
             }
 
-        } elseif (preg_match('/^reference\[(?<sub>.*)\]$/', $this->type, $matches)) {
+
+
+        } elseif (preg_match('/^reference\[(?<sub>.*)\]$/', $type, $matches)) {
             if (substr($name, -2, 2) == 'Id') {
                 $name = substr($name, 0, -2);
             }
-            return ucfirst($name);
-        } elseif ($this->type == 'enum') {
+            return ucfirst($matches['sub']);
+        } elseif ($type == 'enum') {
             if (!isset($enumGenerator)) {
                 throw new \Exception("This schema uses enums, pass in an EnumGenerator to generate the class it describes.");
             }
             return $enumGenerator->getClassName($name, $name);
-        } elseif (in_array($this->type, ['string', 'int', 'boolean'])) {
-            return $this->type;
-        } elseif (array_key_exists($this->type, self::TYPE_MAP)) {
-            return self::TYPE_MAP[$this->type];
+        } elseif (in_array($type, ['string', 'int', 'boolean'])) {
+            return $type;
         } else {
-            return ucfirst($this->type);
+            return ucfirst($type);
         }
 
 
@@ -167,7 +173,7 @@ class ResourceField
         if ($name === 'id') {
             return 'string';
         } elseif (isset(self::TYPE_MAP[$type])) {
-            return self::TYPE_MAP[$type];
+            return "\\" . self::TYPE_MAP[$type];
         } elseif (preg_match('/^array\[(?<sub>.*)\]$/', $type, $matches)) {
             return $this->getTypeHint($matches['sub'], $name, $enumGenerator) . '[]';
         } elseif (preg_match('/^map\[(?<sub>.*)\]$/', $type, $matches)) {

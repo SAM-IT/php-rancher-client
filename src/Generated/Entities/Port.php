@@ -45,7 +45,7 @@ class Port extends \SamIT\Rancher\Types\Entity
 	 * @api-create false
 	 * @api-nullable true
 	 * @api-type date
-	 * @var DateTimeInterface
+	 * @var \\DateTimeInterface
 	 */
 	protected $created;
 
@@ -144,7 +144,7 @@ class Port extends \SamIT\Rancher\Types\Entity
 	 * @api-create false
 	 * @api-nullable true
 	 * @api-type date
-	 * @var DateTimeInterface
+	 * @var \\DateTimeInterface
 	 */
 	protected $removed;
 
@@ -224,9 +224,10 @@ class Port extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[account]
 	 * @return string
 	 */
-	public function getAccountId(): string
+	public function getAccountId(): ?string
 	{
 		return $this->accountId;
 	}
@@ -243,8 +244,10 @@ class Port extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type date
+	 * @return \\DateTimeInterface
 	 */
-	public function getCreated(): DateTimeInterface
+	public function getCreated(): ?DateTimeInterface
 	{
 		return $this->created;
 	}
@@ -252,8 +255,9 @@ class Port extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getDescription(): string
+	public function getDescription(): ?string
 	{
 		return $this->description;
 	}
@@ -267,8 +271,9 @@ class Port extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getId(): string
+	public function getId(): ?string
 	{
 		return $this->id;
 	}
@@ -276,9 +281,10 @@ class Port extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[instance]
 	 * @return string
 	 */
-	public function getInstanceId(): string
+	public function getInstanceId(): ?string
 	{
 		return $this->instanceId;
 	}
@@ -295,8 +301,9 @@ class Port extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getKind(): string
+	public function getKind(): ?string
 	{
 		return $this->kind;
 	}
@@ -304,8 +311,9 @@ class Port extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getName(): string
+	public function getName(): ?string
 	{
 		return $this->name;
 	}
@@ -319,9 +327,10 @@ class Port extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[ipAddress]
 	 * @return string
 	 */
-	public function getPrivateIpAddressId(): string
+	public function getPrivateIpAddressId(): ?string
 	{
 		return $this->privateIpAddressId;
 	}
@@ -330,7 +339,7 @@ class Port extends \SamIT\Rancher\Types\Entity
 	/**
 	 * --> getter from reference: reference[ipAddress]
 	 */
-	public function getPrivateIpAddress(): ?PrivateIpAddress
+	public function getPrivateIpAddress(): ?IpAddress
 	{
 		return $this->client()->getPrivateIpAddress($this->privateIpAddressId);
 	}
@@ -338,8 +347,9 @@ class Port extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getPrivatePort(): int
+	public function getPrivatePort(): ?int
 	{
 		return $this->privatePort;
 	}
@@ -347,8 +357,9 @@ class Port extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getProtocol(): string
+	public function getProtocol(): ?string
 	{
 		return $this->protocol;
 	}
@@ -356,9 +367,10 @@ class Port extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[ipAddress]
 	 * @return string
 	 */
-	public function getPublicIpAddressId(): string
+	public function getPublicIpAddressId(): ?string
 	{
 		return $this->publicIpAddressId;
 	}
@@ -367,7 +379,7 @@ class Port extends \SamIT\Rancher\Types\Entity
 	/**
 	 * --> getter from reference: reference[ipAddress]
 	 */
-	public function getPublicIpAddress(): ?PublicIpAddress
+	public function getPublicIpAddress(): ?IpAddress
 	{
 		return $this->client()->getPublicIpAddress($this->publicIpAddressId);
 	}
@@ -375,8 +387,9 @@ class Port extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getPublicPort(): int
+	public function getPublicPort(): ?int
 	{
 		return $this->publicPort;
 	}
@@ -390,8 +403,10 @@ class Port extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type date
+	 * @return \\DateTimeInterface
 	 */
-	public function getRemoved(): DateTimeInterface
+	public function getRemoved(): ?DateTimeInterface
 	{
 		return $this->removed;
 	}
@@ -399,6 +414,7 @@ class Port extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return StateEnum
 	 */
 	public function getState(): StateEnum
@@ -409,8 +425,9 @@ class Port extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getUuid(): string
+	public function getUuid(): ?string
 	{
 		return $this->uuid;
 	}
@@ -418,6 +435,7 @@ class Port extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return TransitioningEnum
 	 */
 	public function getTransitioning(): TransitioningEnum
@@ -428,8 +446,9 @@ class Port extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getTransitioningMessage(): string
+	public function getTransitioningMessage(): ?string
 	{
 		return $this->transitioningMessage;
 	}
@@ -437,8 +456,9 @@ class Port extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getTransitioningProgress(): int
+	public function getTransitioningProgress(): ?int
 	{
 		return $this->transitioningProgress;
 	}
@@ -446,8 +466,9 @@ class Port extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getBindAddress(): string
+	public function getBindAddress(): ?string
 	{
 		return $this->bindAddress;
 	}

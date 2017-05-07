@@ -2,6 +2,7 @@
 namespace SamIT\Rancher\Generated\Entities;
 
 use SamIT\Rancher\Generated\Client;
+use SamIT\Rancher\Types\StringMap;
 
 class ServiceBinding extends \SamIT\Rancher\Types\Entity
 {
@@ -13,7 +14,7 @@ class ServiceBinding extends \SamIT\Rancher\Types\Entity
 	 * @api-create true
 	 * @api-nullable false
 	 * @api-type map[string]
-	 * @var string[]
+	 * @var \\SamIT\Rancher\Types\StringMap
 	 */
 	protected $labels = [];
 
@@ -36,7 +37,7 @@ class ServiceBinding extends \SamIT\Rancher\Types\Entity
 	}
 
 
-	public static function create(array $labels, array $ports)
+	public static function create(StringMap $labels, array $ports)
 	{
 		$result = new static();
 		$result->labels = $labels;
@@ -47,9 +48,10 @@ class ServiceBinding extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
-	 * @return string[]
+	 * @api-type map[string]
+	 * @return \\SamIT\Rancher\Types\StringMap
 	 */
-	public function getLabels(): array
+	public function getLabels(): \SamIT\Rancher\Types\StringMap
 	{
 		return $this->labels;
 	}
@@ -57,6 +59,7 @@ class ServiceBinding extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type array[string]
 	 * @return string[]
 	 */
 	public function getPorts(): array

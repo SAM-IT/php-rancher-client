@@ -2,6 +2,7 @@
 namespace SamIT\Rancher\Generated\Entities;
 
 use SamIT\Rancher\Generated\Client;
+use SamIT\Rancher\Generated\Maps\ServiceBindingMap;
 
 class Binding extends \SamIT\Rancher\Types\Entity
 {
@@ -27,7 +28,7 @@ class Binding extends \SamIT\Rancher\Types\Entity
 	}
 
 
-	public static function create(\ServiceBindingMap $services)
+	public static function create(ServiceBindingMap $services)
 	{
 		$result = new static();
 		$result->services = $services;
@@ -37,9 +38,10 @@ class Binding extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type map[serviceBinding]
 	 * @return ServiceBindingMap
 	 */
-	public function getServices(): SamIT\Rancher\Generated\Entities\ServiceBindingMap
+	public function getServices(): \SamIT\Rancher\Generated\Maps\ServiceBindingMap
 	{
 		return $this->services;
 	}

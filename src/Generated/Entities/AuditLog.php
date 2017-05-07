@@ -76,7 +76,7 @@ class AuditLog extends \SamIT\Rancher\Types\Entity
 	 * @api-create false
 	 * @api-nullable true
 	 * @api-type date
-	 * @var DateTimeInterface
+	 * @var \\DateTimeInterface
 	 */
 	protected $created;
 
@@ -183,9 +183,10 @@ class AuditLog extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[account]
 	 * @return string
 	 */
-	public function getAccountId(): string
+	public function getAccountId(): ?string
 	{
 		return $this->accountId;
 	}
@@ -202,9 +203,10 @@ class AuditLog extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type enum
 	 * @return AuthTypeEnum
 	 */
-	public function getAuthType(): AuthTypeEnum
+	public function getAuthType(): ?AuthTypeEnum
 	{
 		return $this->authType;
 	}
@@ -212,9 +214,10 @@ class AuditLog extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[account]
 	 * @return string
 	 */
-	public function getAuthenticatedAsAccountId(): string
+	public function getAuthenticatedAsAccountId(): ?string
 	{
 		return $this->authenticatedAsAccountId;
 	}
@@ -223,7 +226,7 @@ class AuditLog extends \SamIT\Rancher\Types\Entity
 	/**
 	 * --> getter from reference: reference[account]
 	 */
-	public function getAuthenticatedAsAccount(): ?AuthenticatedAsAccount
+	public function getAuthenticatedAsAccount(): ?Account
 	{
 		return $this->client()->getAuthenticatedAsAccount($this->authenticatedAsAccountId);
 	}
@@ -231,9 +234,10 @@ class AuditLog extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type reference[identity]
 	 * @return string
 	 */
-	public function getAuthenticatedAsIdentityId(): string
+	public function getAuthenticatedAsIdentityId(): ?string
 	{
 		return $this->authenticatedAsIdentityId;
 	}
@@ -242,7 +246,7 @@ class AuditLog extends \SamIT\Rancher\Types\Entity
 	/**
 	 * --> getter from reference: reference[identity]
 	 */
-	public function getAuthenticatedAsIdentity(): ?AuthenticatedAsIdentity
+	public function getAuthenticatedAsIdentity(): ?Identity
 	{
 		return $this->client()->getAuthenticatedAsIdentity($this->authenticatedAsIdentityId);
 	}
@@ -250,8 +254,9 @@ class AuditLog extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getClientIp(): string
+	public function getClientIp(): ?string
 	{
 		return $this->clientIp;
 	}
@@ -259,8 +264,10 @@ class AuditLog extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type date
+	 * @return \\DateTimeInterface
 	 */
-	public function getCreated(): DateTimeInterface
+	public function getCreated(): ?DateTimeInterface
 	{
 		return $this->created;
 	}
@@ -268,8 +275,9 @@ class AuditLog extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getDescription(): string
+	public function getDescription(): ?string
 	{
 		return $this->description;
 	}
@@ -277,8 +285,9 @@ class AuditLog extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getEventType(): string
+	public function getEventType(): ?string
 	{
 		return $this->eventType;
 	}
@@ -286,8 +295,9 @@ class AuditLog extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getId(): string
+	public function getId(): ?string
 	{
 		return $this->id;
 	}
@@ -295,8 +305,9 @@ class AuditLog extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getKind(): string
+	public function getKind(): ?string
 	{
 		return $this->kind;
 	}
@@ -304,8 +315,9 @@ class AuditLog extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type int
 	 */
-	public function getResourceId(): int
+	public function getResourceId(): ?int
 	{
 		return $this->resourceId;
 	}
@@ -313,8 +325,9 @@ class AuditLog extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
-	public function getResourceType(): string
+	public function getResourceType(): ?string
 	{
 		return $this->resourceType;
 	}
@@ -322,6 +335,7 @@ class AuditLog extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getResponseCode(): string
 	{
@@ -331,6 +345,7 @@ class AuditLog extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getRequestObject(): string
 	{
@@ -340,6 +355,7 @@ class AuditLog extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getResponseObject(): string
 	{

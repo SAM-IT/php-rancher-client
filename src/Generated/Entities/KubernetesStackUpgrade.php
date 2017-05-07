@@ -2,6 +2,8 @@
 namespace SamIT\Rancher\Generated\Entities;
 
 use SamIT\Rancher\Generated\Client;
+use SamIT\Rancher\Types\JsonMap;
+use SamIT\Rancher\Types\StringMap;
 
 class KubernetesStackUpgrade extends \SamIT\Rancher\Types\Entity
 {
@@ -13,7 +15,7 @@ class KubernetesStackUpgrade extends \SamIT\Rancher\Types\Entity
 	 * @api-create true
 	 * @api-nullable false
 	 * @api-type map[string]
-	 * @var string[]
+	 * @var \\SamIT\Rancher\Types\StringMap
 	 */
 	protected $templates = [];
 
@@ -31,7 +33,7 @@ class KubernetesStackUpgrade extends \SamIT\Rancher\Types\Entity
 	 * @api-create true
 	 * @api-nullable false
 	 * @api-type map[string]
-	 * @var string[]
+	 * @var \\SamIT\Rancher\Types\StringMap
 	 */
 	protected $environment = [];
 
@@ -40,7 +42,7 @@ class KubernetesStackUpgrade extends \SamIT\Rancher\Types\Entity
 	 * @api-create true
 	 * @api-nullable false
 	 * @api-type map[json]
-	 * @var SamIT\Rancher\Types\JsonMap
+	 * @var \\SamIT\Rancher\Types\JsonMap
 	 */
 	protected $answers = [];
 
@@ -56,7 +58,7 @@ class KubernetesStackUpgrade extends \SamIT\Rancher\Types\Entity
 	}
 
 
-	public static function create(array $templates, string $externalId, array $environment, \JsonMap $answers)
+	public static function create(StringMap $templates, string $externalId, StringMap $environment, JsonMap $answers)
 	{
 		$result = new static();
 		$result->templates = $templates;
@@ -69,9 +71,10 @@ class KubernetesStackUpgrade extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
-	 * @return string[]
+	 * @api-type map[string]
+	 * @return \\SamIT\Rancher\Types\StringMap
 	 */
-	public function getTemplates(): array
+	public function getTemplates(): \SamIT\Rancher\Types\StringMap
 	{
 		return $this->templates;
 	}
@@ -79,6 +82,7 @@ class KubernetesStackUpgrade extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getExternalId(): string
 	{
@@ -88,9 +92,10 @@ class KubernetesStackUpgrade extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
-	 * @return string[]
+	 * @api-type map[string]
+	 * @return \\SamIT\Rancher\Types\StringMap
 	 */
-	public function getEnvironment(): array
+	public function getEnvironment(): \SamIT\Rancher\Types\StringMap
 	{
 		return $this->environment;
 	}
@@ -98,9 +103,10 @@ class KubernetesStackUpgrade extends \SamIT\Rancher\Types\Entity
 
 	/**
 	 * @simple-getter
-	 * @return SamIT\Rancher\Types\JsonMap
+	 * @api-type map[json]
+	 * @return \\SamIT\Rancher\Types\JsonMap
 	 */
-	public function getAnswers(): SamIT\Rancher\Generated\Entities\JsonMap
+	public function getAnswers(): \SamIT\Rancher\Types\JsonMap
 	{
 		return $this->answers;
 	}

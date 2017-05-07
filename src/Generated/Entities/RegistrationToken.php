@@ -73,6 +73,7 @@ class RegistrationToken extends Credential
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getCommand(): string
 	{
@@ -82,6 +83,7 @@ class RegistrationToken extends Credential
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getImage(): string
 	{
@@ -91,6 +93,7 @@ class RegistrationToken extends Credential
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getToken(): string
 	{
@@ -100,6 +103,7 @@ class RegistrationToken extends Credential
 
 	/**
 	 * @simple-getter
+	 * @api-type string
 	 */
 	public function getRegistrationUrl(): string
 	{
