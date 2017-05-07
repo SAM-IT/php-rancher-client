@@ -2,41 +2,28 @@
 namespace SamIT\Rancher\Generated;
 
 use SamIT\Rancher\Generated\Collections\AccountCollection;
-use SamIT\Rancher\Generated\Collections\AgentCollection;
 use SamIT\Rancher\Generated\Collections\ApiKeyCollection;
 use SamIT\Rancher\Generated\Collections\AuditLogCollection;
-use SamIT\Rancher\Generated\Collections\AzureadconfigCollection;
 use SamIT\Rancher\Generated\Collections\BackupCollection;
 use SamIT\Rancher\Generated\Collections\BackupTargetCollection;
 use SamIT\Rancher\Generated\Collections\CertificateCollection;
-use SamIT\Rancher\Generated\Collections\ClusterMembershipCollection;
 use SamIT\Rancher\Generated\Collections\ComposeProjectCollection;
 use SamIT\Rancher\Generated\Collections\ComposeServiceCollection;
-use SamIT\Rancher\Generated\Collections\ConfigItemCollection;
-use SamIT\Rancher\Generated\Collections\ConfigItemStatusCollection;
 use SamIT\Rancher\Generated\Collections\ContainerCollection;
 use SamIT\Rancher\Generated\Collections\ContainerEventCollection;
 use SamIT\Rancher\Generated\Collections\CredentialCollection;
-use SamIT\Rancher\Generated\Collections\DatabasechangelogCollection;
-use SamIT\Rancher\Generated\Collections\DatabasechangeloglockCollection;
 use SamIT\Rancher\Generated\Collections\DnsServiceCollection;
-use SamIT\Rancher\Generated\Collections\ExtensionPointCollection;
 use SamIT\Rancher\Generated\Collections\ExternalDnsEventCollection;
 use SamIT\Rancher\Generated\Collections\ExternalEventCollection;
-use SamIT\Rancher\Generated\Collections\ExternalHandlerCollection;
-use SamIT\Rancher\Generated\Collections\ExternalHandlerExternalHandlerProcessMapCollection;
-use SamIT\Rancher\Generated\Collections\ExternalHandlerProcessCollection;
 use SamIT\Rancher\Generated\Collections\ExternalHostEventCollection;
 use SamIT\Rancher\Generated\Collections\ExternalServiceCollection;
 use SamIT\Rancher\Generated\Collections\ExternalServiceEventCollection;
 use SamIT\Rancher\Generated\Collections\ExternalStoragePoolEventCollection;
 use SamIT\Rancher\Generated\Collections\ExternalVolumeEventCollection;
 use SamIT\Rancher\Generated\Collections\GenericObjectCollection;
-use SamIT\Rancher\Generated\Collections\HaConfigCollection;
-use SamIT\Rancher\Generated\Collections\HaConfigInputCollection;
 use SamIT\Rancher\Generated\Collections\HealthcheckInstanceHostMapCollection;
-use SamIT\Rancher\Generated\Collections\HostApiProxyTokenCollection;
 use SamIT\Rancher\Generated\Collections\HostCollection;
+use SamIT\Rancher\Generated\Collections\HostTemplateCollection;
 use SamIT\Rancher\Generated\Collections\IdentityCollection;
 use SamIT\Rancher\Generated\Collections\ImageCollection;
 use SamIT\Rancher\Generated\Collections\InstanceCollection;
@@ -45,9 +32,7 @@ use SamIT\Rancher\Generated\Collections\IpAddressCollection;
 use SamIT\Rancher\Generated\Collections\KubernetesServiceCollection;
 use SamIT\Rancher\Generated\Collections\KubernetesStackCollection;
 use SamIT\Rancher\Generated\Collections\LabelCollection;
-use SamIT\Rancher\Generated\Collections\LdapconfigCollection;
 use SamIT\Rancher\Generated\Collections\LoadBalancerServiceCollection;
-use SamIT\Rancher\Generated\Collections\LocalAuthConfigCollection;
 use SamIT\Rancher\Generated\Collections\MachineCollection;
 use SamIT\Rancher\Generated\Collections\MachineDriverCollection;
 use SamIT\Rancher\Generated\Collections\MountCollection;
@@ -55,15 +40,9 @@ use SamIT\Rancher\Generated\Collections\NetworkCollection;
 use SamIT\Rancher\Generated\Collections\NetworkDriverCollection;
 use SamIT\Rancher\Generated\Collections\NetworkDriverServiceCollection;
 use SamIT\Rancher\Generated\Collections\NetworkPolicyRuleWithinCollection;
-use SamIT\Rancher\Generated\Collections\OpenldapconfigCollection;
 use SamIT\Rancher\Generated\Collections\PasswordCollection;
 use SamIT\Rancher\Generated\Collections\PhysicalHostCollection;
 use SamIT\Rancher\Generated\Collections\PortCollection;
-use SamIT\Rancher\Generated\Collections\ProcessDefinitionCollection;
-use SamIT\Rancher\Generated\Collections\ProcessExecutionCollection;
-use SamIT\Rancher\Generated\Collections\ProcessInstanceCollection;
-use SamIT\Rancher\Generated\Collections\ProcessPoolCollection;
-use SamIT\Rancher\Generated\Collections\ProcessSummaryCollection;
 use SamIT\Rancher\Generated\Collections\ProjectCollection;
 use SamIT\Rancher\Generated\Collections\ProjectMemberCollection;
 use SamIT\Rancher\Generated\Collections\ProjectTemplateCollection;
@@ -72,7 +51,7 @@ use SamIT\Rancher\Generated\Collections\RegisterCollection;
 use SamIT\Rancher\Generated\Collections\RegistrationTokenCollection;
 use SamIT\Rancher\Generated\Collections\RegistryCollection;
 use SamIT\Rancher\Generated\Collections\RegistryCredentialCollection;
-use SamIT\Rancher\Generated\Collections\ResourceDefinitionCollection;
+use SamIT\Rancher\Generated\Collections\ScheduledUpgradeCollection;
 use SamIT\Rancher\Generated\Collections\SchemaCollection;
 use SamIT\Rancher\Generated\Collections\SecretCollection;
 use SamIT\Rancher\Generated\Collections\ServiceCollection;
@@ -88,49 +67,34 @@ use SamIT\Rancher\Generated\Collections\StorageDriverCollection;
 use SamIT\Rancher\Generated\Collections\StorageDriverServiceCollection;
 use SamIT\Rancher\Generated\Collections\StoragePoolCollection;
 use SamIT\Rancher\Generated\Collections\SubnetCollection;
-use SamIT\Rancher\Generated\Collections\TaskCollection;
-use SamIT\Rancher\Generated\Collections\TaskInstanceCollection;
+use SamIT\Rancher\Generated\Collections\SubscribeCollection;
 use SamIT\Rancher\Generated\Collections\TypeDocumentationCollection;
-use SamIT\Rancher\Generated\Collections\UserPreferenceCollection;
 use SamIT\Rancher\Generated\Collections\VirtualMachineCollection;
 use SamIT\Rancher\Generated\Collections\VolumeCollection;
 use SamIT\Rancher\Generated\Collections\VolumeTemplateCollection;
 use SamIT\Rancher\Generated\Entities\Account;
-use SamIT\Rancher\Generated\Entities\Agent;
 use SamIT\Rancher\Generated\Entities\ApiKey;
 use SamIT\Rancher\Generated\Entities\AuditLog;
-use SamIT\Rancher\Generated\Entities\Azureadconfig;
 use SamIT\Rancher\Generated\Entities\Backup;
 use SamIT\Rancher\Generated\Entities\BackupTarget;
 use SamIT\Rancher\Generated\Entities\Certificate;
-use SamIT\Rancher\Generated\Entities\ClusterMembership;
 use SamIT\Rancher\Generated\Entities\ComposeProject;
 use SamIT\Rancher\Generated\Entities\ComposeService;
-use SamIT\Rancher\Generated\Entities\ConfigItem;
-use SamIT\Rancher\Generated\Entities\ConfigItemStatus;
 use SamIT\Rancher\Generated\Entities\Container;
 use SamIT\Rancher\Generated\Entities\ContainerEvent;
 use SamIT\Rancher\Generated\Entities\Credential;
-use SamIT\Rancher\Generated\Entities\Databasechangelog;
-use SamIT\Rancher\Generated\Entities\Databasechangeloglock;
 use SamIT\Rancher\Generated\Entities\DnsService;
-use SamIT\Rancher\Generated\Entities\ExtensionPoint;
 use SamIT\Rancher\Generated\Entities\ExternalDnsEvent;
 use SamIT\Rancher\Generated\Entities\ExternalEvent;
-use SamIT\Rancher\Generated\Entities\ExternalHandler;
-use SamIT\Rancher\Generated\Entities\ExternalHandlerExternalHandlerProcessMap;
-use SamIT\Rancher\Generated\Entities\ExternalHandlerProcess;
 use SamIT\Rancher\Generated\Entities\ExternalHostEvent;
 use SamIT\Rancher\Generated\Entities\ExternalService;
 use SamIT\Rancher\Generated\Entities\ExternalServiceEvent;
 use SamIT\Rancher\Generated\Entities\ExternalStoragePoolEvent;
 use SamIT\Rancher\Generated\Entities\ExternalVolumeEvent;
 use SamIT\Rancher\Generated\Entities\GenericObject;
-use SamIT\Rancher\Generated\Entities\HaConfig;
-use SamIT\Rancher\Generated\Entities\HaConfigInput;
 use SamIT\Rancher\Generated\Entities\HealthcheckInstanceHostMap;
 use SamIT\Rancher\Generated\Entities\Host;
-use SamIT\Rancher\Generated\Entities\HostApiProxyToken;
+use SamIT\Rancher\Generated\Entities\HostTemplate;
 use SamIT\Rancher\Generated\Entities\Identity;
 use SamIT\Rancher\Generated\Entities\Image;
 use SamIT\Rancher\Generated\Entities\Instance;
@@ -139,9 +103,7 @@ use SamIT\Rancher\Generated\Entities\IpAddress;
 use SamIT\Rancher\Generated\Entities\KubernetesService;
 use SamIT\Rancher\Generated\Entities\KubernetesStack;
 use SamIT\Rancher\Generated\Entities\Label;
-use SamIT\Rancher\Generated\Entities\Ldapconfig;
 use SamIT\Rancher\Generated\Entities\LoadBalancerService;
-use SamIT\Rancher\Generated\Entities\LocalAuthConfig;
 use SamIT\Rancher\Generated\Entities\Machine;
 use SamIT\Rancher\Generated\Entities\MachineDriver;
 use SamIT\Rancher\Generated\Entities\Mount;
@@ -149,15 +111,9 @@ use SamIT\Rancher\Generated\Entities\Network;
 use SamIT\Rancher\Generated\Entities\NetworkDriver;
 use SamIT\Rancher\Generated\Entities\NetworkDriverService;
 use SamIT\Rancher\Generated\Entities\NetworkPolicyRuleWithin;
-use SamIT\Rancher\Generated\Entities\Openldapconfig;
 use SamIT\Rancher\Generated\Entities\Password;
 use SamIT\Rancher\Generated\Entities\PhysicalHost;
 use SamIT\Rancher\Generated\Entities\Port;
-use SamIT\Rancher\Generated\Entities\ProcessDefinition;
-use SamIT\Rancher\Generated\Entities\ProcessExecution;
-use SamIT\Rancher\Generated\Entities\ProcessInstance;
-use SamIT\Rancher\Generated\Entities\ProcessPool;
-use SamIT\Rancher\Generated\Entities\ProcessSummary;
 use SamIT\Rancher\Generated\Entities\Project;
 use SamIT\Rancher\Generated\Entities\ProjectMember;
 use SamIT\Rancher\Generated\Entities\ProjectTemplate;
@@ -166,7 +122,7 @@ use SamIT\Rancher\Generated\Entities\Register;
 use SamIT\Rancher\Generated\Entities\RegistrationToken;
 use SamIT\Rancher\Generated\Entities\Registry;
 use SamIT\Rancher\Generated\Entities\RegistryCredential;
-use SamIT\Rancher\Generated\Entities\ResourceDefinition;
+use SamIT\Rancher\Generated\Entities\ScheduledUpgrade;
 use SamIT\Rancher\Generated\Entities\Schema;
 use SamIT\Rancher\Generated\Entities\Secret;
 use SamIT\Rancher\Generated\Entities\Service;
@@ -182,10 +138,8 @@ use SamIT\Rancher\Generated\Entities\StorageDriver;
 use SamIT\Rancher\Generated\Entities\StorageDriverService;
 use SamIT\Rancher\Generated\Entities\StoragePool;
 use SamIT\Rancher\Generated\Entities\Subnet;
-use SamIT\Rancher\Generated\Entities\Task;
-use SamIT\Rancher\Generated\Entities\TaskInstance;
+use SamIT\Rancher\Generated\Entities\Subscribe;
 use SamIT\Rancher\Generated\Entities\TypeDocumentation;
-use SamIT\Rancher\Generated\Entities\UserPreference;
 use SamIT\Rancher\Generated\Entities\VirtualMachine;
 use SamIT\Rancher\Generated\Entities\Volume;
 use SamIT\Rancher\Generated\Entities\VolumeTemplate;
@@ -200,16 +154,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getAccounts(?int $limit = NULL): AccountCollection
 	{
-		return $this->retrieveEntities('/accounts', $limit);
+		$result = $this->retrieveEntities('/accounts', $limit);
+		if ($result instanceof AccountCollection) return $result;
 	}
 
 
 	/**
-	 * @return Agent[]|AgentCollection
+	 * Find a account by id
 	 */
-	public function getAgents(?int $limit = NULL): AgentCollection
+	public function getAccount(string $id): Account
 	{
-		return $this->retrieveEntities('/agents', $limit);
+		$result = $this->retrieveEntity('/accounts', $id);
+		if ($result instanceof Account)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -218,7 +177,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getApiKeys(?int $limit = NULL): ApiKeyCollection
 	{
-		return $this->retrieveEntities('/apikeys', $limit);
+		$result = $this->retrieveEntities('/apikeys', $limit);
+		if ($result instanceof ApiKeyCollection) return $result;
+	}
+
+
+	/**
+	 * Find a apiKey by id
+	 */
+	public function getApiKey(string $id): ApiKey
+	{
+		$result = $this->retrieveEntity('/apikeys', $id);
+		if ($result instanceof ApiKey)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -227,16 +200,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getAuditLogs(?int $limit = NULL): AuditLogCollection
 	{
-		return $this->retrieveEntities('/auditlogs', $limit);
+		$result = $this->retrieveEntities('/auditlogs', $limit);
+		if ($result instanceof AuditLogCollection) return $result;
 	}
 
 
 	/**
-	 * @return Azureadconfig[]|AzureadconfigCollection
+	 * Find a auditLog by id
 	 */
-	public function getAzureadconfigs(?int $limit = NULL): AzureadconfigCollection
+	public function getAuditLog(string $id): AuditLog
 	{
-		return $this->retrieveEntities('/azureadconfigs', $limit);
+		$result = $this->retrieveEntity('/auditlogs', $id);
+		if ($result instanceof AuditLog)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -245,7 +223,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getBackups(?int $limit = NULL): BackupCollection
 	{
-		return $this->retrieveEntities('/backups', $limit);
+		$result = $this->retrieveEntities('/backups', $limit);
+		if ($result instanceof BackupCollection) return $result;
+	}
+
+
+	/**
+	 * Find a backup by id
+	 */
+	public function getBackup(string $id): Backup
+	{
+		$result = $this->retrieveEntity('/backups', $id);
+		if ($result instanceof Backup)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -254,7 +246,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getBackupTargets(?int $limit = NULL): BackupTargetCollection
 	{
-		return $this->retrieveEntities('/backuptargets', $limit);
+		$result = $this->retrieveEntities('/backuptargets', $limit);
+		if ($result instanceof BackupTargetCollection) return $result;
+	}
+
+
+	/**
+	 * Find a backupTarget by id
+	 */
+	public function getBackupTarget(string $id): BackupTarget
+	{
+		$result = $this->retrieveEntity('/backuptargets', $id);
+		if ($result instanceof BackupTarget)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -263,16 +269,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getCertificates(?int $limit = NULL): CertificateCollection
 	{
-		return $this->retrieveEntities('/certificates', $limit);
+		$result = $this->retrieveEntities('/certificates', $limit);
+		if ($result instanceof CertificateCollection) return $result;
 	}
 
 
 	/**
-	 * @return ClusterMembership[]|ClusterMembershipCollection
+	 * Find a certificate by id
 	 */
-	public function getClusterMemberships(?int $limit = NULL): ClusterMembershipCollection
+	public function getCertificate(string $id): Certificate
 	{
-		return $this->retrieveEntities('/clustermemberships', $limit);
+		$result = $this->retrieveEntity('/certificates', $id);
+		if ($result instanceof Certificate)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -281,7 +292,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getComposeProjects(?int $limit = NULL): ComposeProjectCollection
 	{
-		return $this->retrieveEntities('/composeprojects', $limit);
+		$result = $this->retrieveEntities('/composeprojects', $limit);
+		if ($result instanceof ComposeProjectCollection) return $result;
+	}
+
+
+	/**
+	 * Find a composeProject by id
+	 */
+	public function getComposeProject(string $id): ComposeProject
+	{
+		$result = $this->retrieveEntity('/composeprojects', $id);
+		if ($result instanceof ComposeProject)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -290,25 +315,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getComposeServices(?int $limit = NULL): ComposeServiceCollection
 	{
-		return $this->retrieveEntities('/composeservices', $limit);
+		$result = $this->retrieveEntities('/composeservices', $limit);
+		if ($result instanceof ComposeServiceCollection) return $result;
 	}
 
 
 	/**
-	 * @return ConfigItem[]|ConfigItemCollection
+	 * Find a composeService by id
 	 */
-	public function getConfigItems(?int $limit = NULL): ConfigItemCollection
+	public function getComposeService(string $id): ComposeService
 	{
-		return $this->retrieveEntities('/configitems', $limit);
-	}
-
-
-	/**
-	 * @return ConfigItemStatus[]|ConfigItemStatusCollection
-	 */
-	public function getConfigItemStatuses(?int $limit = NULL): ConfigItemStatusCollection
-	{
-		return $this->retrieveEntities('/configitemstatuses', $limit);
+		$result = $this->retrieveEntity('/composeservices', $id);
+		if ($result instanceof ComposeService)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -317,7 +338,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getContainers(?int $limit = NULL): ContainerCollection
 	{
-		return $this->retrieveEntities('/containers', $limit);
+		$result = $this->retrieveEntities('/containers', $limit);
+		if ($result instanceof ContainerCollection) return $result;
+	}
+
+
+	/**
+	 * Find a container by id
+	 */
+	public function getContainer(string $id): Container
+	{
+		$result = $this->retrieveEntity('/containers', $id);
+		if ($result instanceof Container)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -326,7 +361,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getContainerEvents(?int $limit = NULL): ContainerEventCollection
 	{
-		return $this->retrieveEntities('/containerevents', $limit);
+		$result = $this->retrieveEntities('/containerevents', $limit);
+		if ($result instanceof ContainerEventCollection) return $result;
+	}
+
+
+	/**
+	 * Find a containerEvent by id
+	 */
+	public function getContainerEvent(string $id): ContainerEvent
+	{
+		$result = $this->retrieveEntity('/containerevents', $id);
+		if ($result instanceof ContainerEvent)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -335,25 +384,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getCredentials(?int $limit = NULL): CredentialCollection
 	{
-		return $this->retrieveEntities('/credentials', $limit);
+		$result = $this->retrieveEntities('/credentials', $limit);
+		if ($result instanceof CredentialCollection) return $result;
 	}
 
 
 	/**
-	 * @return Databasechangelog[]|DatabasechangelogCollection
+	 * Find a credential by id
 	 */
-	public function getDatabasechangelogs(?int $limit = NULL): DatabasechangelogCollection
+	public function getCredential(string $id): Credential
 	{
-		return $this->retrieveEntities('/databasechangelogs', $limit);
-	}
-
-
-	/**
-	 * @return Databasechangeloglock[]|DatabasechangeloglockCollection
-	 */
-	public function getDatabasechangeloglocks(?int $limit = NULL): DatabasechangeloglockCollection
-	{
-		return $this->retrieveEntities('/databasechangeloglocks', $limit);
+		$result = $this->retrieveEntity('/credentials', $id);
+		if ($result instanceof Credential)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -362,16 +407,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getDnsServices(?int $limit = NULL): DnsServiceCollection
 	{
-		return $this->retrieveEntities('/dnsservices', $limit);
+		$result = $this->retrieveEntities('/dnsservices', $limit);
+		if ($result instanceof DnsServiceCollection) return $result;
 	}
 
 
 	/**
-	 * @return ExtensionPoint[]|ExtensionPointCollection
+	 * Find a dnsService by id
 	 */
-	public function getExtensionPoints(?int $limit = NULL): ExtensionPointCollection
+	public function getDnsService(string $id): DnsService
 	{
-		return $this->retrieveEntities('/extensionpoints', $limit);
+		$result = $this->retrieveEntity('/dnsservices', $id);
+		if ($result instanceof DnsService)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -380,7 +430,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getExternalDnsEvents(?int $limit = NULL): ExternalDnsEventCollection
 	{
-		return $this->retrieveEntities('/externaldnsevents', $limit);
+		$result = $this->retrieveEntities('/externaldnsevents', $limit);
+		if ($result instanceof ExternalDnsEventCollection) return $result;
+	}
+
+
+	/**
+	 * Find a externalDnsEvent by id
+	 */
+	public function getExternalDnsEvent(string $id): ExternalDnsEvent
+	{
+		$result = $this->retrieveEntity('/externaldnsevents', $id);
+		if ($result instanceof ExternalDnsEvent)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -389,34 +453,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getExternalEvents(?int $limit = NULL): ExternalEventCollection
 	{
-		return $this->retrieveEntities('/externalevents', $limit);
+		$result = $this->retrieveEntities('/externalevents', $limit);
+		if ($result instanceof ExternalEventCollection) return $result;
 	}
 
 
 	/**
-	 * @return ExternalHandler[]|ExternalHandlerCollection
+	 * Find a externalEvent by id
 	 */
-	public function getExternalHandlers(?int $limit = NULL): ExternalHandlerCollection
+	public function getExternalEvent(string $id): ExternalEvent
 	{
-		return $this->retrieveEntities('/externalhandlers', $limit);
-	}
-
-
-	/**
-	 * @return ExternalHandlerExternalHandlerProcessMap[]|ExternalHandlerExternalHandlerProcessMapCollection
-	 */
-	public function getExternalHandlerExternalHandlerProcessMaps(?int $limit = NULL): ExternalHandlerExternalHandlerProcessMapCollection
-	{
-		return $this->retrieveEntities('/externalhandlerexternalhandlerprocessmaps', $limit);
-	}
-
-
-	/**
-	 * @return ExternalHandlerProcess[]|ExternalHandlerProcessCollection
-	 */
-	public function getExternalHandlerProcesses(?int $limit = NULL): ExternalHandlerProcessCollection
-	{
-		return $this->retrieveEntities('/externalhandlerprocesses', $limit);
+		$result = $this->retrieveEntity('/externalevents', $id);
+		if ($result instanceof ExternalEvent)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -425,7 +476,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getExternalHostEvents(?int $limit = NULL): ExternalHostEventCollection
 	{
-		return $this->retrieveEntities('/externalhostevents', $limit);
+		$result = $this->retrieveEntities('/externalhostevents', $limit);
+		if ($result instanceof ExternalHostEventCollection) return $result;
+	}
+
+
+	/**
+	 * Find a externalHostEvent by id
+	 */
+	public function getExternalHostEvent(string $id): ExternalHostEvent
+	{
+		$result = $this->retrieveEntity('/externalhostevents', $id);
+		if ($result instanceof ExternalHostEvent)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -434,7 +499,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getExternalServices(?int $limit = NULL): ExternalServiceCollection
 	{
-		return $this->retrieveEntities('/externalservices', $limit);
+		$result = $this->retrieveEntities('/externalservices', $limit);
+		if ($result instanceof ExternalServiceCollection) return $result;
+	}
+
+
+	/**
+	 * Find a externalService by id
+	 */
+	public function getExternalService(string $id): ExternalService
+	{
+		$result = $this->retrieveEntity('/externalservices', $id);
+		if ($result instanceof ExternalService)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -443,7 +522,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getExternalServiceEvents(?int $limit = NULL): ExternalServiceEventCollection
 	{
-		return $this->retrieveEntities('/externalserviceevents', $limit);
+		$result = $this->retrieveEntities('/externalserviceevents', $limit);
+		if ($result instanceof ExternalServiceEventCollection) return $result;
+	}
+
+
+	/**
+	 * Find a externalServiceEvent by id
+	 */
+	public function getExternalServiceEvent(string $id): ExternalServiceEvent
+	{
+		$result = $this->retrieveEntity('/externalserviceevents', $id);
+		if ($result instanceof ExternalServiceEvent)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -452,7 +545,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getExternalStoragePoolEvents(?int $limit = NULL): ExternalStoragePoolEventCollection
 	{
-		return $this->retrieveEntities('/externalstoragepoolevents', $limit);
+		$result = $this->retrieveEntities('/externalstoragepoolevents', $limit);
+		if ($result instanceof ExternalStoragePoolEventCollection) return $result;
+	}
+
+
+	/**
+	 * Find a externalStoragePoolEvent by id
+	 */
+	public function getExternalStoragePoolEvent(string $id): ExternalStoragePoolEvent
+	{
+		$result = $this->retrieveEntity('/externalstoragepoolevents', $id);
+		if ($result instanceof ExternalStoragePoolEvent)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -461,7 +568,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getExternalVolumeEvents(?int $limit = NULL): ExternalVolumeEventCollection
 	{
-		return $this->retrieveEntities('/externalvolumeevents', $limit);
+		$result = $this->retrieveEntities('/externalvolumeevents', $limit);
+		if ($result instanceof ExternalVolumeEventCollection) return $result;
+	}
+
+
+	/**
+	 * Find a externalVolumeEvent by id
+	 */
+	public function getExternalVolumeEvent(string $id): ExternalVolumeEvent
+	{
+		$result = $this->retrieveEntity('/externalvolumeevents', $id);
+		if ($result instanceof ExternalVolumeEvent)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -470,25 +591,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getGenericObjects(?int $limit = NULL): GenericObjectCollection
 	{
-		return $this->retrieveEntities('/genericobjects', $limit);
+		$result = $this->retrieveEntities('/genericobjects', $limit);
+		if ($result instanceof GenericObjectCollection) return $result;
 	}
 
 
 	/**
-	 * @return HaConfig[]|HaConfigCollection
+	 * Find a genericObject by id
 	 */
-	public function getHaConfigs(?int $limit = NULL): HaConfigCollection
+	public function getGenericObject(string $id): GenericObject
 	{
-		return $this->retrieveEntities('/haconfigs', $limit);
-	}
-
-
-	/**
-	 * @return HaConfigInput[]|HaConfigInputCollection
-	 */
-	public function getHaConfigInputs(?int $limit = NULL): HaConfigInputCollection
-	{
-		return $this->retrieveEntities('/haconfiginputs', $limit);
+		$result = $this->retrieveEntity('/genericobjects', $id);
+		if ($result instanceof GenericObject)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -497,7 +614,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getHealthcheckInstanceHostMaps(?int $limit = NULL): HealthcheckInstanceHostMapCollection
 	{
-		return $this->retrieveEntities('/healthcheckinstancehostmaps', $limit);
+		$result = $this->retrieveEntities('/healthcheckinstancehostmaps', $limit);
+		if ($result instanceof HealthcheckInstanceHostMapCollection) return $result;
+	}
+
+
+	/**
+	 * Find a healthcheckInstanceHostMap by id
+	 */
+	public function getHealthcheckInstanceHostMap(string $id): HealthcheckInstanceHostMap
+	{
+		$result = $this->retrieveEntity('/healthcheckinstancehostmaps', $id);
+		if ($result instanceof HealthcheckInstanceHostMap)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -506,16 +637,44 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getHosts(?int $limit = NULL): HostCollection
 	{
-		return $this->retrieveEntities('/hosts', $limit);
+		$result = $this->retrieveEntities('/hosts', $limit);
+		if ($result instanceof HostCollection) return $result;
 	}
 
 
 	/**
-	 * @return HostApiProxyToken[]|HostApiProxyTokenCollection
+	 * Find a host by id
 	 */
-	public function getHostApiProxyTokens(?int $limit = NULL): HostApiProxyTokenCollection
+	public function getHost(string $id): Host
 	{
-		return $this->retrieveEntities('/hostapiproxytokens', $limit);
+		$result = $this->retrieveEntity('/hosts', $id);
+		if ($result instanceof Host)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
+	}
+
+
+	/**
+	 * @return HostTemplate[]|HostTemplateCollection
+	 */
+	public function getHostTemplates(?int $limit = NULL): HostTemplateCollection
+	{
+		$result = $this->retrieveEntities('/hosttemplates', $limit);
+		if ($result instanceof HostTemplateCollection) return $result;
+	}
+
+
+	/**
+	 * Find a hostTemplate by id
+	 */
+	public function getHostTemplate(string $id): HostTemplate
+	{
+		$result = $this->retrieveEntity('/hosttemplates', $id);
+		if ($result instanceof HostTemplate)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -524,7 +683,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getIdentities(?int $limit = NULL): IdentityCollection
 	{
-		return $this->retrieveEntities('/identities', $limit);
+		$result = $this->retrieveEntities('/identities', $limit);
+		if ($result instanceof IdentityCollection) return $result;
+	}
+
+
+	/**
+	 * Find a identity by id
+	 */
+	public function getIdentity(string $id): Identity
+	{
+		$result = $this->retrieveEntity('/identities', $id);
+		if ($result instanceof Identity)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -533,7 +706,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getImages(?int $limit = NULL): ImageCollection
 	{
-		return $this->retrieveEntities('/images', $limit);
+		$result = $this->retrieveEntities('/images', $limit);
+		if ($result instanceof ImageCollection) return $result;
+	}
+
+
+	/**
+	 * Find a image by id
+	 */
+	public function getImage(string $id): Image
+	{
+		$result = $this->retrieveEntity('/images', $id);
+		if ($result instanceof Image)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -542,7 +729,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getInstances(?int $limit = NULL): InstanceCollection
 	{
-		return $this->retrieveEntities('/instances', $limit);
+		$result = $this->retrieveEntities('/instances', $limit);
+		if ($result instanceof InstanceCollection) return $result;
+	}
+
+
+	/**
+	 * Find a instance by id
+	 */
+	public function getInstance(string $id): Instance
+	{
+		$result = $this->retrieveEntity('/instances', $id);
+		if ($result instanceof Instance)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -551,7 +752,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getInstanceLinks(?int $limit = NULL): InstanceLinkCollection
 	{
-		return $this->retrieveEntities('/instancelinks', $limit);
+		$result = $this->retrieveEntities('/instancelinks', $limit);
+		if ($result instanceof InstanceLinkCollection) return $result;
+	}
+
+
+	/**
+	 * Find a instanceLink by id
+	 */
+	public function getInstanceLink(string $id): InstanceLink
+	{
+		$result = $this->retrieveEntity('/instancelinks', $id);
+		if ($result instanceof InstanceLink)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -560,7 +775,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getIpAddresses(?int $limit = NULL): IpAddressCollection
 	{
-		return $this->retrieveEntities('/ipaddresses', $limit);
+		$result = $this->retrieveEntities('/ipaddresses', $limit);
+		if ($result instanceof IpAddressCollection) return $result;
+	}
+
+
+	/**
+	 * Find a ipAddress by id
+	 */
+	public function getIpAddress(string $id): IpAddress
+	{
+		$result = $this->retrieveEntity('/ipaddresses', $id);
+		if ($result instanceof IpAddress)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -569,7 +798,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getKubernetesServices(?int $limit = NULL): KubernetesServiceCollection
 	{
-		return $this->retrieveEntities('/kubernetesservices', $limit);
+		$result = $this->retrieveEntities('/kubernetesservices', $limit);
+		if ($result instanceof KubernetesServiceCollection) return $result;
+	}
+
+
+	/**
+	 * Find a kubernetesService by id
+	 */
+	public function getKubernetesService(string $id): KubernetesService
+	{
+		$result = $this->retrieveEntity('/kubernetesservices', $id);
+		if ($result instanceof KubernetesService)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -578,7 +821,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getKubernetesStacks(?int $limit = NULL): KubernetesStackCollection
 	{
-		return $this->retrieveEntities('/kubernetesstacks', $limit);
+		$result = $this->retrieveEntities('/kubernetesstacks', $limit);
+		if ($result instanceof KubernetesStackCollection) return $result;
+	}
+
+
+	/**
+	 * Find a kubernetesStack by id
+	 */
+	public function getKubernetesStack(string $id): KubernetesStack
+	{
+		$result = $this->retrieveEntity('/kubernetesstacks', $id);
+		if ($result instanceof KubernetesStack)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -587,16 +844,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getLabels(?int $limit = NULL): LabelCollection
 	{
-		return $this->retrieveEntities('/labels', $limit);
+		$result = $this->retrieveEntities('/labels', $limit);
+		if ($result instanceof LabelCollection) return $result;
 	}
 
 
 	/**
-	 * @return Ldapconfig[]|LdapconfigCollection
+	 * Find a label by id
 	 */
-	public function getLdapconfigs(?int $limit = NULL): LdapconfigCollection
+	public function getLabel(string $id): Label
 	{
-		return $this->retrieveEntities('/ldapconfigs', $limit);
+		$result = $this->retrieveEntity('/labels', $id);
+		if ($result instanceof Label)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -605,16 +867,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getLoadBalancerServices(?int $limit = NULL): LoadBalancerServiceCollection
 	{
-		return $this->retrieveEntities('/loadbalancerservices', $limit);
+		$result = $this->retrieveEntities('/loadbalancerservices', $limit);
+		if ($result instanceof LoadBalancerServiceCollection) return $result;
 	}
 
 
 	/**
-	 * @return LocalAuthConfig[]|LocalAuthConfigCollection
+	 * Find a loadBalancerService by id
 	 */
-	public function getLocalAuthConfigs(?int $limit = NULL): LocalAuthConfigCollection
+	public function getLoadBalancerService(string $id): LoadBalancerService
 	{
-		return $this->retrieveEntities('/localauthconfigs', $limit);
+		$result = $this->retrieveEntity('/loadbalancerservices', $id);
+		if ($result instanceof LoadBalancerService)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -623,7 +890,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getMachines(?int $limit = NULL): MachineCollection
 	{
-		return $this->retrieveEntities('/machines', $limit);
+		$result = $this->retrieveEntities('/machines', $limit);
+		if ($result instanceof MachineCollection) return $result;
+	}
+
+
+	/**
+	 * Find a machine by id
+	 */
+	public function getMachine(string $id): Machine
+	{
+		$result = $this->retrieveEntity('/machines', $id);
+		if ($result instanceof Machine)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -632,7 +913,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getMachineDrivers(?int $limit = NULL): MachineDriverCollection
 	{
-		return $this->retrieveEntities('/machinedrivers', $limit);
+		$result = $this->retrieveEntities('/machinedrivers', $limit);
+		if ($result instanceof MachineDriverCollection) return $result;
+	}
+
+
+	/**
+	 * Find a machineDriver by id
+	 */
+	public function getMachineDriver(string $id): MachineDriver
+	{
+		$result = $this->retrieveEntity('/machinedrivers', $id);
+		if ($result instanceof MachineDriver)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -641,7 +936,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getMounts(?int $limit = NULL): MountCollection
 	{
-		return $this->retrieveEntities('/mounts', $limit);
+		$result = $this->retrieveEntities('/mounts', $limit);
+		if ($result instanceof MountCollection) return $result;
+	}
+
+
+	/**
+	 * Find a mount by id
+	 */
+	public function getMount(string $id): Mount
+	{
+		$result = $this->retrieveEntity('/mounts', $id);
+		if ($result instanceof Mount)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -650,7 +959,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getNetworks(?int $limit = NULL): NetworkCollection
 	{
-		return $this->retrieveEntities('/networks', $limit);
+		$result = $this->retrieveEntities('/networks', $limit);
+		if ($result instanceof NetworkCollection) return $result;
+	}
+
+
+	/**
+	 * Find a network by id
+	 */
+	public function getNetwork(string $id): Network
+	{
+		$result = $this->retrieveEntity('/networks', $id);
+		if ($result instanceof Network)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -659,7 +982,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getNetworkDrivers(?int $limit = NULL): NetworkDriverCollection
 	{
-		return $this->retrieveEntities('/networkdrivers', $limit);
+		$result = $this->retrieveEntities('/networkdrivers', $limit);
+		if ($result instanceof NetworkDriverCollection) return $result;
+	}
+
+
+	/**
+	 * Find a networkDriver by id
+	 */
+	public function getNetworkDriver(string $id): NetworkDriver
+	{
+		$result = $this->retrieveEntity('/networkdrivers', $id);
+		if ($result instanceof NetworkDriver)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -668,7 +1005,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getNetworkDriverServices(?int $limit = NULL): NetworkDriverServiceCollection
 	{
-		return $this->retrieveEntities('/networkdriverservices', $limit);
+		$result = $this->retrieveEntities('/networkdriverservices', $limit);
+		if ($result instanceof NetworkDriverServiceCollection) return $result;
+	}
+
+
+	/**
+	 * Find a networkDriverService by id
+	 */
+	public function getNetworkDriverService(string $id): NetworkDriverService
+	{
+		$result = $this->retrieveEntity('/networkdriverservices', $id);
+		if ($result instanceof NetworkDriverService)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -677,16 +1028,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getNetworkPolicyRuleWithins(?int $limit = NULL): NetworkPolicyRuleWithinCollection
 	{
-		return $this->retrieveEntities('/networkpolicyrulewithins', $limit);
+		$result = $this->retrieveEntities('/networkpolicyrulewithins', $limit);
+		if ($result instanceof NetworkPolicyRuleWithinCollection) return $result;
 	}
 
 
 	/**
-	 * @return Openldapconfig[]|OpenldapconfigCollection
+	 * Find a networkPolicyRuleWithin by id
 	 */
-	public function getOpenldapconfigs(?int $limit = NULL): OpenldapconfigCollection
+	public function getNetworkPolicyRuleWithin(string $id): NetworkPolicyRuleWithin
 	{
-		return $this->retrieveEntities('/openldapconfigs', $limit);
+		$result = $this->retrieveEntity('/networkpolicyrulewithins', $id);
+		if ($result instanceof NetworkPolicyRuleWithin)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -695,7 +1051,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getPasswords(?int $limit = NULL): PasswordCollection
 	{
-		return $this->retrieveEntities('/passwords', $limit);
+		$result = $this->retrieveEntities('/passwords', $limit);
+		if ($result instanceof PasswordCollection) return $result;
+	}
+
+
+	/**
+	 * Find a password by id
+	 */
+	public function getPassword(string $id): Password
+	{
+		$result = $this->retrieveEntity('/passwords', $id);
+		if ($result instanceof Password)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -704,7 +1074,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getPhysicalHosts(?int $limit = NULL): PhysicalHostCollection
 	{
-		return $this->retrieveEntities('/physicalhosts', $limit);
+		$result = $this->retrieveEntities('/physicalhosts', $limit);
+		if ($result instanceof PhysicalHostCollection) return $result;
+	}
+
+
+	/**
+	 * Find a physicalHost by id
+	 */
+	public function getPhysicalHost(string $id): PhysicalHost
+	{
+		$result = $this->retrieveEntity('/physicalhosts', $id);
+		if ($result instanceof PhysicalHost)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -713,52 +1097,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getPorts(?int $limit = NULL): PortCollection
 	{
-		return $this->retrieveEntities('/ports', $limit);
+		$result = $this->retrieveEntities('/ports', $limit);
+		if ($result instanceof PortCollection) return $result;
 	}
 
 
 	/**
-	 * @return ProcessDefinition[]|ProcessDefinitionCollection
+	 * Find a port by id
 	 */
-	public function getProcessDefinitions(?int $limit = NULL): ProcessDefinitionCollection
+	public function getPort(string $id): Port
 	{
-		return $this->retrieveEntities('/processdefinitions', $limit);
-	}
-
-
-	/**
-	 * @return ProcessExecution[]|ProcessExecutionCollection
-	 */
-	public function getProcessExecutions(?int $limit = NULL): ProcessExecutionCollection
-	{
-		return $this->retrieveEntities('/processexecutions', $limit);
-	}
-
-
-	/**
-	 * @return ProcessInstance[]|ProcessInstanceCollection
-	 */
-	public function getProcessInstances(?int $limit = NULL): ProcessInstanceCollection
-	{
-		return $this->retrieveEntities('/processinstances', $limit);
-	}
-
-
-	/**
-	 * @return ProcessPool[]|ProcessPoolCollection
-	 */
-	public function getProcessPools(?int $limit = NULL): ProcessPoolCollection
-	{
-		return $this->retrieveEntities('/processpools', $limit);
-	}
-
-
-	/**
-	 * @return ProcessSummary[]|ProcessSummaryCollection
-	 */
-	public function getProcessSummary(?int $limit = NULL): ProcessSummaryCollection
-	{
-		return $this->retrieveEntities('/processsummary', $limit);
+		$result = $this->retrieveEntity('/ports', $id);
+		if ($result instanceof Port)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -767,7 +1120,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getProjects(?int $limit = NULL): ProjectCollection
 	{
-		return $this->retrieveEntities('/projects', $limit);
+		$result = $this->retrieveEntities('/projects', $limit);
+		if ($result instanceof ProjectCollection) return $result;
+	}
+
+
+	/**
+	 * Find a project by id
+	 */
+	public function getProject(string $id): Project
+	{
+		$result = $this->retrieveEntity('/projects', $id);
+		if ($result instanceof Project)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -776,7 +1143,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getProjectMembers(?int $limit = NULL): ProjectMemberCollection
 	{
-		return $this->retrieveEntities('/projectmembers', $limit);
+		$result = $this->retrieveEntities('/projectmembers', $limit);
+		if ($result instanceof ProjectMemberCollection) return $result;
+	}
+
+
+	/**
+	 * Find a projectMember by id
+	 */
+	public function getProjectMember(string $id): ProjectMember
+	{
+		$result = $this->retrieveEntity('/projectmembers', $id);
+		if ($result instanceof ProjectMember)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -785,7 +1166,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getProjectTemplates(?int $limit = NULL): ProjectTemplateCollection
 	{
-		return $this->retrieveEntities('/projecttemplates', $limit);
+		$result = $this->retrieveEntities('/projecttemplates', $limit);
+		if ($result instanceof ProjectTemplateCollection) return $result;
+	}
+
+
+	/**
+	 * Find a projectTemplate by id
+	 */
+	public function getProjectTemplate(string $id): ProjectTemplate
+	{
+		$result = $this->retrieveEntity('/projecttemplates', $id);
+		if ($result instanceof ProjectTemplate)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -794,16 +1189,34 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getPullTasks(?int $limit = NULL): PullTaskCollection
 	{
-		return $this->retrieveEntities('/pulltasks', $limit);
+		$result = $this->retrieveEntities('/pulltasks', $limit);
+		if ($result instanceof PullTaskCollection) return $result;
 	}
 
 
 	/**
-	 * @return Register[]|RegisterCollection
+	 * Find a pullTask by id
 	 */
-	public function getRegister(?int $limit = NULL): RegisterCollection
+	public function getPullTask(string $id): PullTask
 	{
-		return $this->retrieveEntities('/register', $limit);
+		$result = $this->retrieveEntity('/pulltasks', $id);
+		if ($result instanceof PullTask)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
+	}
+
+
+	/**
+	 * Find a register by id
+	 */
+	public function getRegister(string $id): Register
+	{
+		$result = $this->retrieveEntity('/register', $id);
+		if ($result instanceof Register)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -812,7 +1225,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getRegistrationTokens(?int $limit = NULL): RegistrationTokenCollection
 	{
-		return $this->retrieveEntities('/registrationtokens', $limit);
+		$result = $this->retrieveEntities('/registrationtokens', $limit);
+		if ($result instanceof RegistrationTokenCollection) return $result;
+	}
+
+
+	/**
+	 * Find a registrationToken by id
+	 */
+	public function getRegistrationToken(string $id): RegistrationToken
+	{
+		$result = $this->retrieveEntity('/registrationtokens', $id);
+		if ($result instanceof RegistrationToken)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -821,7 +1248,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getRegistries(?int $limit = NULL): RegistryCollection
 	{
-		return $this->retrieveEntities('/registries', $limit);
+		$result = $this->retrieveEntities('/registries', $limit);
+		if ($result instanceof RegistryCollection) return $result;
+	}
+
+
+	/**
+	 * Find a registry by id
+	 */
+	public function getRegistry(string $id): Registry
+	{
+		$result = $this->retrieveEntity('/registries', $id);
+		if ($result instanceof Registry)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -830,16 +1271,44 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getRegistryCredentials(?int $limit = NULL): RegistryCredentialCollection
 	{
-		return $this->retrieveEntities('/registrycredentials', $limit);
+		$result = $this->retrieveEntities('/registrycredentials', $limit);
+		if ($result instanceof RegistryCredentialCollection) return $result;
 	}
 
 
 	/**
-	 * @return ResourceDefinition[]|ResourceDefinitionCollection
+	 * Find a registryCredential by id
 	 */
-	public function getResourceDefinitions(?int $limit = NULL): ResourceDefinitionCollection
+	public function getRegistryCredential(string $id): RegistryCredential
 	{
-		return $this->retrieveEntities('/resourcedefinitions', $limit);
+		$result = $this->retrieveEntity('/registrycredentials', $id);
+		if ($result instanceof RegistryCredential)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
+	}
+
+
+	/**
+	 * @return ScheduledUpgrade[]|ScheduledUpgradeCollection
+	 */
+	public function getScheduledUpgrades(?int $limit = NULL): ScheduledUpgradeCollection
+	{
+		$result = $this->retrieveEntities('/scheduledupgrades', $limit);
+		if ($result instanceof ScheduledUpgradeCollection) return $result;
+	}
+
+
+	/**
+	 * Find a scheduledUpgrade by id
+	 */
+	public function getScheduledUpgrade(string $id): ScheduledUpgrade
+	{
+		$result = $this->retrieveEntity('/scheduledupgrades', $id);
+		if ($result instanceof ScheduledUpgrade)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -848,7 +1317,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getSchemas(?int $limit = NULL): SchemaCollection
 	{
-		return $this->retrieveEntities('/schemas', $limit);
+		$result = $this->retrieveEntities('/schemas', $limit);
+		if ($result instanceof SchemaCollection) return $result;
+	}
+
+
+	/**
+	 * Find a schema by id
+	 */
+	public function getSchema(string $id): Schema
+	{
+		$result = $this->retrieveEntity('/schemas', $id);
+		if ($result instanceof Schema)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -857,7 +1340,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getSecrets(?int $limit = NULL): SecretCollection
 	{
-		return $this->retrieveEntities('/secrets', $limit);
+		$result = $this->retrieveEntities('/secrets', $limit);
+		if ($result instanceof SecretCollection) return $result;
+	}
+
+
+	/**
+	 * Find a secret by id
+	 */
+	public function getSecret(string $id): Secret
+	{
+		$result = $this->retrieveEntity('/secrets', $id);
+		if ($result instanceof Secret)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -866,7 +1363,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getServices(?int $limit = NULL): ServiceCollection
 	{
-		return $this->retrieveEntities('/services', $limit);
+		$result = $this->retrieveEntities('/services', $limit);
+		if ($result instanceof ServiceCollection) return $result;
+	}
+
+
+	/**
+	 * Find a service by id
+	 */
+	public function getService(string $id): Service
+	{
+		$result = $this->retrieveEntity('/services', $id);
+		if ($result instanceof Service)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -875,7 +1386,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getServiceConsumeMaps(?int $limit = NULL): ServiceConsumeMapCollection
 	{
-		return $this->retrieveEntities('/serviceconsumemaps', $limit);
+		$result = $this->retrieveEntities('/serviceconsumemaps', $limit);
+		if ($result instanceof ServiceConsumeMapCollection) return $result;
+	}
+
+
+	/**
+	 * Find a serviceConsumeMap by id
+	 */
+	public function getServiceConsumeMap(string $id): ServiceConsumeMap
+	{
+		$result = $this->retrieveEntity('/serviceconsumemaps', $id);
+		if ($result instanceof ServiceConsumeMap)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -884,7 +1409,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getServiceEvents(?int $limit = NULL): ServiceEventCollection
 	{
-		return $this->retrieveEntities('/serviceevents', $limit);
+		$result = $this->retrieveEntities('/serviceevents', $limit);
+		if ($result instanceof ServiceEventCollection) return $result;
+	}
+
+
+	/**
+	 * Find a serviceEvent by id
+	 */
+	public function getServiceEvent(string $id): ServiceEvent
+	{
+		$result = $this->retrieveEntity('/serviceevents', $id);
+		if ($result instanceof ServiceEvent)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -893,7 +1432,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getServiceExposeMaps(?int $limit = NULL): ServiceExposeMapCollection
 	{
-		return $this->retrieveEntities('/serviceexposemaps', $limit);
+		$result = $this->retrieveEntities('/serviceexposemaps', $limit);
+		if ($result instanceof ServiceExposeMapCollection) return $result;
+	}
+
+
+	/**
+	 * Find a serviceExposeMap by id
+	 */
+	public function getServiceExposeMap(string $id): ServiceExposeMap
+	{
+		$result = $this->retrieveEntity('/serviceexposemaps', $id);
+		if ($result instanceof ServiceExposeMap)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -902,7 +1455,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getServiceLogs(?int $limit = NULL): ServiceLogCollection
 	{
-		return $this->retrieveEntities('/servicelogs', $limit);
+		$result = $this->retrieveEntities('/servicelogs', $limit);
+		if ($result instanceof ServiceLogCollection) return $result;
+	}
+
+
+	/**
+	 * Find a serviceLog by id
+	 */
+	public function getServiceLog(string $id): ServiceLog
+	{
+		$result = $this->retrieveEntity('/servicelogs', $id);
+		if ($result instanceof ServiceLog)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -911,7 +1478,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getServiceProxies(?int $limit = NULL): ServiceProxyCollection
 	{
-		return $this->retrieveEntities('/serviceproxies', $limit);
+		$result = $this->retrieveEntities('/serviceproxies', $limit);
+		if ($result instanceof ServiceProxyCollection) return $result;
+	}
+
+
+	/**
+	 * Find a serviceProxy by id
+	 */
+	public function getServiceProxy(string $id): ServiceProxy
+	{
+		$result = $this->retrieveEntity('/serviceproxies', $id);
+		if ($result instanceof ServiceProxy)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -920,7 +1501,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getSettings(?int $limit = NULL): SettingCollection
 	{
-		return $this->retrieveEntities('/settings', $limit);
+		$result = $this->retrieveEntities('/settings', $limit);
+		if ($result instanceof SettingCollection) return $result;
+	}
+
+
+	/**
+	 * Find a setting by id
+	 */
+	public function getSetting(string $id): Setting
+	{
+		$result = $this->retrieveEntity('/settings', $id);
+		if ($result instanceof Setting)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -929,7 +1524,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getSnapshots(?int $limit = NULL): SnapshotCollection
 	{
-		return $this->retrieveEntities('/snapshots', $limit);
+		$result = $this->retrieveEntities('/snapshots', $limit);
+		if ($result instanceof SnapshotCollection) return $result;
+	}
+
+
+	/**
+	 * Find a snapshot by id
+	 */
+	public function getSnapshot(string $id): Snapshot
+	{
+		$result = $this->retrieveEntity('/snapshots', $id);
+		if ($result instanceof Snapshot)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -938,7 +1547,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getStacks(?int $limit = NULL): StackCollection
 	{
-		return $this->retrieveEntities('/stacks', $limit);
+		$result = $this->retrieveEntities('/stacks', $limit);
+		if ($result instanceof StackCollection) return $result;
+	}
+
+
+	/**
+	 * Find a stack by id
+	 */
+	public function getStack(string $id): Stack
+	{
+		$result = $this->retrieveEntity('/stacks', $id);
+		if ($result instanceof Stack)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -947,7 +1570,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getStorageDrivers(?int $limit = NULL): StorageDriverCollection
 	{
-		return $this->retrieveEntities('/storagedrivers', $limit);
+		$result = $this->retrieveEntities('/storagedrivers', $limit);
+		if ($result instanceof StorageDriverCollection) return $result;
+	}
+
+
+	/**
+	 * Find a storageDriver by id
+	 */
+	public function getStorageDriver(string $id): StorageDriver
+	{
+		$result = $this->retrieveEntity('/storagedrivers', $id);
+		if ($result instanceof StorageDriver)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -956,7 +1593,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getStorageDriverServices(?int $limit = NULL): StorageDriverServiceCollection
 	{
-		return $this->retrieveEntities('/storagedriverservices', $limit);
+		$result = $this->retrieveEntities('/storagedriverservices', $limit);
+		if ($result instanceof StorageDriverServiceCollection) return $result;
+	}
+
+
+	/**
+	 * Find a storageDriverService by id
+	 */
+	public function getStorageDriverService(string $id): StorageDriverService
+	{
+		$result = $this->retrieveEntity('/storagedriverservices', $id);
+		if ($result instanceof StorageDriverService)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -965,7 +1616,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getStoragePools(?int $limit = NULL): StoragePoolCollection
 	{
-		return $this->retrieveEntities('/storagepools', $limit);
+		$result = $this->retrieveEntities('/storagepools', $limit);
+		if ($result instanceof StoragePoolCollection) return $result;
+	}
+
+
+	/**
+	 * Find a storagePool by id
+	 */
+	public function getStoragePool(string $id): StoragePool
+	{
+		$result = $this->retrieveEntity('/storagepools', $id);
+		if ($result instanceof StoragePool)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -974,25 +1639,34 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getSubnets(?int $limit = NULL): SubnetCollection
 	{
-		return $this->retrieveEntities('/subnets', $limit);
+		$result = $this->retrieveEntities('/subnets', $limit);
+		if ($result instanceof SubnetCollection) return $result;
 	}
 
 
 	/**
-	 * @return Task[]|TaskCollection
+	 * Find a subnet by id
 	 */
-	public function getTasks(?int $limit = NULL): TaskCollection
+	public function getSubnet(string $id): Subnet
 	{
-		return $this->retrieveEntities('/tasks', $limit);
+		$result = $this->retrieveEntity('/subnets', $id);
+		if ($result instanceof Subnet)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
 	/**
-	 * @return TaskInstance[]|TaskInstanceCollection
+	 * Find a subscribe by id
 	 */
-	public function getTaskInstances(?int $limit = NULL): TaskInstanceCollection
+	public function getSubscribe(string $id): Subscribe
 	{
-		return $this->retrieveEntities('/taskinstances', $limit);
+		$result = $this->retrieveEntity('/subscribe', $id);
+		if ($result instanceof Subscribe)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -1001,16 +1675,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getTypeDocumentations(?int $limit = NULL): TypeDocumentationCollection
 	{
-		return $this->retrieveEntities('/typedocumentations', $limit);
+		$result = $this->retrieveEntities('/typedocumentations', $limit);
+		if ($result instanceof TypeDocumentationCollection) return $result;
 	}
 
 
 	/**
-	 * @return UserPreference[]|UserPreferenceCollection
+	 * Find a typeDocumentation by id
 	 */
-	public function getUserPreferences(?int $limit = NULL): UserPreferenceCollection
+	public function getTypeDocumentation(string $id): TypeDocumentation
 	{
-		return $this->retrieveEntities('/userpreferences', $limit);
+		$result = $this->retrieveEntity('/typedocumentations', $id);
+		if ($result instanceof TypeDocumentation)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -1019,7 +1698,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getVirtualMachines(?int $limit = NULL): VirtualMachineCollection
 	{
-		return $this->retrieveEntities('/virtualmachines', $limit);
+		$result = $this->retrieveEntities('/virtualmachines', $limit);
+		if ($result instanceof VirtualMachineCollection) return $result;
+	}
+
+
+	/**
+	 * Find a virtualMachine by id
+	 */
+	public function getVirtualMachine(string $id): VirtualMachine
+	{
+		$result = $this->retrieveEntity('/virtualmachines', $id);
+		if ($result instanceof VirtualMachine)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -1028,7 +1721,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getVolumes(?int $limit = NULL): VolumeCollection
 	{
-		return $this->retrieveEntities('/volumes', $limit);
+		$result = $this->retrieveEntities('/volumes', $limit);
+		if ($result instanceof VolumeCollection) return $result;
+	}
+
+
+	/**
+	 * Find a volume by id
+	 */
+	public function getVolume(string $id): Volume
+	{
+		$result = $this->retrieveEntity('/volumes', $id);
+		if ($result instanceof Volume)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 
@@ -1037,7 +1744,21 @@ class Client extends \SamIT\Rancher\Client
 	 */
 	public function getVolumeTemplates(?int $limit = NULL): VolumeTemplateCollection
 	{
-		return $this->retrieveEntities('/volumetemplates', $limit);
+		$result = $this->retrieveEntities('/volumetemplates', $limit);
+		if ($result instanceof VolumeTemplateCollection) return $result;
+	}
+
+
+	/**
+	 * Find a volumeTemplate by id
+	 */
+	public function getVolumeTemplate(string $id): VolumeTemplate
+	{
+		$result = $this->retrieveEntity('/volumetemplates', $id);
+		if ($result instanceof VolumeTemplate)
+		    return $result;
+		else
+		    throw new \Exception("Entity not found.");
 	}
 
 }

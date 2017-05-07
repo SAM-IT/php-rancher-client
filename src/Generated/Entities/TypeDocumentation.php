@@ -1,24 +1,92 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Client;
+
 class TypeDocumentation extends \SamIT\Rancher\Types\Entity
 {
 	/** @var string[] The list of fields for this type. */
 	protected const RESOURCE_FIELDS = ['description', 'id', 'resourceFields'];
 
-	/** @var string */
-	public $description;
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type string
+	 * @var string
+	 */
+	protected $description;
 
-	/** @var string */
-	public $id;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type string
+	 * @var string
+	 */
+	protected $id;
 
-	/** @var FieldDocumentationMap */
-	public $resourceFields = [];
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type map[fieldDocumentation]
+	 * @var FieldDocumentationMap
+	 */
+	protected $resourceFields = [];
 
 	/** @var string[] */
 	public static $entityLinks = [
 		'self' => 'https://rancher.sam-it.eu/v2-beta/schemas/typedocumentation',
 		'collection' => 'https://rancher.sam-it.eu/v2-beta/typedocumentations',
 	];
+
+
+	protected function client(): Client
+	{
+		return parent::client();
+	}
+
+
+	public static function create(string $description)
+	{
+		$result = new static();
+		$result->description = $description;
+		return $result;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getDescription(): string
+	{
+		return $this->description;
+	}
+
+
+	public function setDescription(string $value)
+	{
+		$this->description = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getId(): string
+	{
+		return $this->id;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return FieldDocumentationMap
+	 */
+	public function getResourceFields(): SamIT\Rancher\Generated\Entities\FieldDocumentationMap
+	{
+		return $this->resourceFields;
+	}
 
 }

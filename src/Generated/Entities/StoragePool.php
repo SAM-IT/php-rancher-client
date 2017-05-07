@@ -1,12 +1,8 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
-use SamIT\Rancher\Generated\Collections\AccounCollection;
-use SamIT\Rancher\Generated\Collections\CredentialCollection;
-use SamIT\Rancher\Generated\Collections\HostCollection;
-use SamIT\Rancher\Generated\Collections\ImageCollection;
-use SamIT\Rancher\Generated\Collections\StorageDriveCollection;
-use SamIT\Rancher\Generated\Collections\VolumeCollection;
+use DateTimeInterface;
+use SamIT\Rancher\Generated\Client;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
@@ -16,14 +12,12 @@ class StoragePool extends \SamIT\Rancher\Types\Entity
 	protected const RESOURCE_FIELDS = [
 		'accountId',
 		'created',
-		'data',
 		'description',
 		'driverName',
 		'externalId',
 		'id',
 		'kind',
 		'name',
-		'removeTime',
 		'removed',
 		'state',
 		'storageDriverId',
@@ -39,76 +33,184 @@ class StoragePool extends \SamIT\Rancher\Types\Entity
 	];
 
 	/**
-	 * @var string
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
 	 * @api-type reference[account]
+	 * @var string
 	 */
-	public $accountId;
-
-	/** @var date */
-	public $created;
-
-	/** @var JsonMap */
-	public $data = [];
-
-	/** @var string */
-	public $description;
-
-	/** @var string */
-	public $driverName;
-
-	/** @var string */
-	public $externalId;
-
-	/** @var int */
-	public $id;
-
-	/** @var string */
-	public $kind;
-
-	/** @var string */
-	public $name;
-
-	/** @var date */
-	public $removeTime;
-
-	/** @var date */
-	public $removed;
-
-	/** @var StateEnum */
-	public $state;
+	protected $accountId;
 
 	/**
-	 * @var string
-	 * @api-type reference[storageDriver]
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type date
+	 * @var DateTimeInterface
 	 */
-	public $storageDriverId;
+	protected $created;
 
-	/** @var string */
-	public $uuid;
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $description;
 
-	/** @var string */
-	public $volumeAccessMode;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $driverName;
 
-	/** @var TransitioningEnum */
-	public $transitioning;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $externalId;
 
-	/** @var string */
-	public $transitioningMessage;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type int
+	 * @var string
+	 */
+	protected $id;
 
-	/** @var int */
-	public $transitioningProgress;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $kind;
 
-	/** @var reference[host][] */
-	public $hostIds = [];
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $name;
 
-	/** @var string */
-	public $blockDevicePath;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type date
+	 * @var DateTimeInterface
+	 */
+	protected $removed;
 
-	/** @var string[] */
-	public $volumeCapabilities = [];
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type enum
+	 * @var StateEnum
+	 */
+	protected $state;
 
-	/** @var reference[volume][] */
-	public $volumeIds = [];
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type reference[storageDriver]
+	 * @var string
+	 */
+	protected $storageDriverId;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $uuid;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $volumeAccessMode;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type enum
+	 * @var TransitioningEnum
+	 */
+	protected $transitioning;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $transitioningMessage;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $transitioningProgress;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type array[reference[host]]
+	 * @var string[][]
+	 */
+	protected $hostIds = [];
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $blockDevicePath;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type array[string]
+	 * @var string[]
+	 */
+	protected $volumeCapabilities = [];
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type array[reference[volume]]
+	 * @var string[][]
+	 */
+	protected $volumeIds = [];
 
 	/** @var string[] */
 	public static $entityLinks = [
@@ -117,39 +219,233 @@ class StoragePool extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): AccounCollection
+	protected function client(): Client
 	{
-		return $this->client->retrieveEntities($this->links['account']);
+		return parent::client();
 	}
 
 
-	public function getStorageDriver(): StorageDriveCollection
+	public static function create()
 	{
-		return $this->client->retrieveEntities($this->links['storageDriver']);
+		$result = new static();
+		return $result;
 	}
 
 
-	public function getImages(): ImageCollection
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getAccountId(): string
 	{
-		return $this->client->retrieveEntities($this->links['images']);
+		return $this->accountId;
 	}
 
 
-	public function getCredentials(): CredentialCollection
+	/**
+	 * --> getter from reference: reference[account]
+	 */
+	public function getAccount(): ?Account
 	{
-		return $this->client->retrieveEntities($this->links['credentials']);
+		return $this->client()->getAccount($this->accountId);
 	}
 
 
-	public function getHosts(): HostCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getCreated(): DateTimeInterface
 	{
-		return $this->client->retrieveEntities($this->links['hosts']);
+		return $this->created;
 	}
 
 
-	public function getVolumes(): VolumeCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getDescription(): string
 	{
-		return $this->client->retrieveEntities($this->links['volumes']);
+		return $this->description;
+	}
+
+
+	public function setDescription(string $value = NULL)
+	{
+		$this->description = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getDriverName(): string
+	{
+		return $this->driverName;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getExternalId(): string
+	{
+		return $this->externalId;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getId(): string
+	{
+		return $this->id;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getKind(): string
+	{
+		return $this->kind;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getName(): string
+	{
+		return $this->name;
+	}
+
+
+	public function setName(string $value = NULL)
+	{
+		$this->name = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getRemoved(): DateTimeInterface
+	{
+		return $this->removed;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return StateEnum
+	 */
+	public function getState(): StateEnum
+	{
+		return $this->state;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getStorageDriverId(): string
+	{
+		return $this->storageDriverId;
+	}
+
+
+	/**
+	 * --> getter from reference: reference[storageDriver]
+	 */
+	public function getStorageDriver(): ?StorageDriver
+	{
+		return $this->client()->getStorageDriver($this->storageDriverId);
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getUuid(): string
+	{
+		return $this->uuid;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getVolumeAccessMode(): string
+	{
+		return $this->volumeAccessMode;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return TransitioningEnum
+	 */
+	public function getTransitioning(): TransitioningEnum
+	{
+		return $this->transitioning;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getTransitioningMessage(): string
+	{
+		return $this->transitioningMessage;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getTransitioningProgress(): int
+	{
+		return $this->transitioningProgress;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string[][]
+	 */
+	public function getHostIds(): array
+	{
+		return $this->hostIds;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getBlockDevicePath(): string
+	{
+		return $this->blockDevicePath;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string[]
+	 */
+	public function getVolumeCapabilities(): array
+	{
+		return $this->volumeCapabilities;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string[][]
+	 */
+	public function getVolumeIds(): array
+	{
+		return $this->volumeIds;
 	}
 
 }

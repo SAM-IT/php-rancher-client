@@ -1,7 +1,8 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
-use SamIT\Rancher\Generated\Collections\AccounCollection;
+use DateTimeInterface;
+use SamIT\Rancher\Generated\Client;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
@@ -11,13 +12,11 @@ class Register extends GenericObject
 	protected const RESOURCE_FIELDS = [
 		'accountId',
 		'created',
-		'data',
 		'description',
 		'id',
 		'key',
 		'kind',
 		'name',
-		'removeTime',
 		'removed',
 		'resourceData',
 		'state',
@@ -29,11 +28,23 @@ class Register extends GenericObject
 		'secretKey',
 	];
 
-	/** @var string */
-	public $accessKey;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type string
+	 * @var string
+	 */
+	protected $accessKey;
 
-	/** @var string */
-	public $secretKey;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type string
+	 * @var string
+	 */
+	protected $secretKey;
 
 	/** @var string[] */
 	public static $entityLinks = [
@@ -42,9 +53,21 @@ class Register extends GenericObject
 	];
 
 
-	public function getAccount(): AccounCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getAccessKey(): string
 	{
-		return $this->client->retrieveEntities($this->links['account']);
+		return $this->accessKey;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getSecretKey(): string
+	{
+		return $this->secretKey;
 	}
 
 }

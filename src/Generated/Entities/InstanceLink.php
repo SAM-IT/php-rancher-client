@@ -1,9 +1,8 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
-use SamIT\Rancher\Generated\Collections\AccounCollection;
-use SamIT\Rancher\Generated\Collections\InstancCollection;
-use SamIT\Rancher\Generated\Collections\TargetInstancCollection;
+use DateTimeInterface;
+use SamIT\Rancher\Generated\Client;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
@@ -13,14 +12,12 @@ class InstanceLink extends \SamIT\Rancher\Types\Entity
 	protected const RESOURCE_FIELDS = [
 		'accountId',
 		'created',
-		'data',
 		'description',
 		'id',
 		'instanceId',
 		'kind',
 		'linkName',
 		'name',
-		'removeTime',
 		'removed',
 		'state',
 		'targetInstanceId',
@@ -28,71 +25,142 @@ class InstanceLink extends \SamIT\Rancher\Types\Entity
 		'transitioning',
 		'transitioningMessage',
 		'transitioningProgress',
-		'ports',
 	];
 
 	/**
-	 * @var string
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
 	 * @api-type reference[account]
+	 * @var string
 	 */
-	public $accountId;
-
-	/** @var date */
-	public $created;
-
-	/** @var JsonMap */
-	public $data = [];
-
-	/** @var string */
-	public $description;
-
-	/** @var int */
-	public $id;
+	protected $accountId;
 
 	/**
-	 * @var string
-	 * @api-type reference[instance]
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type date
+	 * @var DateTimeInterface
 	 */
-	public $instanceId;
-
-	/** @var string */
-	public $kind;
-
-	/** @var string */
-	public $linkName;
-
-	/** @var string */
-	public $name;
-
-	/** @var date */
-	public $removeTime;
-
-	/** @var date */
-	public $removed;
-
-	/** @var StateEnum */
-	public $state;
+	protected $created;
 
 	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
 	 * @var string
-	 * @api-type reference[instance]
 	 */
-	public $targetInstanceId;
+	protected $description;
 
-	/** @var string */
-	public $uuid;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type int
+	 * @var string
+	 */
+	protected $id;
 
-	/** @var TransitioningEnum */
-	public $transitioning;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type reference[instance]
+	 * @var string
+	 */
+	protected $instanceId;
 
-	/** @var string */
-	public $transitioningMessage;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $kind;
 
-	/** @var int */
-	public $transitioningProgress;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $linkName;
 
-	/** @var json[] */
-	public $ports = [];
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $name;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type date
+	 * @var DateTimeInterface
+	 */
+	protected $removed;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type enum
+	 * @var StateEnum
+	 */
+	protected $state;
+
+	/**
+	 * @api-update true
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type reference[instance]
+	 * @var string
+	 */
+	protected $targetInstanceId;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $uuid;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type enum
+	 * @var TransitioningEnum
+	 */
+	protected $transitioning;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $transitioningMessage;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $transitioningProgress;
 
 	/** @var string[] */
 	public static $entityLinks = [
@@ -101,21 +169,201 @@ class InstanceLink extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): AccounCollection
+	protected function client(): Client
 	{
-		return $this->client->retrieveEntities($this->links['account']);
+		return parent::client();
 	}
 
 
-	public function getInstance(): InstancCollection
+	public static function create()
 	{
-		return $this->client->retrieveEntities($this->links['instance']);
+		$result = new static();
+		return $result;
 	}
 
 
-	public function getTargetInstance(): TargetInstancCollection
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getAccountId(): string
 	{
-		return $this->client->retrieveEntities($this->links['targetInstance']);
+		return $this->accountId;
+	}
+
+
+	/**
+	 * --> getter from reference: reference[account]
+	 */
+	public function getAccount(): ?Account
+	{
+		return $this->client()->getAccount($this->accountId);
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getCreated(): DateTimeInterface
+	{
+		return $this->created;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getDescription(): string
+	{
+		return $this->description;
+	}
+
+
+	public function setDescription(string $value = NULL)
+	{
+		$this->description = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getId(): string
+	{
+		return $this->id;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getInstanceId(): string
+	{
+		return $this->instanceId;
+	}
+
+
+	/**
+	 * --> getter from reference: reference[instance]
+	 */
+	public function getInstance(): ?Instance
+	{
+		return $this->client()->getInstance($this->instanceId);
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getKind(): string
+	{
+		return $this->kind;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getLinkName(): string
+	{
+		return $this->linkName;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getName(): string
+	{
+		return $this->name;
+	}
+
+
+	public function setName(string $value = NULL)
+	{
+		$this->name = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getRemoved(): DateTimeInterface
+	{
+		return $this->removed;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return StateEnum
+	 */
+	public function getState(): StateEnum
+	{
+		return $this->state;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getTargetInstanceId(): string
+	{
+		return $this->targetInstanceId;
+	}
+
+
+	public function setTargetInstanceId(TargetInstance $value = NULL)
+	{
+		$this->targetInstanceId = $value;
+	}
+
+
+	/**
+	 * --> getter from reference: reference[instance]
+	 */
+	public function getTargetInstance(): ?TargetInstance
+	{
+		return $this->client()->getTargetInstance($this->targetInstanceId);
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getUuid(): string
+	{
+		return $this->uuid;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return TransitioningEnum
+	 */
+	public function getTransitioning(): TransitioningEnum
+	{
+		return $this->transitioning;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getTransitioningMessage(): string
+	{
+		return $this->transitioningMessage;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getTransitioningProgress(): int
+	{
+		return $this->transitioningProgress;
 	}
 
 }

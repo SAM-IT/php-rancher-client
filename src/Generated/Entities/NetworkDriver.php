@@ -1,9 +1,8 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
-use SamIT\Rancher\Generated\Collections\AccounCollection;
-use SamIT\Rancher\Generated\Collections\NetworkCollection;
-use SamIT\Rancher\Generated\Collections\ServicCollection;
+use DateTimeInterface;
+use SamIT\Rancher\Generated\Client;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
@@ -13,12 +12,10 @@ class NetworkDriver extends \SamIT\Rancher\Types\Entity
 	protected const RESOURCE_FIELDS = [
 		'accountId',
 		'created',
-		'data',
 		'description',
 		'id',
 		'kind',
 		'name',
-		'removeTime',
 		'removed',
 		'serviceId',
 		'state',
@@ -32,64 +29,148 @@ class NetworkDriver extends \SamIT\Rancher\Types\Entity
 	];
 
 	/**
-	 * @var string
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
 	 * @api-type reference[account]
+	 * @var string
 	 */
-	public $accountId;
-
-	/** @var date */
-	public $created;
-
-	/** @var JsonMap */
-	public $data = [];
-
-	/** @var string */
-	public $description;
-
-	/** @var int */
-	public $id;
-
-	/** @var string */
-	public $kind;
-
-	/** @var string */
-	public $name;
-
-	/** @var date */
-	public $removeTime;
-
-	/** @var date */
-	public $removed;
+	protected $accountId;
 
 	/**
-	 * @var string
-	 * @api-type reference[service]
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type date
+	 * @var DateTimeInterface
 	 */
-	public $serviceId;
+	protected $created;
 
-	/** @var StateEnum */
-	public $state;
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $description;
 
-	/** @var string */
-	public $uuid;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type int
+	 * @var string
+	 */
+	protected $id;
 
-	/** @var TransitioningEnum */
-	public $transitioning;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $kind;
 
-	/** @var string */
-	public $transitioningMessage;
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $name;
 
-	/** @var int */
-	public $transitioningProgress;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type date
+	 * @var DateTimeInterface
+	 */
+	protected $removed;
 
-	/** @var defaultNetwork */
-	public $defaultNetwork;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type reference[service]
+	 * @var string
+	 */
+	protected $serviceId;
 
-	/** @var JsonMap */
-	public $cniConfig = [];
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type enum
+	 * @var StateEnum
+	 */
+	protected $state;
 
-	/** @var JsonMap */
-	public $networkMetadata = [];
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $uuid;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type enum
+	 * @var TransitioningEnum
+	 */
+	protected $transitioning;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $transitioningMessage;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $transitioningProgress;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type defaultNetwork
+	 * @var DefaultNetwork
+	 */
+	protected $defaultNetwork;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type map[json]
+	 * @var SamIT\Rancher\Types\JsonMap
+	 */
+	protected $cniConfig = [];
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type map[json]
+	 * @var SamIT\Rancher\Types\JsonMap
+	 */
+	protected $networkMetadata = [];
 
 	/** @var string[] */
 	public static $entityLinks = [
@@ -98,21 +179,200 @@ class NetworkDriver extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): AccounCollection
+	protected function client(): Client
 	{
-		return $this->client->retrieveEntities($this->links['account']);
+		return parent::client();
 	}
 
 
-	public function getService(): ServicCollection
+	public static function create(\DefaultNetwork $defaultNetwork, \JsonMap $cniConfig, \JsonMap $networkMetadata)
 	{
-		return $this->client->retrieveEntities($this->links['service']);
+		$result = new static();
+		$result->defaultNetwork = $defaultNetwork;
+		$result->cniConfig = $cniConfig;
+		$result->networkMetadata = $networkMetadata;
+		return $result;
 	}
 
 
-	public function getNetworks(): NetworkCollection
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getAccountId(): string
 	{
-		return $this->client->retrieveEntities($this->links['networks']);
+		return $this->accountId;
+	}
+
+
+	/**
+	 * --> getter from reference: reference[account]
+	 */
+	public function getAccount(): ?Account
+	{
+		return $this->client()->getAccount($this->accountId);
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getCreated(): DateTimeInterface
+	{
+		return $this->created;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getDescription(): string
+	{
+		return $this->description;
+	}
+
+
+	public function setDescription(string $value = NULL)
+	{
+		$this->description = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getId(): string
+	{
+		return $this->id;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getKind(): string
+	{
+		return $this->kind;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getName(): string
+	{
+		return $this->name;
+	}
+
+
+	public function setName(string $value = NULL)
+	{
+		$this->name = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getRemoved(): DateTimeInterface
+	{
+		return $this->removed;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getServiceId(): string
+	{
+		return $this->serviceId;
+	}
+
+
+	/**
+	 * --> getter from reference: reference[service]
+	 */
+	public function getService(): ?Service
+	{
+		return $this->client()->getService($this->serviceId);
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return StateEnum
+	 */
+	public function getState(): StateEnum
+	{
+		return $this->state;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getUuid(): string
+	{
+		return $this->uuid;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return TransitioningEnum
+	 */
+	public function getTransitioning(): TransitioningEnum
+	{
+		return $this->transitioning;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getTransitioningMessage(): string
+	{
+		return $this->transitioningMessage;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getTransitioningProgress(): int
+	{
+		return $this->transitioningProgress;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return DefaultNetwork
+	 */
+	public function getDefaultNetwork(): DefaultNetwork
+	{
+		return $this->defaultNetwork;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return SamIT\Rancher\Types\JsonMap
+	 */
+	public function getCniConfig(): SamIT\Rancher\Generated\Entities\JsonMap
+	{
+		return $this->cniConfig;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return SamIT\Rancher\Types\JsonMap
+	 */
+	public function getNetworkMetadata(): SamIT\Rancher\Generated\Entities\JsonMap
+	{
+		return $this->networkMetadata;
 	}
 
 }

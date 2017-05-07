@@ -1,16 +1,8 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
-use SamIT\Rancher\Generated\Collections\AccounCollection;
-use SamIT\Rancher\Generated\Collections\ConfigItemStatuseCollection;
-use SamIT\Rancher\Generated\Collections\ConsumedbyserviceCollection;
-use SamIT\Rancher\Generated\Collections\ConsumedserviceCollection;
-use SamIT\Rancher\Generated\Collections\InstanceCollection;
-use SamIT\Rancher\Generated\Collections\NetworkDriverCollection;
-use SamIT\Rancher\Generated\Collections\ServiceExposeMapCollection;
-use SamIT\Rancher\Generated\Collections\ServiceLogCollection;
-use SamIT\Rancher\Generated\Collections\StacCollection;
-use SamIT\Rancher\Generated\Collections\StorageDriverCollection;
+use DateTimeInterface;
+use SamIT\Rancher\Generated\Client;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
@@ -20,7 +12,6 @@ class KubernetesService extends \SamIT\Rancher\Types\Entity
 	protected const RESOURCE_FIELDS = [
 		'accountId',
 		'created',
-		'data',
 		'description',
 		'externalId',
 		'healthState',
@@ -29,7 +20,6 @@ class KubernetesService extends \SamIT\Rancher\Types\Entity
 		'kind',
 		'linkedServices',
 		'name',
-		'removeTime',
 		'removed',
 		'selectorContainer',
 		'stackId',
@@ -44,79 +34,193 @@ class KubernetesService extends \SamIT\Rancher\Types\Entity
 	];
 
 	/**
-	 * @var string
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
 	 * @api-type reference[account]
+	 * @var string
 	 */
-	public $accountId;
-
-	/** @var date */
-	public $created;
-
-	/** @var JsonMap */
-	public $data = [];
-
-	/** @var string */
-	public $description;
-
-	/** @var string */
-	public $externalId;
-
-	/** @var string */
-	public $healthState;
-
-	/** @var int */
-	public $id;
-
-	/** @var reference[instance][] */
-	public $instanceIds = [];
-
-	/** @var string */
-	public $kind;
-
-	/** @var Reference[service]Map */
-	public $linkedServices = [];
-
-	/** @var string */
-	public $name;
-
-	/** @var date */
-	public $removeTime;
-
-	/** @var date */
-	public $removed;
-
-	/** @var string */
-	public $selectorContainer;
+	protected $accountId;
 
 	/**
-	 * @var string
-	 * @api-type reference[stack]
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type date
+	 * @var DateTimeInterface
 	 */
-	public $stackId;
+	protected $created;
 
-	/** @var StateEnum */
-	public $state;
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $description;
 
-	/** @var boolean */
-	public $system;
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $externalId;
 
-	/** @var TransitioningEnum */
-	public $transitioning;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $healthState;
 
-	/** @var string */
-	public $transitioningMessage;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type int
+	 * @var string
+	 */
+	protected $id;
 
-	/** @var int */
-	public $transitioningProgress;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type array[reference[instance]]
+	 * @var string[][]
+	 */
+	protected $instanceIds = [];
 
-	/** @var string */
-	public $uuid;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $kind;
 
-	/** @var string */
-	public $vip;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type map[reference[service]]
+	 * @var Reference[service]Map
+	 */
+	protected $linkedServices = [];
 
-	/** @var json */
-	public $template;
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $name;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type date
+	 * @var DateTimeInterface
+	 */
+	protected $removed;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $selectorContainer;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type reference[stack]
+	 * @var string
+	 */
+	protected $stackId;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type enum
+	 * @var StateEnum
+	 */
+	protected $state;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type boolean
+	 * @var boolean
+	 */
+	protected $system;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type enum
+	 * @var TransitioningEnum
+	 */
+	protected $transitioning;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $transitioningMessage;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $transitioningProgress;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $uuid;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $vip;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type json
+	 * @var array
+	 */
+	protected $template;
 
 	/** @var string[] */
 	public static $entityLinks = [
@@ -125,63 +229,241 @@ class KubernetesService extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): AccounCollection
+	protected function client(): Client
 	{
-		return $this->client->retrieveEntities($this->links['account']);
+		return parent::client();
 	}
 
 
-	public function getStack(): StacCollection
+	public static function create()
 	{
-		return $this->client->retrieveEntities($this->links['stack']);
+		$result = new static();
+		return $result;
 	}
 
 
-	public function getConsumedbyservices(): ConsumedbyserviceCollection
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getAccountId(): string
 	{
-		return $this->client->retrieveEntities($this->links['consumedbyservices']);
+		return $this->accountId;
 	}
 
 
-	public function getInstances(): InstanceCollection
+	/**
+	 * --> getter from reference: reference[account]
+	 */
+	public function getAccount(): ?Account
 	{
-		return $this->client->retrieveEntities($this->links['instances']);
+		return $this->client()->getAccount($this->accountId);
 	}
 
 
-	public function getStorageDrivers(): StorageDriverCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getCreated(): DateTimeInterface
 	{
-		return $this->client->retrieveEntities($this->links['storageDrivers']);
+		return $this->created;
 	}
 
 
-	public function getConsumedservices(): ConsumedserviceCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getDescription(): string
 	{
-		return $this->client->retrieveEntities($this->links['consumedservices']);
+		return $this->description;
 	}
 
 
-	public function getConfigItemStatuses(): ConfigItemStatuseCollection
+	public function setDescription(string $value = NULL)
 	{
-		return $this->client->retrieveEntities($this->links['configItemStatuses']);
+		$this->description = $value;
 	}
 
 
-	public function getServiceExposeMaps(): ServiceExposeMapCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getExternalId(): string
 	{
-		return $this->client->retrieveEntities($this->links['serviceExposeMaps']);
+		return $this->externalId;
 	}
 
 
-	public function getNetworkDrivers(): NetworkDriverCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getHealthState(): string
 	{
-		return $this->client->retrieveEntities($this->links['networkDrivers']);
+		return $this->healthState;
 	}
 
 
-	public function getServiceLogs(): ServiceLogCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getId(): string
 	{
-		return $this->client->retrieveEntities($this->links['serviceLogs']);
+		return $this->id;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string[][]
+	 */
+	public function getInstanceIds(): array
+	{
+		return $this->instanceIds;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getKind(): string
+	{
+		return $this->kind;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return Reference[service]Map
+	 */
+	public function getLinkedServices(): SamIT\Rancher\Generated\Entities\Reference[service]Map
+	{
+		return $this->linkedServices;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getName(): string
+	{
+		return $this->name;
+	}
+
+
+	public function setName(string $value = NULL)
+	{
+		$this->name = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getRemoved(): DateTimeInterface
+	{
+		return $this->removed;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getSelectorContainer(): string
+	{
+		return $this->selectorContainer;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getStackId(): string
+	{
+		return $this->stackId;
+	}
+
+
+	/**
+	 * --> getter from reference: reference[stack]
+	 */
+	public function getStack(): ?Stack
+	{
+		return $this->client()->getStack($this->stackId);
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return StateEnum
+	 */
+	public function getState(): StateEnum
+	{
+		return $this->state;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getSystem(): \boolean
+	{
+		return $this->system;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return TransitioningEnum
+	 */
+	public function getTransitioning(): TransitioningEnum
+	{
+		return $this->transitioning;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getTransitioningMessage(): string
+	{
+		return $this->transitioningMessage;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getTransitioningProgress(): int
+	{
+		return $this->transitioningProgress;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getUuid(): string
+	{
+		return $this->uuid;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getVip(): string
+	{
+		return $this->vip;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getTemplate(): array
+	{
+		return $this->template;
 	}
 
 }

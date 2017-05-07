@@ -1,9 +1,8 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
-use SamIT\Rancher\Generated\Collections\AccounCollection;
-use SamIT\Rancher\Generated\Collections\StacCollection;
-use SamIT\Rancher\Generated\Collections\VolumeCollection;
+use DateTimeInterface;
+use SamIT\Rancher\Generated\Client;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
@@ -13,7 +12,6 @@ class VolumeTemplate extends \SamIT\Rancher\Types\Entity
 	protected const RESOURCE_FIELDS = [
 		'accountId',
 		'created',
-		'data',
 		'description',
 		'driver',
 		'external',
@@ -21,7 +19,6 @@ class VolumeTemplate extends \SamIT\Rancher\Types\Entity
 		'kind',
 		'name',
 		'perContainer',
-		'removeTime',
 		'removed',
 		'stackId',
 		'state',
@@ -33,67 +30,157 @@ class VolumeTemplate extends \SamIT\Rancher\Types\Entity
 	];
 
 	/**
-	 * @var string
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
 	 * @api-type reference[account]
+	 * @var string
 	 */
-	public $accountId;
-
-	/** @var date */
-	public $created;
-
-	/** @var JsonMap */
-	public $data = [];
-
-	/** @var string */
-	public $description;
-
-	/** @var string */
-	public $driver;
-
-	/** @var boolean */
-	public $external;
-
-	/** @var int */
-	public $id;
-
-	/** @var string */
-	public $kind;
-
-	/** @var string */
-	public $name;
-
-	/** @var boolean */
-	public $perContainer;
-
-	/** @var date */
-	public $removeTime;
-
-	/** @var date */
-	public $removed;
+	protected $accountId;
 
 	/**
-	 * @var string
-	 * @api-type reference[stack]
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type date
+	 * @var DateTimeInterface
 	 */
-	public $stackId;
+	protected $created;
 
-	/** @var StateEnum */
-	public $state;
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $description;
 
-	/** @var string */
-	public $uuid;
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $driver;
 
-	/** @var TransitioningEnum */
-	public $transitioning;
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type boolean
+	 * @var boolean
+	 */
+	protected $external;
 
-	/** @var string */
-	public $transitioningMessage;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type int
+	 * @var string
+	 */
+	protected $id;
 
-	/** @var int */
-	public $transitioningProgress;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $kind;
 
-	/** @var StringMap */
-	public $driverOpts = [];
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $name;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type boolean
+	 * @var boolean
+	 */
+	protected $perContainer;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type date
+	 * @var DateTimeInterface
+	 */
+	protected $removed;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type reference[stack]
+	 * @var string
+	 */
+	protected $stackId;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type enum
+	 * @var StateEnum
+	 */
+	protected $state;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $uuid;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type enum
+	 * @var TransitioningEnum
+	 */
+	protected $transitioning;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $transitioningMessage;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $transitioningProgress;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type map[string]
+	 * @var string[]
+	 */
+	protected $driverOpts = [];
 
 	/** @var string[] */
 	public static $entityLinks = [
@@ -102,21 +189,206 @@ class VolumeTemplate extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): AccounCollection
+	protected function client(): Client
 	{
-		return $this->client->retrieveEntities($this->links['account']);
+		return parent::client();
 	}
 
 
-	public function getStack(): StacCollection
+	public static function create(\boolean $external, \boolean $perContainer)
 	{
-		return $this->client->retrieveEntities($this->links['stack']);
+		$result = new static();
+		$result->external = $external;
+		$result->perContainer = $perContainer;
+		return $result;
 	}
 
 
-	public function getVolumes(): VolumeCollection
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getAccountId(): string
 	{
-		return $this->client->retrieveEntities($this->links['volumes']);
+		return $this->accountId;
+	}
+
+
+	/**
+	 * --> getter from reference: reference[account]
+	 */
+	public function getAccount(): ?Account
+	{
+		return $this->client()->getAccount($this->accountId);
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getCreated(): DateTimeInterface
+	{
+		return $this->created;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getDescription(): string
+	{
+		return $this->description;
+	}
+
+
+	public function setDescription(string $value = NULL)
+	{
+		$this->description = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getDriver(): string
+	{
+		return $this->driver;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getExternal(): \boolean
+	{
+		return $this->external;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getId(): string
+	{
+		return $this->id;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getKind(): string
+	{
+		return $this->kind;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getName(): string
+	{
+		return $this->name;
+	}
+
+
+	public function setName(string $value = NULL)
+	{
+		$this->name = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getPerContainer(): \boolean
+	{
+		return $this->perContainer;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getRemoved(): DateTimeInterface
+	{
+		return $this->removed;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getStackId(): string
+	{
+		return $this->stackId;
+	}
+
+
+	/**
+	 * --> getter from reference: reference[stack]
+	 */
+	public function getStack(): ?Stack
+	{
+		return $this->client()->getStack($this->stackId);
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return StateEnum
+	 */
+	public function getState(): StateEnum
+	{
+		return $this->state;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getUuid(): string
+	{
+		return $this->uuid;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return TransitioningEnum
+	 */
+	public function getTransitioning(): TransitioningEnum
+	{
+		return $this->transitioning;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getTransitioningMessage(): string
+	{
+		return $this->transitioningMessage;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getTransitioningProgress(): int
+	{
+		return $this->transitioningProgress;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string[]
+	 */
+	public function getDriverOpts(): array
+	{
+		return $this->driverOpts;
 	}
 
 }

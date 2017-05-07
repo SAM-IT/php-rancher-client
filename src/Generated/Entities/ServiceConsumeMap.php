@@ -1,10 +1,8 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
-use SamIT\Rancher\Generated\Collections\AccounCollection;
-use SamIT\Rancher\Generated\Collections\ConsumedServicCollection;
-use SamIT\Rancher\Generated\Collections\InstanceLinkCollection;
-use SamIT\Rancher\Generated\Collections\ServicCollection;
+use DateTimeInterface;
+use SamIT\Rancher\Generated\Client;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
@@ -15,12 +13,10 @@ class ServiceConsumeMap extends \SamIT\Rancher\Types\Entity
 		'accountId',
 		'consumedServiceId',
 		'created',
-		'data',
 		'description',
 		'id',
 		'kind',
 		'name',
-		'removeTime',
 		'removed',
 		'serviceId',
 		'state',
@@ -32,64 +28,139 @@ class ServiceConsumeMap extends \SamIT\Rancher\Types\Entity
 	];
 
 	/**
-	 * @var string
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
 	 * @api-type reference[account]
+	 * @var string
 	 */
-	public $accountId;
+	protected $accountId;
 
 	/**
-	 * @var string
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
 	 * @api-type reference[service]
+	 * @var string
 	 */
-	public $consumedServiceId;
-
-	/** @var date */
-	public $created;
-
-	/** @var JsonMap */
-	public $data = [];
-
-	/** @var string */
-	public $description;
-
-	/** @var int */
-	public $id;
-
-	/** @var string */
-	public $kind;
-
-	/** @var string */
-	public $name;
-
-	/** @var date */
-	public $removeTime;
-
-	/** @var date */
-	public $removed;
+	protected $consumedServiceId;
 
 	/**
-	 * @var string
-	 * @api-type reference[service]
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type date
+	 * @var DateTimeInterface
 	 */
-	public $serviceId;
+	protected $created;
 
-	/** @var StateEnum */
-	public $state;
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $description;
 
-	/** @var string */
-	public $uuid;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type int
+	 * @var string
+	 */
+	protected $id;
 
-	/** @var TransitioningEnum */
-	public $transitioning;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $kind;
 
-	/** @var string */
-	public $transitioningMessage;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $name;
 
-	/** @var int */
-	public $transitioningProgress;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type date
+	 * @var DateTimeInterface
+	 */
+	protected $removed;
 
-	/** @var string[] */
-	public $ports = [];
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type reference[service]
+	 * @var string
+	 */
+	protected $serviceId;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type enum
+	 * @var StateEnum
+	 */
+	protected $state;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $uuid;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type enum
+	 * @var TransitioningEnum
+	 */
+	protected $transitioning;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $transitioningMessage;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $transitioningProgress;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type array[string]
+	 * @var string[]
+	 */
+	protected $ports = [];
 
 	/** @var string[] */
 	public static $entityLinks = [
@@ -98,27 +169,190 @@ class ServiceConsumeMap extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): AccounCollection
+	protected function client(): Client
 	{
-		return $this->client->retrieveEntities($this->links['account']);
+		return parent::client();
 	}
 
 
-	public function getConsumedService(): ConsumedServicCollection
+	public static function create()
 	{
-		return $this->client->retrieveEntities($this->links['consumedService']);
+		$result = new static();
+		return $result;
 	}
 
 
-	public function getService(): ServicCollection
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getAccountId(): string
 	{
-		return $this->client->retrieveEntities($this->links['service']);
+		return $this->accountId;
 	}
 
 
-	public function getInstanceLinks(): InstanceLinkCollection
+	/**
+	 * --> getter from reference: reference[account]
+	 */
+	public function getAccount(): ?Account
 	{
-		return $this->client->retrieveEntities($this->links['instanceLinks']);
+		return $this->client()->getAccount($this->accountId);
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getConsumedServiceId(): string
+	{
+		return $this->consumedServiceId;
+	}
+
+
+	/**
+	 * --> getter from reference: reference[service]
+	 */
+	public function getConsumedService(): ?ConsumedService
+	{
+		return $this->client()->getConsumedService($this->consumedServiceId);
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getCreated(): DateTimeInterface
+	{
+		return $this->created;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getDescription(): string
+	{
+		return $this->description;
+	}
+
+
+	public function setDescription(string $value = NULL)
+	{
+		$this->description = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getId(): string
+	{
+		return $this->id;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getKind(): string
+	{
+		return $this->kind;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getName(): string
+	{
+		return $this->name;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getRemoved(): DateTimeInterface
+	{
+		return $this->removed;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getServiceId(): string
+	{
+		return $this->serviceId;
+	}
+
+
+	/**
+	 * --> getter from reference: reference[service]
+	 */
+	public function getService(): ?Service
+	{
+		return $this->client()->getService($this->serviceId);
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return StateEnum
+	 */
+	public function getState(): StateEnum
+	{
+		return $this->state;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getUuid(): string
+	{
+		return $this->uuid;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return TransitioningEnum
+	 */
+	public function getTransitioning(): TransitioningEnum
+	{
+		return $this->transitioning;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getTransitioningMessage(): string
+	{
+		return $this->transitioningMessage;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getTransitioningProgress(): int
+	{
+		return $this->transitioningProgress;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string[]
+	 */
+	public function getPorts(): array
+	{
+		return $this->ports;
 	}
 
 }

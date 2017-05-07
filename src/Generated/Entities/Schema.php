@@ -1,6 +1,8 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Client;
+
 class Schema extends \SamIT\Rancher\Types\Entity
 {
 	/** @var string[] The list of fields for this type. */
@@ -16,37 +18,202 @@ class Schema extends \SamIT\Rancher\Types\Entity
 		'resourceMethods',
 	];
 
-	/** @var JsonMap */
-	public $collectionActions = [];
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type map[json]
+	 * @var SamIT\Rancher\Types\JsonMap
+	 */
+	protected $collectionActions = [];
 
-	/** @var JsonMap */
-	public $collectionFields = [];
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type map[json]
+	 * @var SamIT\Rancher\Types\JsonMap
+	 */
+	protected $collectionFields = [];
 
-	/** @var JsonMap */
-	public $collectionFilters = [];
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type map[json]
+	 * @var SamIT\Rancher\Types\JsonMap
+	 */
+	protected $collectionFilters = [];
 
-	/** @var string[] */
-	public $collectionMethods = [];
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type array[string]
+	 * @var string[]
+	 */
+	protected $collectionMethods = [];
 
-	/** @var string[] */
-	public $includeableLinks = [];
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type array[string]
+	 * @var string[]
+	 */
+	protected $includeableLinks = [];
 
-	/** @var string */
-	public $pluralName;
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type string
+	 * @var string
+	 */
+	protected $pluralName;
 
-	/** @var JsonMap */
-	public $resourceActions = [];
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type map[json]
+	 * @var SamIT\Rancher\Types\JsonMap
+	 */
+	protected $resourceActions = [];
 
-	/** @var JsonMap */
-	public $resourceFields = [];
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type map[json]
+	 * @var SamIT\Rancher\Types\JsonMap
+	 */
+	protected $resourceFields = [];
 
-	/** @var string[] */
-	public $resourceMethods = [];
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type array[string]
+	 * @var string[]
+	 */
+	protected $resourceMethods = [];
 
 	/** @var string[] */
 	public static $entityLinks = [
 		'self' => 'https://rancher.sam-it.eu/v2-beta/schemas/schema',
 		'collection' => 'https://rancher.sam-it.eu/v2-beta/schemas',
 	];
+
+
+	protected function client(): Client
+	{
+		return parent::client();
+	}
+
+
+	public static function create(\JsonMap $collectionActions, \JsonMap $collectionFields, \JsonMap $collectionFilters, array $collectionMethods, array $includeableLinks, string $pluralName, \JsonMap $resourceActions, \JsonMap $resourceFields, array $resourceMethods)
+	{
+		$result = new static();
+		$result->collectionActions = $collectionActions;
+		$result->collectionFields = $collectionFields;
+		$result->collectionFilters = $collectionFilters;
+		$result->collectionMethods = $collectionMethods;
+		$result->includeableLinks = $includeableLinks;
+		$result->pluralName = $pluralName;
+		$result->resourceActions = $resourceActions;
+		$result->resourceFields = $resourceFields;
+		$result->resourceMethods = $resourceMethods;
+		return $result;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return SamIT\Rancher\Types\JsonMap
+	 */
+	public function getCollectionActions(): SamIT\Rancher\Generated\Entities\JsonMap
+	{
+		return $this->collectionActions;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return SamIT\Rancher\Types\JsonMap
+	 */
+	public function getCollectionFields(): SamIT\Rancher\Generated\Entities\JsonMap
+	{
+		return $this->collectionFields;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return SamIT\Rancher\Types\JsonMap
+	 */
+	public function getCollectionFilters(): SamIT\Rancher\Generated\Entities\JsonMap
+	{
+		return $this->collectionFilters;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string[]
+	 */
+	public function getCollectionMethods(): array
+	{
+		return $this->collectionMethods;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string[]
+	 */
+	public function getIncludeableLinks(): array
+	{
+		return $this->includeableLinks;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getPluralName(): string
+	{
+		return $this->pluralName;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return SamIT\Rancher\Types\JsonMap
+	 */
+	public function getResourceActions(): SamIT\Rancher\Generated\Entities\JsonMap
+	{
+		return $this->resourceActions;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return SamIT\Rancher\Types\JsonMap
+	 */
+	public function getResourceFields(): SamIT\Rancher\Generated\Entities\JsonMap
+	{
+		return $this->resourceFields;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string[]
+	 */
+	public function getResourceMethods(): array
+	{
+		return $this->resourceMethods;
+	}
 
 }

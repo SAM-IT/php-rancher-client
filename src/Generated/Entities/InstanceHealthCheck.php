@@ -1,6 +1,7 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Client;
 use SamIT\Rancher\Generated\Enums\StrategyEnum;
 
 class InstanceHealthCheck extends \SamIT\Rancher\Types\Entity
@@ -20,42 +21,228 @@ class InstanceHealthCheck extends \SamIT\Rancher\Types\Entity
 		'unhealthyThreshold',
 	];
 
-	/** @var int */
-	public $healthyThreshold;
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $healthyThreshold;
 
-	/** @var int */
-	public $initializingTimeout;
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $initializingTimeout;
 
-	/** @var int */
-	public $interval;
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $interval;
 
-	/** @var string */
-	public $name;
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $name;
 
-	/** @var int */
-	public $port;
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $port;
 
-	/** @var recreateOnQuorumStrategyConfig */
-	public $recreateOnQuorumStrategyConfig;
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type recreateOnQuorumStrategyConfig
+	 * @var RecreateOnQuorumStrategyConfig
+	 */
+	protected $recreateOnQuorumStrategyConfig;
 
-	/** @var int */
-	public $reinitializingTimeout;
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $reinitializingTimeout;
 
-	/** @var string */
-	public $requestLine;
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $requestLine;
 
-	/** @var int */
-	public $responseTimeout;
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $responseTimeout;
 
-	/** @var StrategyEnum */
-	public $strategy;
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type enum
+	 * @var StrategyEnum
+	 */
+	protected $strategy;
 
-	/** @var int */
-	public $unhealthyThreshold;
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $unhealthyThreshold;
 
 	/** @var string[] */
 	public static $entityLinks = [
 		'self' => 'https://rancher.sam-it.eu/v2-beta/schemas/instancehealthcheck',
 	];
+
+
+	protected function client(): Client
+	{
+		return parent::client();
+	}
+
+
+	public static function create()
+	{
+		$result = new static();
+		return $result;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getHealthyThreshold(): int
+	{
+		return $this->healthyThreshold;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getInitializingTimeout(): int
+	{
+		return $this->initializingTimeout;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getInterval(): int
+	{
+		return $this->interval;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getName(): string
+	{
+		return $this->name;
+	}
+
+
+	public function setName(string $value = NULL)
+	{
+		$this->name = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getPort(): int
+	{
+		return $this->port;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return RecreateOnQuorumStrategyConfig
+	 */
+	public function getRecreateOnQuorumStrategyConfig(): RecreateOnQuorumStrategyConfig
+	{
+		return $this->recreateOnQuorumStrategyConfig;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getReinitializingTimeout(): int
+	{
+		return $this->reinitializingTimeout;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getRequestLine(): string
+	{
+		return $this->requestLine;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getResponseTimeout(): int
+	{
+		return $this->responseTimeout;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return StrategyEnum
+	 */
+	public function getStrategy(): StrategyEnum
+	{
+		return $this->strategy;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getUnhealthyThreshold(): int
+	{
+		return $this->unhealthyThreshold;
+	}
 
 }

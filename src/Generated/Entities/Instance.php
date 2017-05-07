@@ -1,21 +1,8 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
-use SamIT\Rancher\Generated\Collections\AccounCollection;
-use SamIT\Rancher\Generated\Collections\CredentialCollection;
-use SamIT\Rancher\Generated\Collections\HealthcheckInstanceHostMapCollection;
-use SamIT\Rancher\Generated\Collections\HostCollection;
-use SamIT\Rancher\Generated\Collections\InstanceCollection;
-use SamIT\Rancher\Generated\Collections\InstanceLabelCollection;
-use SamIT\Rancher\Generated\Collections\InstanceLinkCollection;
-use SamIT\Rancher\Generated\Collections\MountCollection;
-use SamIT\Rancher\Generated\Collections\PortCollection;
-use SamIT\Rancher\Generated\Collections\ServiceCollection;
-use SamIT\Rancher\Generated\Collections\ServiceEventCollection;
-use SamIT\Rancher\Generated\Collections\ServiceExposeMapCollection;
-use SamIT\Rancher\Generated\Collections\ServiceLogCollection;
-use SamIT\Rancher\Generated\Collections\TargetInstanceLinkCollection;
-use SamIT\Rancher\Generated\Collections\VolumeCollection;
+use DateTimeInterface;
+use SamIT\Rancher\Generated\Client;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
@@ -25,13 +12,11 @@ class Instance extends \SamIT\Rancher\Types\Entity
 	protected const RESOURCE_FIELDS = [
 		'accountId',
 		'created',
-		'data',
 		'description',
 		'externalId',
 		'id',
 		'kind',
 		'name',
-		'removeTime',
 		'removed',
 		'state',
 		'uuid',
@@ -42,58 +27,130 @@ class Instance extends \SamIT\Rancher\Types\Entity
 	];
 
 	/**
-	 * @var string
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
 	 * @api-type reference[account]
+	 * @var string
 	 */
-	public $accountId;
-
-	/** @var date */
-	public $created;
-
-	/** @var JsonMap */
-	public $data = [];
-
-	/** @var string */
-	public $description;
-
-	/** @var string */
-	public $externalId;
-
-	/** @var int */
-	public $id;
-
-	/** @var string */
-	public $kind;
-
-	/** @var string */
-	public $name;
-
-	/** @var date */
-	public $removeTime;
-
-	/** @var date */
-	public $removed;
-
-	/** @var StateEnum */
-	public $state;
-
-	/** @var string */
-	public $uuid;
-
-	/** @var TransitioningEnum */
-	public $transitioning;
-
-	/** @var string */
-	public $transitioningMessage;
-
-	/** @var int */
-	public $transitioningProgress;
+	protected $accountId;
 
 	/**
-	 * @var string
-	 * @api-type reference[host]
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type date
+	 * @var DateTimeInterface
 	 */
-	public $hostId;
+	protected $created;
+
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $description;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $externalId;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type int
+	 * @var string
+	 */
+	protected $id;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $kind;
+
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $name;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type date
+	 * @var DateTimeInterface
+	 */
+	protected $removed;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type enum
+	 * @var StateEnum
+	 */
+	protected $state;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $uuid;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type enum
+	 * @var TransitioningEnum
+	 */
+	protected $transitioning;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $transitioningMessage;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $transitioningProgress;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type reference[host]
+	 * @var string
+	 */
+	protected $hostId;
 
 	/** @var string[] */
 	public static $entityLinks = [
@@ -102,98 +159,176 @@ class Instance extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): AccounCollection
+	protected function client(): Client
 	{
-		return $this->client->retrieveEntities($this->links['account']);
+		return parent::client();
 	}
 
 
-	public function getHost(): Host
+	public static function create()
 	{
+		$result = new static();
+		return $result;
 	}
 
 
-	public function getCredentials(): CredentialCollection
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getAccountId(): string
 	{
-		return $this->client->retrieveEntities($this->links['credentials']);
+		return $this->accountId;
 	}
 
 
-	public function getInstances(): InstanceCollection
+	/**
+	 * --> getter from reference: reference[account]
+	 */
+	public function getAccount(): ?Account
 	{
-		return $this->client->retrieveEntities($this->links['instances']);
+		return $this->client()->getAccount($this->accountId);
 	}
 
 
-	public function getHosts(): HostCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getCreated(): DateTimeInterface
 	{
-		return $this->client->retrieveEntities($this->links['hosts']);
+		return $this->created;
 	}
 
 
-	public function getVolumes(): VolumeCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getDescription(): string
 	{
-		return $this->client->retrieveEntities($this->links['volumes']);
+		return $this->description;
 	}
 
 
-	public function getMounts(): MountCollection
+	public function setDescription(string $value = NULL)
 	{
-		return $this->client->retrieveEntities($this->links['mounts']);
+		$this->description = $value;
 	}
 
 
-	public function getServiceEvents(): ServiceEventCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getExternalId(): string
 	{
-		return $this->client->retrieveEntities($this->links['serviceEvents']);
+		return $this->externalId;
 	}
 
 
-	public function getServiceExposeMaps(): ServiceExposeMapCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getId(): string
 	{
-		return $this->client->retrieveEntities($this->links['serviceExposeMaps']);
+		return $this->id;
 	}
 
 
-	public function getServices(): ServiceCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getKind(): string
 	{
-		return $this->client->retrieveEntities($this->links['services']);
+		return $this->kind;
 	}
 
 
-	public function getPorts(): PortCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getName(): string
 	{
-		return $this->client->retrieveEntities($this->links['ports']);
+		return $this->name;
 	}
 
 
-	public function getInstanceLinks(): InstanceLinkCollection
+	public function setName(string $value = NULL)
 	{
-		return $this->client->retrieveEntities($this->links['instanceLinks']);
+		$this->name = $value;
 	}
 
 
-	public function getHealthcheckInstanceHostMaps(): HealthcheckInstanceHostMapCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getRemoved(): DateTimeInterface
 	{
-		return $this->client->retrieveEntities($this->links['healthcheckInstanceHostMaps']);
+		return $this->removed;
 	}
 
 
-	public function getTargetInstanceLinks(): TargetInstanceLinkCollection
+	/**
+	 * @simple-getter
+	 * @return StateEnum
+	 */
+	public function getState(): StateEnum
 	{
-		return $this->client->retrieveEntities($this->links['targetInstanceLinks']);
+		return $this->state;
 	}
 
 
-	public function getInstanceLabels(): InstanceLabelCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getUuid(): string
 	{
-		return $this->client->retrieveEntities($this->links['instanceLabels']);
+		return $this->uuid;
 	}
 
 
-	public function getServiceLogs(): ServiceLogCollection
+	/**
+	 * @simple-getter
+	 * @return TransitioningEnum
+	 */
+	public function getTransitioning(): TransitioningEnum
 	{
-		return $this->client->retrieveEntities($this->links['serviceLogs']);
+		return $this->transitioning;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getTransitioningMessage(): string
+	{
+		return $this->transitioningMessage;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getTransitioningProgress(): int
+	{
+		return $this->transitioningProgress;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getHostId(): string
+	{
+		return $this->hostId;
+	}
+
+
+	/**
+	 * --> getter from reference: reference[host]
+	 */
+	public function getHost(): ?Host
+	{
+		return $this->client()->getHost($this->hostId);
 	}
 
 }

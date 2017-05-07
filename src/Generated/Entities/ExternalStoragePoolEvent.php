@@ -1,8 +1,8 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
-use SamIT\Rancher\Generated\Collections\AccounCollection;
-use SamIT\Rancher\Generated\Collections\ReportedAccounCollection;
+use DateTimeInterface;
+use SamIT\Rancher\Generated\Client;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
@@ -12,7 +12,6 @@ class ExternalStoragePoolEvent extends \SamIT\Rancher\Types\Entity
 	protected const RESOURCE_FIELDS = [
 		'accountId',
 		'created',
-		'data',
 		'eventType',
 		'externalId',
 		'id',
@@ -28,55 +27,130 @@ class ExternalStoragePoolEvent extends \SamIT\Rancher\Types\Entity
 	];
 
 	/**
-	 * @var string
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
 	 * @api-type reference[account]
+	 * @var string
 	 */
-	public $accountId;
-
-	/** @var date */
-	public $created;
-
-	/** @var JsonMap */
-	public $data = [];
-
-	/** @var string */
-	public $eventType;
-
-	/** @var string */
-	public $externalId;
-
-	/** @var int */
-	public $id;
-
-	/** @var string */
-	public $kind;
+	protected $accountId;
 
 	/**
-	 * @var string
-	 * @api-type reference[account]
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type date
+	 * @var DateTimeInterface
 	 */
-	public $reportedAccountId;
+	protected $created;
 
-	/** @var StateEnum */
-	public $state;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $eventType;
 
-	/** @var TransitioningEnum */
-	public $transitioning;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $externalId;
 
-	/** @var string */
-	public $transitioningMessage;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type int
+	 * @var string
+	 */
+	protected $id;
 
-	/** @var int */
-	public $transitioningProgress;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $kind;
 
-	/** @var string */
-	public $uuid;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type reference[account]
+	 * @var string
+	 */
+	protected $reportedAccountId;
 
-	/** @var string[] */
-	public $hostUuids = [];
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type enum
+	 * @var StateEnum
+	 */
+	protected $state;
 
-	/** @var storagePool */
-	public $storagePool;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type enum
+	 * @var TransitioningEnum
+	 */
+	protected $transitioning;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $transitioningMessage;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $transitioningProgress;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $uuid;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type array[string]
+	 * @var string[]
+	 */
+	protected $hostUuids = [];
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type storagePool
+	 * @var StoragePool
+	 */
+	protected $storagePool;
 
 	/** @var string[] */
 	public static $entityLinks = [
@@ -85,15 +159,166 @@ class ExternalStoragePoolEvent extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): AccounCollection
+	protected function client(): Client
 	{
-		return $this->client->retrieveEntities($this->links['account']);
+		return parent::client();
 	}
 
 
-	public function getReportedAccount(): ReportedAccounCollection
+	public static function create()
 	{
-		return $this->client->retrieveEntities($this->links['reportedAccount']);
+		$result = new static();
+		return $result;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getAccountId(): string
+	{
+		return $this->accountId;
+	}
+
+
+	/**
+	 * --> getter from reference: reference[account]
+	 */
+	public function getAccount(): ?Account
+	{
+		return $this->client()->getAccount($this->accountId);
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getCreated(): DateTimeInterface
+	{
+		return $this->created;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getEventType(): string
+	{
+		return $this->eventType;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getExternalId(): string
+	{
+		return $this->externalId;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getId(): string
+	{
+		return $this->id;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getKind(): string
+	{
+		return $this->kind;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getReportedAccountId(): string
+	{
+		return $this->reportedAccountId;
+	}
+
+
+	/**
+	 * --> getter from reference: reference[account]
+	 */
+	public function getReportedAccount(): ?ReportedAccount
+	{
+		return $this->client()->getReportedAccount($this->reportedAccountId);
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return StateEnum
+	 */
+	public function getState(): StateEnum
+	{
+		return $this->state;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return TransitioningEnum
+	 */
+	public function getTransitioning(): TransitioningEnum
+	{
+		return $this->transitioning;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getTransitioningMessage(): string
+	{
+		return $this->transitioningMessage;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getTransitioningProgress(): int
+	{
+		return $this->transitioningProgress;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getUuid(): string
+	{
+		return $this->uuid;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string[]
+	 */
+	public function getHostUuids(): array
+	{
+		return $this->hostUuids;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return StoragePool
+	 */
+	public function getStoragePool(): StoragePool
+	{
+		return $this->storagePool;
 	}
 
 }

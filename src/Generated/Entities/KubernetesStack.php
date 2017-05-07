@@ -1,23 +1,19 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
-use SamIT\Rancher\Generated\Collections\AccounCollection;
-use SamIT\Rancher\Generated\Collections\ConfigItemStatuseCollection;
-use SamIT\Rancher\Generated\Collections\SecretCollection;
-use SamIT\Rancher\Generated\Collections\ServiceCollection;
-use SamIT\Rancher\Generated\Collections\VolumeCollection;
-use SamIT\Rancher\Generated\Collections\VolumeTemplateCollection;
+use DateTimeInterface;
+use SamIT\Rancher\Generated\Client;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
-class KubernetesStack extends \SamIT\Rancher\Types\Entity
+class KubernetesStack extends Stack
 {
 	/** @var string[] The list of fields for this type. */
 	protected const RESOURCE_FIELDS = [
 		'accountId',
+		'answers',
 		'binding',
 		'created',
-		'data',
 		'description',
 		'environment',
 		'externalId',
@@ -28,96 +24,35 @@ class KubernetesStack extends \SamIT\Rancher\Types\Entity
 		'name',
 		'previousEnvironment',
 		'previousExternalId',
-		'removeTime',
 		'removed',
 		'serviceIds',
 		'state',
 		'system',
+		'templates',
 		'transitioning',
 		'transitioningMessage',
 		'transitioningProgress',
 		'uuid',
-		'templates',
 		'namespace',
 	];
 
 	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
 	 * @var string
-	 * @api-type reference[account]
 	 */
-	public $accountId;
+	protected $name;
 
-	/** @var binding */
-	public $binding;
-
-	/** @var date */
-	public $created;
-
-	/** @var JsonMap */
-	public $data = [];
-
-	/** @var string */
-	public $description;
-
-	/** @var StringMap */
-	public $environment = [];
-
-	/** @var string */
-	public $externalId;
-
-	/** @var string */
-	public $group;
-
-	/** @var string */
-	public $healthState;
-
-	/** @var int */
-	public $id;
-
-	/** @var string */
-	public $kind;
-
-	/** @var string */
-	public $name;
-
-	/** @var StringMap */
-	public $previousEnvironment = [];
-
-	/** @var string */
-	public $previousExternalId;
-
-	/** @var date */
-	public $removeTime;
-
-	/** @var date */
-	public $removed;
-
-	/** @var reference[service][] */
-	public $serviceIds = [];
-
-	/** @var StateEnum */
-	public $state;
-
-	/** @var boolean */
-	public $system;
-
-	/** @var TransitioningEnum */
-	public $transitioning;
-
-	/** @var string */
-	public $transitioningMessage;
-
-	/** @var int */
-	public $transitioningProgress;
-
-	/** @var string */
-	public $uuid;
-
-	/** @var StringMap */
-	public $templates = [];
-
-	/** @var string */
-	public $namespace;
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type string
+	 * @var string
+	 */
+	protected $namespace;
 
 	/** @var string[] */
 	public static $entityLinks = [
@@ -126,39 +61,12 @@ class KubernetesStack extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): AccounCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getNamespace(): string
 	{
-		return $this->client->retrieveEntities($this->links['account']);
-	}
-
-
-	public function getVolumeTemplates(): VolumeTemplateCollection
-	{
-		return $this->client->retrieveEntities($this->links['volumeTemplates']);
-	}
-
-
-	public function getVolumes(): VolumeCollection
-	{
-		return $this->client->retrieveEntities($this->links['volumes']);
-	}
-
-
-	public function getConfigItemStatuses(): ConfigItemStatuseCollection
-	{
-		return $this->client->retrieveEntities($this->links['configItemStatuses']);
-	}
-
-
-	public function getServices(): ServiceCollection
-	{
-		return $this->client->retrieveEntities($this->links['services']);
-	}
-
-
-	public function getSecrets(): SecretCollection
-	{
-		return $this->client->retrieveEntities($this->links['secrets']);
+		return $this->namespace;
 	}
 
 }

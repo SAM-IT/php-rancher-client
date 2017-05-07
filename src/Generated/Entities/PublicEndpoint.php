@@ -1,51 +1,151 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Client;
+
 class PublicEndpoint extends \SamIT\Rancher\Types\Entity
 {
 	/** @var string[] The list of fields for this type. */
 	protected const RESOURCE_FIELDS = ['hostId', 'instanceId', 'ipAddress', 'port', 'serviceId'];
 
 	/**
-	 * @var string
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
 	 * @api-type reference[host]
+	 * @var string
 	 */
-	public $hostId;
+	protected $hostId;
 
 	/**
-	 * @var string
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
 	 * @api-type reference[instance]
+	 * @var string
 	 */
-	public $instanceId;
-
-	/** @var string */
-	public $ipAddress;
-
-	/** @var int */
-	public $port;
+	protected $instanceId;
 
 	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type string
 	 * @var string
-	 * @api-type reference[service]
 	 */
-	public $serviceId;
+	protected $ipAddress;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $port;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type reference[service]
+	 * @var string
+	 */
+	protected $serviceId;
 
 	/** @var string[] */
 	public static $entityLinks = ['self' => 'https://rancher.sam-it.eu/v2-beta/schemas/publicendpoint'];
 
 
-	public function getHost(): Host
+	protected function client(): Client
 	{
+		return parent::client();
 	}
 
 
-	public function getInstance(): Instance
+	public static function create(\Host $hostId, \Instance $instanceId, string $ipAddress, \Service $serviceId)
 	{
+		$result = new static();
+		$result->hostId = $hostId;
+		$result->instanceId = $instanceId;
+		$result->ipAddress = $ipAddress;
+		$result->serviceId = $serviceId;
+		return $result;
 	}
 
 
-	public function getService(): Service
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getHostId(): string
 	{
+		return $this->hostId;
+	}
+
+
+	/**
+	 * --> getter from reference: reference[host]
+	 */
+	public function getHost(): ?Host
+	{
+		return $this->client()->getHost($this->hostId);
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getInstanceId(): string
+	{
+		return $this->instanceId;
+	}
+
+
+	/**
+	 * --> getter from reference: reference[instance]
+	 */
+	public function getInstance(): ?Instance
+	{
+		return $this->client()->getInstance($this->instanceId);
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getIpAddress(): string
+	{
+		return $this->ipAddress;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getPort(): int
+	{
+		return $this->port;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getServiceId(): string
+	{
+		return $this->serviceId;
+	}
+
+
+	/**
+	 * --> getter from reference: reference[service]
+	 */
+	public function getService(): ?Service
+	{
+		return $this->client()->getService($this->serviceId);
 	}
 
 }

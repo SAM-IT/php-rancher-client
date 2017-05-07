@@ -1,29 +1,119 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Client;
+
 class BlkioDeviceOption extends \SamIT\Rancher\Types\Entity
 {
 	/** @var string[] The list of fields for this type. */
 	protected const RESOURCE_FIELDS = ['readBps', 'readIops', 'weight', 'writeBps', 'writeIops'];
 
-	/** @var int */
-	public $readBps;
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $readBps;
 
-	/** @var int */
-	public $readIops;
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $readIops;
 
-	/** @var int */
-	public $weight;
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $weight;
 
-	/** @var int */
-	public $writeBps;
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $writeBps;
 
-	/** @var int */
-	public $writeIops;
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $writeIops;
 
 	/** @var string[] */
 	public static $entityLinks = [
 		'self' => 'https://rancher.sam-it.eu/v2-beta/schemas/blkiodeviceoption',
 	];
+
+
+	protected function client(): Client
+	{
+		return parent::client();
+	}
+
+
+	public static function create()
+	{
+		$result = new static();
+		return $result;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getReadBps(): int
+	{
+		return $this->readBps;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getReadIops(): int
+	{
+		return $this->readIops;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getWeight(): int
+	{
+		return $this->weight;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getWriteBps(): int
+	{
+		return $this->writeBps;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getWriteIops(): int
+	{
+		return $this->writeIops;
+	}
 
 }

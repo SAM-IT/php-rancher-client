@@ -1,21 +1,81 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Client;
+
 class InstanceConsole extends \SamIT\Rancher\Types\Entity
 {
 	/** @var string[] The list of fields for this type. */
 	protected const RESOURCE_FIELDS = ['url', 'kind', 'password'];
 
-	/** @var string */
-	public $url;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type string
+	 * @var string
+	 */
+	protected $url;
 
-	/** @var string */
-	public $kind;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type string
+	 * @var string
+	 */
+	protected $kind;
 
-	/** @var string */
-	public $password;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type string
+	 * @var string
+	 */
+	protected $password;
 
 	/** @var string[] */
 	public static $entityLinks = ['self' => 'https://rancher.sam-it.eu/v2-beta/schemas/instanceconsole'];
+
+
+	protected function client(): Client
+	{
+		return parent::client();
+	}
+
+
+	public static function create()
+	{
+		$result = new static();
+		return $result;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getUrl(): string
+	{
+		return $this->url;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getKind(): string
+	{
+		return $this->kind;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getPassword(): string
+	{
+		return $this->password;
+	}
 
 }

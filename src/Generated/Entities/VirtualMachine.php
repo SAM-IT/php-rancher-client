@@ -1,35 +1,18 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
-use SamIT\Rancher\Generated\Collections\AccounCollection;
-use SamIT\Rancher\Generated\Collections\AgenCollection;
-use SamIT\Rancher\Generated\Collections\CredentialCollection;
-use SamIT\Rancher\Generated\Collections\HealthcheckInstanceHostMapCollection;
-use SamIT\Rancher\Generated\Collections\HostCollection;
-use SamIT\Rancher\Generated\Collections\InstanceCollection;
-use SamIT\Rancher\Generated\Collections\InstanceLabelCollection;
-use SamIT\Rancher\Generated\Collections\InstanceLinkCollection;
-use SamIT\Rancher\Generated\Collections\MountCollection;
-use SamIT\Rancher\Generated\Collections\PortCollection;
-use SamIT\Rancher\Generated\Collections\RegistryCredentiaCollection;
-use SamIT\Rancher\Generated\Collections\ServiceCollection;
-use SamIT\Rancher\Generated\Collections\ServiceEventCollection;
-use SamIT\Rancher\Generated\Collections\ServiceExposeMapCollection;
-use SamIT\Rancher\Generated\Collections\ServiceLogCollection;
-use SamIT\Rancher\Generated\Collections\TargetInstanceLinkCollection;
-use SamIT\Rancher\Generated\Collections\VolumeCollection;
+use DateTimeInterface;
+use SamIT\Rancher\Generated\Client;
 use SamIT\Rancher\Generated\Enums\HealthStateEnum;
 use SamIT\Rancher\Generated\Enums\InstanceTriggeredStopEnum;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
-class VirtualMachine extends \SamIT\Rancher\Types\Entity
+class VirtualMachine extends Container
 {
 	/** @var string[] The list of fields for this type. */
 	protected const RESOURCE_FIELDS = [
 		'accountId',
-		'agentId',
-		'allocationState',
 		'blkioDeviceOptions',
 		'blkioWeight',
 		'cgroupParent',
@@ -44,7 +27,6 @@ class VirtualMachine extends \SamIT\Rancher\Types\Entity
 		'cpuShares',
 		'createIndex',
 		'created',
-		'data',
 		'deploymentUnitUuid',
 		'description',
 		'diskQuota',
@@ -98,13 +80,14 @@ class VirtualMachine extends \SamIT\Rancher\Types\Entity
 		'primaryIpAddress',
 		'primaryNetworkId',
 		'registryCredentialId',
-		'removeTime',
 		'removed',
 		'requestedHostId',
 		'restartPolicy',
 		'securityOpt',
+		'serviceId',
 		'serviceIds',
 		'shmSize',
+		'stackId',
 		'startCount',
 		'startOnCreate',
 		'state',
@@ -113,7 +96,6 @@ class VirtualMachine extends \SamIT\Rancher\Types\Entity
 		'sysctls',
 		'system',
 		'tmpfs',
-		'token',
 		'transitioning',
 		'transitioningMessage',
 		'transitioningProgress',
@@ -130,322 +112,166 @@ class VirtualMachine extends \SamIT\Rancher\Types\Entity
 	];
 
 	/**
-	 * @var string
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
 	 * @api-type reference[account]
+	 * @var string
 	 */
-	public $accountId;
+	protected $accountId;
 
 	/**
-	 * @var string
-	 * @api-type reference[agent]
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type date
+	 * @var DateTimeInterface
 	 */
-	public $agentId;
-
-	/** @var string */
-	public $allocationState;
-
-	/** @var BlkioDeviceOptionMap */
-	public $blkioDeviceOptions = [];
-
-	/** @var int */
-	public $blkioWeight;
-
-	/** @var string */
-	public $cgroupParent;
-
-	/** @var string[] */
-	public $command = [];
-
-	/** @var int */
-	public $count;
-
-	/** @var int */
-	public $cpuCount;
-
-	/** @var int */
-	public $cpuPercent;
-
-	/** @var int */
-	public $cpuPeriod;
-
-	/** @var int */
-	public $cpuQuota;
-
-	/** @var string */
-	public $cpuSet;
-
-	/** @var string */
-	public $cpuSetMems;
-
-	/** @var int */
-	public $cpuShares;
-
-	/** @var int */
-	public $createIndex;
-
-	/** @var date */
-	public $created;
-
-	/** @var JsonMap */
-	public $data = [];
-
-	/** @var string */
-	public $deploymentUnitUuid;
-
-	/** @var string */
-	public $description;
-
-	/** @var int */
-	public $diskQuota;
-
-	/** @var string[] */
-	public $dns = [];
-
-	/** @var string[] */
-	public $dnsOpt = [];
-
-	/** @var string[] */
-	public $dnsSearch = [];
-
-	/** @var string */
-	public $domainName;
-
-	/** @var string[] */
-	public $expose = [];
-
-	/** @var string */
-	public $externalId;
-
-	/** @var string[] */
-	public $extraHosts = [];
-
-	/** @var date */
-	public $firstRunning;
-
-	/** @var string[] */
-	public $groupAdd = [];
-
-	/** @var instanceHealthCheck */
-	public $healthCheck;
-
-	/** @var string[] */
-	public $healthCmd = [];
-
-	/** @var int */
-	public $healthInterval;
-
-	/** @var int */
-	public $healthRetries;
-
-	/** @var HealthStateEnum */
-	public $healthState;
-
-	/** @var int */
-	public $healthTimeout;
+	protected $created;
 
 	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
 	 * @var string
+	 */
+	protected $description;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $externalId;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
 	 * @api-type reference[host]
+	 * @var string
 	 */
-	public $hostId;
-
-	/** @var string */
-	public $hostname;
-
-	/** @var int */
-	public $id;
-
-	/** @var string */
-	public $imageUuid;
-
-	/** @var Reference[instance]Map */
-	public $instanceLinks = [];
-
-	/** @var InstanceTriggeredStopEnum */
-	public $instanceTriggeredStop;
-
-	/** @var int */
-	public $ioMaximumBandwidth;
-
-	/** @var int */
-	public $ioMaximumIOps;
-
-	/** @var string */
-	public $ip;
-
-	/** @var string */
-	public $ip6;
-
-	/** @var string */
-	public $ipcMode;
-
-	/** @var string */
-	public $isolation;
-
-	/** @var int */
-	public $kernelMemory;
-
-	/** @var string */
-	public $kind;
-
-	/** @var StringMap */
-	public $labels = [];
-
-	/** @var logConfig */
-	public $logConfig;
-
-	/** @var int */
-	public $memory;
-
-	/** @var int */
-	public $memoryMb;
-
-	/** @var int */
-	public $memoryReservation;
-
-	/** @var int */
-	public $memorySwap;
-
-	/** @var int */
-	public $memorySwappiness;
-
-	/** @var int */
-	public $milliCpuReservation;
-
-	/** @var mountEntry[] */
-	public $mounts = [];
-
-	/** @var string */
-	public $name;
-
-	/** @var boolean */
-	public $nativeContainer;
-
-	/** @var string[] */
-	public $netAlias = [];
-
-	/** @var reference[network][] */
-	public $networkIds = [];
-
-	/** @var string */
-	public $networkMode;
-
-	/** @var boolean */
-	public $oomKillDisable;
-
-	/** @var int */
-	public $oomScoreAdj;
-
-	/** @var int */
-	public $pidsLimit;
-
-	/** @var string[] */
-	public $ports = [];
-
-	/** @var string */
-	public $primaryIpAddress;
+	protected $hostId;
 
 	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type int
 	 * @var string
-	 * @api-type reference[network]
 	 */
-	public $primaryNetworkId;
+	protected $id;
 
 	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
 	 * @var string
-	 * @api-type reference[registryCredential]
 	 */
-	public $registryCredentialId;
-
-	/** @var date */
-	public $removeTime;
-
-	/** @var date */
-	public $removed;
+	protected $kind;
 
 	/**
-	 * @var string
-	 * @api-type reference[host]
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
 	 */
-	public $requestedHostId;
+	protected $memoryMb;
 
-	/** @var restartPolicy */
-	public $restartPolicy;
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $name;
 
-	/** @var string[] */
-	public $securityOpt = [];
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type date
+	 * @var DateTimeInterface
+	 */
+	protected $removed;
 
-	/** @var reference[service][] */
-	public $serviceIds = [];
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type enum
+	 * @var StateEnum
+	 */
+	protected $state;
 
-	/** @var int */
-	public $shmSize;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type enum
+	 * @var TransitioningEnum
+	 */
+	protected $transitioning;
 
-	/** @var int */
-	public $startCount;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $transitioningMessage;
 
-	/** @var boolean */
-	public $startOnCreate;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $transitioningProgress;
 
-	/** @var StateEnum */
-	public $state;
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $userdata;
 
-	/** @var string */
-	public $stopSignal;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $uuid;
 
-	/** @var StringMap */
-	public $storageOpt = [];
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $vcpu;
 
-	/** @var StringMap */
-	public $sysctls = [];
-
-	/** @var boolean */
-	public $system;
-
-	/** @var StringMap */
-	public $tmpfs = [];
-
-	/** @var string */
-	public $token;
-
-	/** @var TransitioningEnum */
-	public $transitioning;
-
-	/** @var string */
-	public $transitioningMessage;
-
-	/** @var int */
-	public $transitioningProgress;
-
-	/** @var ulimit[] */
-	public $ulimits = [];
-
-	/** @var string[] */
-	public $userPorts = [];
-
-	/** @var string */
-	public $userdata;
-
-	/** @var string */
-	public $usernsMode;
-
-	/** @var string */
-	public $uts;
-
-	/** @var string */
-	public $uuid;
-
-	/** @var string */
-	public $version;
-
-	/** @var string */
-	public $volumeDriver;
-
-	/** @var int */
-	public $vcpu;
-
-	/** @var virtualMachineDisk[] */
-	public $disks = [];
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type array[virtualMachineDisk]
+	 * @var VirtualMachineDisk[]
+	 */
+	protected $disks = [];
 
 	/** @var string[] */
 	public static $entityLinks = [
@@ -454,120 +280,215 @@ class VirtualMachine extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): AccounCollection
+	protected function client(): Client
 	{
-		return $this->client->retrieveEntities($this->links['account']);
+		return parent::client();
 	}
 
 
-	public function getAgent(): AgenCollection
+	public static function create(array $labels, \boolean $startOnCreate)
 	{
-		return $this->client->retrieveEntities($this->links['agent']);
+		$result = new static();
+		$result->labels = $labels;
+		$result->startOnCreate = $startOnCreate;
+		return $result;
 	}
 
 
-	public function getHost(): Host
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getAccountId(): string
 	{
+		return $this->accountId;
 	}
 
 
-	public function getPrimaryNetwork(): PrimaryNetwork
+	/**
+	 * --> getter from reference: reference[account]
+	 */
+	public function getAccount(): ?Account
 	{
+		return $this->client()->getAccount($this->accountId);
 	}
 
 
-	public function getRegistryCredential(): RegistryCredentiaCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getCreated(): DateTimeInterface
 	{
-		return $this->client->retrieveEntities($this->links['registryCredential']);
+		return $this->created;
 	}
 
 
-	public function getRequestedHost(): RequestedHost
+	/**
+	 * @simple-getter
+	 */
+	public function getDescription(): string
 	{
+		return $this->description;
 	}
 
 
-	public function getCredentials(): CredentialCollection
+	public function setDescription(string $value = NULL)
 	{
-		return $this->client->retrieveEntities($this->links['credentials']);
+		$this->description = $value;
 	}
 
 
-	public function getInstances(): InstanceCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getExternalId(): string
 	{
-		return $this->client->retrieveEntities($this->links['instances']);
+		return $this->externalId;
 	}
 
 
-	public function getHosts(): HostCollection
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getHostId(): string
 	{
-		return $this->client->retrieveEntities($this->links['hosts']);
+		return $this->hostId;
 	}
 
 
-	public function getVolumes(): VolumeCollection
+	/**
+	 * --> getter from reference: reference[host]
+	 */
+	public function getHost(): ?Host
 	{
-		return $this->client->retrieveEntities($this->links['volumes']);
+		return $this->client()->getHost($this->hostId);
 	}
 
 
-	public function getMounts(): MountCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getId(): string
 	{
-		return $this->client->retrieveEntities($this->links['mounts']);
+		return $this->id;
 	}
 
 
-	public function getServiceEvents(): ServiceEventCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getKind(): string
 	{
-		return $this->client->retrieveEntities($this->links['serviceEvents']);
+		return $this->kind;
 	}
 
 
-	public function getServiceExposeMaps(): ServiceExposeMapCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getMemoryMb(): int
 	{
-		return $this->client->retrieveEntities($this->links['serviceExposeMaps']);
+		return $this->memoryMb;
 	}
 
 
-	public function getServices(): ServiceCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getName(): string
 	{
-		return $this->client->retrieveEntities($this->links['services']);
+		return $this->name;
 	}
 
 
-	public function getPorts(): PortCollection
+	public function setName(string $value = NULL)
 	{
-		return $this->client->retrieveEntities($this->links['ports']);
+		$this->name = $value;
 	}
 
 
-	public function getInstanceLinks(): InstanceLinkCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getRemoved(): DateTimeInterface
 	{
-		return $this->client->retrieveEntities($this->links['instanceLinks']);
+		return $this->removed;
 	}
 
 
-	public function getHealthcheckInstanceHostMaps(): HealthcheckInstanceHostMapCollection
+	/**
+	 * @simple-getter
+	 * @return StateEnum
+	 */
+	public function getState(): StateEnum
 	{
-		return $this->client->retrieveEntities($this->links['healthcheckInstanceHostMaps']);
+		return $this->state;
 	}
 
 
-	public function getTargetInstanceLinks(): TargetInstanceLinkCollection
+	/**
+	 * @simple-getter
+	 * @return TransitioningEnum
+	 */
+	public function getTransitioning(): TransitioningEnum
 	{
-		return $this->client->retrieveEntities($this->links['targetInstanceLinks']);
+		return $this->transitioning;
 	}
 
 
-	public function getInstanceLabels(): InstanceLabelCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getTransitioningMessage(): string
 	{
-		return $this->client->retrieveEntities($this->links['instanceLabels']);
+		return $this->transitioningMessage;
 	}
 
 
-	public function getServiceLogs(): ServiceLogCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getTransitioningProgress(): int
 	{
-		return $this->client->retrieveEntities($this->links['serviceLogs']);
+		return $this->transitioningProgress;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getUserdata(): string
+	{
+		return $this->userdata;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getUuid(): string
+	{
+		return $this->uuid;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getVcpu(): int
+	{
+		return $this->vcpu;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return VirtualMachineDisk[]
+	 */
+	public function getDisks(): array
+	{
+		return $this->disks;
 	}
 
 }

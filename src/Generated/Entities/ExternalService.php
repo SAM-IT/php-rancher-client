@@ -1,16 +1,8 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
-use SamIT\Rancher\Generated\Collections\AccounCollection;
-use SamIT\Rancher\Generated\Collections\ConfigItemStatuseCollection;
-use SamIT\Rancher\Generated\Collections\ConsumedbyserviceCollection;
-use SamIT\Rancher\Generated\Collections\ConsumedserviceCollection;
-use SamIT\Rancher\Generated\Collections\InstanceCollection;
-use SamIT\Rancher\Generated\Collections\NetworkDriverCollection;
-use SamIT\Rancher\Generated\Collections\ServiceExposeMapCollection;
-use SamIT\Rancher\Generated\Collections\ServiceLogCollection;
-use SamIT\Rancher\Generated\Collections\StacCollection;
-use SamIT\Rancher\Generated\Collections\StorageDriverCollection;
+use DateTimeInterface;
+use SamIT\Rancher\Generated\Client;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
@@ -20,7 +12,6 @@ class ExternalService extends Service
 	protected const RESOURCE_FIELDS = [
 		'accountId',
 		'created',
-		'data',
 		'description',
 		'externalId',
 		'fqdn',
@@ -32,7 +23,6 @@ class ExternalService extends Service
 		'linkedServices',
 		'metadata',
 		'name',
-		'removeTime',
 		'removed',
 		'stackId',
 		'startOnCreate',
@@ -48,14 +38,32 @@ class ExternalService extends Service
 		'healthCheck',
 	];
 
-	/** @var string[] */
-	public $externalIpAddresses = [];
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type array[string]
+	 * @var string[]
+	 */
+	protected $externalIpAddresses = [];
 
-	/** @var string */
-	public $hostname;
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $hostname;
 
-	/** @var instanceHealthCheck */
-	public $healthCheck;
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type instanceHealthCheck
+	 * @var InstanceHealthCheck
+	 */
+	protected $healthCheck;
 
 	/** @var string[] */
 	public static $entityLinks = [
@@ -64,63 +72,44 @@ class ExternalService extends Service
 	];
 
 
-	public function getAccount(): AccounCollection
+	/**
+	 * @simple-getter
+	 * @return string[]
+	 */
+	public function getExternalIpAddresses(): array
 	{
-		return $this->client->retrieveEntities($this->links['account']);
+		return $this->externalIpAddresses;
 	}
 
 
-	public function getStack(): StacCollection
+	public function setExternalIpAddresses(array $value = NULL)
 	{
-		return $this->client->retrieveEntities($this->links['stack']);
+		$this->externalIpAddresses = $value;
 	}
 
 
-	public function getConsumedbyservices(): ConsumedbyserviceCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getHostname(): string
 	{
-		return $this->client->retrieveEntities($this->links['consumedbyservices']);
+		return $this->hostname;
 	}
 
 
-	public function getInstances(): InstanceCollection
+	public function setHostname(string $value = NULL)
 	{
-		return $this->client->retrieveEntities($this->links['instances']);
+		$this->hostname = $value;
 	}
 
 
-	public function getStorageDrivers(): StorageDriverCollection
+	/**
+	 * @simple-getter
+	 * @return InstanceHealthCheck
+	 */
+	public function getHealthCheck(): InstanceHealthCheck
 	{
-		return $this->client->retrieveEntities($this->links['storageDrivers']);
-	}
-
-
-	public function getConsumedservices(): ConsumedserviceCollection
-	{
-		return $this->client->retrieveEntities($this->links['consumedservices']);
-	}
-
-
-	public function getConfigItemStatuses(): ConfigItemStatuseCollection
-	{
-		return $this->client->retrieveEntities($this->links['configItemStatuses']);
-	}
-
-
-	public function getServiceExposeMaps(): ServiceExposeMapCollection
-	{
-		return $this->client->retrieveEntities($this->links['serviceExposeMaps']);
-	}
-
-
-	public function getNetworkDrivers(): NetworkDriverCollection
-	{
-		return $this->client->retrieveEntities($this->links['networkDrivers']);
-	}
-
-
-	public function getServiceLogs(): ServiceLogCollection
-	{
-		return $this->client->retrieveEntities($this->links['serviceLogs']);
+		return $this->healthCheck;
 	}
 
 }

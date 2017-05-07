@@ -1,8 +1,8 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
-use SamIT\Rancher\Generated\Collections\AccounCollection;
-use SamIT\Rancher\Generated\Collections\HosCollection;
+use DateTimeInterface;
+use SamIT\Rancher\Generated\Client;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
@@ -12,7 +12,6 @@ class ContainerEvent extends \SamIT\Rancher\Types\Entity
 	protected const RESOURCE_FIELDS = [
 		'accountId',
 		'created',
-		'data',
 		'externalFrom',
 		'externalId',
 		'externalStatus',
@@ -29,58 +28,139 @@ class ContainerEvent extends \SamIT\Rancher\Types\Entity
 	];
 
 	/**
-	 * @var string
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
 	 * @api-type reference[account]
+	 * @var string
 	 */
-	public $accountId;
-
-	/** @var date */
-	public $created;
-
-	/** @var JsonMap */
-	public $data = [];
-
-	/** @var string */
-	public $externalFrom;
-
-	/** @var string */
-	public $externalId;
-
-	/** @var string */
-	public $externalStatus;
-
-	/** @var int */
-	public $externalTimestamp;
+	protected $accountId;
 
 	/**
-	 * @var string
-	 * @api-type reference[host]
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type date
+	 * @var DateTimeInterface
 	 */
-	public $hostId;
+	protected $created;
 
-	/** @var int */
-	public $id;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $externalFrom;
 
-	/** @var string */
-	public $kind;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $externalId;
 
-	/** @var string */
-	public $reportedHostUuid;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $externalStatus;
 
-	/** @var StateEnum */
-	public $state;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $externalTimestamp;
 
-	/** @var TransitioningEnum */
-	public $transitioning;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type reference[host]
+	 * @var string
+	 */
+	protected $hostId;
 
-	/** @var string */
-	public $transitioningMessage;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type int
+	 * @var string
+	 */
+	protected $id;
 
-	/** @var int */
-	public $transitioningProgress;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $kind;
 
-	/** @var json */
-	public $dockerInspect;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $reportedHostUuid;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type enum
+	 * @var StateEnum
+	 */
+	protected $state;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type enum
+	 * @var TransitioningEnum
+	 */
+	protected $transitioning;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $transitioningMessage;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $transitioningProgress;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type json
+	 * @var array
+	 */
+	protected $dockerInspect;
 
 	/** @var string[] */
 	public static $entityLinks = [
@@ -89,15 +169,173 @@ class ContainerEvent extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): AccounCollection
+	protected function client(): Client
 	{
-		return $this->client->retrieveEntities($this->links['account']);
+		return parent::client();
 	}
 
 
-	public function getHost(): HosCollection
+	public static function create()
 	{
-		return $this->client->retrieveEntities($this->links['host']);
+		$result = new static();
+		return $result;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getAccountId(): string
+	{
+		return $this->accountId;
+	}
+
+
+	/**
+	 * --> getter from reference: reference[account]
+	 */
+	public function getAccount(): ?Account
+	{
+		return $this->client()->getAccount($this->accountId);
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getCreated(): DateTimeInterface
+	{
+		return $this->created;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getExternalFrom(): string
+	{
+		return $this->externalFrom;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getExternalId(): string
+	{
+		return $this->externalId;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getExternalStatus(): string
+	{
+		return $this->externalStatus;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getExternalTimestamp(): int
+	{
+		return $this->externalTimestamp;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getHostId(): string
+	{
+		return $this->hostId;
+	}
+
+
+	/**
+	 * --> getter from reference: reference[host]
+	 */
+	public function getHost(): ?Host
+	{
+		return $this->client()->getHost($this->hostId);
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getId(): string
+	{
+		return $this->id;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getKind(): string
+	{
+		return $this->kind;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getReportedHostUuid(): string
+	{
+		return $this->reportedHostUuid;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return StateEnum
+	 */
+	public function getState(): StateEnum
+	{
+		return $this->state;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return TransitioningEnum
+	 */
+	public function getTransitioning(): TransitioningEnum
+	{
+		return $this->transitioning;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getTransitioningMessage(): string
+	{
+		return $this->transitioningMessage;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getTransitioningProgress(): int
+	{
+		return $this->transitioningProgress;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getDockerInspect(): array
+	{
+		return $this->dockerInspect;
 	}
 
 }

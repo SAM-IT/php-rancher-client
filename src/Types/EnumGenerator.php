@@ -96,8 +96,9 @@ class EnumGenerator
             throw new \Exception("Must create options first.");
         }
 
-
-        if (count(array_unique($this->names[$fieldName])) == 1) {
+        if (!isset($this->names[$fieldName])) {
+            return;
+        } elseif (count(array_unique($this->names[$fieldName])) == 1) {
             return "\\{$this->namespace->getName()}\\{$this->className($fieldName)}";
         } else {
             return "\\{$this->namespace->getName()}\\{$this->className($fieldName, $entityName)}";

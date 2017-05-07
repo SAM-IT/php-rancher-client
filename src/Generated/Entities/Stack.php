@@ -1,12 +1,8 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
-use SamIT\Rancher\Generated\Collections\AccounCollection;
-use SamIT\Rancher\Generated\Collections\ConfigItemStatuseCollection;
-use SamIT\Rancher\Generated\Collections\SecretCollection;
-use SamIT\Rancher\Generated\Collections\ServiceCollection;
-use SamIT\Rancher\Generated\Collections\VolumeCollection;
-use SamIT\Rancher\Generated\Collections\VolumeTemplateCollection;
+use DateTimeInterface;
+use SamIT\Rancher\Generated\Client;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
@@ -16,7 +12,6 @@ class Stack extends \SamIT\Rancher\Types\Entity
 	protected const RESOURCE_FIELDS = [
 		'accountId',
 		'created',
-		'data',
 		'description',
 		'externalId',
 		'group',
@@ -24,7 +19,6 @@ class Stack extends \SamIT\Rancher\Types\Entity
 		'id',
 		'kind',
 		'name',
-		'removeTime',
 		'removed',
 		'state',
 		'system',
@@ -35,6 +29,8 @@ class Stack extends \SamIT\Rancher\Types\Entity
 		'dockerCompose',
 		'rancherCompose',
 		'environment',
+		'answers',
+		'templates',
 		'previousExternalId',
 		'previousEnvironment',
 		'startOnCreate',
@@ -44,88 +40,247 @@ class Stack extends \SamIT\Rancher\Types\Entity
 	];
 
 	/**
-	 * @var string
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
 	 * @api-type reference[account]
+	 * @var string
 	 */
-	public $accountId;
+	protected $accountId;
 
-	/** @var date */
-	public $created;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type date
+	 * @var DateTimeInterface
+	 */
+	protected $created;
 
-	/** @var JsonMap */
-	public $data = [];
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $description;
 
-	/** @var string */
-	public $description;
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $externalId;
 
-	/** @var string */
-	public $externalId;
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $group;
 
-	/** @var string */
-	public $group;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $healthState;
 
-	/** @var string */
-	public $healthState;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type int
+	 * @var string
+	 */
+	protected $id;
 
-	/** @var int */
-	public $id;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $kind;
 
-	/** @var string */
-	public $kind;
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $name;
 
-	/** @var string */
-	public $name;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type date
+	 * @var DateTimeInterface
+	 */
+	protected $removed;
 
-	/** @var date */
-	public $removeTime;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type enum
+	 * @var StateEnum
+	 */
+	protected $state;
 
-	/** @var date */
-	public $removed;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type boolean
+	 * @var boolean
+	 */
+	protected $system;
 
-	/** @var StateEnum */
-	public $state;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $uuid;
 
-	/** @var boolean */
-	public $system;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type enum
+	 * @var TransitioningEnum
+	 */
+	protected $transitioning;
 
-	/** @var string */
-	public $uuid;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $transitioningMessage;
 
-	/** @var TransitioningEnum */
-	public $transitioning;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $transitioningProgress;
 
-	/** @var string */
-	public $transitioningMessage;
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type string
+	 * @var string
+	 */
+	protected $dockerCompose;
 
-	/** @var int */
-	public $transitioningProgress;
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type string
+	 * @var string
+	 */
+	protected $rancherCompose;
 
-	/** @var string */
-	public $dockerCompose;
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type map[string]
+	 * @var string[]
+	 */
+	protected $environment = [];
 
-	/** @var string */
-	public $rancherCompose;
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type map[json]
+	 * @var SamIT\Rancher\Types\JsonMap
+	 */
+	protected $answers = [];
 
-	/** @var StringMap */
-	public $environment = [];
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type map[string]
+	 * @var string[]
+	 */
+	protected $templates = [];
 
-	/** @var string */
-	public $previousExternalId;
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $previousExternalId;
 
-	/** @var StringMap */
-	public $previousEnvironment = [];
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type map[string]
+	 * @var string[]
+	 */
+	protected $previousEnvironment = [];
 
-	/** @var boolean */
-	public $startOnCreate;
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type boolean
+	 * @var boolean
+	 */
+	protected $startOnCreate;
 
-	/** @var StringMap */
-	public $outputs = [];
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type map[string]
+	 * @var string[]
+	 */
+	protected $outputs = [];
 
-	/** @var binding */
-	public $binding;
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type binding
+	 * @var Binding
+	 */
+	protected $binding;
 
-	/** @var reference[service][] */
-	public $serviceIds = [];
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type array[reference[service]]
+	 * @var string[][]
+	 */
+	protected $serviceIds = [];
 
 	/** @var string[] */
 	public static $entityLinks = [
@@ -134,39 +289,330 @@ class Stack extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): AccounCollection
+	protected function client(): Client
 	{
-		return $this->client->retrieveEntities($this->links['account']);
+		return parent::client();
 	}
 
 
-	public function getVolumeTemplates(): VolumeTemplateCollection
+	public static function create(string $dockerCompose, string $rancherCompose, array $environment, \JsonMap $answers)
 	{
-		return $this->client->retrieveEntities($this->links['volumeTemplates']);
+		$result = new static();
+		$result->dockerCompose = $dockerCompose;
+		$result->rancherCompose = $rancherCompose;
+		$result->environment = $environment;
+		$result->answers = $answers;
+		return $result;
 	}
 
 
-	public function getVolumes(): VolumeCollection
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getAccountId(): string
 	{
-		return $this->client->retrieveEntities($this->links['volumes']);
+		return $this->accountId;
 	}
 
 
-	public function getConfigItemStatuses(): ConfigItemStatuseCollection
+	/**
+	 * --> getter from reference: reference[account]
+	 */
+	public function getAccount(): ?Account
 	{
-		return $this->client->retrieveEntities($this->links['configItemStatuses']);
+		return $this->client()->getAccount($this->accountId);
 	}
 
 
-	public function getServices(): ServiceCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getCreated(): DateTimeInterface
 	{
-		return $this->client->retrieveEntities($this->links['services']);
+		return $this->created;
 	}
 
 
-	public function getSecrets(): SecretCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getDescription(): string
 	{
-		return $this->client->retrieveEntities($this->links['secrets']);
+		return $this->description;
+	}
+
+
+	public function setDescription(string $value = NULL)
+	{
+		$this->description = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getExternalId(): string
+	{
+		return $this->externalId;
+	}
+
+
+	public function setExternalId(string $value = NULL)
+	{
+		$this->externalId = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getGroup(): string
+	{
+		return $this->group;
+	}
+
+
+	public function setGroup(string $value = NULL)
+	{
+		$this->group = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getHealthState(): string
+	{
+		return $this->healthState;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getId(): string
+	{
+		return $this->id;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getKind(): string
+	{
+		return $this->kind;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getName(): string
+	{
+		return $this->name;
+	}
+
+
+	public function setName(string $value = NULL)
+	{
+		$this->name = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getRemoved(): DateTimeInterface
+	{
+		return $this->removed;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return StateEnum
+	 */
+	public function getState(): StateEnum
+	{
+		return $this->state;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getSystem(): \boolean
+	{
+		return $this->system;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getUuid(): string
+	{
+		return $this->uuid;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return TransitioningEnum
+	 */
+	public function getTransitioning(): TransitioningEnum
+	{
+		return $this->transitioning;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getTransitioningMessage(): string
+	{
+		return $this->transitioningMessage;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getTransitioningProgress(): int
+	{
+		return $this->transitioningProgress;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getDockerCompose(): string
+	{
+		return $this->dockerCompose;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getRancherCompose(): string
+	{
+		return $this->rancherCompose;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string[]
+	 */
+	public function getEnvironment(): array
+	{
+		return $this->environment;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return SamIT\Rancher\Types\JsonMap
+	 */
+	public function getAnswers(): SamIT\Rancher\Generated\Entities\JsonMap
+	{
+		return $this->answers;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string[]
+	 */
+	public function getTemplates(): array
+	{
+		return $this->templates;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getPreviousExternalId(): string
+	{
+		return $this->previousExternalId;
+	}
+
+
+	public function setPreviousExternalId(string $value = NULL)
+	{
+		$this->previousExternalId = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string[]
+	 */
+	public function getPreviousEnvironment(): array
+	{
+		return $this->previousEnvironment;
+	}
+
+
+	public function setPreviousEnvironment(array $value = NULL)
+	{
+		$this->previousEnvironment = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getStartOnCreate(): \boolean
+	{
+		return $this->startOnCreate;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string[]
+	 */
+	public function getOutputs(): array
+	{
+		return $this->outputs;
+	}
+
+
+	public function setOutputs(array $value = NULL)
+	{
+		$this->outputs = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return Binding
+	 */
+	public function getBinding(): Binding
+	{
+		return $this->binding;
+	}
+
+
+	public function setBinding(Binding $value = NULL)
+	{
+		$this->binding = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string[][]
+	 */
+	public function getServiceIds(): array
+	{
+		return $this->serviceIds;
 	}
 
 }

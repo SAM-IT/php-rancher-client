@@ -9,6 +9,7 @@ use Nette\PhpGenerator\Helpers;
 use Nette\PhpGenerator\PhpFile;
 use Nette\PhpGenerator\PhpLiteral;
 use Nette\PhpGenerator\PhpNamespace;
+use Rancher\Exception\ResourceNotFoundException;
 use SamIT\Rancher\Types\Collection;
 use SamIT\Rancher\Types\Entity;
 use SamIT\Rancher\Types\EnumGenerator;
@@ -27,6 +28,7 @@ class Client
         'Container' => 'Instance',
         'NetworkDriverService' => 'Service',
         'LoadBalancerService' => 'Service',
+        'LbConfig' => 'LbTargetConfig',
         'ExternalService' => 'Service',
         'ActiveSetting' => 'Setting',
         'RegistrationToken' => 'Credential',
@@ -71,14 +73,17 @@ class Client
 
     public function createClasses($directory, $namespace)
     {
+        $this->namespace = $namespace;
         $baseSchema = $this->loadBaseSchema();
         $enumGenerator = new \SamIT\Rancher\Types\EnumGenerator();
 
         $file = new PhpFile();
         $baseNamespace = $file->addNamespace($namespace);
-        $entityNamespace = new PhpNamespace("$namespace\\Entities");
-        $collectionNamespace = new PhpNamespace("$namespace\\Collections");
-        $enumNamespace = new PhpNamespace("$namespace\\Enums");
+        $entityNamespace = new PhpNamespace($this->getEntityNamespace());
+        $collectionNamespace = new PhpNamespace($this->getCollectionNamespace());
+        $mapNamespace = new PhpNamespace($this->getMapNamespace());
+        $enumNamespace = new PhpNamespace($this->getEnumNamespace());
+
 
 
 
@@ -96,7 +101,14 @@ class Client
 
         /** @var Schema $schema */
         foreach($schemas as $schema) {
-            $this->parseSchema($schema, $entityNamespace, $collectionNamespace, $enumGenerator, $clientClass);
+            $this->parseSchema(
+                $schema,
+                $entityNamespace,
+                $collectionNamespace,
+                $mapNamespace,
+                $enumGenerator,
+                $clientClass
+            );
 
         }
 
@@ -132,7 +144,8 @@ class Client
     private function parseSchema(
         \SamIT\Rancher\Generated\Schema $schema,
         PhpNamespace $entityNamespace,
-        PhpNamespace$collectionNamespace,
+        PhpNamespace $collectionNamespace,
+        PhpNamespace $mapNamespace,
         EnumGenerator $enumGenerator,
         ClassType $client
     ) {
@@ -149,17 +162,29 @@ class Client
         );
         $this->files[$collectionNamespace->getName() . '\\' . $collectionClass->getName()] = $file;
 
+        $file = new PhpFile();
+        $mapClass = $schema->generateMapClass(
+            $baseClass,
+            $file->addNamespace($mapNamespace->getName())
+        );
+        $this->files[$mapNamespace->getName() . '\\' . $mapClass->getName()] = $file;
+
         // Add collection retrieval to the main client.
         if (isset($schema->links['collection'])) {
             // Entity has a collection.
             $client->getNamespace()->addUse($baseClass->getNamespace()->getName() . '\\' . $baseClass->getName(), null, $baseClassAlias);
             $client->getNamespace()->addUse($collectionClass->getNamespace()->getName() . '\\' . $collectionClass->getName(), null, $collectionClassAlias);
-            $client->addMethod('get' . ucfirst($schema->pluralName))
+            $client->addMethod('get' . ucfirst($schema->getPluralName()))
                 ->setReturnType($collectionClass->getNamespace()->getName() . '\\' . $collectionClass->getName())
                 ->addComment("@return {$baseClassAlias}[]|{$collectionClassAlias}")
-                ->setBody('return $this->retrieveEntities(?, ?);', [
+                ->setBody(implode("\n", [
+                    '$result = $this->retrieveEntities(?, ?);',
+                    'if ($result instanceof ?) return $result;',
+
+                ]), [
                     strtr($schema->links['collection'], [$this->endpoint => '']),
-                    new PhpLiteral('$limit')
+                    new PhpLiteral('$limit'),
+                    new PhpLiteral($collectionClass->getName())
                 ])
                 ->addParameter('limit', null)
                     ->setNullable(true)
@@ -167,15 +192,36 @@ class Client
 
 
             // Identify class hierarchy.
-            $data = $this->retrieveRawEntities($schema->links['collection'], 1);
+            $data = $this->retrieve($schema->links['collection'], ['limit' => 1]);
             if (count($data['createTypes']) > 1) {
                 unset($data['createTypes'][strtolower($baseClass->getName())]);
                 foreach($data['createTypes'] as $type => $url) {
                     $this->parentClasses[ucfirst($type)] = $baseClass->getName();
                 }
             }
+            // Add find function to main class.
+            $client->addMethod('get' . ucfirst($schema->id))
+                ->addComment("Find a {$schema->id} by id")
+                ->setReturnNullable(false)
+                ->setReturnType($baseClass->getNamespace()->getName() . '\\' . $baseClass->getName())
+                ->setBody(implode("\n", [
+                    '$result = $this->retrieveEntity(?, $id);',
+                    'if ($result instanceof ?)',
+                    '    return $result;',
+                    'else',
+                    '    throw new \Exception("Entity not found.");'
+                ]), [
+                    strtr($schema->links['collection'], [$this->endpoint => '']),
+                    new PhpLiteral($baseClass->getName())
+                ])
+                ->addParameter('id')->setTypeHint('string')
+
+                ;
         }
         $this->classes[$collectionClass->getNamespace()->getName() . "\\" . $collectionClass->getName()] = $collectionClass;
+
+
+
 
     }
 
@@ -183,18 +229,54 @@ class Client
     private function configureParent(ClassType $child, ClassType $parent)
     {
         $child->setExtends($parent->getNamespace()->getName() . "\\" . $parent->getName());
+
+        // Remove redundant properties.
         $properties = $child->getProperties();
         foreach($properties as $name => $property) {
             if (isset($parent->getProperties()[$name])
-            && $parent->getProperties()[$name] == $property) {
+            && $parent->getProperty($name) == $property) {
                 unset($properties[$name]);
             }
         }
         $child->setProperties($properties);
+
+        // Remove redundant methods.
+        $methods = $child->getMethods();
+        $log = $child->getName() == "LoadBalancerService";
+        foreach($methods as $name => $childMethod) {
+            if (isset($parent->getMethods()[$name])) {
+                unset($methods[$name]);
+                $parentMethod = $parent->getMethod($name);
+
+                // Check if the return type is different.
+                if ($parentMethod->getReturnType() != $childMethod->getReturnType()
+                    && isset($this->parentClasses[Helpers::extractShortName($childMethod->getReturnType())])
+                    && $this->parentClasses[Helpers::extractShortName($childMethod->getReturnType())]
+                        == Helpers::extractShortName($parentMethod->getReturnType())
+                ) {
+                    // Child return type is more specific than parent return type, PHP does not yet support this.
+                    // Use class annotation instead.
+                    $child->getNamespace()->addUse($childMethod->getReturnType(), null, $short);
+                    $child->addComment("@method $short $name Implementation in parent.");
+//                    var_dump($parentMethod->getReturnType());
+//                    var_dump($childMethod->getReturnType());
+//
+//                    die();
+                }
+
+            }
+
+        }
+        $child->setMethods($methods);
+//        var_dump(array_keys($methods));
+//        var_dump($child->getMethods());
+//        var_dump((string) $child);
+//        if ($log) { die(); }
+
     }
 
 
-    protected function retrieveRawEntities($url, ?int $limit = null) : array
+    protected function retrieve($url, array $params = [])
     {
         if (strpos($url, '://') === false) {
             $baseUrl = $this->endpoint . $url;
@@ -202,16 +284,9 @@ class Client
             $baseUrl = $url;
         }
 
-        $queryArgs = [];
-        if (isset($limit)) {
-            $queryArgs['limit'] = $limit;
-        }
-
-
-        $response  = $this->httpClient->get($baseUrl, [
-            'query' => $queryArgs
-        ]);
-        return \GuzzleHttp\json_decode($response->getBody(), true);
+        return \GuzzleHttp\json_decode($this->httpClient->get($baseUrl, [
+            'query' => $params
+        ])->getBody(), true);
     }
 
     /**
@@ -221,13 +296,17 @@ class Client
      */
     public function retrieveEntities($url, ?int $limit = null) : Collection
     {
+        $queryArgs = [];
+        if (isset($limit)) {
+            $queryArgs['limit'] = $limit;
+        }
 
-        $entityConfigs = $this->retrieveRawEntities($url, $limit);
+        $entityConfigs = $this->retrieve($url, $queryArgs);
         if (isset($entityConfigs['type']) && $entityConfigs['type'] == 'collection') {
-            $collection = Collection::createCollection($entityConfigs['resourceType'], $this->namespace . "\\Collections");
+            $collection = Collection::createCollection($entityConfigs['resourceType'], $this->getCollectionNamespace());
             // Iterate over data.
             foreach($entityConfigs['data'] as $entityConfig) {
-                $collection->add(Entity::createEntity($entityConfig, $this->namespace . "\\Entities", $this));
+                $collection->add(Entity::createEntity($entityConfig, $this));
             }
 
             return $collection;
@@ -235,23 +314,79 @@ class Client
 
     }
 
+    /**
+     * @param $url
+     * @param string $id
+     * @return Entity
+     */
+    public function retrieveEntity($url, string $id) : ?Entity
+    {
+        $entityConfig = $this->retrieve("$url/$id");
+        if (isset($entityConfig['type'])) {
+            return Entity::createEntity($entityConfig, $this);
+        }
+
+    }
+
+    public function createEntity(Entity $entity)
+    {
+        $response = $this->httpClient->post($entity::$entityLinks['collection'], [
+            'json' => $entity->jsonSerialize(true),
+            'exceptions' => false
+        ]);
+        $responseData = \GuzzleHttp\json_decode($response->getBody()->getContents(), true);
+        switch($response->getStatusCode()) {
+            case 200:
+                Entity::applyConfig($entity, $responseData, $this);
+                return true;
+            case 405:
+                echo "Bad method 405";
+                break;
+            case 422:
+                echo "Unprocessable entity\n";
+
+                print_r($entity->jsonSerialize(true));
+                echo "---- RESPONSE -----\n";
+                print_r($responseData);
+                break;
+            default:
+                echo "---- REQUEST -----\n";
+                print_r($entity->jsonSerialize());
+                echo "---- RESPONSE -----\n";
+                print_r($responseData);
+                die();
+        }
+
+
+    }
+
     public function updateEntity(Entity $entity)
     {
         if (isset($entity->actions['update'])) {
             $response = $this->httpClient->put($entity->actions['update'], [
-                'json' => $entity->jsonSerialize(),
+                'json' => $entity->jsonSerialize(true),
                 'exceptions' => false
             ]);
             $responseData = \GuzzleHttp\json_decode($response->getBody()->getContents(), true);
             switch($response->getStatusCode()) {
                 case 200:
-                    Entity::applyConfig($entity, $responseData);
+                    Entity::applyConfig($entity, $responseData, $this);
                     return true;
                 case 405:
                     echo "Bad method 405";
                     break;
+                case 422:
+                    echo "Unprocessable entity\n";
+
+                    print_r($entity->jsonSerialize());
+                    echo "---- RESPONSE -----\n";
+                    print_r($responseData);
+                    break;
                 default:
-                    var_dump($responseData);
+                    echo "---- REQUEST -----\n";
+                    print_r($entity->jsonSerialize());
+                    echo "---- RESPONSE -----\n";
+                    print_r($responseData);
                     die();
             }
 
@@ -278,6 +413,25 @@ class Client
     }
 
 
+    public function getEntityNamespace()
+    {
+        return "{$this->namespace}\\Entities";
+    }
+
+    public function getCollectionNamespace()
+    {
+        return "{$this->namespace}\\Collections";
+    }
+
+    public function getMapNamespace()
+    {
+        return "{$this->namespace}\\Maps";
+    }
+
+    public function getEnumNamespace()
+    {
+        return "{$this->namespace}\\Enums";
+    }
 
 
 

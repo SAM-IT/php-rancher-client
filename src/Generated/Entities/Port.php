@@ -1,10 +1,8 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
-use SamIT\Rancher\Generated\Collections\AccounCollection;
-use SamIT\Rancher\Generated\Collections\InstancCollection;
-use SamIT\Rancher\Generated\Collections\PrivateIpAddresCollection;
-use SamIT\Rancher\Generated\Collections\PublicIpAddresCollection;
+use DateTimeInterface;
+use SamIT\Rancher\Generated\Client;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
@@ -14,7 +12,6 @@ class Port extends \SamIT\Rancher\Types\Entity
 	protected const RESOURCE_FIELDS = [
 		'accountId',
 		'created',
-		'data',
 		'description',
 		'id',
 		'instanceId',
@@ -25,7 +22,6 @@ class Port extends \SamIT\Rancher\Types\Entity
 		'protocol',
 		'publicIpAddressId',
 		'publicPort',
-		'removeTime',
 		'removed',
 		'state',
 		'uuid',
@@ -36,79 +32,175 @@ class Port extends \SamIT\Rancher\Types\Entity
 	];
 
 	/**
-	 * @var string
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
 	 * @api-type reference[account]
+	 * @var string
 	 */
-	public $accountId;
-
-	/** @var date */
-	public $created;
-
-	/** @var JsonMap */
-	public $data = [];
-
-	/** @var string */
-	public $description;
-
-	/** @var int */
-	public $id;
+	protected $accountId;
 
 	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type date
+	 * @var DateTimeInterface
+	 */
+	protected $created;
+
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
 	 * @var string
+	 */
+	protected $description;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type int
+	 * @var string
+	 */
+	protected $id;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
 	 * @api-type reference[instance]
+	 * @var string
 	 */
-	public $instanceId;
-
-	/** @var string */
-	public $kind;
-
-	/** @var string */
-	public $name;
+	protected $instanceId;
 
 	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
 	 * @var string
-	 * @api-type reference[ipAddress]
 	 */
-	public $privateIpAddressId;
-
-	/** @var int */
-	public $privatePort;
-
-	/** @var string */
-	public $protocol;
+	protected $kind;
 
 	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
 	 * @var string
-	 * @api-type reference[ipAddress]
 	 */
-	public $publicIpAddressId;
+	protected $name;
 
-	/** @var int */
-	public $publicPort;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type reference[ipAddress]
+	 * @var string
+	 */
+	protected $privateIpAddressId;
 
-	/** @var date */
-	public $removeTime;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $privatePort;
 
-	/** @var date */
-	public $removed;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $protocol;
 
-	/** @var StateEnum */
-	public $state;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type reference[ipAddress]
+	 * @var string
+	 */
+	protected $publicIpAddressId;
 
-	/** @var string */
-	public $uuid;
+	/**
+	 * @api-update true
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $publicPort;
 
-	/** @var TransitioningEnum */
-	public $transitioning;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type date
+	 * @var DateTimeInterface
+	 */
+	protected $removed;
 
-	/** @var string */
-	public $transitioningMessage;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type enum
+	 * @var StateEnum
+	 */
+	protected $state;
 
-	/** @var int */
-	public $transitioningProgress;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $uuid;
 
-	/** @var string */
-	public $bindAddress;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type enum
+	 * @var TransitioningEnum
+	 */
+	protected $transitioning;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $transitioningMessage;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $transitioningProgress;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $bindAddress;
 
 	/** @var string[] */
 	public static $entityLinks = [
@@ -117,27 +209,247 @@ class Port extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): AccounCollection
+	protected function client(): Client
 	{
-		return $this->client->retrieveEntities($this->links['account']);
+		return parent::client();
 	}
 
 
-	public function getInstance(): InstancCollection
+	public static function create()
 	{
-		return $this->client->retrieveEntities($this->links['instance']);
+		$result = new static();
+		return $result;
 	}
 
 
-	public function getPrivateIpAddress(): PrivateIpAddresCollection
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getAccountId(): string
 	{
-		return $this->client->retrieveEntities($this->links['privateIpAddress']);
+		return $this->accountId;
 	}
 
 
-	public function getPublicIpAddress(): PublicIpAddresCollection
+	/**
+	 * --> getter from reference: reference[account]
+	 */
+	public function getAccount(): ?Account
 	{
-		return $this->client->retrieveEntities($this->links['publicIpAddress']);
+		return $this->client()->getAccount($this->accountId);
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getCreated(): DateTimeInterface
+	{
+		return $this->created;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getDescription(): string
+	{
+		return $this->description;
+	}
+
+
+	public function setDescription(string $value = NULL)
+	{
+		$this->description = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getId(): string
+	{
+		return $this->id;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getInstanceId(): string
+	{
+		return $this->instanceId;
+	}
+
+
+	/**
+	 * --> getter from reference: reference[instance]
+	 */
+	public function getInstance(): ?Instance
+	{
+		return $this->client()->getInstance($this->instanceId);
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getKind(): string
+	{
+		return $this->kind;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getName(): string
+	{
+		return $this->name;
+	}
+
+
+	public function setName(string $value = NULL)
+	{
+		$this->name = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getPrivateIpAddressId(): string
+	{
+		return $this->privateIpAddressId;
+	}
+
+
+	/**
+	 * --> getter from reference: reference[ipAddress]
+	 */
+	public function getPrivateIpAddress(): ?PrivateIpAddress
+	{
+		return $this->client()->getPrivateIpAddress($this->privateIpAddressId);
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getPrivatePort(): int
+	{
+		return $this->privatePort;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getProtocol(): string
+	{
+		return $this->protocol;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getPublicIpAddressId(): string
+	{
+		return $this->publicIpAddressId;
+	}
+
+
+	/**
+	 * --> getter from reference: reference[ipAddress]
+	 */
+	public function getPublicIpAddress(): ?PublicIpAddress
+	{
+		return $this->client()->getPublicIpAddress($this->publicIpAddressId);
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getPublicPort(): int
+	{
+		return $this->publicPort;
+	}
+
+
+	public function setPublicPort(int $value = NULL)
+	{
+		$this->publicPort = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getRemoved(): DateTimeInterface
+	{
+		return $this->removed;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return StateEnum
+	 */
+	public function getState(): StateEnum
+	{
+		return $this->state;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getUuid(): string
+	{
+		return $this->uuid;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return TransitioningEnum
+	 */
+	public function getTransitioning(): TransitioningEnum
+	{
+		return $this->transitioning;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getTransitioningMessage(): string
+	{
+		return $this->transitioningMessage;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getTransitioningProgress(): int
+	{
+		return $this->transitioningProgress;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getBindAddress(): string
+	{
+		return $this->bindAddress;
 	}
 
 }

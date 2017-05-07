@@ -1,6 +1,6 @@
 {
-    "name": "sam-it/php-rancher-letsencrypt",
-    "minimum-stability": "dev",
+    "name": "sam-it/php-rancher",
+    "minimum-stability": "stable",
     "authors": [
         {
             "name": "Sam Mousa",
@@ -8,7 +8,6 @@
         }
     ],
     "require": {
-        "haswalt/rancher-php": "^1.0@dev",
         "nette/php-generator": "^2.5",
         "myclabs/php-enum": "^1.5"
     },

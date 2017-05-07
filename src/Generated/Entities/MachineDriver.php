@@ -1,6 +1,8 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use DateTimeInterface;
+use SamIT\Rancher\Generated\Client;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
@@ -9,12 +11,10 @@ class MachineDriver extends \SamIT\Rancher\Types\Entity
 	/** @var string[] The list of fields for this type. */
 	protected const RESOURCE_FIELDS = [
 		'created',
-		'data',
 		'description',
 		'id',
 		'kind',
 		'name',
-		'removeTime',
 		'removed',
 		'state',
 		'uuid',
@@ -30,70 +30,382 @@ class MachineDriver extends \SamIT\Rancher\Types\Entity
 		'uiUrl',
 	];
 
-	/** @var date */
-	public $created;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type date
+	 * @var DateTimeInterface
+	 */
+	protected $created;
 
-	/** @var JsonMap */
-	public $data = [];
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $description;
 
-	/** @var string */
-	public $description;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type int
+	 * @var string
+	 */
+	protected $id;
 
-	/** @var int */
-	public $id;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $kind;
 
-	/** @var string */
-	public $kind;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $name;
 
-	/** @var string */
-	public $name;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type date
+	 * @var DateTimeInterface
+	 */
+	protected $removed;
 
-	/** @var date */
-	public $removeTime;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type enum
+	 * @var StateEnum
+	 */
+	protected $state;
 
-	/** @var date */
-	public $removed;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $uuid;
 
-	/** @var StateEnum */
-	public $state;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type enum
+	 * @var TransitioningEnum
+	 */
+	protected $transitioning;
 
-	/** @var string */
-	public $uuid;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $transitioningMessage;
 
-	/** @var TransitioningEnum */
-	public $transitioning;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $transitioningProgress;
 
-	/** @var string */
-	public $transitioningMessage;
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type string
+	 * @var string
+	 */
+	protected $url;
 
-	/** @var int */
-	public $transitioningProgress;
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $externalId;
 
-	/** @var string */
-	public $url;
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type boolean
+	 * @var boolean
+	 */
+	protected $builtin;
 
-	/** @var string */
-	public $externalId;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type boolean
+	 * @var boolean
+	 */
+	protected $defaultActive;
 
-	/** @var boolean */
-	public $builtin;
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type boolean
+	 * @var boolean
+	 */
+	protected $activateOnCreate;
 
-	/** @var boolean */
-	public $defaultActive;
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $checksum;
 
-	/** @var boolean */
-	public $activateOnCreate;
-
-	/** @var string */
-	public $checksum;
-
-	/** @var string */
-	public $uiUrl;
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $uiUrl;
 
 	/** @var string[] */
 	public static $entityLinks = [
 		'self' => 'https://rancher.sam-it.eu/v2-beta/schemas/machinedriver',
 		'collection' => 'https://rancher.sam-it.eu/v2-beta/machinedrivers',
 	];
+
+
+	protected function client(): Client
+	{
+		return parent::client();
+	}
+
+
+	public static function create(string $url, \boolean $builtin, \boolean $activateOnCreate)
+	{
+		$result = new static();
+		$result->url = $url;
+		$result->builtin = $builtin;
+		$result->activateOnCreate = $activateOnCreate;
+		return $result;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getCreated(): DateTimeInterface
+	{
+		return $this->created;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getDescription(): string
+	{
+		return $this->description;
+	}
+
+
+	public function setDescription(string $value = NULL)
+	{
+		$this->description = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getId(): string
+	{
+		return $this->id;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getKind(): string
+	{
+		return $this->kind;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getName(): string
+	{
+		return $this->name;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getRemoved(): DateTimeInterface
+	{
+		return $this->removed;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return StateEnum
+	 */
+	public function getState(): StateEnum
+	{
+		return $this->state;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getUuid(): string
+	{
+		return $this->uuid;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return TransitioningEnum
+	 */
+	public function getTransitioning(): TransitioningEnum
+	{
+		return $this->transitioning;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getTransitioningMessage(): string
+	{
+		return $this->transitioningMessage;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getTransitioningProgress(): int
+	{
+		return $this->transitioningProgress;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getUrl(): string
+	{
+		return $this->url;
+	}
+
+
+	public function setUrl(string $value)
+	{
+		$this->url = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getExternalId(): string
+	{
+		return $this->externalId;
+	}
+
+
+	public function setExternalId(string $value = NULL)
+	{
+		$this->externalId = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getBuiltin(): \boolean
+	{
+		return $this->builtin;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getDefaultActive(): \boolean
+	{
+		return $this->defaultActive;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getActivateOnCreate(): \boolean
+	{
+		return $this->activateOnCreate;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getChecksum(): string
+	{
+		return $this->checksum;
+	}
+
+
+	public function setChecksum(string $value = NULL)
+	{
+		$this->checksum = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getUiUrl(): string
+	{
+		return $this->uiUrl;
+	}
+
+
+	public function setUiUrl(string $value = NULL)
+	{
+		$this->uiUrl = $value;
+	}
 
 }

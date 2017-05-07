@@ -1,9 +1,8 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
-use SamIT\Rancher\Generated\Collections\AccounCollection;
-use SamIT\Rancher\Generated\Collections\ImageCollection;
-use SamIT\Rancher\Generated\Collections\InstanceCollection;
+use DateTimeInterface;
+use SamIT\Rancher\Generated\Client;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
@@ -13,13 +12,11 @@ class Password extends Credential
 	protected const RESOURCE_FIELDS = [
 		'accountId',
 		'created',
-		'data',
 		'description',
 		'id',
 		'kind',
 		'name',
 		'publicValue',
-		'removeTime',
 		'removed',
 		'secretValue',
 		'state',
@@ -29,28 +26,28 @@ class Password extends Credential
 		'uuid',
 	];
 
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $publicValue;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type password
+	 * @var Password
+	 */
+	protected $secretValue;
+
 	/** @var string[] */
 	public static $entityLinks = [
 		'self' => 'https://rancher.sam-it.eu/v2-beta/schemas/password',
 		'collection' => 'https://rancher.sam-it.eu/v2-beta/passwords',
 	];
-
-
-	public function getAccount(): AccounCollection
-	{
-		return $this->client->retrieveEntities($this->links['account']);
-	}
-
-
-	public function getImages(): ImageCollection
-	{
-		return $this->client->retrieveEntities($this->links['images']);
-	}
-
-
-	public function getInstances(): InstanceCollection
-	{
-		return $this->client->retrieveEntities($this->links['instances']);
-	}
 
 }

@@ -1,45 +1,8 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
-use SamIT\Rancher\Generated\Collections\AgentCollection;
-use SamIT\Rancher\Generated\Collections\AuditLogCollection;
-use SamIT\Rancher\Generated\Collections\BackupCollection;
-use SamIT\Rancher\Generated\Collections\BackupTargetCollection;
-use SamIT\Rancher\Generated\Collections\CertificateCollection;
-use SamIT\Rancher\Generated\Collections\ConfigItemStatuseCollection;
-use SamIT\Rancher\Generated\Collections\ContainerEventCollection;
-use SamIT\Rancher\Generated\Collections\CredentialCollection;
-use SamIT\Rancher\Generated\Collections\ExternalEventCollection;
-use SamIT\Rancher\Generated\Collections\GenericObjectCollection;
-use SamIT\Rancher\Generated\Collections\HealthcheckInstanceHostMapCollection;
-use SamIT\Rancher\Generated\Collections\HostCollection;
-use SamIT\Rancher\Generated\Collections\ImageCollection;
-use SamIT\Rancher\Generated\Collections\InstanceCollection;
-use SamIT\Rancher\Generated\Collections\InstanceLinkCollection;
-use SamIT\Rancher\Generated\Collections\IpAddresseCollection;
-use SamIT\Rancher\Generated\Collections\LabelCollection;
-use SamIT\Rancher\Generated\Collections\MountCollection;
-use SamIT\Rancher\Generated\Collections\NetworkCollection;
-use SamIT\Rancher\Generated\Collections\NetworkDriverCollection;
-use SamIT\Rancher\Generated\Collections\PhysicalHostCollection;
-use SamIT\Rancher\Generated\Collections\PortCollection;
-use SamIT\Rancher\Generated\Collections\ProcessInstanceCollection;
-use SamIT\Rancher\Generated\Collections\ProjectMemberCollection;
-use SamIT\Rancher\Generated\Collections\ProjectTemplateCollection;
-use SamIT\Rancher\Generated\Collections\SecretCollection;
-use SamIT\Rancher\Generated\Collections\ServiceCollection;
-use SamIT\Rancher\Generated\Collections\ServiceConsumeMapCollection;
-use SamIT\Rancher\Generated\Collections\ServiceEventCollection;
-use SamIT\Rancher\Generated\Collections\ServiceExposeMapCollection;
-use SamIT\Rancher\Generated\Collections\ServiceLogCollection;
-use SamIT\Rancher\Generated\Collections\SnapshotCollection;
-use SamIT\Rancher\Generated\Collections\StackCollection;
-use SamIT\Rancher\Generated\Collections\StorageDriverCollection;
-use SamIT\Rancher\Generated\Collections\StoragePoolCollection;
-use SamIT\Rancher\Generated\Collections\SubnetCollection;
-use SamIT\Rancher\Generated\Collections\UserPreferenceCollection;
-use SamIT\Rancher\Generated\Collections\VolumeCollection;
-use SamIT\Rancher\Generated\Collections\VolumeTemplateCollection;
+use DateTimeInterface;
+use SamIT\Rancher\Generated\Client;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
@@ -48,14 +11,10 @@ class Account extends \SamIT\Rancher\Types\Entity
 	/** @var string[] The list of fields for this type. */
 	protected const RESOURCE_FIELDS = [
 		'created',
-		'data',
 		'description',
-		'externalId',
-		'externalIdType',
 		'id',
 		'kind',
 		'name',
-		'removeTime',
 		'removed',
 		'state',
 		'uuid',
@@ -63,62 +22,115 @@ class Account extends \SamIT\Rancher\Types\Entity
 		'transitioning',
 		'transitioningMessage',
 		'transitioningProgress',
-		'identity',
 	];
 
-	/** @var date */
-	public $created;
-
-	/** @var JsonMap */
-	public $data = [];
-
-	/** @var string */
-	public $description;
-
-	/** @var string */
-	public $externalId;
-
-	/** @var string */
-	public $externalIdType;
-
-	/** @var int */
-	public $id;
-
-	/** @var string */
-	public $kind;
-
-	/** @var string */
-	public $name;
-
-	/** @var date */
-	public $removeTime;
-
-	/** @var date */
-	public $removed;
-
-	/** @var StateEnum */
-	public $state;
-
-	/** @var string */
-	public $uuid;
-
-	/** @var string */
-	public $version;
-
-	/** @var TransitioningEnum */
-	public $transitioning;
-
-	/** @var string */
-	public $transitioningMessage;
-
-	/** @var int */
-	public $transitioningProgress;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type date
+	 * @var DateTimeInterface
+	 */
+	protected $created;
 
 	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
 	 * @var string
-	 * @api-type reference[identity]
 	 */
-	public $identity;
+	protected $description;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type int
+	 * @var string
+	 */
+	protected $id;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $kind;
+
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $name;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type date
+	 * @var DateTimeInterface
+	 */
+	protected $removed;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type enum
+	 * @var StateEnum
+	 */
+	protected $state;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $uuid;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $version;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type enum
+	 * @var TransitioningEnum
+	 */
+	protected $transitioning;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $transitioningMessage;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $transitioningProgress;
 
 	/** @var string[] */
 	public static $entityLinks = [
@@ -127,242 +139,138 @@ class Account extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getIdentity(): Identity
+	protected function client(): Client
 	{
+		return parent::client();
 	}
 
 
-	public function getProjectMembers(): ProjectMemberCollection
+	public static function create()
 	{
-		return $this->client->retrieveEntities($this->links['projectMembers']);
+		$result = new static();
+		return $result;
 	}
 
 
-	public function getAuditLogs(): AuditLogCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getCreated(): DateTimeInterface
 	{
-		return $this->client->retrieveEntities($this->links['auditLogs']);
+		return $this->created;
 	}
 
 
-	public function getCredentials(): CredentialCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getDescription(): string
 	{
-		return $this->client->retrieveEntities($this->links['credentials']);
+		return $this->description;
 	}
 
 
-	public function getInstances(): InstanceCollection
+	public function setDescription(string $value = NULL)
 	{
-		return $this->client->retrieveEntities($this->links['instances']);
+		$this->description = $value;
 	}
 
 
-	public function getProcessInstances(): ProcessInstanceCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getId(): string
 	{
-		return $this->client->retrieveEntities($this->links['processInstances']);
+		return $this->id;
 	}
 
 
-	public function getServiceExposeMaps(): ServiceExposeMapCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getKind(): string
 	{
-		return $this->client->retrieveEntities($this->links['serviceExposeMaps']);
+		return $this->kind;
 	}
 
 
-	public function getNetworks(): NetworkCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getName(): string
 	{
-		return $this->client->retrieveEntities($this->links['networks']);
+		return $this->name;
 	}
 
 
-	public function getPorts(): PortCollection
+	public function setName(string $value = NULL)
 	{
-		return $this->client->retrieveEntities($this->links['ports']);
+		$this->name = $value;
 	}
 
 
-	public function getServiceConsumeMaps(): ServiceConsumeMapCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getRemoved(): DateTimeInterface
 	{
-		return $this->client->retrieveEntities($this->links['serviceConsumeMaps']);
+		return $this->removed;
 	}
 
 
-	public function getInstanceLinks(): InstanceLinkCollection
+	/**
+	 * @simple-getter
+	 * @return StateEnum
+	 */
+	public function getState(): StateEnum
 	{
-		return $this->client->retrieveEntities($this->links['instanceLinks']);
+		return $this->state;
 	}
 
 
-	public function getIpAddresses(): IpAddresseCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getUuid(): string
 	{
-		return $this->client->retrieveEntities($this->links['ipAddresses']);
+		return $this->uuid;
 	}
 
 
-	public function getStoragePools(): StoragePoolCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getVersion(): string
 	{
-		return $this->client->retrieveEntities($this->links['storagePools']);
+		return $this->version;
 	}
 
 
-	public function getExternalEvents(): ExternalEventCollection
+	/**
+	 * @simple-getter
+	 * @return TransitioningEnum
+	 */
+	public function getTransitioning(): TransitioningEnum
 	{
-		return $this->client->retrieveEntities($this->links['externalEvents']);
+		return $this->transitioning;
 	}
 
 
-	public function getSubnets(): SubnetCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getTransitioningMessage(): string
 	{
-		return $this->client->retrieveEntities($this->links['subnets']);
+		return $this->transitioningMessage;
 	}
 
 
-	public function getUserPreferences(): UserPreferenceCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getTransitioningProgress(): int
 	{
-		return $this->client->retrieveEntities($this->links['userPreferences']);
-	}
-
-
-	public function getProjectTemplates(): ProjectTemplateCollection
-	{
-		return $this->client->retrieveEntities($this->links['projectTemplates']);
-	}
-
-
-	public function getImages(): ImageCollection
-	{
-		return $this->client->retrieveEntities($this->links['images']);
-	}
-
-
-	public function getVolumeTemplates(): VolumeTemplateCollection
-	{
-		return $this->client->retrieveEntities($this->links['volumeTemplates']);
-	}
-
-
-	public function getHosts(): HostCollection
-	{
-		return $this->client->retrieveEntities($this->links['hosts']);
-	}
-
-
-	public function getStacks(): StackCollection
-	{
-		return $this->client->retrieveEntities($this->links['stacks']);
-	}
-
-
-	public function getVolumes(): VolumeCollection
-	{
-		return $this->client->retrieveEntities($this->links['volumes']);
-	}
-
-
-	public function getMounts(): MountCollection
-	{
-		return $this->client->retrieveEntities($this->links['mounts']);
-	}
-
-
-	public function getServiceEvents(): ServiceEventCollection
-	{
-		return $this->client->retrieveEntities($this->links['serviceEvents']);
-	}
-
-
-	public function getServices(): ServiceCollection
-	{
-		return $this->client->retrieveEntities($this->links['services']);
-	}
-
-
-	public function getNetworkDrivers(): NetworkDriverCollection
-	{
-		return $this->client->retrieveEntities($this->links['networkDrivers']);
-	}
-
-
-	public function getSecrets(): SecretCollection
-	{
-		return $this->client->retrieveEntities($this->links['secrets']);
-	}
-
-
-	public function getAgents(): AgentCollection
-	{
-		return $this->client->retrieveEntities($this->links['agents']);
-	}
-
-
-	public function getLabels(): LabelCollection
-	{
-		return $this->client->retrieveEntities($this->links['labels']);
-	}
-
-
-	public function getHealthcheckInstanceHostMaps(): HealthcheckInstanceHostMapCollection
-	{
-		return $this->client->retrieveEntities($this->links['healthcheckInstanceHostMaps']);
-	}
-
-
-	public function getSnapshots(): SnapshotCollection
-	{
-		return $this->client->retrieveEntities($this->links['snapshots']);
-	}
-
-
-	public function getCertificates(): CertificateCollection
-	{
-		return $this->client->retrieveEntities($this->links['certificates']);
-	}
-
-
-	public function getBackupTargets(): BackupTargetCollection
-	{
-		return $this->client->retrieveEntities($this->links['backupTargets']);
-	}
-
-
-	public function getGenericObjects(): GenericObjectCollection
-	{
-		return $this->client->retrieveEntities($this->links['genericObjects']);
-	}
-
-
-	public function getStorageDrivers(): StorageDriverCollection
-	{
-		return $this->client->retrieveEntities($this->links['storageDrivers']);
-	}
-
-
-	public function getConfigItemStatuses(): ConfigItemStatuseCollection
-	{
-		return $this->client->retrieveEntities($this->links['configItemStatuses']);
-	}
-
-
-	public function getPhysicalHosts(): PhysicalHostCollection
-	{
-		return $this->client->retrieveEntities($this->links['physicalHosts']);
-	}
-
-
-	public function getContainerEvents(): ContainerEventCollection
-	{
-		return $this->client->retrieveEntities($this->links['containerEvents']);
-	}
-
-
-	public function getServiceLogs(): ServiceLogCollection
-	{
-		return $this->client->retrieveEntities($this->links['serviceLogs']);
-	}
-
-
-	public function getBackups(): BackupCollection
-	{
-		return $this->client->retrieveEntities($this->links['backups']);
+		return $this->transitioningProgress;
 	}
 
 }

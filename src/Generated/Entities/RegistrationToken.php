@@ -1,9 +1,8 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
-use SamIT\Rancher\Generated\Collections\AccounCollection;
-use SamIT\Rancher\Generated\Collections\ImageCollection;
-use SamIT\Rancher\Generated\Collections\InstanceCollection;
+use DateTimeInterface;
+use SamIT\Rancher\Generated\Client;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
@@ -13,12 +12,10 @@ class RegistrationToken extends Credential
 	protected const RESOURCE_FIELDS = [
 		'accountId',
 		'created',
-		'data',
 		'description',
 		'id',
 		'kind',
 		'name',
-		'removeTime',
 		'removed',
 		'state',
 		'transitioning',
@@ -31,17 +28,41 @@ class RegistrationToken extends Credential
 		'registrationUrl',
 	];
 
-	/** @var string */
-	public $command;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type string
+	 * @var string
+	 */
+	protected $command;
 
-	/** @var string */
-	public $image;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type string
+	 * @var string
+	 */
+	protected $image;
 
-	/** @var string */
-	public $token;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type string
+	 * @var string
+	 */
+	protected $token;
 
-	/** @var string */
-	public $registrationUrl;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type string
+	 * @var string
+	 */
+	protected $registrationUrl;
 
 	/** @var string[] */
 	public static $entityLinks = [
@@ -50,21 +71,39 @@ class RegistrationToken extends Credential
 	];
 
 
-	public function getAccount(): AccounCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getCommand(): string
 	{
-		return $this->client->retrieveEntities($this->links['account']);
+		return $this->command;
 	}
 
 
-	public function getImages(): ImageCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getImage(): string
 	{
-		return $this->client->retrieveEntities($this->links['images']);
+		return $this->image;
 	}
 
 
-	public function getInstances(): InstanceCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getToken(): string
 	{
-		return $this->client->retrieveEntities($this->links['instances']);
+		return $this->token;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getRegistrationUrl(): string
+	{
+		return $this->registrationUrl;
 	}
 
 }

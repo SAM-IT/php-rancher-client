@@ -5,48 +5,76 @@ namespace SamIT\Rancher\Types;
 
 
 use SamIT\Rancher\Client;
+use SamIT\Rancher\Generated\Entities\Host;
 
 class Entity implements \JsonSerializable
 {
+    private $originalAttributes = [];
     protected const RESOURCE_FIELDS = [];
     /** @var Client */
-    protected $client;
+    private $client;
 
 
     public $baseType;
     public $actions = [];
     public $links = [];
 
-    public function __construct(Client $client)
+    /**
+     * Entity constructor.
+     * Protected constructor to force usage of `Entity::createEntity` or `static::create`
+     */
+    protected function __construct() {
+
+    }
+
+    protected function client()
     {
-        $this->client = $client;
+        if (!isset($this->client)) {
+            throw new \RuntimeException("Client must be set to use this.");
+        }
+        return $this->client;
     }
 
 
-    public static function applyConfig(Entity $entity, array $entityConfig)
+    public static function applyConfig(Entity $entity, array $entityConfig, Client $client)
     {
-        static $errors = [];
+        unset($entityConfig['type']);
+        $entity->client = $client;
+
         foreach($entityConfig as $key => $value) {
+            // Check if the value is an array.
+            if (is_array($value) && isset($value['type'])) {
+                $value = static::createEntity($value, $client);
+            } elseif (is_array($value) && array_reduce($value, function($carry, $item) {
+                return $carry && is_array($item) && isset($item['type']);
+                }, true)
+            ) {
+                $value = array_map(function($config) use ($client) {
+                    return static::createEntity($config, $client);
+                }, $value);
+            }
+
             if (property_exists($entity, $key)) {
                 $entity->{$key} = $value;
-            } else {
-                $error ="Unknown property $key\n";
-                if (isset($errors[$error])) {
-                    $errors["Unknown property $key in $class\n"] = true;
-                    echo $error;
-                }
-//                throw new \Exception("Unknown property $key");
+                $entity->originalAttributes[$key] = $value;
+            } elseif (!in_array($key, ['createdTS'])) {
+                print_r($entityConfig); die();
+                throw new \Exception("Unknown property $key in config for " . get_class($entity));
             }
 
         }
     }
-    public static function createEntity(array $entityConfig, string $namespace, Client $client)
+
+    final public static function createEntity(array $entityConfig, Client $client)
     {
-        $class = "$namespace\\" . ucfirst($entityConfig['type']);
-        unset($entityConfig['type']);
+        if (get_called_class() !== __CLASS__) {
+            throw new \Exception("Only use Entity::createEntity");
+        }
+        $class = "{$client->getEntityNamespace()}\\" . ucfirst($entityConfig['type']);
 
         $instance = new $class($client);
-        static::applyConfig($instance, $entityConfig);
+        $instance->client = $client;
+        static::applyConfig($instance, $entityConfig, $client);
 
         return $instance;
     }
@@ -58,22 +86,38 @@ class Entity implements \JsonSerializable
     }
     public function update()
     {
-        return $this->client->updateEntity($this);
+        return $this->client()->updateEntity($this);
     }
 
     public function reload()
     {
         if (isset($this->links['self'])) {
-            return $this->client->reloadEntity($this);
+            return $this->client()->reloadEntity($this);
         }
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize($dirtyOnly = false)
     {
         $data = [];
+        if ($dirtyOnly) {
+            $data['id'] = $this->id;
+        }
         foreach (static::RESOURCE_FIELDS as $field) {
+            if (!$dirtyOnly || $this->isDirty($field))
             $data[$field] = $this->{$field};
         }
         return $data;
     }
+
+    protected function isDirty($name) {
+        return !array_key_exists($name, $this->originalAttributes)
+            || json_encode($this->$name) !== json_encode($this->originalAttributes[$name]);
+    }
+
+    public function __debugInfo()
+    {
+        return $this->jsonSerialize();
+    }
+
+
 }

@@ -1,6 +1,8 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
+use SamIT\Rancher\Generated\Client;
+
 class DigitaloceanConfig extends \SamIT\Rancher\Types\Entity
 {
 	/** @var string[] The list of fields for this type. */
@@ -19,45 +21,262 @@ class DigitaloceanConfig extends \SamIT\Rancher\Types\Entity
 		'userdata',
 	];
 
-	/** @var string */
-	public $accessToken;
+	/**
+	 * Digital Ocean access token
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type string
+	 * @var string
+	 */
+	protected $accessToken;
 
-	/** @var boolean */
-	public $backups;
+	/**
+	 * enable backups for droplet
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type boolean
+	 * @var boolean
+	 */
+	protected $backups;
 
-	/** @var string */
-	public $image;
+	/**
+	 * Digital Ocean Image
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type string
+	 * @var string
+	 */
+	protected $image;
 
-	/** @var boolean */
-	public $ipv6;
+	/**
+	 * enable ipv6 for droplet
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type boolean
+	 * @var boolean
+	 */
+	protected $ipv6;
 
-	/** @var boolean */
-	public $privateNetworking;
+	/**
+	 * enable private networking for droplet
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type boolean
+	 * @var boolean
+	 */
+	protected $privateNetworking;
 
-	/** @var string */
-	public $region;
+	/**
+	 * Digital Ocean region
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type string
+	 * @var string
+	 */
+	protected $region;
 
-	/** @var string */
-	public $size;
+	/**
+	 * Digital Ocean size
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type string
+	 * @var string
+	 */
+	protected $size;
 
-	/** @var string */
-	public $sshKeyFingerprint;
+	/**
+	 * SSH key fingerprint
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type string
+	 * @var string
+	 */
+	protected $sshKeyFingerprint;
 
-	/** @var string */
-	public $sshKeyPath;
+	/**
+	 * SSH private key path
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type string
+	 * @var string
+	 */
+	protected $sshKeyPath;
 
-	/** @var string */
-	public $sshPort;
+	/**
+	 * SSH port
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type string
+	 * @var string
+	 */
+	protected $sshPort;
 
-	/** @var string */
-	public $sshUser;
+	/**
+	 * SSH username
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type string
+	 * @var string
+	 */
+	protected $sshUser;
 
-	/** @var string */
-	public $userdata;
+	/**
+	 * path to file with cloud-init user-data
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type string
+	 * @var string
+	 */
+	protected $userdata;
 
 	/** @var string[] */
 	public static $entityLinks = [
 		'self' => 'https://rancher.sam-it.eu/v2-beta/schemas/digitaloceanconfig',
 	];
+
+
+	protected function client(): Client
+	{
+		return parent::client();
+	}
+
+
+	public static function create(string $accessToken, \boolean $backups, string $image, \boolean $ipv6, \boolean $privateNetworking, string $region, string $size, string $sshKeyFingerprint, string $sshKeyPath, string $sshPort, string $sshUser, string $userdata)
+	{
+		$result = new static();
+		$result->accessToken = $accessToken;
+		$result->backups = $backups;
+		$result->image = $image;
+		$result->ipv6 = $ipv6;
+		$result->privateNetworking = $privateNetworking;
+		$result->region = $region;
+		$result->size = $size;
+		$result->sshKeyFingerprint = $sshKeyFingerprint;
+		$result->sshKeyPath = $sshKeyPath;
+		$result->sshPort = $sshPort;
+		$result->sshUser = $sshUser;
+		$result->userdata = $userdata;
+		return $result;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getAccessToken(): string
+	{
+		return $this->accessToken;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getBackups(): \boolean
+	{
+		return $this->backups;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getImage(): string
+	{
+		return $this->image;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getIpv6(): \boolean
+	{
+		return $this->ipv6;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getPrivateNetworking(): \boolean
+	{
+		return $this->privateNetworking;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getRegion(): string
+	{
+		return $this->region;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getSize(): string
+	{
+		return $this->size;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getSshKeyFingerprint(): string
+	{
+		return $this->sshKeyFingerprint;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getSshKeyPath(): string
+	{
+		return $this->sshKeyPath;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getSshPort(): string
+	{
+		return $this->sshPort;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getSshUser(): string
+	{
+		return $this->sshUser;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getUserdata(): string
+	{
+		return $this->userdata;
+	}
 
 }

@@ -1,8 +1,8 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
-use SamIT\Rancher\Generated\Collections\AccounCollection;
-use SamIT\Rancher\Generated\Collections\HostCollection;
+use DateTimeInterface;
+use SamIT\Rancher\Generated\Client;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
@@ -12,14 +12,12 @@ class Machine extends PhysicalHost
 	protected const RESOURCE_FIELDS = [
 		'accountId',
 		'created',
-		'data',
 		'description',
 		'driver',
 		'externalId',
 		'id',
 		'kind',
 		'name',
-		'removeTime',
 		'removed',
 		'state',
 		'uuid',
@@ -44,53 +42,149 @@ class Machine extends PhysicalHost
 		'packetConfig',
 	];
 
-	/** @var amazonec2Config */
-	public $amazonec2Config;
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type amazonec2Config
+	 * @var Amazonec2Config
+	 */
+	protected $amazonec2Config;
 
-	/** @var string */
-	public $authCertificateAuthority;
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $authCertificateAuthority;
 
-	/** @var string */
-	public $authKey;
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $authKey;
 
-	/** @var azureConfig */
-	public $azureConfig;
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type azureConfig
+	 * @var AzureConfig
+	 */
+	protected $azureConfig;
 
-	/** @var digitaloceanConfig */
-	public $digitaloceanConfig;
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type digitaloceanConfig
+	 * @var DigitaloceanConfig
+	 */
+	protected $digitaloceanConfig;
 
-	/** @var string */
-	public $dockerVersion;
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $dockerVersion;
 
-	/** @var StringMap */
-	public $engineEnv = [];
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type map[string]
+	 * @var string[]
+	 */
+	protected $engineEnv = [];
 
-	/** @var string[] */
-	public $engineInsecureRegistry = [];
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type array[string]
+	 * @var string[]
+	 */
+	protected $engineInsecureRegistry = [];
 
-	/** @var string */
-	public $engineInstallUrl;
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $engineInstallUrl;
 
-	/** @var StringMap */
-	public $engineLabel = [];
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type map[string]
+	 * @var string[]
+	 */
+	protected $engineLabel = [];
 
-	/** @var StringMap */
-	public $engineOpt = [];
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type map[string]
+	 * @var string[]
+	 */
+	protected $engineOpt = [];
 
-	/** @var string[] */
-	public $engineRegistryMirror = [];
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type array[string]
+	 * @var string[]
+	 */
+	protected $engineRegistryMirror = [];
 
-	/** @var string */
-	public $engineStorageDriver;
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $engineStorageDriver;
 
-	/** @var genericConfig */
-	public $genericConfig;
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type genericConfig
+	 * @var GenericConfig
+	 */
+	protected $genericConfig;
 
-	/** @var StringMap */
-	public $labels = [];
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type map[string]
+	 * @var string[]
+	 */
+	protected $labels = [];
 
-	/** @var packetConfig */
-	public $packetConfig;
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type packetConfig
+	 * @var PacketConfig
+	 */
+	protected $packetConfig;
 
 	/** @var string[] */
 	public static $entityLinks = [
@@ -99,15 +193,254 @@ class Machine extends PhysicalHost
 	];
 
 
-	public function getAccount(): AccounCollection
+	/**
+	 * @simple-getter
+	 * @return Amazonec2Config
+	 */
+	public function getAmazonec2Config(): Amazonec2Config
 	{
-		return $this->client->retrieveEntities($this->links['account']);
+		return $this->amazonec2Config;
 	}
 
 
-	public function getHosts(): HostCollection
+	public function setAmazonec2Config(Amazonec2Config $value = NULL)
 	{
-		return $this->client->retrieveEntities($this->links['hosts']);
+		$this->amazonec2Config = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getAuthCertificateAuthority(): string
+	{
+		return $this->authCertificateAuthority;
+	}
+
+
+	public function setAuthCertificateAuthority(string $value = NULL)
+	{
+		$this->authCertificateAuthority = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getAuthKey(): string
+	{
+		return $this->authKey;
+	}
+
+
+	public function setAuthKey(string $value = NULL)
+	{
+		$this->authKey = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return AzureConfig
+	 */
+	public function getAzureConfig(): AzureConfig
+	{
+		return $this->azureConfig;
+	}
+
+
+	public function setAzureConfig(AzureConfig $value = NULL)
+	{
+		$this->azureConfig = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return DigitaloceanConfig
+	 */
+	public function getDigitaloceanConfig(): DigitaloceanConfig
+	{
+		return $this->digitaloceanConfig;
+	}
+
+
+	public function setDigitaloceanConfig(DigitaloceanConfig $value = NULL)
+	{
+		$this->digitaloceanConfig = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getDockerVersion(): string
+	{
+		return $this->dockerVersion;
+	}
+
+
+	public function setDockerVersion(string $value = NULL)
+	{
+		$this->dockerVersion = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string[]
+	 */
+	public function getEngineEnv(): array
+	{
+		return $this->engineEnv;
+	}
+
+
+	public function setEngineEnv(array $value = NULL)
+	{
+		$this->engineEnv = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string[]
+	 */
+	public function getEngineInsecureRegistry(): array
+	{
+		return $this->engineInsecureRegistry;
+	}
+
+
+	public function setEngineInsecureRegistry(array $value = NULL)
+	{
+		$this->engineInsecureRegistry = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getEngineInstallUrl(): string
+	{
+		return $this->engineInstallUrl;
+	}
+
+
+	public function setEngineInstallUrl(string $value = NULL)
+	{
+		$this->engineInstallUrl = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string[]
+	 */
+	public function getEngineLabel(): array
+	{
+		return $this->engineLabel;
+	}
+
+
+	public function setEngineLabel(array $value = NULL)
+	{
+		$this->engineLabel = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string[]
+	 */
+	public function getEngineOpt(): array
+	{
+		return $this->engineOpt;
+	}
+
+
+	public function setEngineOpt(array $value = NULL)
+	{
+		$this->engineOpt = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string[]
+	 */
+	public function getEngineRegistryMirror(): array
+	{
+		return $this->engineRegistryMirror;
+	}
+
+
+	public function setEngineRegistryMirror(array $value = NULL)
+	{
+		$this->engineRegistryMirror = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getEngineStorageDriver(): string
+	{
+		return $this->engineStorageDriver;
+	}
+
+
+	public function setEngineStorageDriver(string $value = NULL)
+	{
+		$this->engineStorageDriver = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return GenericConfig
+	 */
+	public function getGenericConfig(): GenericConfig
+	{
+		return $this->genericConfig;
+	}
+
+
+	public function setGenericConfig(GenericConfig $value = NULL)
+	{
+		$this->genericConfig = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string[]
+	 */
+	public function getLabels(): array
+	{
+		return $this->labels;
+	}
+
+
+	public function setLabels(array $value = NULL)
+	{
+		$this->labels = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return PacketConfig
+	 */
+	public function getPacketConfig(): PacketConfig
+	{
+		return $this->packetConfig;
+	}
+
+
+	public function setPacketConfig(PacketConfig $value = NULL)
+	{
+		$this->packetConfig = $value;
 	}
 
 }

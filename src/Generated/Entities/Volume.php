@@ -1,17 +1,8 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
-use SamIT\Rancher\Generated\Collections\AccounCollection;
-use SamIT\Rancher\Generated\Collections\BackupCollection;
-use SamIT\Rancher\Generated\Collections\HosCollection;
-use SamIT\Rancher\Generated\Collections\ImagCollection;
-use SamIT\Rancher\Generated\Collections\InstancCollection;
-use SamIT\Rancher\Generated\Collections\MountCollection;
-use SamIT\Rancher\Generated\Collections\SnapshotCollection;
-use SamIT\Rancher\Generated\Collections\StacCollection;
-use SamIT\Rancher\Generated\Collections\StorageDriveCollection;
-use SamIT\Rancher\Generated\Collections\StoragePoolCollection;
-use SamIT\Rancher\Generated\Collections\VolumeTemplatCollection;
+use DateTimeInterface;
+use SamIT\Rancher\Generated\Client;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
@@ -22,7 +13,6 @@ class Volume extends \SamIT\Rancher\Types\Entity
 		'accessMode',
 		'accountId',
 		'created',
-		'data',
 		'description',
 		'externalId',
 		'hostId',
@@ -31,7 +21,6 @@ class Volume extends \SamIT\Rancher\Types\Entity
 		'instanceId',
 		'kind',
 		'name',
-		'removeTime',
 		'removed',
 		'sizeMb',
 		'stackId',
@@ -49,110 +38,239 @@ class Volume extends \SamIT\Rancher\Types\Entity
 		'mounts',
 	];
 
-	/** @var string */
-	public $accessMode;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $accessMode;
 
 	/**
-	 * @var string
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
 	 * @api-type reference[account]
+	 * @var string
 	 */
-	public $accountId;
-
-	/** @var date */
-	public $created;
-
-	/** @var JsonMap */
-	public $data = [];
-
-	/** @var string */
-	public $description;
-
-	/** @var string */
-	public $externalId;
+	protected $accountId;
 
 	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type date
+	 * @var DateTimeInterface
+	 */
+	protected $created;
+
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
 	 * @var string
+	 */
+	protected $description;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $externalId;
+
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
 	 * @api-type reference[host]
+	 * @var string
 	 */
-	public $hostId;
-
-	/** @var int */
-	public $id;
+	protected $hostId;
 
 	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type int
 	 * @var string
+	 */
+	protected $id;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
 	 * @api-type reference[image]
+	 * @var string
 	 */
-	public $imageId;
+	protected $imageId;
 
 	/**
-	 * @var string
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
 	 * @api-type reference[instance]
+	 * @var string
 	 */
-	public $instanceId;
-
-	/** @var string */
-	public $kind;
-
-	/** @var string */
-	public $name;
-
-	/** @var date */
-	public $removeTime;
-
-	/** @var date */
-	public $removed;
-
-	/** @var int */
-	public $sizeMb;
+	protected $instanceId;
 
 	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
 	 * @var string
+	 */
+	protected $kind;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $name;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type date
+	 * @var DateTimeInterface
+	 */
+	protected $removed;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $sizeMb;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
 	 * @api-type reference[stack]
+	 * @var string
 	 */
-	public $stackId;
-
-	/** @var StateEnum */
-	public $state;
+	protected $stackId;
 
 	/**
-	 * @var string
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type enum
+	 * @var StateEnum
+	 */
+	protected $state;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
 	 * @api-type reference[storageDriver]
+	 * @var string
 	 */
-	public $storageDriverId;
-
-	/** @var string */
-	public $uri;
-
-	/** @var string */
-	public $uuid;
+	protected $storageDriverId;
 
 	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
 	 * @var string
-	 * @api-type reference[volumeTemplate]
 	 */
-	public $volumeTemplateId;
+	protected $uri;
 
-	/** @var TransitioningEnum */
-	public $transitioning;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $uuid;
 
-	/** @var string */
-	public $transitioningMessage;
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type reference[volumeTemplate]
+	 * @var string
+	 */
+	protected $volumeTemplateId;
 
-	/** @var int */
-	public $transitioningProgress;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type enum
+	 * @var TransitioningEnum
+	 */
+	protected $transitioning;
 
-	/** @var boolean */
-	public $isHostPath;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $transitioningMessage;
 
-	/** @var string */
-	public $driver;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $transitioningProgress;
 
-	/** @var StringMap */
-	public $driverOpts = [];
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type boolean
+	 * @var boolean
+	 */
+	protected $isHostPath;
 
-	/** @var mountEntry[] */
-	public $mounts = [];
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type string
+	 * @var string
+	 */
+	protected $driver;
+
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type map[string]
+	 * @var string[]
+	 */
+	protected $driverOpts = [];
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type array[mountEntry]
+	 * @var MountEntry[]
+	 */
+	protected $mounts = [];
 
 	/** @var string[] */
 	public static $entityLinks = [
@@ -161,69 +279,344 @@ class Volume extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): AccounCollection
+	protected function client(): Client
 	{
-		return $this->client->retrieveEntities($this->links['account']);
+		return parent::client();
 	}
 
 
-	public function getHost(): HosCollection
+	public static function create(\StorageDriver $storageDriverId, string $driver)
 	{
-		return $this->client->retrieveEntities($this->links['host']);
+		$result = new static();
+		$result->storageDriverId = $storageDriverId;
+		$result->driver = $driver;
+		return $result;
 	}
 
 
-	public function getImage(): ImagCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getAccessMode(): string
 	{
-		return $this->client->retrieveEntities($this->links['image']);
+		return $this->accessMode;
 	}
 
 
-	public function getInstance(): InstancCollection
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getAccountId(): string
 	{
-		return $this->client->retrieveEntities($this->links['instance']);
+		return $this->accountId;
 	}
 
 
-	public function getStack(): StacCollection
+	/**
+	 * --> getter from reference: reference[account]
+	 */
+	public function getAccount(): ?Account
 	{
-		return $this->client->retrieveEntities($this->links['stack']);
+		return $this->client()->getAccount($this->accountId);
 	}
 
 
-	public function getStorageDriver(): StorageDriveCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getCreated(): DateTimeInterface
 	{
-		return $this->client->retrieveEntities($this->links['storageDriver']);
+		return $this->created;
 	}
 
 
-	public function getVolumeTemplate(): VolumeTemplatCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getDescription(): string
 	{
-		return $this->client->retrieveEntities($this->links['volumeTemplate']);
+		return $this->description;
 	}
 
 
-	public function getSnapshots(): SnapshotCollection
+	public function setDescription(string $value = NULL)
 	{
-		return $this->client->retrieveEntities($this->links['snapshots']);
+		$this->description = $value;
 	}
 
 
-	public function getStoragePools(): StoragePoolCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getExternalId(): string
 	{
-		return $this->client->retrieveEntities($this->links['storagePools']);
+		return $this->externalId;
 	}
 
 
-	public function getMounts(): MountCollection
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getHostId(): string
 	{
-		return $this->client->retrieveEntities($this->links['mounts']);
+		return $this->hostId;
 	}
 
 
-	public function getBackups(): BackupCollection
+	public function setHostId(Host $value = NULL)
 	{
-		return $this->client->retrieveEntities($this->links['backups']);
+		$this->hostId = $value;
+	}
+
+
+	/**
+	 * --> getter from reference: reference[host]
+	 */
+	public function getHost(): ?Host
+	{
+		return $this->client()->getHost($this->hostId);
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getId(): string
+	{
+		return $this->id;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getImageId(): string
+	{
+		return $this->imageId;
+	}
+
+
+	/**
+	 * --> getter from reference: reference[image]
+	 */
+	public function getImage(): ?Image
+	{
+		return $this->client()->getImage($this->imageId);
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getInstanceId(): string
+	{
+		return $this->instanceId;
+	}
+
+
+	/**
+	 * --> getter from reference: reference[instance]
+	 */
+	public function getInstance(): ?Instance
+	{
+		return $this->client()->getInstance($this->instanceId);
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getKind(): string
+	{
+		return $this->kind;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getName(): string
+	{
+		return $this->name;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getRemoved(): DateTimeInterface
+	{
+		return $this->removed;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getSizeMb(): int
+	{
+		return $this->sizeMb;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getStackId(): string
+	{
+		return $this->stackId;
+	}
+
+
+	/**
+	 * --> getter from reference: reference[stack]
+	 */
+	public function getStack(): ?Stack
+	{
+		return $this->client()->getStack($this->stackId);
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return StateEnum
+	 */
+	public function getState(): StateEnum
+	{
+		return $this->state;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getStorageDriverId(): string
+	{
+		return $this->storageDriverId;
+	}
+
+
+	/**
+	 * --> getter from reference: reference[storageDriver]
+	 */
+	public function getStorageDriver(): ?StorageDriver
+	{
+		return $this->client()->getStorageDriver($this->storageDriverId);
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getUri(): string
+	{
+		return $this->uri;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getUuid(): string
+	{
+		return $this->uuid;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getVolumeTemplateId(): string
+	{
+		return $this->volumeTemplateId;
+	}
+
+
+	/**
+	 * --> getter from reference: reference[volumeTemplate]
+	 */
+	public function getVolumeTemplate(): ?VolumeTemplate
+	{
+		return $this->client()->getVolumeTemplate($this->volumeTemplateId);
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return TransitioningEnum
+	 */
+	public function getTransitioning(): TransitioningEnum
+	{
+		return $this->transitioning;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getTransitioningMessage(): string
+	{
+		return $this->transitioningMessage;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getTransitioningProgress(): int
+	{
+		return $this->transitioningProgress;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getIsHostPath(): \boolean
+	{
+		return $this->isHostPath;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getDriver(): string
+	{
+		return $this->driver;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string[]
+	 */
+	public function getDriverOpts(): array
+	{
+		return $this->driverOpts;
+	}
+
+
+	public function setDriverOpts(array $value = NULL)
+	{
+		$this->driverOpts = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return MountEntry[]
+	 */
+	public function getMounts(): array
+	{
+		return $this->mounts;
 	}
 
 }

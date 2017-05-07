@@ -1,10 +1,8 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
-use SamIT\Rancher\Generated\Collections\AccounCollection;
-use SamIT\Rancher\Generated\Collections\IpAddresseCollection;
-use SamIT\Rancher\Generated\Collections\NetworkDriveCollection;
-use SamIT\Rancher\Generated\Collections\SubnetCollection;
+use DateTimeInterface;
+use SamIT\Rancher\Generated\Client;
 use SamIT\Rancher\Generated\Enums\DefaultPolicyActionEnum;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
@@ -15,13 +13,11 @@ class Network extends \SamIT\Rancher\Types\Entity
 	protected const RESOURCE_FIELDS = [
 		'accountId',
 		'created',
-		'data',
 		'description',
 		'id',
 		'kind',
 		'name',
 		'networkDriverId',
-		'removeTime',
 		'removed',
 		'state',
 		'uuid',
@@ -38,76 +34,184 @@ class Network extends \SamIT\Rancher\Types\Entity
 	];
 
 	/**
-	 * @var string
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
 	 * @api-type reference[account]
+	 * @var string
 	 */
-	public $accountId;
-
-	/** @var date */
-	public $created;
-
-	/** @var JsonMap */
-	public $data = [];
-
-	/** @var string */
-	public $description;
-
-	/** @var int */
-	public $id;
-
-	/** @var string */
-	public $kind;
-
-	/** @var string */
-	public $name;
+	protected $accountId;
 
 	/**
-	 * @var string
-	 * @api-type reference[networkDriver]
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type date
+	 * @var DateTimeInterface
 	 */
-	public $networkDriverId;
+	protected $created;
 
-	/** @var date */
-	public $removeTime;
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $description;
 
-	/** @var date */
-	public $removed;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type int
+	 * @var string
+	 */
+	protected $id;
 
-	/** @var StateEnum */
-	public $state;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $kind;
 
-	/** @var string */
-	public $uuid;
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $name;
 
-	/** @var TransitioningEnum */
-	public $transitioning;
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type reference[networkDriver]
+	 * @var string
+	 */
+	protected $networkDriverId;
 
-	/** @var string */
-	public $transitioningMessage;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type date
+	 * @var DateTimeInterface
+	 */
+	protected $removed;
 
-	/** @var int */
-	public $transitioningProgress;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type enum
+	 * @var StateEnum
+	 */
+	protected $state;
 
-	/** @var string[] */
-	public $dns = [];
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $uuid;
 
-	/** @var string[] */
-	public $dnsSearch = [];
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type enum
+	 * @var TransitioningEnum
+	 */
+	protected $transitioning;
 
-	/** @var JsonMap */
-	public $metadata = [];
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $transitioningMessage;
 
-	/** @var subnet[] */
-	public $subnets = [];
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $transitioningProgress;
 
-	/** @var boolean */
-	public $hostPorts;
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type array[string]
+	 * @var string[]
+	 */
+	protected $dns = [];
 
-	/** @var DefaultPolicyActionEnum */
-	public $defaultPolicyAction;
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type array[string]
+	 * @var string[]
+	 */
+	protected $dnsSearch = [];
 
-	/** @var networkPolicyRule[] */
-	public $policy = [];
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type map[json]
+	 * @var SamIT\Rancher\Types\JsonMap
+	 */
+	protected $metadata = [];
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type array[subnet]
+	 * @var Subnet[]
+	 */
+	protected $subnets = [];
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type boolean
+	 * @var boolean
+	 */
+	protected $hostPorts;
+
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type enum
+	 * @var DefaultPolicyActionEnum
+	 */
+	protected $defaultPolicyAction;
+
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type array[networkPolicyRule]
+	 * @var NetworkPolicyRule[]
+	 */
+	protected $policy = [];
 
 	/** @var string[] */
 	public static $entityLinks = [
@@ -116,27 +220,261 @@ class Network extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): AccounCollection
+	protected function client(): Client
 	{
-		return $this->client->retrieveEntities($this->links['account']);
+		return parent::client();
 	}
 
 
-	public function getNetworkDriver(): NetworkDriveCollection
+	public static function create(\NetworkDriver $networkDriverId, array $dns, array $dnsSearch, \JsonMap $metadata, array $subnets, \boolean $hostPorts, DefaultPolicyActionEnum $defaultPolicyAction)
 	{
-		return $this->client->retrieveEntities($this->links['networkDriver']);
+		$result = new static();
+		$result->networkDriverId = $networkDriverId;
+		$result->dns = $dns;
+		$result->dnsSearch = $dnsSearch;
+		$result->metadata = $metadata;
+		$result->subnets = $subnets;
+		$result->hostPorts = $hostPorts;
+		$result->defaultPolicyAction = $defaultPolicyAction;
+		return $result;
 	}
 
 
-	public function getIpAddresses(): IpAddresseCollection
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getAccountId(): string
 	{
-		return $this->client->retrieveEntities($this->links['ipAddresses']);
+		return $this->accountId;
 	}
 
 
-	public function getSubnets(): SubnetCollection
+	/**
+	 * --> getter from reference: reference[account]
+	 */
+	public function getAccount(): ?Account
 	{
-		return $this->client->retrieveEntities($this->links['subnets']);
+		return $this->client()->getAccount($this->accountId);
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getCreated(): DateTimeInterface
+	{
+		return $this->created;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getDescription(): string
+	{
+		return $this->description;
+	}
+
+
+	public function setDescription(string $value = NULL)
+	{
+		$this->description = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getId(): string
+	{
+		return $this->id;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getKind(): string
+	{
+		return $this->kind;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getName(): string
+	{
+		return $this->name;
+	}
+
+
+	public function setName(string $value = NULL)
+	{
+		$this->name = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getNetworkDriverId(): string
+	{
+		return $this->networkDriverId;
+	}
+
+
+	/**
+	 * --> getter from reference: reference[networkDriver]
+	 */
+	public function getNetworkDriver(): ?NetworkDriver
+	{
+		return $this->client()->getNetworkDriver($this->networkDriverId);
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getRemoved(): DateTimeInterface
+	{
+		return $this->removed;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return StateEnum
+	 */
+	public function getState(): StateEnum
+	{
+		return $this->state;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getUuid(): string
+	{
+		return $this->uuid;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return TransitioningEnum
+	 */
+	public function getTransitioning(): TransitioningEnum
+	{
+		return $this->transitioning;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getTransitioningMessage(): string
+	{
+		return $this->transitioningMessage;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getTransitioningProgress(): int
+	{
+		return $this->transitioningProgress;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string[]
+	 */
+	public function getDns(): array
+	{
+		return $this->dns;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string[]
+	 */
+	public function getDnsSearch(): array
+	{
+		return $this->dnsSearch;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return SamIT\Rancher\Types\JsonMap
+	 */
+	public function getMetadata(): SamIT\Rancher\Generated\Entities\JsonMap
+	{
+		return $this->metadata;
+	}
+
+
+	public function setMetadata(JsonMap $value)
+	{
+		$this->metadata = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return Subnet[]
+	 */
+	public function getSubnets(): array
+	{
+		return $this->subnets;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getHostPorts(): \boolean
+	{
+		return $this->hostPorts;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return DefaultPolicyActionEnum
+	 */
+	public function getDefaultPolicyAction(): DefaultPolicyActionEnum
+	{
+		return $this->defaultPolicyAction;
+	}
+
+
+	public function setDefaultPolicyAction(DefaultPolicyActionEnum $value)
+	{
+		$this->defaultPolicyAction = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return NetworkPolicyRule[]
+	 */
+	public function getPolicy(): array
+	{
+		return $this->policy;
+	}
+
+
+	public function setPolicy(array $value = NULL)
+	{
+		$this->policy = $value;
 	}
 
 }

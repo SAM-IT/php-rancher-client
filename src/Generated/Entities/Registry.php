@@ -1,11 +1,8 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
-use SamIT\Rancher\Generated\Collections\AccounCollection;
-use SamIT\Rancher\Generated\Collections\CredentialCollection;
-use SamIT\Rancher\Generated\Collections\HostCollection;
-use SamIT\Rancher\Generated\Collections\ImageCollection;
-use SamIT\Rancher\Generated\Collections\VolumeCollection;
+use DateTimeInterface;
+use SamIT\Rancher\Generated\Client;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
@@ -16,14 +13,12 @@ class Registry extends StoragePool
 		'accountId',
 		'blockDevicePath',
 		'created',
-		'data',
 		'description',
 		'driverName',
 		'externalId',
 		'id',
 		'kind',
 		'name',
-		'removeTime',
 		'removed',
 		'state',
 		'transitioning',
@@ -35,8 +30,14 @@ class Registry extends StoragePool
 		'serverAddress',
 	];
 
-	/** @var string */
-	public $serverAddress;
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type string
+	 * @var string
+	 */
+	protected $serverAddress;
 
 	/** @var string[] */
 	public static $entityLinks = [
@@ -45,33 +46,12 @@ class Registry extends StoragePool
 	];
 
 
-	public function getAccount(): AccounCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getServerAddress(): string
 	{
-		return $this->client->retrieveEntities($this->links['account']);
-	}
-
-
-	public function getImages(): ImageCollection
-	{
-		return $this->client->retrieveEntities($this->links['images']);
-	}
-
-
-	public function getCredentials(): CredentialCollection
-	{
-		return $this->client->retrieveEntities($this->links['credentials']);
-	}
-
-
-	public function getHosts(): HostCollection
-	{
-		return $this->client->retrieveEntities($this->links['hosts']);
-	}
-
-
-	public function getVolumes(): VolumeCollection
-	{
-		return $this->client->retrieveEntities($this->links['volumes']);
+		return $this->serverAddress;
 	}
 
 }

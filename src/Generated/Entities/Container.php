@@ -1,24 +1,8 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
-use SamIT\Rancher\Generated\Collections\AccounCollection;
-use SamIT\Rancher\Generated\Collections\AgenCollection;
-use SamIT\Rancher\Generated\Collections\CredentialCollection;
-use SamIT\Rancher\Generated\Collections\HealthcheckInstanceHostMapCollection;
-use SamIT\Rancher\Generated\Collections\HostCollection;
-use SamIT\Rancher\Generated\Collections\InstanceCollection;
-use SamIT\Rancher\Generated\Collections\InstanceLabelCollection;
-use SamIT\Rancher\Generated\Collections\InstanceLinkCollection;
-use SamIT\Rancher\Generated\Collections\MountCollection;
-use SamIT\Rancher\Generated\Collections\NetworkContaineCollection;
-use SamIT\Rancher\Generated\Collections\PortCollection;
-use SamIT\Rancher\Generated\Collections\RegistryCredentiaCollection;
-use SamIT\Rancher\Generated\Collections\ServiceCollection;
-use SamIT\Rancher\Generated\Collections\ServiceEventCollection;
-use SamIT\Rancher\Generated\Collections\ServiceExposeMapCollection;
-use SamIT\Rancher\Generated\Collections\ServiceLogCollection;
-use SamIT\Rancher\Generated\Collections\TargetInstanceLinkCollection;
-use SamIT\Rancher\Generated\Collections\VolumeCollection;
+use DateTimeInterface;
+use SamIT\Rancher\Generated\Client;
 use SamIT\Rancher\Generated\Enums\HealthStateEnum;
 use SamIT\Rancher\Generated\Enums\InstanceTriggeredStopEnum;
 use SamIT\Rancher\Generated\Enums\PidModeEnum;
@@ -30,12 +14,9 @@ class Container extends Instance
 	/** @var string[] The list of fields for this type. */
 	protected const RESOURCE_FIELDS = [
 		'accountId',
-		'agentId',
-		'allocationState',
 		'count',
 		'createIndex',
 		'created',
-		'data',
 		'deploymentUnitUuid',
 		'description',
 		'expose',
@@ -58,15 +39,15 @@ class Container extends Instance
 		'ports',
 		'primaryIpAddress',
 		'registryCredentialId',
-		'removeTime',
 		'removed',
 		'requestedHostId',
+		'serviceId',
 		'serviceIds',
+		'stackId',
 		'startCount',
 		'startOnCreate',
 		'state',
 		'system',
-		'token',
 		'transitioning',
 		'transitioningMessage',
 		'transitioningProgress',
@@ -148,319 +129,895 @@ class Container extends Instance
 	];
 
 	/**
-	 * @var string
-	 * @api-type reference[agent]
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
 	 */
-	public $agentId;
-
-	/** @var string */
-	public $allocationState;
-
-	/** @var int */
-	public $count;
-
-	/** @var int */
-	public $createIndex;
-
-	/** @var string */
-	public $deploymentUnitUuid;
-
-	/** @var string[] */
-	public $expose = [];
-
-	/** @var date */
-	public $firstRunning;
-
-	/** @var HealthStateEnum */
-	public $healthState;
-
-	/** @var string */
-	public $hostname;
-
-	/** @var string */
-	public $imageUuid;
-
-	/** @var InstanceTriggeredStopEnum */
-	public $instanceTriggeredStop;
-
-	/** @var int */
-	public $memoryReservation;
-
-	/** @var int */
-	public $milliCpuReservation;
-
-	/** @var mountEntry[] */
-	public $mounts = [];
-
-	/** @var boolean */
-	public $nativeContainer;
+	protected $count;
 
 	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $createIndex;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
 	 * @var string
+	 */
+	protected $deploymentUnitUuid;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type array[string]
+	 * @var string[]
+	 */
+	protected $expose = [];
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type date
+	 * @var DateTimeInterface
+	 */
+	protected $firstRunning;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type enum
+	 * @var HealthStateEnum
+	 */
+	protected $healthState;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $hostname;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $imageUuid;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type enum
+	 * @var InstanceTriggeredStopEnum
+	 */
+	protected $instanceTriggeredStop;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $memoryReservation;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $milliCpuReservation;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type array[mountEntry]
+	 * @var MountEntry[]
+	 */
+	protected $mounts = [];
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type boolean
+	 * @var boolean
+	 */
+	protected $nativeContainer;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
 	 * @api-type reference[container]
+	 * @var string
 	 */
-	public $networkContainerId;
-
-	/** @var reference[network][] */
-	public $networkIds = [];
-
-	/** @var string[] */
-	public $ports = [];
-
-	/** @var string */
-	public $primaryIpAddress;
+	protected $networkContainerId;
 
 	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type array[reference[network]]
+	 * @var string[][]
+	 */
+	protected $networkIds = [];
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type array[string]
+	 * @var string[]
+	 */
+	protected $ports = [];
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type string
 	 * @var string
+	 */
+	protected $primaryIpAddress;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
 	 * @api-type reference[registryCredential]
+	 * @var string
 	 */
-	public $registryCredentialId;
+	protected $registryCredentialId;
 
 	/**
-	 * @var string
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
 	 * @api-type reference[host]
+	 * @var string
 	 */
-	public $requestedHostId;
-
-	/** @var reference[service][] */
-	public $serviceIds = [];
-
-	/** @var int */
-	public $startCount;
-
-	/** @var boolean */
-	public $startOnCreate;
-
-	/** @var boolean */
-	public $system;
-
-	/** @var string */
-	public $token;
-
-	/** @var string */
-	public $version;
-
-	/** @var string */
-	public $volumeDriver;
-
-	/** @var StringMap */
-	public $environment = [];
-
-	/** @var string[] */
-	public $command = [];
-
-	/** @var string */
-	public $workingDir;
-
-	/** @var string */
-	public $user;
-
-	/** @var boolean */
-	public $publishAllPorts;
+	protected $requestedHostId;
 
 	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type reference[service]
 	 * @var string
-	 * @api-type reference[network]
 	 */
-	public $primaryNetworkId;
-
-	/** @var boolean */
-	public $privileged;
-
-	/** @var enum[] */
-	public $capAdd = [];
-
-	/** @var enum[] */
-	public $capDrop = [];
-
-	/** @var string[] */
-	public $dns = [];
-
-	/** @var string[] */
-	public $dnsSearch = [];
-
-	/** @var Reference[instance]Map */
-	public $instanceLinks = [];
-
-	/** @var string */
-	public $domainName;
-
-	/** @var int */
-	public $memorySwap;
-
-	/** @var int */
-	public $memory;
-
-	/** @var string */
-	public $cpuSet;
-
-	/** @var int */
-	public $cpuShares;
-
-	/** @var boolean */
-	public $stdinOpen;
-
-	/** @var boolean */
-	public $tty;
-
-	/** @var string[] */
-	public $entryPoint = [];
-
-	/** @var StringMap */
-	public $lxcConf = [];
-
-	/** @var restartPolicy */
-	public $restartPolicy;
-
-	/** @var string[] */
-	public $devices = [];
-
-	/** @var BlkioDeviceOptionMap */
-	public $blkioDeviceOptions = [];
-
-	/** @var StringMap */
-	public $labels = [];
-
-	/** @var instanceHealthCheck */
-	public $healthCheck;
-
-	/** @var string[] */
-	public $securityOpt = [];
-
-	/** @var logConfig */
-	public $logConfig;
-
-	/** @var PidModeEnum */
-	public $pidMode;
-
-	/** @var string[] */
-	public $extraHosts = [];
-
-	/** @var boolean */
-	public $readOnly;
-
-	/** @var dockerBuild */
-	public $build;
-
-	/** @var Reference[volume]Map */
-	public $dataVolumeMounts = [];
-
-	/** @var int */
-	public $blkioWeight;
-
-	/** @var string */
-	public $cgroupParent;
-
-	/** @var string */
-	public $usernsMode;
-
-	/** @var int */
-	public $pidsLimit;
-
-	/** @var int */
-	public $diskQuota;
-
-	/** @var int */
-	public $cpuCount;
-
-	/** @var int */
-	public $cpuPercent;
-
-	/** @var int */
-	public $ioMaximumIOps;
-
-	/** @var int */
-	public $ioMaximumBandwidth;
-
-	/** @var int */
-	public $cpuPeriod;
-
-	/** @var int */
-	public $cpuQuota;
-
-	/** @var string */
-	public $cpuSetMems;
-
-	/** @var string[] */
-	public $dnsOpt = [];
-
-	/** @var string[] */
-	public $groupAdd = [];
-
-	/** @var string */
-	public $isolation;
-
-	/** @var int */
-	public $kernelMemory;
-
-	/** @var int */
-	public $memorySwappiness;
-
-	/** @var boolean */
-	public $oomKillDisable;
-
-	/** @var int */
-	public $shmSize;
-
-	/** @var StringMap */
-	public $tmpfs = [];
-
-	/** @var string */
-	public $uts;
-
-	/** @var string */
-	public $ipcMode;
-
-	/** @var string */
-	public $stopSignal;
-
-	/** @var StringMap */
-	public $sysctls = [];
-
-	/** @var StringMap */
-	public $storageOpt = [];
-
-	/** @var int */
-	public $oomScoreAdj;
-
-	/** @var ulimit[] */
-	public $ulimits = [];
-
-	/** @var string */
-	public $ip;
-
-	/** @var string */
-	public $ip6;
-
-	/** @var string[] */
-	public $netAlias = [];
-
-	/** @var string[] */
-	public $healthCmd = [];
-
-	/** @var int */
-	public $healthInterval;
-
-	/** @var int */
-	public $healthTimeout;
-
-	/** @var int */
-	public $healthRetries;
-
-	/** @var secretReference[] */
-	public $secrets = [];
-
-	/** @var string[] */
-	public $userPorts = [];
-
-	/** @var string */
-	public $networkMode;
-
-	/** @var string[] */
-	public $dataVolumes = [];
-
-	/** @var reference[container][] */
-	public $dataVolumesFrom = [];
+	protected $serviceId;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type array[reference[service]]
+	 * @var string[][]
+	 */
+	protected $serviceIds = [];
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type reference[stack]
+	 * @var string
+	 */
+	protected $stackId;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $startCount;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type boolean
+	 * @var boolean
+	 */
+	protected $startOnCreate;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type boolean
+	 * @var boolean
+	 */
+	protected $system;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type string
+	 * @var string
+	 */
+	protected $version;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $volumeDriver;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type map[string]
+	 * @var string[]
+	 */
+	protected $environment = [];
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type array[string]
+	 * @var string[]
+	 */
+	protected $command = [];
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $workingDir;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $user;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type boolean
+	 * @var boolean
+	 */
+	protected $publishAllPorts;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type reference[network]
+	 * @var string
+	 */
+	protected $primaryNetworkId;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type boolean
+	 * @var boolean
+	 */
+	protected $privileged;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type array[enum]
+	 * @var []
+	 */
+	protected $capAdd = [];
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type array[enum]
+	 * @var []
+	 */
+	protected $capDrop = [];
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type array[string]
+	 * @var string[]
+	 */
+	protected $dns = [];
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type array[string]
+	 * @var string[]
+	 */
+	protected $dnsSearch = [];
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type map[reference[instance]]
+	 * @var Reference[instance]Map
+	 */
+	protected $instanceLinks = [];
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $domainName;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $memorySwap;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $memory;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $cpuSet;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $cpuShares;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type boolean
+	 * @var boolean
+	 */
+	protected $stdinOpen;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type boolean
+	 * @var boolean
+	 */
+	protected $tty;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type array[string]
+	 * @var string[]
+	 */
+	protected $entryPoint = [];
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type map[string]
+	 * @var string[]
+	 */
+	protected $lxcConf = [];
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type restartPolicy
+	 * @var RestartPolicy
+	 */
+	protected $restartPolicy;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type array[string]
+	 * @var string[]
+	 */
+	protected $devices = [];
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type map[blkioDeviceOption]
+	 * @var BlkioDeviceOptionMap
+	 */
+	protected $blkioDeviceOptions = [];
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type map[string]
+	 * @var string[]
+	 */
+	protected $labels = [];
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type instanceHealthCheck
+	 * @var InstanceHealthCheck
+	 */
+	protected $healthCheck;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type array[string]
+	 * @var string[]
+	 */
+	protected $securityOpt = [];
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type logConfig
+	 * @var LogConfig
+	 */
+	protected $logConfig;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type enum
+	 * @var PidModeEnum
+	 */
+	protected $pidMode;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type array[string]
+	 * @var string[]
+	 */
+	protected $extraHosts = [];
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type boolean
+	 * @var boolean
+	 */
+	protected $readOnly;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type dockerBuild
+	 * @var DockerBuild
+	 */
+	protected $build;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type map[reference[volume]]
+	 * @var Reference[volume]Map
+	 */
+	protected $dataVolumeMounts = [];
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $blkioWeight;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $cgroupParent;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $usernsMode;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $pidsLimit;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $diskQuota;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $cpuCount;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $cpuPercent;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $ioMaximumIOps;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $ioMaximumBandwidth;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $cpuPeriod;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $cpuQuota;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $cpuSetMems;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type array[string]
+	 * @var string[]
+	 */
+	protected $dnsOpt = [];
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type array[string]
+	 * @var string[]
+	 */
+	protected $groupAdd = [];
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $isolation;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $kernelMemory;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $memorySwappiness;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type boolean
+	 * @var boolean
+	 */
+	protected $oomKillDisable;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $shmSize;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type map[string]
+	 * @var string[]
+	 */
+	protected $tmpfs = [];
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $uts;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $ipcMode;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $stopSignal;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type map[string]
+	 * @var string[]
+	 */
+	protected $sysctls = [];
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type map[string]
+	 * @var string[]
+	 */
+	protected $storageOpt = [];
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $oomScoreAdj;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type array[ulimit]
+	 * @var Ulimit[]
+	 */
+	protected $ulimits = [];
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $ip;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $ip6;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type array[string]
+	 * @var string[]
+	 */
+	protected $netAlias = [];
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type array[string]
+	 * @var string[]
+	 */
+	protected $healthCmd = [];
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $healthInterval;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $healthTimeout;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $healthRetries;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type array[secretReference]
+	 * @var SecretReference[]
+	 */
+	protected $secrets = [];
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type array[string]
+	 * @var string[]
+	 */
+	protected $userPorts = [];
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $networkMode;
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type array[string]
+	 * @var string[]
+	 */
+	protected $dataVolumes = [];
+
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type array[reference[container]]
+	 * @var weird[]
+	 */
+	protected $dataVolumesFrom = [];
 
 	/** @var string[] */
 	public static $entityLinks = [
@@ -469,126 +1026,993 @@ class Container extends Instance
 	];
 
 
-	public function getAccount(): AccounCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getCount(): int
 	{
-		return $this->client->retrieveEntities($this->links['account']);
+		return $this->count;
 	}
 
 
-	public function getAgent(): AgenCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getCreateIndex(): int
 	{
-		return $this->client->retrieveEntities($this->links['agent']);
+		return $this->createIndex;
 	}
 
 
-	public function getHost(): Host
+	/**
+	 * @simple-getter
+	 */
+	public function getDeploymentUnitUuid(): string
 	{
+		return $this->deploymentUnitUuid;
 	}
 
 
-	public function getNetworkContainer(): NetworkContaineCollection
+	/**
+	 * @simple-getter
+	 * @return string[]
+	 */
+	public function getExpose(): array
 	{
-		return $this->client->retrieveEntities($this->links['networkContainer']);
+		return $this->expose;
 	}
 
 
-	public function getRegistryCredential(): RegistryCredentiaCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getFirstRunning(): DateTimeInterface
 	{
-		return $this->client->retrieveEntities($this->links['registryCredential']);
+		return $this->firstRunning;
 	}
 
 
-	public function getRequestedHost(): RequestedHost
+	/**
+	 * @simple-getter
+	 * @return HealthStateEnum
+	 */
+	public function getHealthState(): HealthStateEnum
 	{
+		return $this->healthState;
 	}
 
 
-	public function getPrimaryNetwork(): PrimaryNetwork
+	/**
+	 * @simple-getter
+	 */
+	public function getHostname(): string
 	{
+		return $this->hostname;
 	}
 
 
-	public function getCredentials(): CredentialCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getImageUuid(): string
 	{
-		return $this->client->retrieveEntities($this->links['credentials']);
+		return $this->imageUuid;
 	}
 
 
-	public function getInstances(): InstanceCollection
+	/**
+	 * @simple-getter
+	 * @return InstanceTriggeredStopEnum
+	 */
+	public function getInstanceTriggeredStop(): InstanceTriggeredStopEnum
 	{
-		return $this->client->retrieveEntities($this->links['instances']);
+		return $this->instanceTriggeredStop;
 	}
 
 
-	public function getHosts(): HostCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getMemoryReservation(): int
 	{
-		return $this->client->retrieveEntities($this->links['hosts']);
+		return $this->memoryReservation;
 	}
 
 
-	public function getVolumes(): VolumeCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getMilliCpuReservation(): int
 	{
-		return $this->client->retrieveEntities($this->links['volumes']);
+		return $this->milliCpuReservation;
 	}
 
 
-	public function getMounts(): MountCollection
+	/**
+	 * @simple-getter
+	 * @return MountEntry[]
+	 */
+	public function getMounts(): array
 	{
-		return $this->client->retrieveEntities($this->links['mounts']);
+		return $this->mounts;
 	}
 
 
-	public function getServiceEvents(): ServiceEventCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getNativeContainer(): \boolean
 	{
-		return $this->client->retrieveEntities($this->links['serviceEvents']);
+		return $this->nativeContainer;
 	}
 
 
-	public function getServiceExposeMaps(): ServiceExposeMapCollection
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getNetworkContainerId(): string
 	{
-		return $this->client->retrieveEntities($this->links['serviceExposeMaps']);
+		return $this->networkContainerId;
 	}
 
 
-	public function getServices(): ServiceCollection
+	/**
+	 * --> getter from reference: reference[container]
+	 */
+	public function getNetworkContainer(): ?NetworkContainer
 	{
-		return $this->client->retrieveEntities($this->links['services']);
+		return $this->client()->getNetworkContainer($this->networkContainerId);
 	}
 
 
-	public function getPorts(): PortCollection
+	/**
+	 * @simple-getter
+	 * @return string[][]
+	 */
+	public function getNetworkIds(): array
 	{
-		return $this->client->retrieveEntities($this->links['ports']);
+		return $this->networkIds;
 	}
 
 
-	public function getInstanceLinks(): InstanceLinkCollection
+	/**
+	 * @simple-getter
+	 * @return string[]
+	 */
+	public function getPorts(): array
 	{
-		return $this->client->retrieveEntities($this->links['instanceLinks']);
+		return $this->ports;
 	}
 
 
-	public function getHealthcheckInstanceHostMaps(): HealthcheckInstanceHostMapCollection
+	/**
+	 * @simple-getter
+	 */
+	public function getPrimaryIpAddress(): string
 	{
-		return $this->client->retrieveEntities($this->links['healthcheckInstanceHostMaps']);
+		return $this->primaryIpAddress;
 	}
 
 
-	public function getTargetInstanceLinks(): TargetInstanceLinkCollection
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getRegistryCredentialId(): string
 	{
-		return $this->client->retrieveEntities($this->links['targetInstanceLinks']);
+		return $this->registryCredentialId;
 	}
 
 
-	public function getInstanceLabels(): InstanceLabelCollection
+	/**
+	 * --> getter from reference: reference[registryCredential]
+	 */
+	public function getRegistryCredential(): ?RegistryCredential
 	{
-		return $this->client->retrieveEntities($this->links['instanceLabels']);
+		return $this->client()->getRegistryCredential($this->registryCredentialId);
 	}
 
 
-	public function getServiceLogs(): ServiceLogCollection
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getRequestedHostId(): string
 	{
-		return $this->client->retrieveEntities($this->links['serviceLogs']);
+		return $this->requestedHostId;
+	}
+
+
+	/**
+	 * --> getter from reference: reference[host]
+	 */
+	public function getRequestedHost(): ?RequestedHost
+	{
+		return $this->client()->getRequestedHost($this->requestedHostId);
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getServiceId(): string
+	{
+		return $this->serviceId;
+	}
+
+
+	/**
+	 * --> getter from reference: reference[service]
+	 */
+	public function getService(): ?Service
+	{
+		return $this->client()->getService($this->serviceId);
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string[][]
+	 */
+	public function getServiceIds(): array
+	{
+		return $this->serviceIds;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getStackId(): string
+	{
+		return $this->stackId;
+	}
+
+
+	/**
+	 * --> getter from reference: reference[stack]
+	 */
+	public function getStack(): ?Stack
+	{
+		return $this->client()->getStack($this->stackId);
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getStartCount(): int
+	{
+		return $this->startCount;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getStartOnCreate(): \boolean
+	{
+		return $this->startOnCreate;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getSystem(): \boolean
+	{
+		return $this->system;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getVersion(): string
+	{
+		return $this->version;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getVolumeDriver(): string
+	{
+		return $this->volumeDriver;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string[]
+	 */
+	public function getEnvironment(): array
+	{
+		return $this->environment;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string[]
+	 */
+	public function getCommand(): array
+	{
+		return $this->command;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getWorkingDir(): string
+	{
+		return $this->workingDir;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getUser(): string
+	{
+		return $this->user;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getPublishAllPorts(): \boolean
+	{
+		return $this->publishAllPorts;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getPrimaryNetworkId(): string
+	{
+		return $this->primaryNetworkId;
+	}
+
+
+	/**
+	 * --> getter from reference: reference[network]
+	 */
+	public function getPrimaryNetwork(): ?PrimaryNetwork
+	{
+		return $this->client()->getPrimaryNetwork($this->primaryNetworkId);
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getPrivileged(): \boolean
+	{
+		return $this->privileged;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return []
+	 */
+	public function getCapAdd(): array
+	{
+		return $this->capAdd;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return []
+	 */
+	public function getCapDrop(): array
+	{
+		return $this->capDrop;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string[]
+	 */
+	public function getDns(): array
+	{
+		return $this->dns;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string[]
+	 */
+	public function getDnsSearch(): array
+	{
+		return $this->dnsSearch;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return Reference[instance]Map
+	 */
+	public function getInstanceLinks(): SamIT\Rancher\Generated\Entities\Reference[instance]Map
+	{
+		return $this->instanceLinks;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getDomainName(): string
+	{
+		return $this->domainName;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getMemorySwap(): int
+	{
+		return $this->memorySwap;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getMemory(): int
+	{
+		return $this->memory;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getCpuSet(): string
+	{
+		return $this->cpuSet;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getCpuShares(): int
+	{
+		return $this->cpuShares;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getStdinOpen(): \boolean
+	{
+		return $this->stdinOpen;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getTty(): \boolean
+	{
+		return $this->tty;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string[]
+	 */
+	public function getEntryPoint(): array
+	{
+		return $this->entryPoint;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string[]
+	 */
+	public function getLxcConf(): array
+	{
+		return $this->lxcConf;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return RestartPolicy
+	 */
+	public function getRestartPolicy(): RestartPolicy
+	{
+		return $this->restartPolicy;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string[]
+	 */
+	public function getDevices(): array
+	{
+		return $this->devices;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return BlkioDeviceOptionMap
+	 */
+	public function getBlkioDeviceOptions(): SamIT\Rancher\Generated\Entities\BlkioDeviceOptionMap
+	{
+		return $this->blkioDeviceOptions;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string[]
+	 */
+	public function getLabels(): array
+	{
+		return $this->labels;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return InstanceHealthCheck
+	 */
+	public function getHealthCheck(): InstanceHealthCheck
+	{
+		return $this->healthCheck;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string[]
+	 */
+	public function getSecurityOpt(): array
+	{
+		return $this->securityOpt;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return LogConfig
+	 */
+	public function getLogConfig(): LogConfig
+	{
+		return $this->logConfig;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return PidModeEnum
+	 */
+	public function getPidMode(): PidModeEnum
+	{
+		return $this->pidMode;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string[]
+	 */
+	public function getExtraHosts(): array
+	{
+		return $this->extraHosts;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getReadOnly(): \boolean
+	{
+		return $this->readOnly;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return DockerBuild
+	 */
+	public function getBuild(): DockerBuild
+	{
+		return $this->build;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return Reference[volume]Map
+	 */
+	public function getDataVolumeMounts(): SamIT\Rancher\Generated\Entities\Reference[volume]Map
+	{
+		return $this->dataVolumeMounts;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getBlkioWeight(): int
+	{
+		return $this->blkioWeight;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getCgroupParent(): string
+	{
+		return $this->cgroupParent;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getUsernsMode(): string
+	{
+		return $this->usernsMode;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getPidsLimit(): int
+	{
+		return $this->pidsLimit;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getDiskQuota(): int
+	{
+		return $this->diskQuota;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getCpuCount(): int
+	{
+		return $this->cpuCount;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getCpuPercent(): int
+	{
+		return $this->cpuPercent;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getIoMaximumIOps(): int
+	{
+		return $this->ioMaximumIOps;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getIoMaximumBandwidth(): int
+	{
+		return $this->ioMaximumBandwidth;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getCpuPeriod(): int
+	{
+		return $this->cpuPeriod;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getCpuQuota(): int
+	{
+		return $this->cpuQuota;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getCpuSetMems(): string
+	{
+		return $this->cpuSetMems;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string[]
+	 */
+	public function getDnsOpt(): array
+	{
+		return $this->dnsOpt;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string[]
+	 */
+	public function getGroupAdd(): array
+	{
+		return $this->groupAdd;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getIsolation(): string
+	{
+		return $this->isolation;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getKernelMemory(): int
+	{
+		return $this->kernelMemory;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getMemorySwappiness(): int
+	{
+		return $this->memorySwappiness;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getOomKillDisable(): \boolean
+	{
+		return $this->oomKillDisable;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getShmSize(): int
+	{
+		return $this->shmSize;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string[]
+	 */
+	public function getTmpfs(): array
+	{
+		return $this->tmpfs;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getUts(): string
+	{
+		return $this->uts;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getIpcMode(): string
+	{
+		return $this->ipcMode;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getStopSignal(): string
+	{
+		return $this->stopSignal;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string[]
+	 */
+	public function getSysctls(): array
+	{
+		return $this->sysctls;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string[]
+	 */
+	public function getStorageOpt(): array
+	{
+		return $this->storageOpt;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getOomScoreAdj(): int
+	{
+		return $this->oomScoreAdj;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return Ulimit[]
+	 */
+	public function getUlimits(): array
+	{
+		return $this->ulimits;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getIp(): string
+	{
+		return $this->ip;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getIp6(): string
+	{
+		return $this->ip6;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string[]
+	 */
+	public function getNetAlias(): array
+	{
+		return $this->netAlias;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string[]
+	 */
+	public function getHealthCmd(): array
+	{
+		return $this->healthCmd;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getHealthInterval(): int
+	{
+		return $this->healthInterval;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getHealthTimeout(): int
+	{
+		return $this->healthTimeout;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getHealthRetries(): int
+	{
+		return $this->healthRetries;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return SecretReference[]
+	 */
+	public function getSecrets(): array
+	{
+		return $this->secrets;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string[]
+	 */
+	public function getUserPorts(): array
+	{
+		return $this->userPorts;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getNetworkMode(): string
+	{
+		return $this->networkMode;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string[]
+	 */
+	public function getDataVolumes(): array
+	{
+		return $this->dataVolumes;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return weird[]
+	 */
+	public function getDataVolumesFrom(): array
+	{
+		return $this->dataVolumesFrom;
 	}
 
 }

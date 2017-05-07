@@ -5,9 +5,11 @@ namespace SamIT\Rancher;
 
 
 use Nette\PhpGenerator\ClassType;
+use Nette\PhpGenerator\PhpLiteral;
 use Nette\PhpGenerator\PhpNamespace;
 use SamIT\Rancher\Types\Collection;
 use SamIT\Rancher\Types\Entity;
+use SamIT\Rancher\Types\EntityMap;
 use SamIT\Rancher\Types\EnumGenerator;
 use SamIT\Rancher\Types\ResourceField;
 
@@ -20,7 +22,7 @@ class Schema extends Entity
     public $links;
 
     /** @var ResourceField[] */
-    public $resourceFields = [];
+    private $resourceFields = [];
 
     public function __construct()
     {
@@ -84,14 +86,24 @@ class Schema extends Entity
 
     protected function addIncludeableLinks(ClassType $object)
     {
+        return;
         if (isset($this->includeableLinks) && is_array($this->includeableLinks)) {
-            foreach ($this->includeableLinks as $pluralName) {
-                $class = "\\SamIT\\Rancher\\Generated\\Collections\\" . substr(ucfirst($pluralName), 0, -1) . "Collection";
-                $object->getNamespace()->addUse($class);
-                $object->addMethod('get' . ucfirst($pluralName))
-                    ->setReturnType($class)
-                    ->addBody('return $this->client->retrieveEntities($this->links[?]);', [$pluralName]);
+            foreach ($this->includeableLinks as $name) {
 
+                $methodName = 'get' . ucfirst($name);
+                if (!isset($object->getMethods()[$methodName])) {
+                    if (substr($name, -3, 3) === 'ses') {
+                        $singular = substr($name, 0, -2);
+                    } else {
+                        $singular = substr($name, 0, -1);
+                    }
+                    $class = "\\SamIT\\Rancher\\Generated\\Collections\\" . ucfirst($singular) . "Collection";
+                    $object->getNamespace()->addUse($class);
+                    $object->addMethod($methodName)
+                        ->addComment('@api-source Extracted from includeableLinks')
+                        ->setReturnType($class)
+                        ->addBody('return $this->client()->retrieveEntities($this->links[?]);', [$name]);
+                }
             }
         }
     }
@@ -141,6 +153,29 @@ class Schema extends Entity
         $object = $namespace->addClass($this->getClassName())
             ->addExtend(Entity::class);
 
+        $namespace->addUse(\SamIT\Rancher\Generated\Client::class);
+        $object->addMethod('client')
+            ->setVisibility('protected')
+            ->setReturnType(\SamIT\Rancher\Generated\Client::class)
+            ->setBody('return parent::client();');
+
+        $constructor = $object->addMethod('create');
+        $constructor
+            ->addBody('$result = new static();')
+            ->setStatic(true);
+
+
+        foreach($this->resourceFields as $key => $field) {
+            if ($field->create && !$field->nullable) {
+                $constructor->addParameter($key)
+                    ->setTypeHint($field->getPhpType($key, $enumGenerator));
+                $constructor->addBody('$result->? = ?;', [
+                    $key, new PhpLiteral("$$key")
+                ]);
+            }
+        }
+        $constructor->addBody('return $result;');
+
         $this->addFields($object, $enumGenerator);
         $this->addLinks($object);
 
@@ -164,6 +199,25 @@ class Schema extends Entity
             ->setReturnType($baseClass->getNamespace()->getName() . '\\' . $baseClass->getName())
             ->setReturnNullable(true)
             ->setBody('return $this->data[0];');
+        return $object;
+
+    }
+
+    public function generateMapClass(
+        ClassType $baseClass,
+        PhpNamespace $namespace
+    ) : ClassType {
+        $namespace->addUse($baseClass->getNamespace()->getName() . '\\' . $baseClass->getName(), null, $aliasOut);
+        $object = $namespace->addClass($this->getClassName() . "Map");
+        $object->addExtend(EntityMap::class);
+        $object->addMethod('__construct')
+            ->addBody('$this->resourceClass = ' . $aliasOut. '::class;');
+
+        $object->addMethod('get')
+            ->setReturnType($baseClass->getNamespace()->getName() . '\\' . $baseClass->getName())
+            ->setReturnNullable(true)
+            ->setBody('return $this->data[0];')
+            ->addParameter('key')->setTypeHint('string');
         return $object;
 
     }

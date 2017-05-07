@@ -1,9 +1,8 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
-use SamIT\Rancher\Generated\Collections\AccounCollection;
-use SamIT\Rancher\Generated\Collections\InstancCollection;
-use SamIT\Rancher\Generated\Collections\ServicCollection;
+use DateTimeInterface;
+use SamIT\Rancher\Generated\Client;
 
 class ServiceLog extends \SamIT\Rancher\Types\Entity
 {
@@ -11,7 +10,6 @@ class ServiceLog extends \SamIT\Rancher\Types\Entity
 	protected const RESOURCE_FIELDS = [
 		'accountId',
 		'created',
-		'data',
 		'description',
 		'endTime',
 		'eventType',
@@ -25,52 +23,112 @@ class ServiceLog extends \SamIT\Rancher\Types\Entity
 	];
 
 	/**
-	 * @var string
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
 	 * @api-type reference[account]
+	 * @var string
 	 */
-	public $accountId;
-
-	/** @var date */
-	public $created;
-
-	/** @var JsonMap */
-	public $data = [];
-
-	/** @var string */
-	public $description;
-
-	/** @var date */
-	public $endTime;
-
-	/** @var string */
-	public $eventType;
-
-	/** @var int */
-	public $id;
+	protected $accountId;
 
 	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type date
+	 * @var DateTimeInterface
+	 */
+	protected $created;
+
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
 	 * @var string
+	 */
+	protected $description;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type date
+	 * @var DateTimeInterface
+	 */
+	protected $endTime;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $eventType;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type int
+	 * @var string
+	 */
+	protected $id;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
 	 * @api-type reference[instance]
+	 * @var string
 	 */
-	public $instanceId;
-
-	/** @var string */
-	public $kind;
-
-	/** @var string */
-	public $level;
+	protected $instanceId;
 
 	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
 	 * @var string
-	 * @api-type reference[service]
 	 */
-	public $serviceId;
+	protected $kind;
 
-	/** @var boolean */
-	public $subLog;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $level;
 
-	/** @var string */
-	public $transactionId;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type reference[service]
+	 * @var string
+	 */
+	protected $serviceId;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type boolean
+	 * @var boolean
+	 */
+	protected $subLog;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $transactionId;
 
 	/** @var string[] */
 	public static $entityLinks = [
@@ -79,21 +137,160 @@ class ServiceLog extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): AccounCollection
+	protected function client(): Client
 	{
-		return $this->client->retrieveEntities($this->links['account']);
+		return parent::client();
 	}
 
 
-	public function getInstance(): InstancCollection
+	public static function create()
 	{
-		return $this->client->retrieveEntities($this->links['instance']);
+		$result = new static();
+		return $result;
 	}
 
 
-	public function getService(): ServicCollection
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getAccountId(): string
 	{
-		return $this->client->retrieveEntities($this->links['service']);
+		return $this->accountId;
+	}
+
+
+	/**
+	 * --> getter from reference: reference[account]
+	 */
+	public function getAccount(): ?Account
+	{
+		return $this->client()->getAccount($this->accountId);
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getCreated(): DateTimeInterface
+	{
+		return $this->created;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getDescription(): string
+	{
+		return $this->description;
+	}
+
+
+	public function setDescription(string $value = NULL)
+	{
+		$this->description = $value;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getEndTime(): DateTimeInterface
+	{
+		return $this->endTime;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getEventType(): string
+	{
+		return $this->eventType;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getId(): string
+	{
+		return $this->id;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getInstanceId(): string
+	{
+		return $this->instanceId;
+	}
+
+
+	/**
+	 * --> getter from reference: reference[instance]
+	 */
+	public function getInstance(): ?Instance
+	{
+		return $this->client()->getInstance($this->instanceId);
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getKind(): string
+	{
+		return $this->kind;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getLevel(): string
+	{
+		return $this->level;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getServiceId(): string
+	{
+		return $this->serviceId;
+	}
+
+
+	/**
+	 * --> getter from reference: reference[service]
+	 */
+	public function getService(): ?Service
+	{
+		return $this->client()->getService($this->serviceId);
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getSubLog(): \boolean
+	{
+		return $this->subLog;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getTransactionId(): string
+	{
+		return $this->transactionId;
 	}
 
 }

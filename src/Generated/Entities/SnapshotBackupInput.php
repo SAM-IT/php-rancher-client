@@ -1,27 +1,30 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
-use SamIT\Rancher\Generated\Collections\BackupTargeCollection;
+use SamIT\Rancher\Generated\Client;
 
 class SnapshotBackupInput extends \SamIT\Rancher\Types\Entity
 {
 	/** @var string[] The list of fields for this type. */
-	protected const RESOURCE_FIELDS = ['backupTargetId', 'data', 'name', 'removeTime'];
+	protected const RESOURCE_FIELDS = ['backupTargetId', 'name'];
 
 	/**
-	 * @var string
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
 	 * @api-type reference[backupTarget]
+	 * @var string
 	 */
-	public $backupTargetId;
+	protected $backupTargetId;
 
-	/** @var JsonMap */
-	public $data = [];
-
-	/** @var string */
-	public $name;
-
-	/** @var date */
-	public $removeTime;
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $name;
 
 	/** @var string[] */
 	public static $entityLinks = [
@@ -29,9 +32,45 @@ class SnapshotBackupInput extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getBackupTarget(): BackupTargeCollection
+	protected function client(): Client
 	{
-		return $this->client->retrieveEntities($this->links['backupTarget']);
+		return parent::client();
+	}
+
+
+	public static function create(\BackupTarget $backupTargetId)
+	{
+		$result = new static();
+		$result->backupTargetId = $backupTargetId;
+		return $result;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getBackupTargetId(): string
+	{
+		return $this->backupTargetId;
+	}
+
+
+	/**
+	 * --> getter from reference: reference[backupTarget]
+	 */
+	public function getBackupTarget(): ?BackupTarget
+	{
+		return $this->client()->getBackupTarget($this->backupTargetId);
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getName(): string
+	{
+		return $this->name;
 	}
 
 }

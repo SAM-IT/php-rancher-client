@@ -1,8 +1,8 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
-use SamIT\Rancher\Generated\Collections\AccounCollection;
-use SamIT\Rancher\Generated\Collections\AuthenticatedAsAccounCollection;
+use DateTimeInterface;
+use SamIT\Rancher\Generated\Client;
 use SamIT\Rancher\Generated\Enums\AuthTypeEnum;
 
 class AuditLog extends \SamIT\Rancher\Types\Entity
@@ -27,58 +27,139 @@ class AuditLog extends \SamIT\Rancher\Types\Entity
 	];
 
 	/**
-	 * @var string
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
 	 * @api-type reference[account]
+	 * @var string
 	 */
-	public $accountId;
-
-	/** @var AuthTypeEnum */
-	public $authType;
+	protected $accountId;
 
 	/**
-	 * @var string
-	 * @api-type reference[account]
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type enum
+	 * @var AuthTypeEnum
 	 */
-	public $authenticatedAsAccountId;
+	protected $authType;
 
 	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type reference[account]
 	 * @var string
+	 */
+	protected $authenticatedAsAccountId;
+
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
 	 * @api-type reference[identity]
+	 * @var string
 	 */
-	public $authenticatedAsIdentityId;
+	protected $authenticatedAsIdentityId;
 
-	/** @var string */
-	public $clientIp;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $clientIp;
 
-	/** @var date */
-	public $created;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type date
+	 * @var DateTimeInterface
+	 */
+	protected $created;
 
-	/** @var string */
-	public $description;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $description;
 
-	/** @var string */
-	public $eventType;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $eventType;
 
-	/** @var int */
-	public $id;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type int
+	 * @var string
+	 */
+	protected $id;
 
-	/** @var string */
-	public $kind;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $kind;
 
-	/** @var int */
-	public $resourceId;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type int
+	 * @var int
+	 */
+	protected $resourceId;
 
-	/** @var string */
-	public $resourceType;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable true
+	 * @api-type string
+	 * @var string
+	 */
+	protected $resourceType;
 
-	/** @var string */
-	public $responseCode;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type string
+	 * @var string
+	 */
+	protected $responseCode;
 
-	/** @var string */
-	public $requestObject;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type string
+	 * @var string
+	 */
+	protected $requestObject;
 
-	/** @var string */
-	public $responseObject;
+	/**
+	 * @api-update false
+	 * @api-create false
+	 * @api-nullable false
+	 * @api-type string
+	 * @var string
+	 */
+	protected $responseObject;
 
 	/** @var string[] */
 	public static $entityLinks = [
@@ -87,20 +168,182 @@ class AuditLog extends \SamIT\Rancher\Types\Entity
 	];
 
 
-	public function getAccount(): AccounCollection
+	protected function client(): Client
 	{
-		return $this->client->retrieveEntities($this->links['account']);
+		return parent::client();
 	}
 
 
-	public function getAuthenticatedAsAccount(): AuthenticatedAsAccounCollection
+	public static function create()
 	{
-		return $this->client->retrieveEntities($this->links['authenticatedAsAccount']);
+		$result = new static();
+		return $result;
 	}
 
 
-	public function getAuthenticatedAsIdentity(): AuthenticatedAsIdentity
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getAccountId(): string
 	{
+		return $this->accountId;
+	}
+
+
+	/**
+	 * --> getter from reference: reference[account]
+	 */
+	public function getAccount(): ?Account
+	{
+		return $this->client()->getAccount($this->accountId);
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return AuthTypeEnum
+	 */
+	public function getAuthType(): AuthTypeEnum
+	{
+		return $this->authType;
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getAuthenticatedAsAccountId(): string
+	{
+		return $this->authenticatedAsAccountId;
+	}
+
+
+	/**
+	 * --> getter from reference: reference[account]
+	 */
+	public function getAuthenticatedAsAccount(): ?AuthenticatedAsAccount
+	{
+		return $this->client()->getAuthenticatedAsAccount($this->authenticatedAsAccountId);
+	}
+
+
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getAuthenticatedAsIdentityId(): string
+	{
+		return $this->authenticatedAsIdentityId;
+	}
+
+
+	/**
+	 * --> getter from reference: reference[identity]
+	 */
+	public function getAuthenticatedAsIdentity(): ?AuthenticatedAsIdentity
+	{
+		return $this->client()->getAuthenticatedAsIdentity($this->authenticatedAsIdentityId);
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getClientIp(): string
+	{
+		return $this->clientIp;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getCreated(): DateTimeInterface
+	{
+		return $this->created;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getDescription(): string
+	{
+		return $this->description;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getEventType(): string
+	{
+		return $this->eventType;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getId(): string
+	{
+		return $this->id;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getKind(): string
+	{
+		return $this->kind;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getResourceId(): int
+	{
+		return $this->resourceId;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getResourceType(): string
+	{
+		return $this->resourceType;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getResponseCode(): string
+	{
+		return $this->responseCode;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getRequestObject(): string
+	{
+		return $this->requestObject;
+	}
+
+
+	/**
+	 * @simple-getter
+	 */
+	public function getResponseObject(): string
+	{
+		return $this->responseObject;
 	}
 
 }

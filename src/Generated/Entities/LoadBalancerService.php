@@ -1,19 +1,14 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
-use SamIT\Rancher\Generated\Collections\AccounCollection;
-use SamIT\Rancher\Generated\Collections\ConfigItemStatuseCollection;
-use SamIT\Rancher\Generated\Collections\ConsumedbyserviceCollection;
-use SamIT\Rancher\Generated\Collections\ConsumedserviceCollection;
-use SamIT\Rancher\Generated\Collections\InstanceCollection;
-use SamIT\Rancher\Generated\Collections\NetworkDriverCollection;
-use SamIT\Rancher\Generated\Collections\ServiceExposeMapCollection;
-use SamIT\Rancher\Generated\Collections\ServiceLogCollection;
-use SamIT\Rancher\Generated\Collections\StacCollection;
-use SamIT\Rancher\Generated\Collections\StorageDriverCollection;
+use DateTimeInterface;
+use SamIT\Rancher\Generated\Client;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
+/**
+ * @method LbConfig getLbConfig Implementation in parent.
+ */
 class LoadBalancerService extends Service
 {
 	/** @var string[] The list of fields for this type. */
@@ -22,7 +17,6 @@ class LoadBalancerService extends Service
 		'assignServiceIpAddress',
 		'created',
 		'currentScale',
-		'data',
 		'description',
 		'externalId',
 		'fqdn',
@@ -36,7 +30,6 @@ class LoadBalancerService extends Service
 		'metadata',
 		'name',
 		'publicEndpoints',
-		'removeTime',
 		'removed',
 		'retainIp',
 		'scale',
@@ -54,8 +47,23 @@ class LoadBalancerService extends Service
 		'vip',
 	];
 
-	/** @var lbConfig */
-	public $lbConfig;
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type launchConfig
+	 * @var LaunchConfig
+	 */
+	protected $launchConfig;
+
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type lbConfig
+	 * @var LbConfig
+	 */
+	protected $lbConfig;
 
 	/** @var string[] */
 	public static $entityLinks = [
@@ -64,63 +72,9 @@ class LoadBalancerService extends Service
 	];
 
 
-	public function getAccount(): AccounCollection
+	public function setLaunchConfig(LaunchConfig $value = NULL)
 	{
-		return $this->client->retrieveEntities($this->links['account']);
-	}
-
-
-	public function getStack(): StacCollection
-	{
-		return $this->client->retrieveEntities($this->links['stack']);
-	}
-
-
-	public function getConsumedbyservices(): ConsumedbyserviceCollection
-	{
-		return $this->client->retrieveEntities($this->links['consumedbyservices']);
-	}
-
-
-	public function getInstances(): InstanceCollection
-	{
-		return $this->client->retrieveEntities($this->links['instances']);
-	}
-
-
-	public function getStorageDrivers(): StorageDriverCollection
-	{
-		return $this->client->retrieveEntities($this->links['storageDrivers']);
-	}
-
-
-	public function getConsumedservices(): ConsumedserviceCollection
-	{
-		return $this->client->retrieveEntities($this->links['consumedservices']);
-	}
-
-
-	public function getConfigItemStatuses(): ConfigItemStatuseCollection
-	{
-		return $this->client->retrieveEntities($this->links['configItemStatuses']);
-	}
-
-
-	public function getServiceExposeMaps(): ServiceExposeMapCollection
-	{
-		return $this->client->retrieveEntities($this->links['serviceExposeMaps']);
-	}
-
-
-	public function getNetworkDrivers(): NetworkDriverCollection
-	{
-		return $this->client->retrieveEntities($this->links['networkDrivers']);
-	}
-
-
-	public function getServiceLogs(): ServiceLogCollection
-	{
-		return $this->client->retrieveEntities($this->links['serviceLogs']);
+		$this->launchConfig = $value;
 	}
 
 }

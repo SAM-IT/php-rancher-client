@@ -1,10 +1,8 @@
 <?php
 namespace SamIT\Rancher\Generated\Entities;
 
-use SamIT\Rancher\Generated\Collections\AccounCollection;
-use SamIT\Rancher\Generated\Collections\ImageCollection;
-use SamIT\Rancher\Generated\Collections\InstanceCollection;
-use SamIT\Rancher\Generated\Collections\RegistrCollection;
+use DateTimeInterface;
+use SamIT\Rancher\Generated\Client;
 use SamIT\Rancher\Generated\Enums\StateEnum;
 use SamIT\Rancher\Generated\Enums\TransitioningEnum;
 
@@ -14,14 +12,12 @@ class RegistryCredential extends Credential
 	protected const RESOURCE_FIELDS = [
 		'accountId',
 		'created',
-		'data',
 		'description',
 		'id',
 		'kind',
 		'name',
 		'publicValue',
 		'registryId',
-		'removeTime',
 		'removed',
 		'secretValue',
 		'state',
@@ -29,17 +25,34 @@ class RegistryCredential extends Credential
 		'transitioningMessage',
 		'transitioningProgress',
 		'uuid',
-		'email',
 	];
 
 	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type string
 	 * @var string
-	 * @api-type reference[registry]
 	 */
-	public $registryId;
+	protected $publicValue;
 
-	/** @var string */
-	public $email;
+	/**
+	 * @api-update false
+	 * @api-create true
+	 * @api-nullable false
+	 * @api-type reference[registry]
+	 * @var string
+	 */
+	protected $registryId;
+
+	/**
+	 * @api-update true
+	 * @api-create true
+	 * @api-nullable true
+	 * @api-type password
+	 * @var Password
+	 */
+	protected $secretValue;
 
 	/** @var string[] */
 	public static $entityLinks = [
@@ -48,27 +61,34 @@ class RegistryCredential extends Credential
 	];
 
 
-	public function getAccount(): AccounCollection
+	public function setPublicValue(string $value = NULL)
 	{
-		return $this->client->retrieveEntities($this->links['account']);
+		$this->publicValue = $value;
 	}
 
 
-	public function getRegistry(): RegistrCollection
+	/**
+	 * @simple-getter
+	 * @return string
+	 */
+	public function getRegistryId(): string
 	{
-		return $this->client->retrieveEntities($this->links['registry']);
+		return $this->registryId;
 	}
 
 
-	public function getImages(): ImageCollection
+	/**
+	 * --> getter from reference: reference[registry]
+	 */
+	public function getRegistry(): ?Registry
 	{
-		return $this->client->retrieveEntities($this->links['images']);
+		return $this->client()->getRegistry($this->registryId);
 	}
 
 
-	public function getInstances(): InstanceCollection
+	public function setSecretValue(Password $value = NULL)
 	{
-		return $this->client->retrieveEntities($this->links['instances']);
+		$this->secretValue = $value;
 	}
 
 }
