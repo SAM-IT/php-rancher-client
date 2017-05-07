@@ -1,5 +1,6 @@
 {
     "name": "sam-it/php-rancher",
+    "license": "MIT",
     "minimum-stability": "stable",
     "authors": [
         {

@@ -6,6 +6,7 @@ namespace SamIT\Rancher\Types;
 
 use SamIT\Rancher\Client;
 use SamIT\Rancher\Generated\Entities\Host;
+use SamIT\Rancher\Generated\Entities\LoadBalancerService;
 
 class Entity implements \JsonSerializable
 {
@@ -39,6 +40,7 @@ class Entity implements \JsonSerializable
     public static function applyConfig(Entity $entity, array $entityConfig, Client $client)
     {
         unset($entityConfig['type']);
+        unset($entityConfig['data']);
         $entity->client = $client;
 
         foreach($entityConfig as $key => $value) {
