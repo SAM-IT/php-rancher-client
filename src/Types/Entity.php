@@ -60,7 +60,6 @@ class Entity implements \JsonSerializable
                 $entity->{$key} = $value;
                 $entity->originalAttributes[$key] = $value;
             } elseif (!in_array($key, ['createdTS'])) {
-                print_r($entityConfig); die();
                 throw new \Exception("Unknown property $key in config for " . get_class($entity));
             }
 
